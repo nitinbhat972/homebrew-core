@@ -1,17 +1,17 @@
 class Rapidyaml < Formula
   desc "Library to parse and emit YAML, and do it fast"
   homepage "https://github.com/biojppm/rapidyaml"
-  url "https://github.com/biojppm/rapidyaml/releases/download/v0.11.0/rapidyaml-0.11.0-src.tgz"
-  sha256 "46e42f656a767b9ecaf9b903b6f6a9c72453359ee9cbf488d510d0558ff5ab78"
+  url "https://github.com/biojppm/rapidyaml/releases/download/v0.12.1/rapidyaml-0.12.1-src.tgz"
+  sha256 "e9efcdd17f86287748793cf21d106e461fcad8d103a3e5a23632afe93828660d"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "6997e9d5a634aa37266f4186fc11137c886b63150113d710d65d88e500f96b67"
-    sha256 cellar: :any,                 arm64_sequoia: "37d10c22e5a8061ef4bfb8c630ccf891324a6ba46ae37b7fde3b045da6bfe9d4"
-    sha256 cellar: :any,                 arm64_sonoma:  "3662c6b0ee2c58622a6b1ab90e95746bd8f36f9342cba49999a8122dc66119c2"
-    sha256 cellar: :any,                 sonoma:        "5c55f42efa974828fae3b6ed15fb0a3dbce40f2070b88a673bbcb35e509d4b73"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "5f1e99898b0a319814216cdfed0fe6f862a11c6788a20df7b824e8b44cf10213"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "000664809cba9de464a5ceb7c7d9b29a48c0ff43fd987bbc9380a120a85db0e7"
+    sha256 cellar: :any,                 arm64_tahoe:   "27c328feee0cf8d7335615093c0cafd158f5d362c4ea4d797811e639681c4882"
+    sha256 cellar: :any,                 arm64_sequoia: "6dd5d1cc3a4c5f690ca4d36f2aeeca42c0716a5e0cb17b64b735a99fd6201730"
+    sha256 cellar: :any,                 arm64_sonoma:  "ccb1d9bb612ab635f812785c88e0f48d741589f0daafa2bb78a01612245a542c"
+    sha256 cellar: :any,                 sonoma:        "7adad1b67964edd26bad65a7fccd95c7e09be7538ca9bfd23154c8c921772d60"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "d3e4be74dfaa82105f06e46f606742582c1d0cbbc9d061be07874f7297c0fb69"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "f9c01402a502115f08eb04efe48ef4db26cb0838a295f45ff7d3e5cb14c19af7"
   end
 
   depends_on "cmake" => :build

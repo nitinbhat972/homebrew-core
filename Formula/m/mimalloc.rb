@@ -1,8 +1,8 @@
 class Mimalloc < Formula
   desc "Compact general purpose allocator"
   homepage "https://github.com/microsoft/mimalloc"
-  url "https://github.com/microsoft/mimalloc/archive/refs/tags/v3.2.8.tar.gz"
-  sha256 "68163666575518c213a6593850099adce3863b340ca2751103dbd1f253664e05"
+  url "https://github.com/microsoft/mimalloc/archive/refs/tags/v3.3.2.tar.gz"
+  sha256 "ca02384e007f46950598500dfaebde5ff9948c1d231f5a81b058799afa64bbbb"
   license "MIT"
 
   livecheck do
@@ -11,12 +11,12 @@ class Mimalloc < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "bc6f9b1db6effe64908a85e46ecfb03341acf1352ba7a3c83308bf1af3e50ffb"
-    sha256 cellar: :any,                 arm64_sequoia: "17c926d79dcead2314f91f205bf85f37114f909a6e6a838840ad923552df2731"
-    sha256 cellar: :any,                 arm64_sonoma:  "6f87b08db6ad3e794a298afdb385eece6ff31068f3b1211916404b262b5752ac"
-    sha256 cellar: :any,                 sonoma:        "4b586ead845fadaff26fea75596f2115cd2f4f9184184c82487e4bff9d4bfeb5"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "84ccd64fddcd740fd1d8e19b4dc36af100b80cd8210d8ba0bd667605c749029e"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "0554e2b09e732858ef460e41a80216e3fc2937711aa244a543e6735991a11557"
+    sha256 cellar: :any,                 arm64_tahoe:   "531c6f4aeeefd3dfaa87a75018a12a976ea0789f288016e8ac6e11ea6e09e6a4"
+    sha256 cellar: :any,                 arm64_sequoia: "09fb7627b28dc7cb5350d341e7ea1ba8ad16f2ec98df65c84b618c2406c41d36"
+    sha256 cellar: :any,                 arm64_sonoma:  "e9ad687531f78115303068697a66b20a00e95d959aac4c0c88fbe5c9516dd40b"
+    sha256 cellar: :any,                 sonoma:        "24238383ee03d1c6977e8709f76a4a6998126f866d647b9635f6a5f47ed62442"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "7baa228f26392cde057cf086997e72a43006dc3a326fb5cda9823e54bf6d0ebe"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "dc0f517f393d973c81a8887c860018c8d8eaadce80f3784027e9eae8a690519d"
   end
 
   depends_on "cmake" => :build

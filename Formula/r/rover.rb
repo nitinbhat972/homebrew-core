@@ -1,8 +1,8 @@
 class Rover < Formula
   desc "CLI for managing and maintaining data graphs with Apollo Studio"
   homepage "https://www.apollographql.com/docs/rover/"
-  url "https://github.com/apollographql/rover/archive/refs/tags/v0.37.2.tar.gz"
-  sha256 "d93856caec7d0886b46ba34a44d0784b63980cb170cbce66f81b08057026754a"
+  url "https://github.com/apollographql/rover/archive/refs/tags/v0.38.1.tar.gz"
+  sha256 "d3b27add53fc0d8eedd89ba3a6a0d0dbb1833d268f79c0a81f755c44e7db8735"
   license "MIT"
   head "https://github.com/apollographql/rover.git", branch: "main"
 
@@ -12,13 +12,12 @@ class Rover < Formula
   end
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "98e2d9ad561d1a16b2f91c1259c5c793a9c26a292c7da254ece29877622ac7b0"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "f98a2d429fc13478a5e9826b96f5f9931eb5fc87a03f2c4bdd607d5f0e384851"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "1508a4138bcda8541e7c62bc7ad9595f10b64bc5177c27099c9d3933930d6e49"
-    sha256 cellar: :any_skip_relocation, sonoma:        "aab791df636a3fe728b35287a972ff2ee3c255257e0dc9025a6e84cd9cbe5bcf"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "b1bbb95c462ea62cc91a1866b91211f3f4ed403c2fb1c0079109079bb20f3e7d"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "67bde9ee55f25f7ad4c3a0ab72cf67fe2970e254e6b3677c90e42f47bff81d79"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "5c6692b19fad4a7d74a8ae9ce5fff10160a78e0af013665af7f7a8c0f57000a5"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "79797beaf07c8617255422857c9c7a087c418b8891d559605c4fbd0a65d1cca5"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "1a71ef373f98071f9b120a3038bb7ddaca90173e6d065e1873fe5cb1e1625032"
+    sha256 cellar: :any_skip_relocation, sonoma:        "b3bd3f2682e500ab90900fe69dc4dadf96f3ebe945f936e9a096116630bae794"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "7d4c49412701e7f84557dc2aad3cf463debcce42b42ffadbd2ccbbc24aa86001"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "4991b995bf2b0c01ae9ad5b633a09a53e86b4649a6ccebbb2db71c8f5f4fb780"
   end
 
   depends_on "rust" => :build
@@ -31,7 +30,6 @@ class Rover < Formula
   def install
     # Ensure that the `openssl` crate picks up the intended library.
     ENV["OPENSSL_DIR"] = Formula["openssl@3"].opt_prefix
-    ENV["OPENSSL_NO_VENDOR"] = "1"
 
     system "cargo", "install", *std_cargo_args
 

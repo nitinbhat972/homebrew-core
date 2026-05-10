@@ -6,16 +6,21 @@ class Localstack < Formula
   url "https://files.pythonhosted.org/packages/a2/16/8231e7b97a3e0c5187754b65be2d7a6c550dea6d71a00318068e95953560/localstack-2026.3.0.tar.gz"
   sha256 "c06b06ed205ae6c52637b75b6f72640f2876ebbb1981fc4ae22d71ab047851b6"
   license "Apache-2.0"
+  revision 2
   compatibility_version 1
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "356a4cf4df3add833b12d7a01ffdf08931f1b990bdbd3d7cd4600055835d32e7"
-    sha256 cellar: :any,                 arm64_sequoia: "548073aa670193d8acf8ba0c7e68c20d448db44f62bc33ee63c53bec0a0121d8"
-    sha256 cellar: :any,                 arm64_sonoma:  "9a5952ba22840764313567a9b44bcde99a80c73aab96bf417f22950208b9bcb4"
-    sha256 cellar: :any,                 sonoma:        "8e872f1a10b08a182e9eaaa187a4d9ad8bd7c3fdb6ba0f1676c88832169b61b4"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "a4dfac01decfad95ba97922fd23002c9611c7296e9d60a20cac701fadf97ab64"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "ddb972f7457ba0364b35c6a08a3641617831a6a9bc80b9bd75eba5267d8caeb0"
+    sha256 cellar: :any,                 arm64_tahoe:   "033de202780606553b5c72bd3c2726f172ab08e02d3e7340eebcf682350588b0"
+    sha256 cellar: :any,                 arm64_sequoia: "374b80d0a03a480d3edf94ebf8d9a67805e04a8d4ea54acf6d4ee8ab05d441d6"
+    sha256 cellar: :any,                 arm64_sonoma:  "0f98dcffd60abd8cc0cf2ab10ba9881d283499efd227fb5ad65602881c87e1b8"
+    sha256 cellar: :any,                 sonoma:        "ba1360350a72ce74d606a56cf98d0ba451f2fe412ad3cf189a7dc08924c11bfb"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "9448e8cda2d0bd73af1379d6fcf3ac78803cbaa2616de85323e5284d076914dd"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "2070d591c53fc3564d7f25872e11332b6ed55e554488fbcf00cdee1aa1f1a3f4"
   end
+
+  # Project got archived on 2026-03-23 per https://github.com/localstack/localstack/pull/13901
+  deprecate! date: "2026-04-12", because: :unmaintained
+  disable! date: "2027-04-12", because: :unmaintained
 
   depends_on "pkgconf" => :build # for localstack_ext
   depends_on "rust" => :build # for orjson
@@ -94,8 +99,8 @@ class Localstack < Formula
   end
 
   resource "pygments" do
-    url "https://files.pythonhosted.org/packages/b0/77/a5b8c569bf593b0140bde72ea885a803b82086995367bf2037de0159d924/pygments-2.19.2.tar.gz"
-    sha256 "636cb2477cec7f8952536970bc533bc43743542f70392ae026374600add5b887"
+    url "https://files.pythonhosted.org/packages/c3/b2/bc9c9196916376152d655522fdcebac55e66de6603a76a02bca1b6414f6c/pygments-2.20.0.tar.gz"
+    sha256 "6757cd03768053ff99f3039c1a36d6c0aa0b263438fcab17520b30a303a82b5f"
   end
 
   resource "pyjwt" do
@@ -124,8 +129,8 @@ class Localstack < Formula
   end
 
   resource "requests" do
-    url "https://files.pythonhosted.org/packages/c9/74/b3ff8e6c8446842c3f5c837e9c3dfcfe2018ea6ecef224c710c85ef728f4/requests-2.32.5.tar.gz"
-    sha256 "dbba0bac56e100853db0ea71b82b4dfd5fe2bf6d3754a8893c3af500cec7d7cf"
+    url "https://files.pythonhosted.org/packages/5f/a4/98b9c7c6428a668bf7e42ebb7c79d576a1c3c1e3ae2d47e674b468388871/requests-2.33.1.tar.gz"
+    sha256 "18817f8c57c6263968bc123d237e3b8b08ac046f5456bd1e307ee8f4250d3517"
   end
 
   resource "rich" do

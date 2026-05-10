@@ -3,8 +3,8 @@ class Kubescape < Formula
   homepage "https://kubescape.io"
   # Use GitHub repo URL because the version for the build will be automatically fetched from git.
   url "https://github.com/kubescape/kubescape.git",
-      tag:      "v4.0.3",
-      revision: "b79488dca6a1e1dc3a1c602de082b0de47a32d91"
+      tag:      "v4.0.8",
+      revision: "d7539c2264560a8685f59e89a731d6de833258a6"
   license "Apache-2.0"
   head "https://github.com/kubescape/kubescape.git", branch: "master"
 
@@ -14,12 +14,12 @@ class Kubescape < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "0b20cebcef6c12d0f1c3f4b439ecf2e37f4a643c0589de5be028dc4bfc8e49f8"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "63c2214b8591ad76caa8abb8b0c7f4a826642d749273c5dafbf7c8b8e3deeeec"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "589e645088dd02c5114f6ff47eef8d1a35a96b8be4318371f57d5e5eb98bcabc"
-    sha256 cellar: :any_skip_relocation, sonoma:        "d7406ac6cdc6841d592d6bfae50eab4d07de30285fc30f3df54d4fb751a25320"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "f1431c33bc95339b8727931baa5909574f274e8ca1923b618b231883d3fdf157"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b007920e6c4e3459c945e8ecd3de543578cffdf02c36586f6dcf944f65d7a04f"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "2a4ab22a8184310d41a1902534dfa7c38b56d6f8e8ac0808dea48a2c5f108951"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "d333627a70a03866abdaa8ba08680946be8bc61c89f109d4f220852dbc6f987f"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "a5ec11d0dc9c6203665db134f83608359ccf9cda0ef790f7c6d5677323eeb6ef"
+    sha256 cellar: :any_skip_relocation, sonoma:        "088247b121b6c8aa9baf4dd51f4c3ca2ca0c7ae79ddb399f29545b93f60fffdb"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "924f24b68ff45a8696f3ed6e5672e9912124826cf106718cad923ac58858d3e6"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "312ccc850ad31fc7af224239e42f83cd39f63bb4ead854ba5a071af509ee1b4e"
   end
 
   depends_on "go" => :build
@@ -28,8 +28,7 @@ class Kubescape < Formula
     ldflags = "-s -w -X main.version=#{version} -X main.commit=#{tap.user} -X main.date=#{time.iso8601}"
     system "go", "build", *std_go_args(ldflags:)
 
-    generate_completions_from_executable(bin/"kubescape", shell_parameter_format: :cobra,
-                                                          shells:                 [:bash, :zsh, :fish, :pwsh])
+    generate_completions_from_executable(bin/"kubescape", shell_parameter_format: :cobra)
   end
 
   test do

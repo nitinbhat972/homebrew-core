@@ -1,18 +1,18 @@
 class Karmadactl < Formula
   desc "CLI for Karmada control plane"
   homepage "https://karmada.io/"
-  url "https://github.com/karmada-io/karmada/archive/refs/tags/v1.17.0.tar.gz"
-  sha256 "18a591c81b3e30356bdfee766ef41b70934cde04eb04a16a7539d656e20f849d"
+  url "https://github.com/karmada-io/karmada/archive/refs/tags/v1.17.2.tar.gz"
+  sha256 "33917b21ed768cb70e6cb3eab47c504db6e8b04d2ec564a1d4fc2776e779586b"
   license "Apache-2.0"
   head "https://github.com/karmada-io/karmada.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "8d14e02b7ff8fe51bbdacc881a811a3322c5c6f3fd2b4fe0230d42951ae43b5f"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "7c41c8124edb28cd40d595c5cc5d14c1ace4afc7dc887c82f88e1f97ab2200a6"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "2b9145d2987ffa0c3e7361de90a8ee832aeb919199d29697a9a70a468b194ad2"
-    sha256 cellar: :any_skip_relocation, sonoma:        "86d05e2fd22d06d9090c12c05364eefa7d9d5f582c5659a52cc113378536197d"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "5402f9b9851b85279f1a2848f54388ea0f83b4f6a2b18b1bb62db41d1475fbd6"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "96d14665627931d37c7598613db2b5840746f23cef448d20602d3c598c35d791"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "b48a55346fa9e7624741b429e23ee3750dcd77dbae884d9f7a622dc7fd40e3db"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "e1b638b88e290bde13c074680897e1f421002df4b2b61f67ae48df241a8e7704"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "aab7c80220d55b4780987b43d53a10617d8f868cbf8d8c834f762fbe9b9f567b"
+    sha256 cellar: :any_skip_relocation, sonoma:        "513eebfa9e0e7ea3410b4e57abab674f5c1c456d424c1c4379f27816fb6b5297"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "3a69d649236ef5cd82e354c64a6193169415e79435a9e9ca8af9d447fd87a30f"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "671d516b63b219d89c1adb22830ab9f6073c4900603fc00da054cb0e3f93d1b4"
   end
 
   depends_on "go" => :build

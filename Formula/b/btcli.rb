@@ -3,18 +3,19 @@ class Btcli < Formula
 
   desc "Bittensor command-line tool"
   homepage "https://docs.bittensor.com/btcli"
-  url "https://files.pythonhosted.org/packages/d0/c2/c4f2cbe7affe24e94d629622a0b6f2fe6a0f1c08a81d9cb2eb1b030c330c/bittensor_cli-9.19.0.tar.gz"
-  sha256 "ea991587cda04141eca17691cb49ab9fc09096e8b082f4be2776235df28278aa"
+  url "https://files.pythonhosted.org/packages/87/7b/68de741a574a0f28e06acf9dc87dd3443c8227d286981fa394699eecd90a/bittensor_cli-9.21.1.tar.gz"
+  sha256 "bff86ca875f3e120227f25e432bf17243b49154d68d88891581d7337f7a2ae33"
   license "MIT"
+  revision 1
   head "https://github.com/opentensor/btcli.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "38c64562df7865d2b8795b44080891a95183e2fa5910762c6cd29a631706936a"
-    sha256 cellar: :any,                 arm64_sequoia: "fe54973a0b0f981c8a9b7729cd2ac05fa297a40bbb364cf349958a95e080859c"
-    sha256 cellar: :any,                 arm64_sonoma:  "295375b35c89f3b4c961065e8a2cb3f44c8e775b5b0991e372db2305de71439e"
-    sha256 cellar: :any,                 sonoma:        "e17ad49e71109319a22ddb42e97d7c18772ac372897c7c8a484f8c31f76e35a1"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "d2e4217c4d2e89f38e3d9ea11de37be4672f0dc2bb9c9184727abd7169a5158f"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "96af5b6971dc46e3b287568c1e3512e00c9bba130ee0ed54c21ca129b4f22726"
+    sha256 cellar: :any,                 arm64_tahoe:   "5ca1a1fa4b0fc7cd0deab359aaa00870076311ff2dc837d6499025fd7a0c89e0"
+    sha256 cellar: :any,                 arm64_sequoia: "007a472d8fa0fd187703765e9c7aebbc4c4a314217d6e1272e643437d6c3e815"
+    sha256 cellar: :any,                 arm64_sonoma:  "5ea2e00772a13c9806089e7b33fdde89f360f859c23122732c1b8e36eebf3449"
+    sha256 cellar: :any,                 sonoma:        "a88272af5108d24993bed0c76a25160494670bf7680fcc359dd845d5d8c32204"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "a9db3b64420c3fce9f8a46132d22a3c25137c4adab83101fe14d48d903acbaaf"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "29048583f125f8a4e51d81e2a1924277a897f5f224b9e8042507f4d45c2129ce"
   end
 
   depends_on "rust" => :build # for bittensor-wallet, plotly
@@ -27,7 +28,7 @@ class Btcli < Formula
 
   conflicts_with "btpd", because: "both install `btcli` binaries"
 
-  pypi_packages exclude_packages: ["certifi", "numpy"]
+  pypi_packages exclude_packages: %w[certifi numpy]
 
   resource "aiohappyeyeballs" do
     url "https://files.pythonhosted.org/packages/26/30/f84a107a9c4331c14b2b586036f40965c128aa4fee4dda5d3d51cb14ad54/aiohappyeyeballs-2.6.1.tar.gz"
@@ -35,8 +36,8 @@ class Btcli < Formula
   end
 
   resource "aiohttp" do
-    url "https://files.pythonhosted.org/packages/50/42/32cf8e7704ceb4481406eb87161349abb46a57fee3f008ba9cb610968646/aiohttp-3.13.3.tar.gz"
-    sha256 "a949eee43d3782f2daae4f4a2819b2cb9b0c5d3b7f7a927067cc84dafdbb9f88"
+    url "https://files.pythonhosted.org/packages/77/9a/152096d4808df8e4268befa55fba462f440f14beab85e8ad9bf990516918/aiohttp-3.13.5.tar.gz"
+    sha256 "9d98cc980ecc96be6eb4c1994ce35d28d8b1f5e5208a23b421187d1209dbb7d1"
   end
 
   resource "aiosignal" do
@@ -55,8 +56,8 @@ class Btcli < Formula
   end
 
   resource "async-substrate-interface" do
-    url "https://files.pythonhosted.org/packages/60/8a/c25ee72ce902686191c9a56dfdcbc12b5408defb343589e398dfa0331416/async_substrate_interface-1.6.3.tar.gz"
-    sha256 "6d45c8a77c8ff9120f08892bec6913a470983c15ffab1489046f56ca421f1c1c"
+    url "https://files.pythonhosted.org/packages/50/e6/387dc39e5a6731cfbc4e4ebbbffdcdbcf5ac22c61588cf0f112c64121eb0/async_substrate_interface-2.0.3.tar.gz"
+    sha256 "35692730cea1f2aa6a9cbc526ecf67a07b3a67e88b2afc68d5db38058173dd7e"
   end
 
   resource "attrs" do
@@ -84,19 +85,14 @@ class Btcli < Formula
     sha256 "edc2588d5e272835285e4171dd3daf862149f617015bf52e43d433d8e5c297c5"
   end
 
-  resource "bt-decode" do
-    url "https://files.pythonhosted.org/packages/9d/d6/f30b65454ff3f78b698ec9e0b18fcd22299b43c5581f1e913f77657761db/bt_decode-0.8.0.tar.gz"
-    sha256 "deb6b798bea703c9b9e40267f6cddcfb45f7f4c884bbb3d2280143b18095eb09"
-  end
-
-  resource "charset-normalizer" do
-    url "https://files.pythonhosted.org/packages/7b/60/e3bec1881450851b087e301bedc3daa9377a4d45f1c26aa90b0b235e38aa/charset_normalizer-3.4.6.tar.gz"
-    sha256 "1ae6b62897110aa7c79ea2f5dd38d1abca6db663687c0b1ad9aed6f6bae3d9d6"
-  end
-
   resource "click" do
-    url "https://files.pythonhosted.org/packages/3d/fa/656b739db8587d7b5dfa22e22ed02566950fbfbcdc20311993483657a5c0/click-8.3.1.tar.gz"
-    sha256 "12ff4785d337a1bb490bb7e9c2b1ee5da3112e94a8622f26a6c77f5d2fc6842a"
+    url "https://files.pythonhosted.org/packages/bb/63/f9e1ea081ce35720d8b92acde70daaedace594dc93b693c869e0d5910718/click-8.3.3.tar.gz"
+    sha256 "398329ad4837b2ff7cbe1dd166a4c0f8900c3ca3a218de04466f38f6497f18a2"
+  end
+
+  resource "cyscale" do
+    url "https://files.pythonhosted.org/packages/c8/26/58ac0791e64f711ff2999f532737e4de5a2b4a5fb1e2150302e1c4b7bacd/cyscale-0.3.3.tar.gz"
+    sha256 "e1d1f2fc95ef4b1bfb6ebabc72121ec519a0d996e74d905fc0d6142ec4f8694d"
   end
 
   resource "frozenlist" do
@@ -110,13 +106,13 @@ class Btcli < Formula
   end
 
   resource "gitpython" do
-    url "https://files.pythonhosted.org/packages/df/b5/59d16470a1f0dfe8c793f9ef56fd3826093fc52b3bd96d6b9d6c26c7e27b/gitpython-3.1.46.tar.gz"
-    sha256 "400124c7d0ef4ea03f7310ac2fbf7151e09ff97f2a3288d64a440c584a29c37f"
+    url "https://files.pythonhosted.org/packages/33/f6/354ae6491228b5eb40e10d89c4d13c651fe1cf7556e35ebdded50cff57ce/gitpython-3.1.50.tar.gz"
+    sha256 "80da2d12504d52e1f998772dc5baf6e553f8d2fcfe1fcc226c9d9a2ee3372dcc"
   end
 
   resource "idna" do
-    url "https://files.pythonhosted.org/packages/6f/6d/0703ccc57f3a7233505399edb88de3cbd678da106337b9fcde432b65ed60/idna-3.11.tar.gz"
-    sha256 "795dafcc9c04ed0c1fb032c2aa73654d8e8c5023a7df64a53f39190ada629902"
+    url "https://files.pythonhosted.org/packages/ce/cc/762dfb036166873f0059f3b7de4565e1b5bc3d6f28a414c13da27e442f99/idna-3.13.tar.gz"
+    sha256 "585ea8fe5d69b9181ec1afba340451fba6ba764af97026f92a91d4eef164a242"
   end
 
   resource "jinja2" do
@@ -125,8 +121,8 @@ class Btcli < Formula
   end
 
   resource "markdown-it-py" do
-    url "https://files.pythonhosted.org/packages/5b/f5/4ec618ed16cc4f8fb3b701563655a69816155e79e24a17b651541804721d/markdown_it_py-4.0.0.tar.gz"
-    sha256 "cb0a2b4aa34f932c007117b194e945bd74e0ec24133ceb5bac59009cda1cb9f3"
+    url "https://files.pythonhosted.org/packages/06/ff/7841249c247aa650a76b9ee4bbaeae59370dc8bfd2f6c01f3630c35eb134/markdown_it_py-4.2.0.tar.gz"
+    sha256 "04a21681d6fbb623de53f6f364d352309d4094dd4194040a10fd51833e418d49"
   end
 
   resource "markupsafe" do
@@ -140,8 +136,8 @@ class Btcli < Formula
   end
 
   resource "more-itertools" do
-    url "https://files.pythonhosted.org/packages/ea/5d/38b681d3fce7a266dd9ab73c66959406d565b3e85f21d5e66e1181d93721/more_itertools-10.8.0.tar.gz"
-    sha256 "f638ddf8a1a0d134181275fb5d58b086ead7c6a72429ad725c67503f13ba30bd"
+    url "https://files.pythonhosted.org/packages/a2/f7/139d22fef48ac78127d18e01d80cf1be40236ae489769d17f35c3d425293/more_itertools-11.0.2.tar.gz"
+    sha256 "392a9e1e362cbc106a2457d37cabf9b36e5e12efd4ebff1654630e76597df804"
   end
 
   resource "multidict" do
@@ -150,8 +146,8 @@ class Btcli < Formula
   end
 
   resource "narwhals" do
-    url "https://files.pythonhosted.org/packages/47/b4/02a8add181b8d2cd5da3b667cd102ae536e8c9572ab1a130816d70a89edb/narwhals-2.18.0.tar.gz"
-    sha256 "1de5cee338bc17c338c6278df2c38c0dd4290499fcf70d75e0a51d5f22a6e960"
+    url "https://files.pythonhosted.org/packages/e9/f3/257adc69a71011b4c8cda321b00f02c5bf1980ae38ffd05a58d9632d4de8/narwhals-2.20.0.tar.gz"
+    sha256 "c10994975fa7dc5a68c2cffcddbd5908fc8ebb2d463c5bab085309c0ee1f551e"
   end
 
   resource "netaddr" do
@@ -160,8 +156,8 @@ class Btcli < Formula
   end
 
   resource "packaging" do
-    url "https://files.pythonhosted.org/packages/65/ee/299d360cdc32edc7d2cf530f3accf79c4fca01e96ffc950d8a52213bd8e4/packaging-26.0.tar.gz"
-    sha256 "00243ae351a257117b6a241061796684b084ed1c516a08c48a3f7e147a9d80b4"
+    url "https://files.pythonhosted.org/packages/d7/f1/e7a6dd94a8d4a5626c03e4e99c87f241ba9e350cd9e6d75123f992427270/packaging-26.2.tar.gz"
+    sha256 "ff452ff5a3e828ce110190feff1178bb1f2ea2281fa2075aadb987c2fb221661"
   end
 
   resource "plotille" do
@@ -170,8 +166,8 @@ class Btcli < Formula
   end
 
   resource "plotly" do
-    url "https://files.pythonhosted.org/packages/24/fb/41efe84970cfddefd4ccf025e2cbfafe780004555f583e93dba3dac2cdef/plotly-6.6.0.tar.gz"
-    sha256 "b897f15f3b02028d69f755f236be890ba950d0a42d7dfc619b44e2d8cea8748c"
+    url "https://files.pythonhosted.org/packages/3a/7f/0f100df1172aadf88a929a9dbb902656b0880ba4b960fe5224867159d8f4/plotly-6.7.0.tar.gz"
+    sha256 "45eea0ff27e2a23ccd62776f77eb43aa1ca03df4192b76036e380bb479b892c6"
   end
 
   resource "propcache" do
@@ -185,8 +181,8 @@ class Btcli < Formula
   end
 
   resource "pygments" do
-    url "https://files.pythonhosted.org/packages/b0/77/a5b8c569bf593b0140bde72ea885a803b82086995367bf2037de0159d924/pygments-2.19.2.tar.gz"
-    sha256 "636cb2477cec7f8952536970bc533bc43743542f70392ae026374600add5b887"
+    url "https://files.pythonhosted.org/packages/c3/b2/bc9c9196916376152d655522fdcebac55e66de6603a76a02bca1b6414f6c/pygments-2.20.0.tar.gz"
+    sha256 "6757cd03768053ff99f3039c1a36d6c0aa0b263438fcab17520b30a303a82b5f"
   end
 
   resource "pyyaml" do
@@ -194,19 +190,9 @@ class Btcli < Formula
     sha256 "d76623373421df22fb4cf8817020cbb7ef15c725b9d5e45f17e189bfc384190f"
   end
 
-  resource "requests" do
-    url "https://files.pythonhosted.org/packages/c9/74/b3ff8e6c8446842c3f5c837e9c3dfcfe2018ea6ecef224c710c85ef728f4/requests-2.32.5.tar.gz"
-    sha256 "dbba0bac56e100853db0ea71b82b4dfd5fe2bf6d3754a8893c3af500cec7d7cf"
-  end
-
   resource "rich" do
-    url "https://files.pythonhosted.org/packages/b3/c6/f3b320c27991c46f43ee9d856302c70dc2d0fb2dba4842ff739d5f46b393/rich-14.3.3.tar.gz"
-    sha256 "b8daa0b9e4eef54dd8cf7c86c03713f53241884e814f4e2f5fb342fe520f639b"
-  end
-
-  resource "scalecodec" do
-    url "https://files.pythonhosted.org/packages/b8/3c/4c3e3fa0efd75eb1e00b9bd6ccce8e0018e0789bff35d76cc9ce554354d0/scalecodec-1.2.12.tar.gz"
-    sha256 "aa54cc901970289fe64ae01edf076f25f60f8d7e4682979b827cab73dde74393"
+    url "https://files.pythonhosted.org/packages/e9/67/cae617f1351490c25a4b8ac3b8b63a4dda609295d8222bad12242dfdc629/rich-14.3.4.tar.gz"
+    sha256 "817e02727f2b25b40ef56f5aa2217f400c8489f79ca8f46ea2b70dd5e14558a9"
   end
 
   resource "shellingham" do
@@ -219,19 +205,9 @@ class Btcli < Formula
     sha256 "4d9debb8b99007ae47165abc08670bd74cb74b5227dda7f643eccc4e9eb5642c"
   end
 
-  resource "toml" do
-    url "https://files.pythonhosted.org/packages/be/ba/1f744cdc819428fc6b5084ec34d9b30660f6f9daaf70eead706e3203ec3c/toml-0.10.2.tar.gz"
-    sha256 "b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f"
-  end
-
   resource "typer" do
-    url "https://files.pythonhosted.org/packages/f5/24/cb09efec5cc954f7f9b930bf8279447d24618bb6758d4f6adf2574c41780/typer-0.24.1.tar.gz"
-    sha256 "e39b4732d65fbdcde189ae76cf7cd48aeae72919dea1fdfc16593be016256b45"
-  end
-
-  resource "urllib3" do
-    url "https://files.pythonhosted.org/packages/c7/24/5f1b3bdffd70275f6661c76461e25f024d5a38a46f04aaca912426a2b1d3/urllib3-2.6.3.tar.gz"
-    sha256 "1b62b6884944a57dbe321509ab94fd4d3b307075e0c2eae991ac71ee15ad38ed"
+    url "https://files.pythonhosted.org/packages/e4/51/9aed62104cea109b820bbd6c14245af756112017d309da813ef107d42e7e/typer-0.25.1.tar.gz"
+    sha256 "9616eb8853a09ffeabab1698952f33c6f29ffdbceb4eaeecf571880e8d7664cc"
   end
 
   resource "websockets" do
@@ -240,13 +216,13 @@ class Btcli < Formula
   end
 
   resource "wheel" do
-    url "https://files.pythonhosted.org/packages/89/24/a2eb353a6edac9a0303977c4cb048134959dd2a51b48a269dfc9dde00c8a/wheel-0.46.3.tar.gz"
-    sha256 "e3e79874b07d776c40bd6033f8ddf76a7dad46a7b8aa1b2787a83083519a1803"
+    url "https://files.pythonhosted.org/packages/39/62/75f18a0f03b4219c456652c7780e4d749b929eb605c098ce3a5b6b6bc081/wheel-0.47.0.tar.gz"
+    sha256 "cc72bd1009ba0cf63922e28f94d9d83b920aa2bb28f798a31d0691b02fa3c9b3"
   end
 
   resource "xxhash" do
-    url "https://files.pythonhosted.org/packages/02/84/30869e01909fb37a6cc7e18688ee8bf1e42d57e7e0777636bd47524c43c7/xxhash-3.6.0.tar.gz"
-    sha256 "f0162a78b13a0d7617b2845b90c763339d1f1d82bb04a4b07f4ab535cc5e05d6"
+    url "https://files.pythonhosted.org/packages/24/2f/e183a1b407002f5af81822bee18b61cdb94b8670208ef34734d8d2b8ebe9/xxhash-3.7.0.tar.gz"
+    sha256 "6cc4eefbb542a5d6ffd6d70ea9c502957c925e800f998c5630ecc809d6702bae"
   end
 
   resource "yarl" do
@@ -255,10 +231,8 @@ class Btcli < Formula
   end
 
   def install
+    ENV.O0
     ENV["OPENSSL_DIR"] = Formula["openssl@3"].opt_prefix
-    ENV["OPENSSL_NO_VENDOR"] = "1"
-    # required to declare scalecodec's version, issue opened at https://github.com/JAMdotTech/py-scale-codec/issues/130
-    ENV["TRAVIS_TAG"] = resource("scalecodec").version.to_s
     virtualenv_install_with_resources
 
     generate_completions_from_executable(bin/"btcli", shell_parameter_format: :typer)

@@ -1,25 +1,25 @@
 class Hbase < Formula
   desc "Hadoop database: a distributed, scalable, big data store"
   homepage "https://hbase.apache.org"
-  url "https://www.apache.org/dyn/closer.lua?path=hbase/2.6.4/hbase-2.6.4-bin.tar.gz"
-  mirror "https://archive.apache.org/dist/hbase/2.6.4/hbase-2.6.4-bin.tar.gz"
-  sha256 "97e3d07ca9fa1f28f12597662e2eb4e3341fad1521314e3c6c5a26f3b2a27b0e"
+  url "https://www.apache.org/dyn/closer.lua?path=hbase/2.6.5/hbase-2.6.5-bin.tar.gz"
+  mirror "https://archive.apache.org/dist/hbase/2.6.5/hbase-2.6.5-bin.tar.gz"
+  sha256 "f9aa75ca683ddb942f33a5032ab7397509fe4a8bb851f5078176a66a5832fc21"
   # We bundle hadoop-lzo which is GPL-3.0-or-later
   license all_of: ["Apache-2.0", "GPL-3.0-or-later"]
 
   bottle do
     rebuild 1
-    sha256 arm64_tahoe:   "65045300f54b57ee162251465c51580d32ff03d31f02ac60554919672f770d14"
-    sha256 arm64_sequoia: "9a0ffe45b7478045b48c80f86d955351b37db39ae17715f57ba322d95a9f844b"
-    sha256 arm64_sonoma:  "9f8675ca9d26afbc1b3c4c5c636224d63e7f80aa6e6ec0c2bd227a420d5d3ead"
-    sha256 sonoma:        "dac9cc595749907be623745468ac7a3d541e458ff8320d66d7435c2d5d97976a"
-    sha256 arm64_linux:   "901723f520445cfcd248a70bb9ed5e2936e6130320cf85253c1c730f6f84b668"
-    sha256 x86_64_linux:  "414d6d6b72366b325683087855608f4d31fb3005a1e4ed42e149785022bd6382"
+    sha256 arm64_tahoe:   "fd00080ca7610f1c4e7eac9acc1760fc964e899f9a17f06e4a2c7bf4b74c4e39"
+    sha256 arm64_sequoia: "0b0a4d575975c6147604f0747c53f041409d81f921577105632c593c91046e33"
+    sha256 arm64_sonoma:  "4b5c7e54871fec8a2dbbe83b4b8d863fc3368afb0ba7718f15739e04225a4c9d"
+    sha256 sonoma:        "fcb9cbf33b216436444dd2d5e3596aa5be87e69002b6e51818493b71eb039bb3"
+    sha256 arm64_linux:   "1032d4382795b7637eb832decbfbbbd6e92a67378b333ee26a573d081d9012e5"
+    sha256 x86_64_linux:  "3e9c3334d63451522677cc6973729d92254d4ef6983dca41eba2e71f4ed97433"
   end
 
   depends_on "ant" => :build
   depends_on "lzo"
-  depends_on "openjdk@11"
+  depends_on "openjdk@17"
 
   on_linux do
     on_arm do
@@ -46,14 +46,14 @@ class Hbase < Formula
   end
 
   def install
-    java_home = Language::Java.java_home("11")
+    java_home = Language::Java.java_home("17")
     rm(Dir["bin/*.cmd", "conf/*.cmd"])
     libexec.install %w[bin conf lib hbase-webapps]
 
     # Some binaries have really generic names (like `test`) and most seem to be
     # too special-purpose to be permanently available via PATH.
     %w[hbase start-hbase.sh stop-hbase.sh].each do |script|
-      (bin/script).write_env_script libexec/"bin"/script, Language::Java.overridable_java_home_env("11")
+      (bin/script).write_env_script libexec/"bin"/script, Language::Java.overridable_java_home_env("17")
     end
 
     resource("hadoop-lzo").stage do
@@ -75,7 +75,7 @@ class Hbase < Formula
       # Workaround for Xcode 14.3.
       ENV.append_to_cflags "-m64" if Hardware::CPU.intel?
       ENV.append_to_cflags "-Wno-implicit-function-declaration"
-      ENV["CPPFLAGS"] = "-I#{Formula["openjdk@11"].include}"
+      ENV["CPPFLAGS"] = "-I#{Formula["openjdk@17"].include}"
 
       system "ant", "compile-native", "tar"
       (libexec/"lib").install Dir["build/hadoop-lzo-*/hadoop-lzo-*.jar"]
@@ -87,7 +87,7 @@ class Hbase < Formula
       # https://issues.apache.org/jira/browse/HADOOP-8568
       # https://issues.apache.org/jira/browse/HADOOP-3619
       s.gsub!(/^# export HBASE_OPTS$/,
-              "export HBASE_OPTS=\"-Djava.net.preferIPv4Stack=true -XX:+UseConcMarkSweepGC\"")
+              "export HBASE_OPTS=\"-Djava.net.preferIPv4Stack=true\"")
       s.gsub!(/^# export JAVA_HOME=.*/,
               "export JAVA_HOME=\"${JAVA_HOME:-#{java_home}}\"")
 
@@ -149,7 +149,6 @@ class Hbase < Formula
                           HBASE_LOGFILE:           "hbase-root-master.log",
                           HBASE_MASTER_OPTS:       " -XX:PermSize=128m -XX:MaxPermSize=128m",
                           HBASE_NICENESS:          "0",
-                          HBASE_OPTS:              "-XX:+UseConcMarkSweepGC",
                           HBASE_PID_DIR:           var/"run/hbase",
                           HBASE_REGIONSERVER_OPTS: " -XX:PermSize=128m -XX:MaxPermSize=128m",
                           HBASE_ROOT_LOGGER:       "INFO,RFA",

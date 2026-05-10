@@ -2,8 +2,8 @@ class WasiRuntimes < Formula
   desc "Compiler-RT and libc++ runtimes for WASI"
   homepage "https://wasi.dev"
   # TODO: Check if any build changes are needed after https://github.com/WebAssembly/wasi-sdk/pull/585
-  url "https://github.com/llvm/llvm-project/releases/download/llvmorg-22.1.1/llvm-project-22.1.1.src.tar.xz"
-  sha256 "9c6f37f6f5f68d38f435d25f770fc48c62d92b2412205767a16dac2c942f0c95"
+  url "https://github.com/llvm/llvm-project/releases/download/llvmorg-22.1.4/llvm-project-22.1.4.src.tar.xz"
+  sha256 "3e68c90dda630c27d41d201e37b8bbf5222e39b273dec5ca880709c69e0a07d4"
   license "Apache-2.0" => { with: "LLVM-exception" }
   head "https://github.com/llvm/llvm-project.git", branch: "main"
 
@@ -12,12 +12,12 @@ class WasiRuntimes < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "8baed66249e4192aa0443332937cdc69b509884e8f18463623731113b5ce1c91"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "9bad9b09c6c4920e7032ca4720685f7109e932440b31ef6b44f35732c4f309fe"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "d5108917aa4f4ddd410bae156695bf99556c4806e70c630b10d1e2f8b77f3742"
-    sha256 cellar: :any_skip_relocation, sonoma:        "ec1060e5e304c7e380219eb76188eaae73187d7e23c67c8064cd20dadc5f7b0a"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "e389af4fa56694a88840a5055c8144451169d9cfab1f792d06aeac753d03c84a"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "4552d1e8f2403aa5b3c7ea9884a4d7d2afb7cb97e9b605f8d99b99c667328161"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "e9c21b532286523ef7cd3241075d0f650218db0ea1ed72239859a4b93d0f954b"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "cd448936807b2ef4183e6b8cd59619e44a1d8ca4bcaa0fe14737fa8c0849ddfe"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "5eb25aa32c71de7605c57807812f21b66ca8984ce7d977e0dea68099b93d9b72"
+    sha256 cellar: :any_skip_relocation, sonoma:        "da473a50efe84ccc8539aa5d23fce144680e60e45800bc18858a521851be0ce8"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "332172b6b881219623722ee6a74e0646b01e111d1e347dde98790a85f24ef6b7"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "942c4df3c1f3cb28965f131051aedd42ada8f38ca87ee25f9985c173cb206978"
   end
 
   depends_on "cmake" => :build

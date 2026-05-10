@@ -1,18 +1,18 @@
 class Fastp < Formula
   desc "Ultra-fast all-in-one FASTQ preprocessor"
   homepage "https://github.com/OpenGene/fastp"
-  url "https://github.com/OpenGene/fastp/archive/refs/tags/v1.3.0.tar.gz"
-  sha256 "c55656dfe9c3a40d3da59d680aa4ff4a2a4861bbc3993cb3659cdeb5e23fd858"
+  url "https://github.com/OpenGene/fastp/archive/refs/tags/v1.3.3.tar.gz"
+  sha256 "ef0b265e6130b0f7d56d713399ae63980d2b937d6f9df8e458a3ee578d59a97c"
   license "MIT"
   head "https://github.com/OpenGene/fastp.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "4b3cd27137c016fb30ab7133d42eba0d526a4c8174cb994432a95a2339596393"
-    sha256 cellar: :any,                 arm64_sequoia: "04de2eb48361d2a6ab031fe66587ac5ad3cf8302b038d457970a7baf82a9a2c9"
-    sha256 cellar: :any,                 arm64_sonoma:  "20f35cc1600e805a27251b15ddadd0a82ed873e424bc561b69deb5516f5f8a1c"
-    sha256 cellar: :any,                 sonoma:        "8be6ff536586710382c0f15a05f989464b0039cd3272f2fcd45125ac2a9c5990"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "ea2cc9354495f7f1348ce86b73d3bd6e1f8d2edad4b67860a1c99dc72c74208b"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "7b89099cd70d5c4504b6a2ac388b9a43c9316d3fc0c61476b1844127c4040967"
+    sha256 cellar: :any,                 arm64_tahoe:   "3b2900c616a31ca11f6aafab782aa101a2b0b0f72066158e3c3add5649ed29ec"
+    sha256 cellar: :any,                 arm64_sequoia: "eedfd18cc5dee8ee10060e6551bc4174a0233f590991a8dc13cde2d9f473796e"
+    sha256 cellar: :any,                 arm64_sonoma:  "69f008bc9234af3cf4c6ae08e3be75132c875576d5d3bcd219ebba12dd8047b6"
+    sha256 cellar: :any,                 sonoma:        "27a844481a18635e904fe7f028e5fa73f1505da4a36bd3331cbd2d8aed88d4e1"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "e10910cd72defe0628be9202de20cb9171b0b47a8969dc34eac56231939057ed"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "3592585f2806a95daf1a6aeeb891eb2556dbe5cd01236fd0f64140b80a53efdf"
   end
 
   depends_on "highway"

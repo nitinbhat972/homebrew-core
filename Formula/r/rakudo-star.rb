@@ -1,8 +1,8 @@
 class RakudoStar < Formula
   desc "Rakudo compiler and commonly used packages"
   homepage "https://rakudo.org/"
-  url "https://github.com/rakudo/star/releases/download/2026.02/rakudo-star-2026.02.tar.gz"
-  sha256 "07320246808b8f21a7625c35352ea2e357d201412ef75082fd38cbb9ed76963c"
+  url "https://github.com/rakudo/star/releases/download/2026.04/rakudo-star-2026.04.tar.gz"
+  sha256 "735f5b0ab45b1d6c754cb528e5bf7d58b8962cd130730414adc4d0a8d234e62c"
   license "Artistic-2.0"
 
   livecheck do
@@ -11,12 +11,12 @@ class RakudoStar < Formula
   end
 
   bottle do
-    sha256 arm64_tahoe:   "2e46a1265473c05a7404b5ca549c46878420f1607d1e1f84582a69fceee29397"
-    sha256 arm64_sequoia: "ae7157ab24614e9f3be82a30a45abb59f99d5a77403b53a2c8e5d2b8ecca1734"
-    sha256 arm64_sonoma:  "a0a1399abfbe7857fdaa387eecb3b91d7b4552daf37bac3d7e31ccbce485a533"
-    sha256 sonoma:        "7131c5a98f04711a417c847a709642c3b347e0d6ca620c3aba298b1aa7dcc8ba"
-    sha256 arm64_linux:   "122dee9e81735f79627c148cd85e4cdf12d734351908f198431508a38c6fe418"
-    sha256 x86_64_linux:  "1ab408457fc6d274a6034668df1f4377af2420958cca65659d52ed0c44c94d71"
+    sha256 arm64_tahoe:   "bf517ab72509c74dcef69e71e75342d78221e81491c9f41d5a1775d289012c9b"
+    sha256 arm64_sequoia: "739b4a7d8dc15d609ad19631c93dc3b6390d5f6bdae17b1ce97b78e0645081e7"
+    sha256 arm64_sonoma:  "5ecb755e38d668ffffd5ed300028cb7b2773346b0fa26ac3e4c79216d4893e1c"
+    sha256 sonoma:        "c3997b06ac7f6385ec90d348516fff502e63be8e2ac384dd855f6bdde856d0a8"
+    sha256 arm64_linux:   "3739f30070dd5b33042d3a7862fb84d1d2567bbbdabd296adebe0ea22cb71dfb"
+    sha256 x86_64_linux:  "f3b253020c1b80fd46fbd215634b7d70ac8b93746a3799d219758fe5ca17757a"
   end
 
   depends_on "pkgconf" => :build
@@ -64,11 +64,6 @@ class RakudoStar < Formula
       rm_r(moarvm_3rdparty/"libuv")
     end
     inreplace "lib/actions/install.bash", "@@MOARVM_CONFIGURE_ARGS@@", moarvm_configure_args.join(" ")
-
-    # Workaround for https://github.com/rakudo/star/issues/217
-    inreplace "src/rakudo-star-modules/DBIish/t/01-Basic.rakutest",
-              "::('X::DBIish::DriverNotFound')",
-              "::X::DBIish::DriverNotFound"
 
     # Help Readline module find brew `readline` on Linux
     inreplace "src/rakudo-star-modules/Readline/lib/Readline.pm",

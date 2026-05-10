@@ -1,9 +1,10 @@
 class Vips < Formula
   desc "Image processing library"
   homepage "https://github.com/libvips/libvips"
-  url "https://github.com/libvips/libvips/releases/download/v8.18.1/vips-8.18.1.tar.xz"
-  sha256 "3a0d641175013df712a348d5c528e5f0b46fcbfa4b00b30fcf228c631ffee485"
+  url "https://github.com/libvips/libvips/releases/download/v8.18.2/vips-8.18.2.tar.xz"
+  sha256 "a30d4aede16f1c2899c1a2241870f8a7409feafa38484bcdcdac113d6d6f8ff5"
   license "LGPL-2.1-or-later"
+  revision 1
   compatibility_version 1
 
   livecheck do
@@ -12,14 +13,15 @@ class Vips < Formula
   end
 
   bottle do
-    sha256 arm64_tahoe:   "bd41208faccfb754b58e0d0eeda9268c6ae0c606fb44fb3268fc9a9341eee607"
-    sha256 arm64_sequoia: "7ebb14f67033ba06b69a212c774123d7452a15a4485c61be6e880b27a6adcabe"
-    sha256 arm64_sonoma:  "e663277e5abbab9650f6443aaeb1320d5ceaa2afdfa0b624eb3e807c5128dded"
-    sha256 sonoma:        "82775d0a5c7da161eb8b5ec7d99e4b6ef25a58e01651d74fe2ca4688c02cde25"
-    sha256 arm64_linux:   "428827e275e0b3ba35177292ca5babcc0c220cd38b388b296314d7921f93823a"
-    sha256 x86_64_linux:  "5f95f50740ff69b6fc8f100d7108b7e40132b8d3df4c0667df561d6120bd46f5"
+    sha256 arm64_tahoe:   "e009b71e1fcc9309ba0346a9b1f2dcb6b06b50a0486a61f44d67c2aeef9a806f"
+    sha256 arm64_sequoia: "7016e9d5a9a274b198898375de1075449f71a424f57dcddd985e111c8cdbc3c4"
+    sha256 arm64_sonoma:  "36c641f678f1224e0aab11c427565b7a420d5ff1307146e4afdd607c887194ee"
+    sha256 sonoma:        "4f97f1cf8737230dc933aff2217ac9f29a77ced703735d778fe84e608cded4ce"
+    sha256 arm64_linux:   "7b4a29d60a0c343e352a54829a7fc4ab1cb0d02bd2f5fbea7334ff3b876774a5"
+    sha256 x86_64_linux:  "75dfe5c6c9191ddeb732f47b6f8f15eb9d38cdf0aaa2b2e1f772e94c70270fee"
   end
 
+  depends_on "gettext" => :build
   depends_on "gobject-introspection" => :build
   depends_on "meson" => :build
   depends_on "ninja" => :build
@@ -29,7 +31,6 @@ class Vips < Formula
   depends_on "cgif"
   depends_on "fftw"
   depends_on "fontconfig"
-  depends_on "gettext"
   depends_on "glib"
   depends_on "highway"
   depends_on "imagemagick"
@@ -55,6 +56,10 @@ class Vips < Formula
 
   uses_from_macos "python" => :build
   uses_from_macos "expat"
+
+  on_macos do
+    depends_on "gettext"
+  end
 
   on_linux do
     depends_on "zlib-ng-compat"

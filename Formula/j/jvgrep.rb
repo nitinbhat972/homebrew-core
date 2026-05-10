@@ -1,18 +1,18 @@
 class Jvgrep < Formula
   desc "Grep for Japanese users of Vim"
   homepage "https://github.com/mattn/jvgrep"
-  url "https://github.com/mattn/jvgrep/archive/refs/tags/v5.8.13.tar.gz"
-  sha256 "75a5832e6b504d7f627cce135a60ef486033895d509875cecd01828a4b718efd"
+  url "https://github.com/mattn/jvgrep/archive/refs/tags/v5.8.16.tar.gz"
+  sha256 "f337724a802867998187157644fce61929b3795728c09bbd7ea8386f6d43ace6"
   license "MIT"
   head "https://github.com/mattn/jvgrep.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "7266ca4575b279ba7b16aaae0d2459f16f0c791c4ea1490e11f82f00789d634a"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "7266ca4575b279ba7b16aaae0d2459f16f0c791c4ea1490e11f82f00789d634a"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "7266ca4575b279ba7b16aaae0d2459f16f0c791c4ea1490e11f82f00789d634a"
-    sha256 cellar: :any_skip_relocation, sonoma:        "f9726c8401eaeb5a704be625595d8855fab0d23c0e2a167e9dd0dc315a3cb2c0"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "3e072dadb313901731a01dc280102725803ecd42015036228bddfb7608e78b31"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "751113b0e30f280a7237b6322950eb35cb9dcfd01c8a23780ff95fc7d26f3f2a"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "2c33ed09adb2427fbfdf4e954d18f857efe45cea3b708f570d60b1d92101dac6"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "2c33ed09adb2427fbfdf4e954d18f857efe45cea3b708f570d60b1d92101dac6"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "2c33ed09adb2427fbfdf4e954d18f857efe45cea3b708f570d60b1d92101dac6"
+    sha256 cellar: :any_skip_relocation, sonoma:        "462610c9365f48db395b8640036e607dc4c2d90d747e46e48bc3d4947a299d6b"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "eb6ce31a89ff7bda2f71292ba30cc60fcf54a00d0dfbf920f7c7e07f4d9fe79f"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "186486fa0c0488ab1bedc0b8471774334e180ca053532f9c97cdd653dc347ef0"
   end
 
   depends_on "go" => :build

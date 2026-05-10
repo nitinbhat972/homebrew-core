@@ -1,17 +1,22 @@
 class Tofrodos < Formula
   desc "Converts DOS <-> UNIX text files, alias tofromdos"
   homepage "https://github.com/ChristopherHeng/tofrodos"
-  url "https://github.com/ChristopherHeng/tofrodos/archive/refs/tags/2.0.0.tar.gz"
-  sha256 "9bac37ec72323fa0a98218e457c31d93c8fad5ba2e4f953e5c82bdcbc0aafaab"
+  url "https://github.com/ChristopherHeng/tofrodos/archive/refs/tags/2.1.1.tar.gz"
+  sha256 "77e6855917e5dd04ff445b6de3f8373531af15b2cb70e3b29058658f9d495c06"
   license "GPL-2.0-only"
 
+  livecheck do
+    url :stable
+    regex(/^v?(\d+(?:\.\d+)+)$/i)
+  end
+
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "9bcf5f828ffe0cc532e0f8ed676dafea2ff7d9bec8713a4e9e08b7a154b7105c"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "1552fdcdff9a2cd5a3be3fd18f16c1fef4fe940fadef699ca3c502803932fc0d"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "49a86b801c4c6211ca32b293088f4eeec9825d1f53bf366d1770e4330a15c79a"
-    sha256 cellar: :any_skip_relocation, sonoma:        "6300145de1846a449a733e36dce032ce5ef7b6273af7db40cbcc0757255d4891"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "cbc4d0b83975280eae92296808c8c08c2a6c3429efc766bb818fa6442629598f"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "52c5ef8d1778eeb76255a394c98ecd749707c4da9085f77f3daec810eac16910"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "bb9bccec0b6facab6deb29e573a58688ca536fc626a495c8dbf14b1bf30aa625"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "e1d7e019ae05f7eedc3b6f7eeed1576d3eaed131344ff5341f347d4a7232ac42"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "45523cb29f07d2958725ffee8b52a482ef7cc38a8b733b458d4c23f1ea484950"
+    sha256 cellar: :any_skip_relocation, sonoma:        "bc8b42d53d4c3f5c94aee049393680c0521d4cc8d10e4f08fc036662b8193ab9"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "23e087b1626acd44299d5a4c05bfbf8330824898a59f5e3514db5a94f119eeb7"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "9736424740fa62707a4cd5061f5bc14958fc8726c69a9cd6f7d8dcadd800090b"
   end
 
   def install

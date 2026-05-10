@@ -1,8 +1,8 @@
 class NodeAT24 < Formula
   desc "Open-source, cross-platform JavaScript runtime environment"
   homepage "https://nodejs.org/"
-  url "https://nodejs.org/dist/v24.14.1/node-v24.14.1.tar.xz"
-  sha256 "7822507713f202cf2a551899d250259643f477b671706db421a6fb55c4aa0991"
+  url "https://nodejs.org/dist/v24.15.0/node-v24.15.0.tar.xz"
+  sha256 "a4f653d79ed140aaad921e8c22a3b585ca85cfdab80d4030f6309e4663a8a1c8"
   license "MIT"
   compatibility_version 1
 
@@ -12,12 +12,12 @@ class NodeAT24 < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "e72b5ea3bdcf7ade9e879be0ebef732e07ea39d6b80b9447330d5e81c94c22d5"
-    sha256 cellar: :any,                 arm64_sequoia: "dfc04067141029013df836f59911aeec1d2b51057d877fb2eade6ccf991e9993"
-    sha256 cellar: :any,                 arm64_sonoma:  "4ac7c0cea767b09002706fd500c7a8615703bbfcfa96ac42553f6a92e2161d0d"
-    sha256 cellar: :any,                 sonoma:        "472968ea452f0a8a0fe3c5362d53a6fc9b11d9df4f7fc47b695a6704fb230eb5"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "5c16aabdf9317ed8049983547ad99e0e7edcc2043d54049703c888dee0966257"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "669d5c999dec864bbecb38a0f891bb2593ea00864cc17f463090dc007298ee8c"
+    sha256 cellar: :any,                 arm64_tahoe:   "f08293c7e6496ffe8191d051d5cf8786b614ecab5825b824ba8e9031aa517d25"
+    sha256 cellar: :any,                 arm64_sequoia: "85e36590cd3944b672a2257d13bc342e14aba780bdac15dbcdaf33fc93fda370"
+    sha256 cellar: :any,                 arm64_sonoma:  "82f8ec8f619ff5e5f2c62febb9962d5c6fc09ffae1b9f0a18190ae5b3b6c7e27"
+    sha256 cellar: :any,                 sonoma:        "afc81a9ee3c219d3054da056b19d653dc39e6fc396c9d531b0d03988f56b1884"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "420f56970527dc9e47f1024edc47435ccf389532e0fde6a6b1e6b14ffefc70c8"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "5fac5be0f58fd355c54dd71ebce48b49309c078b4f15098e201054611ea7be3a"
   end
 
   keg_only :versioned_formula

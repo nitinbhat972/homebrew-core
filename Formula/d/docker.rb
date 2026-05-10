@@ -2,8 +2,8 @@ class Docker < Formula
   desc "Pack, ship and run any application as a lightweight container"
   homepage "https://www.docker.com/"
   url "https://github.com/docker/cli.git",
-      tag:      "v29.3.0",
-      revision: "5927d80c76b3ce5cf782be818922966e8a0d87a3"
+      tag:      "v29.4.3",
+      revision: "055a478ea9010a19d0d4674c0d0e87ade37a4223"
   license "Apache-2.0"
   head "https://github.com/docker/cli.git", branch: "master"
 
@@ -13,13 +13,12 @@ class Docker < Formula
   end
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "a61c924104b1240b53cfcb88ec04ed228f460d0df17f3c258d8294b7a50bd0d9"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "ce00d76977f8c24e643f8c39f4427065225be9861802b465dbaf374c885df6bd"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "78e1b23e4e97cb523b5a6ee159e47234e1fcc50d42392ab041e86217c167def3"
-    sha256 cellar: :any_skip_relocation, sonoma:        "f59f2171dfd46f5313ae2b348444b321cba92a4549c5e367fdf9eb5342e41b90"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "25f3bd5f4112b0eb6b82350b72a32440bbbd52d220549753671eda1501fb1cf5"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "083413e120d3181155bd0d13f509b56383eed5d673664c713d38c67bdb0bd44a"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "56ee8add6c64bace3327650c24858033e8189394936eca98741d08f30607a7a8"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "cf30909e5bb499ace90231f3e78c312c8ce468065d32f2d2f7375f10b4678249"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "835f96a49da45ef0116b6a7f6b27a612761047bfc19bef3481687a70b8381bcf"
+    sha256 cellar: :any_skip_relocation, sonoma:        "ec0e36d8cd7b7ee0d0169f56a3b67c8145e11e6bc5eb8d7126e626348a390b9e"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "af33d0d69024738a873aac06f49970a6a43e2a71da34c8525e62b6fdbc2e59b8"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "682784cc3f21996040aa5be52f784c0f98de2aa3d364cdb37514d0c5fdc0be04"
   end
 
   depends_on "go" => :build

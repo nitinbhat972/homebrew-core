@@ -4,15 +4,26 @@ class CodeServer < Formula
   url "https://registry.npmjs.org/code-server/-/code-server-4.112.0.tgz"
   sha256 "adca4415d5553e9a70ef755f36f6de944aa2d9180540ff42d899eb9ebe28d8c8"
   license "MIT"
+  revision 1
+
+  livecheck do
+    skip "Newer versions use non-FOSS @github/copilot"
+  end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "9beab2b9faf342dbaa5285e28769f15cbca0fc7a49974eee7d55db4473e7b5de"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "4c5925f52f54f5c9bf28e282bb9e2c44346e0847944eb537a668b94ad50bba68"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "cfe6869fc47d058252388cb1aab5d13ae038bbeeb2ff414564a36a0fed0c2c48"
-    sha256 cellar: :any_skip_relocation, sonoma:        "15ccec1a1431856575a4a0e896005bd7b3e51d3deb47be0a501b9a8ed2c068e1"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "ef1cecaa8687d64eb3e46272f9c267a6d0d4d540f844b1b21ac8f8e87d7b1bf6"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "037207fb5db01520481db8969a8d2c2f5ab989ae0a2b5108e96ed0847ffe6fc0"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "5f7ac4b3e3fe166cc6d861b4135796fdb9d2d30fb1b29987b50418b4a4b34ff8"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "e8487c2ddc85086993dca155ec5b946c8289592351ca6cc66ef607bc7be99c62"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "2d90eca0664540b5eea48c3034340b25bb540865d2d15a2f21d4b6ec9d391867"
+    sha256 cellar: :any_skip_relocation, sonoma:        "9fd87893ceaa9ce6ab62becec31584422c66922ae417b4ec7abc422d03260220"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "8f3577f8080904eb450dbeb2f677e7bce9c85ea2e926475b91d9c6dcf49de112"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "dfa73f90f44342fd3e122986d843ae4d3de1e735ae5590e292ed18516b240cb4"
   end
+
+  # https://github.com/microsoft/vscode/commit/98f15b55eaa9ec24b60cad2905d53f721ad67357
+  # https://github.com/github/copilot-cli/blob/main/LICENSE.md
+  # https://github.com/github/copilot-cli/issues/19#issuecomment-3335871033
+  deprecate! date: "2026-04-11", because: "uses non-FOSS @github/copilot since 4.113.0"
+  disable! date: "2027-04-11", because: "uses non-FOSS @github/copilot since 4.113.0"
 
   depends_on "pkgconf" => :build
   depends_on "node@22"
@@ -26,6 +37,8 @@ class CodeServer < Formula
   end
 
   def install
+    odie "Do not upgrade to 4.113.0 or newer!" if version >= "4.113.0"
+
     # Fix broken node-addon-api: https://github.com/nodejs/node/issues/52229
     ENV.append "CXXFLAGS", "-DNODE_API_EXPERIMENTAL_NOGC_ENV_OPT_OUT"
 

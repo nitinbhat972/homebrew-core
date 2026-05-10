@@ -1,35 +1,30 @@
 class Nagios < Formula
   desc "Network monitoring and management system"
   homepage "https://www.nagios.org/"
-  url "https://github.com/NagiosEnterprises/nagioscore/releases/download/nagios-4.5.11/nagios-4.5.11.tar.gz"
-  sha256 "1bf85d6704a75e6b89a09844836f68b1cfc61ab1ef005574041e36e73fdb797a"
+  url "https://github.com/NagiosEnterprises/nagioscore/releases/download/nagios-4.5.12/nagios-4.5.12.tar.gz"
+  sha256 "9a9fd281ea6ab3d55611efda036ffb9fe76c98423083440900e28012248d5961"
   license "GPL-2.0-only"
+  revision 1
   head "https://github.com/NagiosEnterprises/nagioscore.git", branch: "master"
 
   bottle do
-    sha256 arm64_tahoe:   "cf495efaf03c9bf44e11de31ff88efee563d783133903657be21a10cdd9a421d"
-    sha256 arm64_sequoia: "f4513efe57237dd6f4e62bbab3e1ee7cca5f2df6fb880a2e69638e3e84d0dcb3"
-    sha256 arm64_sonoma:  "0e2432c3152f6e8cfb5d8cbb50688280358e36cacf4d2264ab6017280c54ad84"
-    sha256 sonoma:        "e8eb8ff69b92c0bdb715caf103bde96054be45b270c90b1967d4f572dd871b49"
-    sha256 arm64_linux:   "b0e8d4749df2e3da474b03d2065526ef728871ec52532520c5d9976d5ec455b2"
-    sha256 x86_64_linux:  "38262137b8017e82bdc3f3c07a6edf0ee4e211233ffd4b0479809dc4c6c0e885"
+    sha256 arm64_tahoe:   "1d524bcd5a8f97604396f7969ce07b562dccecbd0e2f0f4e64cc2d149fa6b0bd"
+    sha256 arm64_sequoia: "df7ba48825b6f3ff74769a763c8128621beda40bdecf3b13d259776766ed248c"
+    sha256 arm64_sonoma:  "5c65c296ff0a0f2d97593f8b4f3b0c576c177305bc8674aec44faf7f819791e1"
+    sha256 sonoma:        "d78bdc8ff14af5f05e2dcb738e99dfa5a8fb8bcacb677c13a8d3d2c2fd9616d7"
+    sha256 arm64_linux:   "edbadc0b772d969302fa4b34025732451b56eb0ef9989a39c9de3e76ee81070d"
+    sha256 x86_64_linux:  "0bcbba0785cf2f8cc846196ce8d7307d700b7502ffe7368d1b86406e906213eb"
   end
 
   depends_on xcode: :build
   depends_on "gd"
   depends_on "libpng"
-  depends_on "openssl@3"
+  depends_on "openssl@4"
 
   uses_from_macos "unzip"
 
   on_macos do
     depends_on "jpeg-turbo"
-  end
-
-  # Fix compilation error on in lib/runcmd.c; https://github.com/NagiosEnterprises/nagioscore/pull/1048
-  patch do
-    url "https://github.com/NagiosEnterprises/nagioscore/commit/874a7688fca646f14eef17abf744d8561c60c0c2.patch?full_index=1"
-    sha256 "c7d3a4a6d5f918a67a7b49f9cd30af45234510ad1697745313dbcfa4ff767ad0"
   end
 
   def nagios_sbin
@@ -69,7 +64,7 @@ class Nagios < Formula
       "--with-nagios-group='#{group}'",
       "--with-command-user=#{user}",
       "--with-httpd-conf=#{share}",
-      "--with-ssl=#{Formula["openssl@3"].opt_prefix}",
+      "--with-ssl=#{Formula["openssl@4"].opt_prefix}",
       "--disable-libtool",
     ]
     args << "--with-command-group=_www" if OS.mac?

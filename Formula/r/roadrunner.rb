@@ -1,18 +1,18 @@
 class Roadrunner < Formula
   desc "High-performance PHP application server, load-balancer and process manager"
   homepage "https://docs.roadrunner.dev/docs"
-  url "https://github.com/roadrunner-server/roadrunner/archive/refs/tags/v2025.1.11.tar.gz"
-  sha256 "7198e1526c93b91095228bc6e00b3d8b7f5f29b4058721d4d523726572b77c2d"
+  url "https://github.com/roadrunner-server/roadrunner/archive/refs/tags/v2025.1.13.tar.gz"
+  sha256 "10745d59209226a1d4c92dc9409e405a2846bf0f3517d1f4bd511562f9793aaa"
   license "MIT"
   head "https://github.com/roadrunner-server/roadrunner.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "cae0ecc7d396439e9be3842f1211e4fd49f5e30459f3f582f4ec8dd99fbced97"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "f1f0dea8e1a8a672d31ccb905f3563fb2eaa4f425f5915b4aef7e4f0f95e5077"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "16d3fb543ff7a7a4052429e9e7c78275851cffff6871809d4aa16b4c3002a6dd"
-    sha256 cellar: :any_skip_relocation, sonoma:        "a9f2166f9030963d9c63cf752bc84a12d3f6b367f6a8e45d2bfed5b004d5923d"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "238c0b3c443245b9f6e9570fb90f3586282bc0924dbe3ba73a1b5830bd672c6b"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "4aa94ee7f65739698599b27cf82c5c651d5f74db47a86b4ee077b71a458c2930"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "5e7d9961503c4bb0cde0ae57754bba252e7e40a939a5630db7d4ed6e6e8c9e54"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "f7e20e2ffaa5b808412a8011a7e9f08fba033ece6b5555631421cd0a1f38a2bf"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "fecaca4dc526870c80fee2f18a06d6c024be2546362459bc2acde7c66a5f0706"
+    sha256 cellar: :any_skip_relocation, sonoma:        "547930db3c25af17c4b068d1e43d09d11a91341756a9022af858fb391d662ca1"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "d9f7160e234dfebe451c79f7540cf23f9ee4a989e2c9ac8d49c75b8843973806"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "23a7c904d8e2e3b43cd4ea9003c4f56b13dce0b21acf6221188b3309f25eac96"
   end
 
   depends_on "go" => :build

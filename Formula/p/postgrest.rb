@@ -1,8 +1,8 @@
 class Postgrest < Formula
   desc "Serves a fully RESTful API from any existing PostgreSQL database"
   homepage "https://github.com/PostgREST/postgrest"
-  url "https://github.com/PostgREST/postgrest/archive/refs/tags/v14.7.tar.gz"
-  sha256 "47e375b43d0f958a985c2708ca29f6db897c7390096a728767cad74b4a8767fa"
+  url "https://github.com/PostgREST/postgrest/archive/refs/tags/v14.11.tar.gz"
+  sha256 "876f29cd3826d44b73cff3f49bf85e653650cd76cfb1f9cf6feaf3af3b3a4721"
   license "MIT"
   head "https://github.com/PostgREST/postgrest.git", branch: "main"
 
@@ -12,12 +12,12 @@ class Postgrest < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "f8ebc0ddf5540bce3e571a32f831250faaee842b634abe3d90f50aa2f8a89d83"
-    sha256 cellar: :any,                 arm64_sequoia: "1cf88580188fffc4c353d01854f9aad3004011a8a2bf4ccba520797adf36de41"
-    sha256 cellar: :any,                 arm64_sonoma:  "9f0bc7d5592d2a177a9ecfb159bb3c783313ae0dd1c047525d5e4dcf2130d85e"
-    sha256 cellar: :any,                 sonoma:        "8c75083c6a64444bf8286dc0fe9d9a6333a823ca2279c0d2caed16130f936ce2"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "6cae822f9ff53700b49447218f6d566b16d601b525f98ad49e18545001f8df8b"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "c94ddb40c049abfbf63a52dbbf243b70120998c0c7ebec32e76505b2b9fc7839"
+    sha256 cellar: :any,                 arm64_tahoe:   "9da8cf8329cdad2c37a7ffb604b5cec0f0d022cc51f53bc89bc28af1a1181e59"
+    sha256 cellar: :any,                 arm64_sequoia: "29212a0e544f7684075e666893b8504c16949067dbcdaa0336c4624cfe8d1cb8"
+    sha256 cellar: :any,                 arm64_sonoma:  "dabaf5d3920fbff4c49ec114160dd0e029e952287043e5ff7cc33d5233c17b5d"
+    sha256 cellar: :any,                 sonoma:        "9db3f887fd13cfeec00a51a9da1de4febd5cd9308964c160e23faca20649c94e"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "cbf3715361f66de61630ac5818db485ba1c394c56c437c4a828055ee7bc05149"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "5bd4f564149828617b0b4234306644c686cfbe2c575542c6e42ce25f8e38865a"
   end
 
   depends_on "cabal-install" => :build

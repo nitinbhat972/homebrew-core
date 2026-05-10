@@ -1,12 +1,12 @@
 class Context7Mcp < Formula
   desc "Up-to-date code documentation for LLMs and AI code editors"
   homepage "https://github.com/upstash/context7"
-  url "https://registry.npmjs.org/@upstash/context7-mcp/-/context7-mcp-2.1.4.tgz"
-  sha256 "1b766b9d43f44149e0afcbc366aff75284a5b38957d34f9a434bd475e046bc0d"
+  url "https://registry.npmjs.org/@upstash/context7-mcp/-/context7-mcp-2.2.4.tgz"
+  sha256 "2eaa85b0dcdc38967d422b0796790f4f6a7bbbc67940ac82f1c564a7fab71ef5"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, all: "f7d3d3aa0442697733985fca353e8632d186ac3dbc9e5985592af0ac880e98e7"
+    sha256 cellar: :any_skip_relocation, all: "cdd0a93a7d54e15338240000bd34b8c01a6cae970376ea65b006a86e6532302d"
   end
 
   depends_on "node"

@@ -1,9 +1,9 @@
 class Ejabberd < Formula
   desc "XMPP application server"
   homepage "https://www.ejabberd.im"
-  url "https://github.com/processone/ejabberd/archive/refs/tags/26.02.tar.gz"
-  sha256 "676feea9ee8aeb3c1bc3c1844308a783941548d9befc3b252cd1ff0b7532842f"
-  license "GPL-2.0-only"
+  url "https://github.com/processone/ejabberd/archive/refs/tags/26.04.tar.gz"
+  sha256 "77deb1053978ae9790f909b7b573ac61c6b94d7c465a84c5b56568292d49e47d"
+  license "GPL-2.0-or-later"
   head "https://github.com/processone/ejabberd.git", branch: "master"
 
   # There can be a notable gap between when a version is tagged and a
@@ -15,16 +15,17 @@ class Ejabberd < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "d36ff4816c0888a12396d6d190abfbc8cde13ffbe35ca5465deefd5d54a1d1b2"
-    sha256 cellar: :any,                 arm64_sequoia: "989ccf6f8062daab2f2a2567e803e26fd574cc23dbe306f716b042057f9627ef"
-    sha256 cellar: :any,                 arm64_sonoma:  "ba6b3be9f974635f7abde2dca78bb4104e58c654fcedbd14a8eac5154177e4c4"
-    sha256 cellar: :any,                 sonoma:        "c9d81c546e568d4f9cfc4bb4fa31dd6370de5bc6fdfc9b2139380f77b9cebf69"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "c59a6280e58d3113b8d251402ebfe8b2c981e72eb2c329385c4a8442f2b04482"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "f7f145f5f49e92586079a8ecc7d6d8aef62d8942459a2f9d4925e1057f8493bd"
+    sha256 cellar: :any,                 arm64_tahoe:   "cf0674ca2aa17c798ac60e86f0068a88894e9dfb9978cb687865054826eabdc5"
+    sha256 cellar: :any,                 arm64_sequoia: "cf0a301efd94385a5e6e738068e7681e21e608e0a62e5dbaf6e772a13524fef5"
+    sha256 cellar: :any,                 arm64_sonoma:  "f88dc66e2e13e23c6370882ed7569cf29d68db732d86a4104249feabacca9051"
+    sha256 cellar: :any,                 sonoma:        "3cc15ca3bb936daa310e87f2fb08e8361140db3e2689c02c5002e97d16fb4013"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "a95ecbe57c11772a48c521719684a8b17a3c6319081977f9407cf5edd1a1348b"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "2e43c4b9834b95958ae4f7671f6d09f13ad985ac95567e3bcab734f92790fe0f"
   end
 
   depends_on "autoconf" => :build
   depends_on "automake" => :build
+  depends_on "elixir"
   depends_on "erlang"
   depends_on "gd"
   depends_on "libyaml"
@@ -32,8 +33,13 @@ class Ejabberd < Formula
 
   uses_from_macos "expat"
 
+  on_sonoma :or_older do
+    depends_on "coreutils" => :build # for sha256sum
+  end
+
   on_linux do
     depends_on "linux-pam"
+    depends_on "zlib-ng-compat"
   end
 
   conflicts_with "couchdb", because: "both install `jiffy` lib"
@@ -43,22 +49,29 @@ class Ejabberd < Formula
     ENV["MAN_DIR"] = man
     ENV["SBIN_DIR"] = sbin
 
-    args = ["--prefix=#{prefix}",
-            "--sysconfdir=#{etc}",
-            "--localstatedir=#{var}",
-            "--enable-pgsql",
-            "--enable-mysql",
-            "--enable-odbc",
-            "--enable-pam"]
+    args = %W[
+      --prefix=#{prefix}
+      --sysconfdir=#{etc}
+      --localstatedir=#{var}
+      --disable-debug
+      --enable-pgsql
+      --enable-mysql
+      --enable-odbc
+      --enable-pam
+      --enable-system-deps
+    ]
 
     system "./autogen.sh"
     system "./configure", *args
+
+    # 26.03 Makefile runs `invites-deps` targets in parallel, which can race
+    # on bootstrap zip extraction in non-interactive environments.
+    ENV.deparallelize
 
     # Set CPP to work around cpp shim issue:
     # https://github.com/Homebrew/brew/issues/5153
     system "make", "CPP=#{ENV.cc} -E"
 
-    ENV.deparallelize
     system "make", "install"
 
     (etc/"ejabberd").mkpath
@@ -107,11 +120,13 @@ class Ejabberd < Formula
     cp etc/"ejabberd/ejabberd.yml", testpath/"ejabberd.yml"
     inreplace testpath/"ejabberd.yml", "port: 1883", "port: #{free_port}"
 
-    pid = spawn(sbin/"ejabberdctl", "--node", node, "foreground", pgroup: true)
+    output_log = testpath/"output.log"
+    pid = spawn(sbin/"ejabberdctl", "--node", node, "foreground", pgroup: true, [:out, :err] => output_log.to_s)
     sleep 5
     assert_equal "pong\n", shell_output("#{sbin}/ejabberdctl --node #{node} ping")
+    refute_match(/ERROR/i, output_log.read)
   ensure
-    Process.kill "TERM", -pid
+    Process.kill "TERM", pid
     Process.wait pid
   end
 end

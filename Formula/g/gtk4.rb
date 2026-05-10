@@ -1,8 +1,8 @@
 class Gtk4 < Formula
   desc "Toolkit for creating graphical user interfaces"
   homepage "https://gtk.org/"
-  url "https://download.gnome.org/sources/gtk/4.22/gtk-4.22.1.tar.xz"
-  sha256 "cd7b5a9c41127da6fb321c5a842ad73c62e6996f9ce3f1960ca509f6559d55fc"
+  url "https://download.gnome.org/sources/gtk/4.22/gtk-4.22.4.tar.xz"
+  sha256 "51bd9f60c7d23a665a556c7364c21fb2e4e282566b3e7e092455e8f910330893"
   license "LGPL-2.1-or-later"
   compatibility_version 1
   head "https://gitlab.gnome.org/GNOME/gtk.git", branch: "main"
@@ -13,14 +13,15 @@ class Gtk4 < Formula
   end
 
   bottle do
-    sha256 arm64_tahoe:   "85bbeffece901d3ac35fc59fd908defbc2972be6292187f4ee89ada4becd970f"
-    sha256 arm64_sequoia: "a9a01d9cd3db272015d4621b108fa92b5bcdc831c2a49c9dbd26dab1d78e0d93"
-    sha256 arm64_sonoma:  "562490394d129b9f2758fc1b6ae34b92842d15fc71720ffb904183fcceae10f6"
-    sha256 sonoma:        "9d5c7168c0e6402299422e87d894086ffd9adff7da9f86dd7472337f821ea037"
-    sha256 arm64_linux:   "37a9a04103359a2e36d6ab0d9648815e91a097ff556e32dd9037f2ae061ddedb"
-    sha256 x86_64_linux:  "bd5397bf3524b85857d0c956e195ff001f8beecb1810d831db7ba369e8733567"
+    sha256 arm64_tahoe:   "e72d082698cc77c270987578821d1304a2a6b746a157a3fd464cb51a6e46c0dc"
+    sha256 arm64_sequoia: "137f69e0c877c7f095f91b383e6364646cdd6e1b0d92ee78bcc80571e884a1fc"
+    sha256 arm64_sonoma:  "099c3e9f16b6fba159f1a9b666a9ef4eb6a2d5fcd147d89e04ea6b53f275d791"
+    sha256 sonoma:        "a96eed73a25bae3791146e8111fdf665023a29e017843d8ef12aa96a7c9c48f6"
+    sha256 arm64_linux:   "75db66988a5d5f6372b1ab0e30b227850f78693268d335699a12a49e0c8932bb"
+    sha256 x86_64_linux:  "05da937708e49fbb87da0369a59f8bc65a75ede89d4751372fbb7c285606b5b2"
   end
 
+  depends_on "dart-sass" => :build
   depends_on "docbook" => :build
   depends_on "docbook-xsl" => :build
   depends_on "docutils" => :build
@@ -29,7 +30,6 @@ class Gtk4 < Formula
   depends_on "meson" => :build
   depends_on "ninja" => :build
   depends_on "pkgconf" => [:build, :test]
-  depends_on "sassc" => :build
   depends_on "cairo"
   depends_on "fontconfig"
   depends_on "fribidi"
@@ -67,6 +67,13 @@ class Gtk4 < Formula
   end
 
   def install
+    # Replace deprecated `sassc` with `sass` in the meson build file
+    inreplace "gtk/meson.build" do |s|
+      s.gsub! "'sassc'", "'sass'"
+      s.gsub! "'-a', '-M', '-t', 'compact'", "'--style', 'compressed'"
+    end
+    inreplace "build-aux/meson/dist-data.py", "'-a', '-M', '-t', 'compact'", "'--style', 'compressed'"
+
     args = %w[
       -Dbuild-examples=false
       -Dbuild-tests=false

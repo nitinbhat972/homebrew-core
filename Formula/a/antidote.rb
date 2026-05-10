@@ -1,12 +1,12 @@
 class Antidote < Formula
   desc "Plugin manager for zsh, inspired by antigen and antibody"
   homepage "https://antidote.sh/"
-  url "https://github.com/mattmc3/antidote/archive/refs/tags/v2.0.2.tar.gz"
-  sha256 "b56072bd9360d4f558983ac53554eff387b1e24df464a69773a79a6a011372de"
+  url "https://github.com/mattmc3/antidote/archive/refs/tags/v2.1.0.tar.gz"
+  sha256 "48d486670fa14097ec5a5a649456aff94f0098618c9320ad634f88d0669c8f5b"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, all: "3679d313caf22c178d3ff7622d82c5f28f76db0bcd78f0be4180e48c10126bd3"
+    sha256 cellar: :any_skip_relocation, all: "be509e5acf62b97683ee3a1cc9ab3362594bb3088af3955a6996ede36dfb1a8c"
   end
 
   uses_from_macos "zsh"

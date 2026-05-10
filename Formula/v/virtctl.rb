@@ -1,8 +1,8 @@
 class Virtctl < Formula
   desc "Allows for using more advanced kubevirt features"
   homepage "https://kubevirt.io/"
-  url "https://github.com/kubevirt/kubevirt/archive/refs/tags/v1.8.0.tar.gz"
-  sha256 "250de85d0d3ff0c0357c19e21540798a49e986e49e4f4123175a665d026d9c8b"
+  url "https://github.com/kubevirt/kubevirt/archive/refs/tags/v1.8.2.tar.gz"
+  sha256 "803ed14a76309113ceeaa116c061c63a4b29827fc44bee7a35dd41c66ffe7a63"
   license "Apache-2.0"
   head "https://github.com/kubevirt/kubevirt.git", branch: "main"
 
@@ -15,12 +15,12 @@ class Virtctl < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "32ca7d5e00701f5650d64667fa6bc763596bbb8d31e2e67f50a96a9a712d0c04"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "a24b5a9e74347a0647f96d464c39ddcc9e40b68631d9f1ca03fc1b3c2da6deaf"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "aa9f4323a01bb0d0bc7c670b6b6ea9b8a14ec4a15c64125d65d9b13da8ce0ce5"
-    sha256 cellar: :any_skip_relocation, sonoma:        "655552d8440d256e76895231bfb450d57c0f1e026caa2e713cc82b06ab8ec501"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "ee007d93560cecda1ac6f967bc74a8cf8455d8b38a0959fd4df08d6b65d55636"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "2902ac8d0235586922661ee834857170df970cdd0aeda1d2cf6d9fc563a55d1f"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "ca7784d238e5914d2c84a66c2bcda5d27d3b79a0995c8cb15d8bbf4a6e47080c"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "8e3c16ea80f0d3199363559c13a6b404c51596a768ec48b85109ed1a53fd3524"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "ae03467122b703521e81bb92d4bc97299cfa62d12e36cf29d7448b39dfbeb9df"
+    sha256 cellar: :any_skip_relocation, sonoma:        "7c1de0f619a63f1585b184895b4e8147f7da65c5a06a10796eacd7c37e3ff0fc"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "1ae62c2ecdbf4ee8a9b136c2ded316448db597af2f5d743138d6bd9a95c7b718"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "f2b606686b74ca4161c9e2569d93e5836bcdc5fcbfe5f13c27278157596e9ab4"
   end
 
   depends_on "go" => :build

@@ -1,19 +1,18 @@
 class Zsv < Formula
   desc "Tabular data swiss-army knife CLI"
   homepage "https://github.com/liquidaty/zsv"
-  url "https://github.com/liquidaty/zsv/archive/refs/tags/v1.3.0.tar.gz"
-  sha256 "251b1f61e8c2371382e9b612f1877c9f1f7ff71d47029ee04f45db89c5f0caab"
+  url "https://github.com/liquidaty/zsv/archive/refs/tags/v1.4.2.tar.gz"
+  sha256 "0db9632ec173c1fe61a50c6269dba68e6b0a21fdb6608219f18a2cd866a9a444"
   license "MIT"
   head "https://github.com/liquidaty/zsv.git", branch: "main"
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any,                 arm64_tahoe:   "76284618eb9197f6a95662fef7b0561317264ca45478ca0b618c7cade04715af"
-    sha256 cellar: :any,                 arm64_sequoia: "ab57f85786b1350ecb12706551c04d19bc9648f7cc85797e8a20781bf16304a9"
-    sha256 cellar: :any,                 arm64_sonoma:  "90368dd0b65b8302ba68063510aae8c2df88195c906167adb3aa4bf4caa0559a"
-    sha256 cellar: :any,                 sonoma:        "f98f1e5a3782f5ef64573d80acfe89e75e7793dd56ea574cec7cad2cca30c4af"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "e195404e9bc473770a34909d508a813dea95c0b3bb64e0b4e3d618bb3d060c9c"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "32cb9126d5d14d886c92d2e12b4e71cd7d45c3c6e1e6789b289f531db60a05f6"
+    sha256 cellar: :any,                 arm64_tahoe:   "c90f6560691b4a1ca27521ddf17e87aa997164b6e6f1b7a30addd8394aa1e803"
+    sha256 cellar: :any,                 arm64_sequoia: "a77a59331251d371990949308a013eb7e85f06c31f0996199c480800c312de7c"
+    sha256 cellar: :any,                 arm64_sonoma:  "fd7408fd79d3df8d0384802d338c48e13b19d4ccde72a27987a4369afcf49c13"
+    sha256 cellar: :any,                 sonoma:        "1e1ec0ed873ce304d4917f5a85fc3f6d14c30251863e071df4c3448fcb7732c7"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "62c1e84e7fe7b03618fc2b3f319c8bfa996977122e7cb3c23541262ae1691b26"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "ef8444f81b92d9683b17f4db3b845522b245aee24a44538b58ad86a2fac72306"
   end
 
   depends_on "jq"
@@ -31,7 +30,6 @@ class Zsv < Formula
     ]
 
     system "./configure", *args, *std_configure_args
-    ENV.deparallelize
     system "make", "install", "VERSION=#{version}", "PCRE2_STATIC="
   end
 

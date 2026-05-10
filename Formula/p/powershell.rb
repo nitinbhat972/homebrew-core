@@ -2,9 +2,10 @@ class Powershell < Formula
   desc "Command-line shell and scripting language"
   homepage "https://github.com/PowerShell/PowerShell"
   url "https://github.com/PowerShell/PowerShell.git",
-      tag:      "v7.6.0",
-      revision: "767990ba06f8579d69f99eec46057541374aa892"
+      tag:      "v7.6.1",
+      revision: "fb32ab04df59569f4e6d8f0670a82f27e22a1d7e"
   license "MIT"
+  revision 1
 
   livecheck do
     url :stable
@@ -12,12 +13,12 @@ class Powershell < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "7430f2dd3562a0dfd86f5db7c08109a6c521e31f4b3f3bbde9ffd0d7e4bd8dfa"
-    sha256 cellar: :any,                 arm64_sequoia: "cc21c1b7966748ff22db72903b1a92b81b90e23f18526cdcc02bb1b69d5d27ae"
-    sha256 cellar: :any,                 arm64_sonoma:  "e7889154ffc56942e29b8a836e59e9dda16d1014c788ec541ca8c91466cb9bc4"
-    sha256 cellar: :any,                 sonoma:        "e91409d0da417cf0eafbfb2edb32a32bb5da850489ebe39df80bd7ed266172a6"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "8e6c7cb0229b139c600f5d62fad7bd3fa33a36c30f90c50d4d5c265626da71d3"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "442a9357bcedade96b7ea246c110ca1ff649ccd7520ba87e9d9adf998aceb298"
+    sha256 cellar: :any,                 arm64_tahoe:   "e16ec8d9948bd47ffd0b943b0338cd5ff3e74f15f6dbf46c6b14ee7cb2ced4a9"
+    sha256 cellar: :any,                 arm64_sequoia: "07add3bd446e33d9531517e543fa42b6d41df366447a4533c2b02b4ecd9edd66"
+    sha256 cellar: :any,                 arm64_sonoma:  "d4c2e91802e1dc37731d6e4fb01826bdf0be876499e47fdd75847e2dfdcfe709"
+    sha256 cellar: :any,                 sonoma:        "62a601fadba891e7b71ba10fe6db41df0e521a8210bb3e2447267bb1e64b7a2c"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "729c36444cb4ba333375bed39fc43a1efa63044a0136461a8a9031e36384a11e"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "01287dfe93b575f0be9fcd6f9014c83392aae97d3511c51456f48e40323c29d4"
   end
 
   depends_on "dotnet"
@@ -43,6 +44,7 @@ class Powershell < Formula
       --disable-build-servers
       --use-current-runtime
       --nologo
+      --property:WarningsNotAsErrors=NU1903
     ]
     dotnet_publish_flags = %W[
       --disable-build-servers
@@ -55,6 +57,8 @@ class Powershell < Formula
       --property:GenerateFullPaths=true
       --property:ErrorOnDuplicatePublishOutputFiles=false
       --property:IsWindows=false
+      --property:ReleaseTag=#{version}
+      --property:WarningsNotAsErrors=NU1903
     ]
     dotnet_run_flags = %W[
       --framework #{target_framework}
@@ -73,6 +77,7 @@ class Powershell < Formula
       -t:_GetDependencies
       -property:DesignTimeBuild=true;_DependencyFile=#{buildpath}/src/TypeCatalogGen/#{inc_file}
       -nologo
+      -p:WarningsNotAsErrors=NU1903
     ]
     target_file = buildpath/"src/Microsoft.PowerShell.SDK/obj/Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets"
     target_file.dirname.mkpath
@@ -126,8 +131,14 @@ class Powershell < Formula
     clear_native_dependencies(publish_path, runtime, dotnet)
 
     libexec.install publish_path.glob("*")
+
+    (libexec/"ref").mkpath
+
+    ln_s dotnet.opt_libexec.glob("packs/Microsoft.NETCore.App.Ref/*/ref/#{target_framework}").first.glob("*"),
+         libexec/"ref"
+
     (bin/"pwsh").write_env_script libexec/"pwsh",
-                                  DOTNET_ROOT: "${DOTNET_ROOT:-#{dotnet.opt_libexec}}"
+                                  DOTNET_ROOT: dotnet.opt_libexec
 
     man1.install buildpath/"assets/manpage/pwsh.1"
     deuniversalize_machos libexec/"libpsl-native.dylib" if OS.mac?
@@ -175,8 +186,13 @@ class Powershell < Formula
 
     assert_equal libexec.to_s, local_module_output
 
-    module_cmd = "Import-Module PowerShellGet; [bool](Get-Command Install-Module )"
-    module_output = shell_output("#{bin}/pwsh -NoLogo -NoProfile -c '#{module_cmd}'").lines.last.chomp
+    module_cmd = "Import-Module PowerShellGet; [bool](Get-Command Install-Module)"
+    module_output = shell_output("#{bin}/pwsh -NoLogo -NoProfile -c '#{module_cmd}' 2>&1")
+
+    # If this produces an error try compiling powershell from source and increment revision
+    refute_match(/InternalWebProxy/, module_output,
+                                     "Probbably newer .NET runtime version than last build. Try recompiling")
+    module_output = module_output.lines.last.chomp
     assert_equal "True", module_output
   end
 end

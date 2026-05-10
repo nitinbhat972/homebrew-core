@@ -1,17 +1,17 @@
 class Graphqlite < Formula
   desc "SQLite graph database extension"
   homepage "https://colliery-io.github.io/graphqlite/"
-  url "https://github.com/colliery-io/graphqlite/archive/refs/tags/v0.3.10.tar.gz"
-  sha256 "6c43511c0feb83108d895051b9bee9c8aeb9380ee2a184837c0e5917afab1337"
+  url "https://github.com/colliery-io/graphqlite/archive/refs/tags/v0.4.4.tar.gz"
+  sha256 "f70840ab7fcf934c01ac13b6db6eee8b5511b8992abe350e898f618e12f94de9"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "390743e3fce79fa449e34cfd2b13aa6f6210b6c8ac9a723537e7a369212cd47a"
-    sha256 cellar: :any,                 arm64_sequoia: "83aebc6ea1e4e5fdef78f7c52cb91b81c2655a50de50b9b2ce1864b907bf0510"
-    sha256 cellar: :any,                 arm64_sonoma:  "9c7a751266b08a446e4644e9435ec047feb81807b2e9266a7a95ff2f53d6ee88"
-    sha256 cellar: :any,                 sonoma:        "3bbdb2c8fa8779ef485f34668ccd4df75f3f8491f3a1d76750f34476966c3fa9"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "4362739d9307b9282bbc7b2ddd4ca63b5415c048c940ec312b29234c25474b43"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "400b0276e3b2ba77fb6837cfdc25bcb80474ed101e2e38e6f937cf9f92437e20"
+    sha256 cellar: :any,                 arm64_tahoe:   "4e68d851871d4adb0df91cfb644e16da7ba2bd81bc26b5288d17f5262f93adff"
+    sha256 cellar: :any,                 arm64_sequoia: "65ffe8aa1006828ff672175e753e3c5fe10e5c7e4c5b7570205ae8bb1e6d4ab8"
+    sha256 cellar: :any,                 arm64_sonoma:  "8a313647d5ccbb7fa139298d7d05eb96ff8141d0afa84e3eb9b053c5477d7526"
+    sha256 cellar: :any,                 sonoma:        "ed68b247267e5c614ff1abb9e88cef761c9c4eaac905d6e2d97d21f3675d34cd"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "982b76b216a5ab15f1453a7355399c4a973dfc26535296080f148e002399d7e8"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "30a9956131cd16edbec497d30682f43063c150f28901076fed6f138b98c16bd1"
   end
 
   depends_on "bison" => :build # macOS bison is too old

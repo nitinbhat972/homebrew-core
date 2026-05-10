@@ -1,4 +1,5 @@
 {
+  "act_runner": "gitea-runner",
   "alloy": "alloy-analyzer",
   "amtk": "libgedit-amtk",
   "annie": "lux",
@@ -172,6 +173,7 @@
   "sdl": "sdl12-compat",
   "selenium-server-standalone": "selenium-server",
   "server-go": "openiothub-server",
+  "sheen-bidi": "sheenbidi",
   "shuttle": "shuttle-cli",
   "singularity": "apptainer",
   "sloth": "sloth-cli",

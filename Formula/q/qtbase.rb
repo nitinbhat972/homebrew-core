@@ -1,10 +1,6 @@
 class Qtbase < Formula
   desc "Cross-platform application and UI framework"
   homepage "https://www.qt.io/"
-  url "https://download.qt.io/official_releases/qt/6.10/6.10.2/submodules/qtbase-everywhere-src-6.10.2.tar.xz"
-  mirror "https://qt.mirror.constant.com/archive/qt/6.10/6.10.2/submodules/qtbase-everywhere-src-6.10.2.tar.xz"
-  mirror "https://mirrors.ukfast.co.uk/sites/qt.io/archive/qt/6.10/6.10.2/submodules/qtbase-everywhere-src-6.10.2.tar.xz"
-  sha256 "aeb78d29291a2b5fd53cb55950f8f5065b4978c25fb1d77f627d695ab9adf21e"
   license all_of: [
     { any_of: ["LGPL-3.0-only", "GPL-2.0-only", "GPL-3.0-only"] },
     { "GPL-3.0-only" => { with: "Qt-GPL-exception-1.0" } }, # qmake
@@ -14,6 +10,19 @@ class Qtbase < Formula
   compatibility_version 1
   head "https://code.qt.io/qt/qtbase.git", branch: "dev"
 
+  stable do
+    url "https://download.qt.io/official_releases/qt/6.11/6.11.0/submodules/qtbase-everywhere-src-6.11.0.tar.xz"
+    mirror "https://qt.mirror.constant.com/archive/qt/6.11/6.11.0/submodules/qtbase-everywhere-src-6.11.0.tar.xz"
+    mirror "https://mirrors.ukfast.co.uk/sites/qt.io/archive/qt/6.11/6.11.0/submodules/qtbase-everywhere-src-6.11.0.tar.xz"
+    sha256 "231ad85979864d914dc9568a1b71c91d6cf20d7b2021d059103bf0eb51cb755e"
+
+    # Backport fix for Xcode 26.4
+    patch do
+      url "https://github.com/qt/qtbase/commit/a76004f16fdc43e1b7af83bfdf3f1a613491b234.patch?full_index=1"
+      sha256 "9cdc1d6cd9f62f79d1858588569d253eba4e96a86f3f2666304c87406fc05cbb"
+    end
+  end
+
   # The first-party website doesn't make version information readily available,
   # so we check the `head` repository tags instead.
   livecheck do
@@ -22,12 +31,13 @@ class Qtbase < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "62b847653b08af0913e0c006497bb98b2015c7549cf954cd10b2c6851a670480"
-    sha256 cellar: :any,                 arm64_sequoia: "aa74bb3590fcf718fd54028dd1f6d41cac584d9c79c860f1f8dd904a2e3e1665"
-    sha256 cellar: :any,                 arm64_sonoma:  "d28e4d0bcae1b026b69ea2ddd21e996332813cf23e980f2b5970e6175837ce9f"
-    sha256 cellar: :any,                 sonoma:        "ac88078b92f4f028a0a51bf5ecc44b9113fb9ec7ceedc67ca0b382309c48b320"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "82d00be342ed225f61d4762da61a8c81c88211598b0f8b84c6240cd1e49f2eac"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b81bb0eaef4e7080afbb06223b371dbfbae5f479fd3395354d3affdbeead3da1"
+    rebuild 1
+    sha256 cellar: :any,                 arm64_tahoe:   "e54d87a2110336ecb9455a59db6a90c113fd31d3311f3389aaca2788d217d4f3"
+    sha256 cellar: :any,                 arm64_sequoia: "389d3121fc809f0e1e138cacb1875d2ac1f939b90cff328eff257e8dc81e857e"
+    sha256 cellar: :any,                 arm64_sonoma:  "055c124f4428dd7c0114e0ebe5fab28bbf58760732c89283f04a0ab77dc83a3e"
+    sha256 cellar: :any,                 sonoma:        "3c95bee09ac829a039de421a1ef7fafa07dbcbc7e8239fa55efe5db776db0089"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "645fd4be6c6810cc3b4fbb5366727cc4719f200afd3692286c3ba6b6aca0bb10"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "7e4f49b1d9a0c9cca22a906a5f97ac823a3953c73e5e62432b05add42ddbdb0d"
   end
 
   depends_on "cmake" => [:build, :test]

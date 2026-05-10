@@ -1,8 +1,8 @@
 class Fish < Formula
   desc "User-friendly command-line shell for UNIX-like operating systems"
   homepage "https://fishshell.com"
-  url "https://github.com/fish-shell/fish-shell/releases/download/4.5.0/fish-4.5.0.tar.xz"
-  sha256 "89151f8cf14b634e080226fe696f9ce7d4d153c77629996ca4431c80482c64ed"
+  url "https://github.com/fish-shell/fish-shell/releases/download/4.7.1/fish-4.7.1.tar.xz"
+  sha256 "6f4d5b438a6338e3f5dcda19a28261e2ece7a9b7ff97686685e6abdc31dbb7df"
   license "GPL-2.0-only"
   compatibility_version 1
   head "https://github.com/fish-shell/fish-shell.git", branch: "master"
@@ -15,12 +15,12 @@ class Fish < Formula
   pour_bottle? only_if: :default_prefix
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "ca0dac85935f3c832187630e9b90abbad901f7477c7e7e7891e20eb026394479"
-    sha256 cellar: :any,                 arm64_sequoia: "dc90500f469587f4fc42cc4cb5d6e8d259712bf104c756b7dcb47389ff4bc92f"
-    sha256 cellar: :any,                 arm64_sonoma:  "7901a821b39bfe9b7ffd16305a17723aa265ec09d840111499e9b85e255ed3ef"
-    sha256 cellar: :any,                 sonoma:        "b3a54aa70246afdd7ea22a0fa7b86b12532a331a070740a4afe29b403b6e8bb0"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "8ac9b7c0a93b06f92e4cf8b000f4550384b2ab925481cbcefcdc975f218fd602"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "d10a173e178a917d732ec1f952f012d5e73e1bf4e44de97c6630ea2a861125fd"
+    sha256 cellar: :any,                 arm64_tahoe:   "d0748afd7677498d11bfba25a9f207637ab4c946a7e3ef44015fafe788b49087"
+    sha256 cellar: :any,                 arm64_sequoia: "72c35917c46817b8ffc7a29a88503dc1c69c480791c00d1153b3c6f080438f24"
+    sha256 cellar: :any,                 arm64_sonoma:  "d2ac9381c0c31e65807936a22878482d9e55e9fb5c3cb6839d14a04638f7b595"
+    sha256 cellar: :any,                 sonoma:        "99dd20315683a455a83a8bed7304b989e4cf6e374b14757bcc27a15f76efdfe0"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "83111b56a3eb19014461ff189b9f5032fe216f5d02e197577e3eba9ecee3eae0"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "ed24872ec681dfaf8c43449bb67242f76e7b4952a678b0b6564889baabc35950"
   end
 
   depends_on "cmake" => :build

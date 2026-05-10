@@ -1,17 +1,17 @@
 class Havn < Formula
   desc "Fast configurable port scanner with reasonable defaults"
   homepage "https://github.com/mrjackwills/havn"
-  url "https://github.com/mrjackwills/havn/archive/refs/tags/v0.3.5.tar.gz"
-  sha256 "2bc3f97cb5e57760f757865da387bcf03f6e0826ce9e0bdff85b7455d9ec1f6b"
+  url "https://github.com/mrjackwills/havn/archive/refs/tags/v0.3.7.tar.gz"
+  sha256 "a9633b2e509591bff8fb0ac36e0e04600a74ad98c0cdcb4a9c5bff48751fe51c"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "5fc7da52a20e88d8f0d801cb41ffb11d2d1e9df2c3b5e2f3c5c86c9007ee558d"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "0424064953e9b17aa54c2242417433af9df7042ed00c20eaee74534d5836a120"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "9da4aaedcc020b2393c6bf421741c0117b2c9c6e1f062387933caf4fe8ee8605"
-    sha256 cellar: :any_skip_relocation, sonoma:        "af561b41c91c0b7b580709a8c8cd589c964fe92ba69603b9e09bb434cacfabd5"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "e5c987e33b80aa70f9d269d698bdce60a740d5efb9fee07c0d60b149b96fe448"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "de37c4112c107a00bc27ab84a7c6fc5a7b5967d0734a7505465fa1a2e4523eba"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "80effddbf9cd0ab82bc48db616c239b4ac183f3434ced0a661c144c31028745f"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "695911f9beda78d855ac1b704e3913cdd3ab9e9adb531e9b85b3f649f6483d9d"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "8f7b71c3a026e27cd55550e273a308f269e132920e7a087dc77281a037959ca0"
+    sha256 cellar: :any_skip_relocation, sonoma:        "197791ac62027f052b0ba02a15be889290d52be47d6e75e7373873bed8c095fa"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "092c984b553e08ffa39211865d0ccde1ce86ed41bf5d2eda558fe661bd311abb"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "d71e486efa3ffee2132834356f5f9a4f1beaeab91e165bc9341bed86e7993858"
   end
 
   depends_on "rust" => :build

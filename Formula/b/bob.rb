@@ -1,24 +1,27 @@
 class Bob < Formula
   desc "Version manager for neovim"
   homepage "https://github.com/MordechaiHadad/bob"
-  url "https://github.com/MordechaiHadad/bob/archive/refs/tags/v4.1.6.tar.gz"
-  sha256 "c74a6b3950e297b3b013ee7586a784af05c014b8c84b78f3730538df4e1d4775"
+  url "https://github.com/MordechaiHadad/bob/archive/refs/tags/v4.1.7.tar.gz"
+  sha256 "ad9c8b7ba04e3eb006d1d3646107abfcf5615ee588c1deb7969a9cfca6267f76"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "8de3f7f7d11e61ecb04e2ee99a314fbee20fab0f77767cf603e14aad61f98c46"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "c7dca5b4209bbeb4d36f5d593bacc92d6a2c7ab03577ea0afd03ad4ee557abc9"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "24caf97d5032cedfb8bc3cd4d18a6d4acbe0d428185b4af653691873e236e77b"
-    sha256 cellar: :any_skip_relocation, sonoma:        "96a427685b9b5ed8ecbfc9fd6c0f8a574a3474ee60c6a5c5858a5088d1cc6149"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "d881e5d7ab658baba140e0476e7acc2bcffb3e55bc8775c2fd1b9ecf3297218d"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "0a3d6ea3dd4af3a4e03836e07ffa1b6907fb6115c9e49f7e4e4155638cea7074"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "24380fb4df756e2c13586d049d76f6da879dbb606f3d7288e9c7911bbfc1570a"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "62fbf4131d2f43b1e5771358c5b46272f1c7df3be3d0b9fda8931ff5d81592e2"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "e4f6717e783186338cf38ed614e717e648f9290aa51cb319e565ed79d448e41d"
+    sha256 cellar: :any_skip_relocation, sonoma:        "b549c88829bd38e798d9882380eeb8789e4319fc7561d6d4fe2bc87f360d19c7"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "2a5f3d29d468128ffb037aa8553353bf007ef0d6d095ffc0a33031d050c3f9f8"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "a0cd8c2bdb705538d162ca02c2ffb48c87cf19ff85953156e755a4cbfe50f062"
   end
 
   depends_on "rust" => :build
 
   def install
     system "cargo", "install", *std_cargo_args
+
     generate_completions_from_executable(bin/"bob", "complete")
+    # For powershell, `power-shell` is required
+    (pwsh_completion/"_bob.ps1").write Utils.safe_popen_read(bin/"bob", "complete", "power-shell")
   end
 
   test do

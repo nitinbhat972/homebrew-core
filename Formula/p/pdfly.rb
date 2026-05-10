@@ -6,19 +6,20 @@ class Pdfly < Formula
   url "https://files.pythonhosted.org/packages/48/ae/70f161c80b3f39d8fe4ff784c78045225820d10375c81c2097c0e85ac0fc/pdfly-0.5.1.tar.gz"
   sha256 "636e9736ca3296ed69ad7e14d997813ea5a662ba7a86c77d155e343494dcc3d7"
   license "BSD-3-Clause"
-  revision 12
+  revision 18
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "3a4e803dc470c8f7456d6278ba3847373cf5f215055e7c4c51366c1b0bcf2159"
-    sha256 cellar: :any,                 arm64_sequoia: "415c4e2495f92de7de4ea28e019b48f80edce7d63c818d7f10adbeef2e281d26"
-    sha256 cellar: :any,                 arm64_sonoma:  "99fcd0fb60696f0105e623502520d977a4b4ce8f2651bc9224b06b0b16e6140a"
-    sha256 cellar: :any,                 sonoma:        "a85e09de7b1c2c9aed547cbb3cc93d7775036fa91f804452da41b0643a1fc2ca"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "5f38819f60a2c1e71249590a2041b1d5fd03e5844535c347b1dc6a744746e4e6"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "e0d0ac5c37bafc9bb0a748581ef754653fb77e076b7ccdf294839eb88bd3514e"
+    sha256 cellar: :any,                 arm64_tahoe:   "057ef0e7ef816526b51cb720cd8ca02882c9dc2f9a1cfd8541dfdec1727427f1"
+    sha256 cellar: :any,                 arm64_sequoia: "21f0b8d1e357805bffe61c2d0622d6ae2ae4cc435f0100bc9d846bc7d3f70ac4"
+    sha256 cellar: :any,                 arm64_sonoma:  "47b438856d9905792028d625686d0b786a04c670d82b4c729582cee59e40de64"
+    sha256 cellar: :any,                 sonoma:        "8ea0508fd227ac4752c4aa582d3d57d58e6f7be1997f6b2be4186c0434f99097"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "7ce9ede6b4aa404a54066cbbb9818137d8955f014032b0cdfc4dcc72b99a4183"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "34c71a5c399bdb503ef30102605816d51d36ba9e0236b02454ffcf8ed635b689"
   end
 
+  # `pkgconf` and `rust` are for bcrypt
   depends_on "pkgconf" => :build
-  depends_on "rust" => :build # for bcrypt
+  depends_on "rust" => :build
   depends_on "certifi" => :no_linkage
   depends_on "cryptography" => :no_linkage
   depends_on "libsodium"
@@ -49,13 +50,13 @@ class Pdfly < Formula
   end
 
   resource "charset-normalizer" do
-    url "https://files.pythonhosted.org/packages/7b/60/e3bec1881450851b087e301bedc3daa9377a4d45f1c26aa90b0b235e38aa/charset_normalizer-3.4.6.tar.gz"
-    sha256 "1ae6b62897110aa7c79ea2f5dd38d1abca6db663687c0b1ad9aed6f6bae3d9d6"
+    url "https://files.pythonhosted.org/packages/e7/a1/67fe25fac3c7642725500a3f6cfe5821ad557c3abb11c9d20d12c7008d3e/charset_normalizer-3.4.7.tar.gz"
+    sha256 "ae89db9e5f98a11a4bf50407d4363e7b09b31e55bc117b4f7d80aab97ba009e5"
   end
 
   resource "click" do
-    url "https://files.pythonhosted.org/packages/3d/fa/656b739db8587d7b5dfa22e22ed02566950fbfbcdc20311993483657a5c0/click-8.3.1.tar.gz"
-    sha256 "12ff4785d337a1bb490bb7e9c2b1ee5da3112e94a8622f26a6c77f5d2fc6842a"
+    url "https://files.pythonhosted.org/packages/57/75/31212c6bf2503fdf920d87fee5d7a86a2e3bcf444984126f13d8e4016804/click-8.3.2.tar.gz"
+    sha256 "14162b8b3b3550a7d479eafa77dfd3c38d9dc8951f6f69c78913a8f9a7540fd5"
   end
 
   resource "defusedxml" do
@@ -84,13 +85,13 @@ class Pdfly < Formula
   end
 
   resource "invoke" do
-    url "https://files.pythonhosted.org/packages/de/bd/b461d3424a24c80490313fd77feeb666ca4f6a28c7e72713e3d9095719b4/invoke-2.2.1.tar.gz"
-    sha256 "515bf49b4a48932b79b024590348da22f39c4942dff991ad1fb8b8baea1be707"
+    url "https://files.pythonhosted.org/packages/33/f6/227c48c5fe47fa178ccf1fda8f047d16c97ba926567b661e9ce2045c600c/invoke-3.0.3.tar.gz"
+    sha256 "437b6a622223824380bfb4e64f612711a6b648c795f565efc8625af66fb57f0c"
   end
 
   resource "lxml" do
-    url "https://files.pythonhosted.org/packages/aa/88/262177de60548e5a2bfc46ad28232c9e9cbde697bd94132aeb80364675cb/lxml-6.0.2.tar.gz"
-    sha256 "cd79f3367bd74b317dda655dc8fcfa304d9eb6e4fb06b7168c5cf27f96e0cd62"
+    url "https://files.pythonhosted.org/packages/28/30/9abc9e34c657c33834eaf6cd02124c61bdf5944d802aa48e69be8da3585d/lxml-6.1.0.tar.gz"
+    sha256 "bfd57d8008c4965709a919c3e9a98f76c2c7cb319086b3d26858250620023b13"
   end
 
   resource "markdown-it-py" do
@@ -109,8 +110,8 @@ class Pdfly < Formula
   end
 
   resource "pygments" do
-    url "https://files.pythonhosted.org/packages/b0/77/a5b8c569bf593b0140bde72ea885a803b82086995367bf2037de0159d924/pygments-2.19.2.tar.gz"
-    sha256 "636cb2477cec7f8952536970bc533bc43743542f70392ae026374600add5b887"
+    url "https://files.pythonhosted.org/packages/c3/b2/bc9c9196916376152d655522fdcebac55e66de6603a76a02bca1b6414f6c/pygments-2.20.0.tar.gz"
+    sha256 "6757cd03768053ff99f3039c1a36d6c0aa0b263438fcab17520b30a303a82b5f"
   end
 
   resource "pykcs11" do
@@ -124,18 +125,18 @@ class Pdfly < Formula
   end
 
   resource "pypdf" do
-    url "https://files.pythonhosted.org/packages/f9/fb/dc2e8cb006e80b0020ed20d8649106fe4274e82d8e756ad3e24ade19c0df/pypdf-6.9.1.tar.gz"
-    sha256 "ae052407d33d34de0c86c5c729be6d51010bf36e03035a8f23ab449bca52377d"
+    url "https://files.pythonhosted.org/packages/7b/3f/9f2167401c2e94833ca3b69535bad89e533b5de75fefe4197a2c224baec2/pypdf-6.10.2.tar.gz"
+    sha256 "7d09ce108eff6bf67465d461b6ef352dcb8d84f7a91befc02f904455c6eea11d"
   end
 
   resource "requests" do
-    url "https://files.pythonhosted.org/packages/c9/74/b3ff8e6c8446842c3f5c837e9c3dfcfe2018ea6ecef224c710c85ef728f4/requests-2.32.5.tar.gz"
-    sha256 "dbba0bac56e100853db0ea71b82b4dfd5fe2bf6d3754a8893c3af500cec7d7cf"
+    url "https://files.pythonhosted.org/packages/5f/a4/98b9c7c6428a668bf7e42ebb7c79d576a1c3c1e3ae2d47e674b468388871/requests-2.33.1.tar.gz"
+    sha256 "18817f8c57c6263968bc123d237e3b8b08ac046f5456bd1e307ee8f4250d3517"
   end
 
   resource "rich" do
-    url "https://files.pythonhosted.org/packages/b3/c6/f3b320c27991c46f43ee9d856302c70dc2d0fb2dba4842ff739d5f46b393/rich-14.3.3.tar.gz"
-    sha256 "b8daa0b9e4eef54dd8cf7c86c03713f53241884e814f4e2f5fb342fe520f639b"
+    url "https://files.pythonhosted.org/packages/c0/8f/0722ca900cc807c13a6a0c696dacf35430f72e0ec571c4275d2371fca3e9/rich-15.0.0.tar.gz"
+    sha256 "edd07a4824c6b40189fb7ac9bc4c52536e9780fbbfbddf6f1e2502c31b068c36"
   end
 
   resource "shellingham" do

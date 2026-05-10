@@ -1,18 +1,18 @@
 class Sdns < Formula
   desc "Privacy important, fast, recursive dns resolver server with dnssec support"
   homepage "https://sdns.dev/"
-  url "https://github.com/semihalev/sdns/archive/refs/tags/v1.6.1.tar.gz"
-  sha256 "51f8bb52e8651d5c557133391f811a37a0d4679e2758c89dc90100dcfa8314c5"
+  url "https://github.com/semihalev/sdns/archive/refs/tags/v1.6.6.tar.gz"
+  sha256 "89f75fc353cf8026cbfa4b51aa2499e7e7c413a44f675112c42dfbc0bbcbe7c6"
   license "MIT"
   head "https://github.com/semihalev/sdns.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "bf922789a11b285d105a4336f11057654f91b1770b5cfe7c963abbdd7c0bf304"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "6c0eaf35e1cc6c935b5336a617cdba0115767bb5d32dfeea587de3c52f5929f7"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "4e777855d03802cb35b06b0817defe16967ece59413f8d444d625491a352761d"
-    sha256 cellar: :any_skip_relocation, sonoma:        "549b928df80acc8c457706f5437fd43192d8efe20948c971e9057231a27c1539"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "39b7338d089d0f02217b80e24d40df74b216eb9fa23a15272ca6d38d5158aed6"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "8ef3c077c3a3ad44941049282a7190e4818896b7fcc8485c82264aba08f1b432"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "d57544aaf5b5a4fcf0b8e8014d04e5b4bc9432e6f35f4bace76755ed78d03717"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "c252c5a374873f8c230c608d6d060af07ae6f3e264cdcab153c0a9711d8e607b"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "ad4613e6c4dbc184e65c7a99cc2ae3bef69721d058a2ce1ffb803329e76646c3"
+    sha256 cellar: :any_skip_relocation, sonoma:        "b377089a9620eeb683d20539e7a245102365f2e62a19a15dfee924e2c3210d04"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "34b770bdedb2bb7624c20e4f8f33c78cc098914b63d74fbf6ccceee8430bea72"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "fa3ef489d494c396c9fc8ef371af97f0f5300669f2f65c25b6120eaf3dea573f"
   end
 
   depends_on "go" => :build

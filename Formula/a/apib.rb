@@ -6,7 +6,13 @@ class Apib < Formula
   license "Apache-2.0"
   head "https://github.com/apigee/apib.git", branch: "master"
 
-  no_autobump! because: :incompatible_version_format
+  livecheck do
+    url :stable
+    regex(/^APIB[._-]v?(\d+(?:[._]\d+)+)$/i)
+    strategy :git do |tags, regex|
+      tags.filter_map { |tag| tag[regex, 1]&.tr("_", ".") }
+    end
+  end
 
   bottle do
     rebuild 1
@@ -24,6 +30,9 @@ class Apib < Formula
     sha256 cellar: :any_skip_relocation, arm64_linux:    "3f95d7ee859f9339c976338e990352bf0416c79a14645c66eda6ee7387f4089b"
     sha256 cellar: :any_skip_relocation, x86_64_linux:   "43509a772521b80a03d3702dba034b752371581c0739c6cfb7f1c48217398a42"
   end
+
+  deprecate! date: "2026-04-30", because: :repo_archived
+  disable! date: "2027-04-30", because: :repo_archived
 
   depends_on "cmake" => :build
   depends_on "libev"

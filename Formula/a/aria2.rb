@@ -4,19 +4,19 @@ class Aria2 < Formula
   url "https://github.com/aria2/aria2/releases/download/release-1.37.0/aria2-1.37.0.tar.xz"
   sha256 "60a420ad7085eb616cb6e2bdf0a7206d68ff3d37fb5a956dc44242eb2f79b66b"
   license "GPL-2.0-or-later"
-  revision 1
+  revision 2
 
   bottle do
-    rebuild 1
-    sha256 arm64_tahoe:   "8253bf83d39fcdb91b7a251b2d38f0e32f21a0352f2e3798f5a376ba21ae68e9"
-    sha256 arm64_sequoia: "c7a6244ec33cb6eaf959d61616b90b08e331ae172936052709f4b2934d36dcb9"
-    sha256 arm64_sonoma:  "5822684ab206b076690a5b3b53331a4e351440a45fe6e649e3e64f6a088f2e17"
-    sha256 sonoma:        "08007898a6dc4b162547081eb85329457345688279d6dce42f98d601e19ad799"
-    sha256 arm64_linux:   "4d5aac6c6905b3274f33b2160bf446293785eebc547c2d398562eb5acf576d7f"
-    sha256 x86_64_linux:  "ce15dc949ff077b3ded7d07bb45964a17a44a603e97a6be66ead70e9682f1d96"
+    sha256 arm64_tahoe:   "e02198308a07cc13589297bd682c0f63fe2e4ce09ff61d373696f4157eab89e5"
+    sha256 arm64_sequoia: "b8312eb29cb3a058600a38b560efcb7e2b4ae951de0010e64abfd9194f07392c"
+    sha256 arm64_sonoma:  "8815b6b79395235863349628dc0d753bbee9069e99d94257b7646ffd85615623"
+    sha256 sonoma:        "b88e53b1c54d82af91dea90551fc114b7c02149972d536b9d55a33b12f9a9fd5"
+    sha256 arm64_linux:   "151095fbbfe8819535eb1f3dc63642103f793b79ead0ab8282381baebaad0485"
+    sha256 x86_64_linux:  "f2a416d17d88fdbc5a4dabd1a6520eb736964c6d21cd7a9e2b2591330d74bdf5"
   end
 
   depends_on "pkgconf" => :build
+  depends_on "c-ares"
   depends_on "libssh2"
   depends_on "openssl@3"
   depends_on "sqlite"
@@ -33,6 +33,7 @@ class Aria2 < Formula
 
   def install
     ENV.cxx11
+    ENV.append "LIBS", "-framework Security" if OS.mac?
 
     args = %w[
       --disable-silent-rules
@@ -41,14 +42,9 @@ class Aria2 < Formula
       --without-libgmp
       --without-libnettle
       --without-libgcrypt
+      --without-appletls
+      --with-openssl
     ]
-    if OS.mac?
-      args << "--with-appletls"
-      args << "--without-openssl"
-    else
-      args << "--without-appletls"
-      args << "--with-openssl"
-    end
 
     system "./configure", *args, *std_configure_args
     system "make", "install"

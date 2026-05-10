@@ -1,18 +1,18 @@
 class Dblab < Formula
   desc "Database client every command-line junkie deserves"
   homepage "https://dblab.app/"
-  url "https://github.com/danvergara/dblab/archive/refs/tags/v0.35.0.tar.gz"
-  sha256 "3a59b429b3f221792106d4b42c9002c5fcc988585077febceaf2b93fa7a62cf0"
+  url "https://github.com/danvergara/dblab/archive/refs/tags/v0.38.0.tar.gz"
+  sha256 "41fd691aca6f433f8795ca88a0fdfc5e68d662a00b2e4d6d4ec80537bc71a744"
   license "MIT"
   head "https://github.com/danvergara/dblab.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "108f7b52ad69e4d007407f3170bd09e059cb5857655e6176c8dfc48da29c34ee"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "1cfb07cb079450157d7ad8df29c78c5405ca10caa0a3d423a109a46520fcd376"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "0de328fd894beb6fbb2fd3d3d697a5625b290cf7579f16c6d00a475502e62e9c"
-    sha256 cellar: :any_skip_relocation, sonoma:        "6d80286dec36e5b74ed2817dee75bf8def19dbd10d67336521b3997ebbd9fbe7"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "ab7219327d0b46342951a4c6e99a10d5b50694765bdc49f3ccf06889ad85444b"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "dd18728cfc149dd54dc19d508bb8877be782125b0f0eae28a3026ff2672c6fbb"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "cef4035aad5f28aa94f7d9e24b6939abd5e1b76922ff848284482711bb576a54"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "238e80f6a5b32ddd46182da8885e75acd84f7e9b04ab9c5f1c3f6a880598e99e"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "fc2cbe404fd4ead037a29bd1e5cced2ec4d717176e636b093e59ab5a35dc6388"
+    sha256 cellar: :any_skip_relocation, sonoma:        "66a68c114319b3a998d4c04eb1e681eee47a73b8d798e8e4cab4ae7331ace7a3"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "b85b794c068cfdd94b49c40f8dee1a068872ecb105413e70ac127aecb348b932"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "82a7ac29c265eaf5bbde35bb5c08d4d7589ea9b1ab06647cccff87e410bd97c0"
   end
 
   depends_on "go" => :build

@@ -3,8 +3,8 @@ class Dnsdist < Formula
 
   desc "Highly DNS-, DoS- and abuse-aware loadbalancer"
   homepage "https://www.dnsdist.org/"
-  url "https://downloads.powerdns.com/releases/dnsdist-2.0.2.tar.xz"
-  sha256 "3374eba65a5ca3cfb9fc59791c47e5035149fe521ccbbced5f834a17f45641bf"
+  url "https://downloads.powerdns.com/releases/dnsdist-2.0.5.tar.xz"
+  sha256 "23c67dbac21e5564df95b67899eacfeec7d7c194118aabf98ce0e763ccd5c7ae"
   license "GPL-2.0-only"
 
   livecheck do
@@ -13,12 +13,12 @@ class Dnsdist < Formula
   end
 
   bottle do
-    sha256 arm64_tahoe:   "fbee023f28414231a54fe396bcc08d5bb4e5ffa2a06a6272d781fb148f43567d"
-    sha256 arm64_sequoia: "7222dea3cfe65f938d4832ee1f5eb6c296f1e966045db4b1487239c78c5d3339"
-    sha256 arm64_sonoma:  "ce89109032eafc18beb5aecbdf7c2813d70f3631ac46a83db209d5fad764faa8"
-    sha256 sonoma:        "14b4c030de8c8aaac5576edb7dd283fa56072fbe2e0c5f13312ac3c7ae9a6713"
-    sha256 arm64_linux:   "01adc30a863af92cffac4ada15498e4bae8fd6e05da8c2700482be4081cf197a"
-    sha256 x86_64_linux:  "cfad2f9f9f79aa4f09c4c5cb93bb76f00218183b540e52d8b0feab38a30c5d42"
+    sha256 arm64_tahoe:   "658199bd1694941ffd68ac467a12b3a637bb8600a9164efdc9e28380a272321f"
+    sha256 arm64_sequoia: "6e31593ca20a089a2e45f6a228f85f2ef8037d9e622787857c5299717cbbd376"
+    sha256 arm64_sonoma:  "2685118e3eff836466637135255411e9192cd88528444363dbb800d7690e2539"
+    sha256 sonoma:        "f1e1eefd356cfa14caf04622e224422d4015140409b41e86616b62f1ff36303d"
+    sha256 arm64_linux:   "f74672e1037512a40db9f2f81724c6fbe03b6484547c1a5a233c99230302b55e"
+    sha256 x86_64_linux:  "3647ac9f2634b897ed5d74fb19b4e05a52594cf2880cb886e9a0b3930d59f283"
   end
 
   depends_on "boost" => :build
@@ -34,6 +34,9 @@ class Dnsdist < Formula
   depends_on "tinycdb"
 
   uses_from_macos "libedit"
+
+  pypi_packages package_name:   "",
+                extra_packages: "pyyaml"
 
   resource "pyyaml" do
     url "https://files.pythonhosted.org/packages/05/8e/961c0007c59b8dd7729d542c61a4d537767a59645b82a0b521206e1e25c2/pyyaml-6.0.3.tar.gz"

@@ -1,19 +1,18 @@
 class Hwatch < Formula
   desc "Modern alternative to the watch command"
   homepage "https://github.com/blacknon/hwatch"
-  url "https://github.com/blacknon/hwatch/archive/refs/tags/0.3.20.tar.gz"
-  sha256 "df5edf3e8cd8ec3ce0cf59ee48590d2f0ccad1ed6fb68ce16caf31a21983160a"
+  url "https://github.com/blacknon/hwatch/archive/refs/tags/0.4.2.tar.gz"
+  sha256 "b13a492ac1fded05ee072c904f61f227a1a5119c6767c2dbed03eb2e7c261a1f"
   license "MIT"
   head "https://github.com/blacknon/hwatch.git", branch: "master"
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "d077e8fec77e684c25528f6b016b1808a402fc1b54b3a5fb60cc5fe5ff2002a8"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "7116bbfd15368f6f0a329ab9f970b1373abdd9cbedc97c7f93729ac8cbcaa36c"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "74cf64b8f48cb1ecf305b8237ba00782a3faf31d1d70a1dafd4f2af5b68ce817"
-    sha256 cellar: :any_skip_relocation, sonoma:        "c69ece693c39c0de3bfe6e5e26d112ec66b1f655d6b58e6218831b04ac35a0f8"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "00dac9d3c0cec491f497f4e81c8ebe0f626d4889383f10fa3b3cf0ffeee329ea"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "266e148d4fbcd8c9c6ee3e379ee8b7c030c8d671f4a9dda2633459a1cac74c1b"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "71dff6498d09e57195888320ddb66176ff6b57f9dde0d174b8cb52998f60bfd9"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "4de6b83445b84c2267a981d19631fde94aaba0de0db94bc9c23e1682e5c6e02e"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "fcf0c8b524fcf6fc356b54237f6597a22c26de26f113c0440cb98e70e0c8255a"
+    sha256 cellar: :any_skip_relocation, sonoma:        "e225e2a5749cd5e10446d95bdde53f4f9d5ede375d00a2abb798e0521dca504e"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "9a8e899013ab815d0ec3e578a67661f9155e73c5ca2619d1c727f3116180e525"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "89005a5387b3134b32dc3125c3d98c8c43e3c144def53e8b3299b4311b1b509c"
   end
 
   depends_on "rust" => :build

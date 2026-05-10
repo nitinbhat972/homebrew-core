@@ -1,8 +1,8 @@
 class Tailwindcss < Formula
   desc "Utility-first CSS framework"
   homepage "https://tailwindcss.com"
-  url "https://registry.npmjs.org/@tailwindcss/cli/-/cli-4.2.2.tgz"
-  sha256 "3b942287fd9bc6a28c935f33871ef947444dfb0c11a7c7206e40765f190a0791"
+  url "https://registry.npmjs.org/@tailwindcss/cli/-/cli-4.3.0.tgz"
+  sha256 "4feba167e62643b6089c139b9eed765ca270e264b2690df689ef996f417de9de"
   license "MIT"
   head "https://github.com/tailwindlabs/tailwindcss.git", branch: "main"
 
@@ -15,12 +15,12 @@ class Tailwindcss < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "40219adfc4514ed21280b06c6166041f4ca4aeca7557cd2a723a8b1f9d0f7d4e"
-    sha256 cellar: :any,                 arm64_sequoia: "9a05c555ea084c7e77cc6093d6aee01b9e9739a9429319d4798fc7e90602635b"
-    sha256 cellar: :any,                 arm64_sonoma:  "9a05c555ea084c7e77cc6093d6aee01b9e9739a9429319d4798fc7e90602635b"
-    sha256 cellar: :any,                 sonoma:        "6cb28c23cfc03ec43175bb798241e7945853f322f43cc7e57562ba1db6c09c26"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "323fccf36241e1123c68e3b36414eb9fe49515105482539967ae3012b0cc6085"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "5075b2968e2d25a58ab313896bad32af4ce0416e21f10cdf328c0de1f188f23e"
+    sha256 cellar: :any,                 arm64_tahoe:   "447f36adfedb96b2f60b6f615d2bb0503910db18b82ed4d50c8ddeee75054568"
+    sha256 cellar: :any,                 arm64_sequoia: "f3a2d694999327bbbac21a778a1474b7a65a47d3a2bade3efe7cfc78e3132dc1"
+    sha256 cellar: :any,                 arm64_sonoma:  "f3a2d694999327bbbac21a778a1474b7a65a47d3a2bade3efe7cfc78e3132dc1"
+    sha256 cellar: :any,                 sonoma:        "6b09362cd53defee187512b96bf156e75581648bbbe5e64f2c257c82859c1998"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "6fe434f656eaf69bb6e2c0b370f56774ab25348de6215e2c4026e0d2e42a0a9d"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "e1fc1180fe8638008e47eade6b38fab546408845d94348f1467e21cb8ab8807d"
   end
 
   depends_on "node"
@@ -43,10 +43,13 @@ class Tailwindcss < Formula
   end
 
   def install
-    resources.each do |r|
-      system "npm", "install", *std_npm_args(prefix: false), r.cached_download
-    end
     system "npm", "install", *std_npm_args
+
+    cli_libexec = libexec/"lib/node_modules/@tailwindcss/cli"
+    resources.each do |r|
+      system "npm", "install", "--prefix", cli_libexec, *std_npm_args(prefix: false), r.cached_download
+    end
+
     bin.install libexec.glob("bin/*")
     bin.env_script_all_files libexec/"bin", NODE_PATH: libexec/"lib/node_modules/@tailwindcss/cli/node_modules"
   end

@@ -1,26 +1,10 @@
 class OsrmBackend < Formula
   desc "High performance routing engine"
   homepage "https://project-osrm.org/"
+  url "https://github.com/Project-OSRM/osrm-backend/archive/refs/tags/v26.5.0.tar.gz"
+  sha256 "3e4f5ed09ac0c77158314ef99b5f8c9e336a80339b3f0e62da48abd06acafef9"
   license "BSD-2-Clause"
-  revision 3
   head "https://github.com/Project-OSRM/osrm-backend.git", branch: "master"
-
-  stable do
-    url "https://github.com/Project-OSRM/osrm-backend/archive/refs/tags/v6.0.0.tar.gz"
-    sha256 "369192672c0041600740c623ce961ef856e618878b7d28ae5e80c9f6c2643031"
-
-    # Backport support for Boost 1.89.0
-    patch do
-      url "https://github.com/Project-OSRM/osrm-backend/commit/a2e159d0d4f6b3922ee0cb058a800230cf90642e.patch?full_index=1"
-      sha256 "296e924268436847b941e287f8c46d0b98e829e723b310d96ff587b51940b653"
-    end
-
-    # Backport support for Lua 5.5
-    patch do
-      url "https://github.com/Project-OSRM/osrm-backend/commit/314c566cd63da80b2a9ced6a71bbb36610113fb9.patch?full_index=1"
-      sha256 "5e259e4ff3ab48cff4ce1a947fde14de8bf5f0d99d79ac407804af4637e871ad"
-    end
-  end
 
   livecheck do
     url :stable
@@ -28,30 +12,44 @@ class OsrmBackend < Formula
   end
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any,                 arm64_tahoe:   "e74008d49cd71d3efd5b7006a2809848ca73f15c923be180ef4f6de6edc79f59"
-    sha256 cellar: :any,                 arm64_sequoia: "ea5588b2c7e83b37fa376b43b2ce3f9b62b614ebdb55bc826dce885cad7c7797"
-    sha256 cellar: :any,                 arm64_sonoma:  "0a82e6177cf9cd25b69d0e1eb9e5ba8c1468af67e7595e91bc2d7a6d5e7f13a1"
-    sha256 cellar: :any,                 sonoma:        "91283bc8dd2b37363db095c04c025354b0f7869a2e316eb8f7e49ea5b56145be"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "6b1cd90a2989c42e0f000e10480d15ff2d4dd86ac1ecf790722dd63064891b62"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "ef5a80bc12c171d942fc5a74153b0d7a0a4c47f2b1eb5ba33374ab2bc2f1bc94"
+    sha256 cellar: :any,                 arm64_tahoe:   "84138f03e657f278268fec3452528a0a16ae00d2bf1a379c0a36b00d291e0336"
+    sha256 cellar: :any,                 arm64_sequoia: "f304c8b3b0cf01f32755c7f472cd928ccbf1a49a7e8c4b30fa98a4f1646b39d0"
+    sha256 cellar: :any,                 arm64_sonoma:  "eeb8842755930eacd3d118fc2c063ab681bc6b4e6aa46d59c5fa560dab7540b3"
+    sha256 cellar: :any,                 sonoma:        "b31a1876ed038d5c877406d3c97a9886889e0966b166809f4e09e9c01f314efb"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "d055964b2f1e882312880082a475cc8c25bdf8297605e2a828b6f721964d005e"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "3bdece55d0dd9e5d1b482c0b309d9847f47dea5276320acd9649923541e22108"
   end
 
   depends_on "cmake" => :build
+  depends_on "flatbuffers" => :build
+  depends_on "fmt" => :build
+  depends_on "libosmium" => :build
   depends_on "pkgconf" => :build
+  depends_on "protozero" => :build
+  depends_on "rapidjson" => :build
+  depends_on "sol2" => :build
+  depends_on "vtzero" => :build
 
   depends_on "boost"
+  depends_on "libarchive"
   depends_on "lua"
   depends_on "tbb"
 
   uses_from_macos "bzip2"
   uses_from_macos "expat"
 
+  on_macos do
+    depends_on "llvm" => :build if DevelopmentTools.clang_build_version <= 1600
+  end
+
   on_linux do
     depends_on "zlib-ng-compat"
   end
 
-  conflicts_with "flatbuffers", because: "both install flatbuffers headers"
+  fails_with :clang do
+    build 1600
+    cause "Requires C+++20 support for `std::atomic_ref`"
+  end
 
   fails_with :gcc do
     version "11"

@@ -3,13 +3,13 @@ class AivenClient < Formula
 
   desc "Official command-line client for Aiven"
   homepage "https://aiven.io/docs/tools/cli"
-  url "https://files.pythonhosted.org/packages/25/45/77d357c74969dd3d1cf80d7dc7174f35f5f34c9803335fb8e5e707cf9621/aiven_client-4.12.0.tar.gz"
-  sha256 "0cf371c02cb830e5aa1ef9fd78ca3dc4c793c78894a01fb65e42d0dc97337e42"
+  url "https://files.pythonhosted.org/packages/58/8b/76587c9226a489002e337566b9269d615c0280fbd48127713ad1ffa3b10d/aiven_client-4.14.0.tar.gz"
+  sha256 "926858e95b664b479e709df455872c1787d889cc8ba7fcb50c3ceae337c48fce"
   license "Apache-2.0"
   head "https://github.com/aiven/aiven-client.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, all: "9beb8255f01235e174cba4843ce177af469f7fad73e1a03a07138eaa1ffb7336"
+    sha256 cellar: :any_skip_relocation, all: "bf8804ba5bc3ba44afcf78e6e49cd324fc5db9b71ee453ea360cc355f6619012"
   end
 
   depends_on "certifi"
@@ -18,18 +18,18 @@ class AivenClient < Formula
   pypi_packages exclude_packages: "certifi"
 
   resource "charset-normalizer" do
-    url "https://files.pythonhosted.org/packages/1d/35/02daf95b9cd686320bb622eb148792655c9412dbb9b67abb5694e5910a24/charset_normalizer-3.4.5.tar.gz"
-    sha256 "95adae7b6c42a6c5b5b559b1a99149f090a57128155daeea91732c8d970d8644"
+    url "https://files.pythonhosted.org/packages/e7/a1/67fe25fac3c7642725500a3f6cfe5821ad557c3abb11c9d20d12c7008d3e/charset_normalizer-3.4.7.tar.gz"
+    sha256 "ae89db9e5f98a11a4bf50407d4363e7b09b31e55bc117b4f7d80aab97ba009e5"
   end
 
   resource "idna" do
-    url "https://files.pythonhosted.org/packages/6f/6d/0703ccc57f3a7233505399edb88de3cbd678da106337b9fcde432b65ed60/idna-3.11.tar.gz"
-    sha256 "795dafcc9c04ed0c1fb032c2aa73654d8e8c5023a7df64a53f39190ada629902"
+    url "https://files.pythonhosted.org/packages/ce/cc/762dfb036166873f0059f3b7de4565e1b5bc3d6f28a414c13da27e442f99/idna-3.13.tar.gz"
+    sha256 "585ea8fe5d69b9181ec1afba340451fba6ba764af97026f92a91d4eef164a242"
   end
 
   resource "requests" do
-    url "https://files.pythonhosted.org/packages/c9/74/b3ff8e6c8446842c3f5c837e9c3dfcfe2018ea6ecef224c710c85ef728f4/requests-2.32.5.tar.gz"
-    sha256 "dbba0bac56e100853db0ea71b82b4dfd5fe2bf6d3754a8893c3af500cec7d7cf"
+    url "https://files.pythonhosted.org/packages/5f/a4/98b9c7c6428a668bf7e42ebb7c79d576a1c3c1e3ae2d47e674b468388871/requests-2.33.1.tar.gz"
+    sha256 "18817f8c57c6263968bc123d237e3b8b08ac046f5456bd1e307ee8f4250d3517"
   end
 
   resource "requests-toolbelt" do

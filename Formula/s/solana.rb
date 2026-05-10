@@ -1,8 +1,8 @@
 class Solana < Formula
   desc "Web-Scale Blockchain for decentralized apps and marketplaces"
   homepage "https://www.anza.xyz/"
-  url "https://github.com/anza-xyz/agave/archive/refs/tags/v3.1.11.tar.gz"
-  sha256 "03203cefcabef0c16f309047d577b27db81cc31cdf59551bd4f8f64ab898ffe7"
+  url "https://github.com/anza-xyz/agave/archive/refs/tags/v3.1.14.tar.gz"
+  sha256 "b7e84caad554388a04e64c40f535b787fea3d1d24ead1ced4748294e8ed0214d"
   license "Apache-2.0"
   version_scheme 1
 
@@ -12,12 +12,12 @@ class Solana < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "5cc4e95dd09ac8f26fb8da4e983d3b6170ca82ca901cf2b4bbdf44f08d48e838"
-    sha256 cellar: :any,                 arm64_sequoia: "08e46041d862e55762096d0d6b1f7590dc0bbb5909b4233976ef48f738cdd87f"
-    sha256 cellar: :any,                 arm64_sonoma:  "ca5891ed61d4443616654b595a60491c91c788b6bc2ee3363c56064e412184bb"
-    sha256 cellar: :any,                 sonoma:        "b7b3e2e7354dbb27cfabf9061c60d739674b3c30eb851267815182dcaba69746"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "b4991068c61f6f3ba850c4cb8b49787c49d53fe65b187d0ad6b873763fcfd2c9"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "18fd84a66c0301b0d19287a5b2c16762db7cb3b2a76631f841ebe22b29f2040f"
+    sha256 cellar: :any,                 arm64_tahoe:   "a317082c5b2b1f2254e43ee4eb6201807de9c246ab9496c4fac47b92d48a7d24"
+    sha256 cellar: :any,                 arm64_sequoia: "6554bb60f1e0bf8b0e9cc63faeafbdc244d72bf3ab3cfc197a0fd9b2668eb302"
+    sha256 cellar: :any,                 arm64_sonoma:  "d088fe004ce885bb382c92da9b83d735cfd813e2a2d86c46d16db39dd206c98a"
+    sha256 cellar: :any,                 sonoma:        "e4aeda5f14cc2a31c04bcdaf601dedbfd8975e32189c698b5b729fd616481063"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "d65635cfe5b9969c720005c49e042470602a9f4df69ce7d3a9d48e710cbf7c8a"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "15be27fcd1ea8c9ac0fdc685796c0757a1ef70b62ef782dde9a0a54f4a1e2a5c"
   end
 
   depends_on "llvm" => :build # for libclang
@@ -73,6 +73,13 @@ class Solana < Formula
     (bins + bins_dcou).each do |bin|
       system "cargo", "install", "--no-default-features", *std_cargo_args(path: bin)
     end
+
+    generate_completions_from_executable(bin/"solana", "completion", shell_parameter_format: "--shell=",
+                                                                     shells:                 [:bash, :zsh, :fish])
+    # `:pwsh` string is "pwsh" in the shell_parameter_format,
+    # so we need to write the completion manually since solana expects "powershell"
+    (pwsh_completion/"solana").write Utils.safe_popen_read({ "SHELL" => "pwsh" }, bin/"solana", "completion",
+"--shell=powershell")
   end
 
   test do

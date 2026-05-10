@@ -1,19 +1,18 @@
 class Breseq < Formula
   desc "Computational pipeline for finding mutations in short-read DNA resequencing data"
   homepage "https://barricklab.org/breseq"
-  url "https://github.com/barricklab/breseq/archive/refs/tags/v0.39.0.tar.gz"
-  sha256 "5aa1bd9af71899e1358cfb9b8440c16cc908f185d9178a401a5a4d3f0c7ee861"
+  url "https://github.com/barricklab/breseq/archive/refs/tags/v0.40.1.tar.gz"
+  sha256 "69892a3b49e60ea8c50f70115ee983531744dbfa4434c55ee4df490051846b18"
   license all_of: ["GPL-2.0-or-later", "MIT", "BSD-3-Clause"]
   head "https://github.com/barricklab/breseq.git", branch: "master"
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "def2a384df5495e166004a40f6a0ca64dc395aeb2cd733a86a8ec104ae313af4"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "d3f2c4e800dff841d54930aab30ef679f25baecbe55c6c4e78c4bc5c162ddd2a"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "85ee61e283d29958259d3e008e1a3b9729f4e1f0223a6a155ac4bcd1128c916f"
-    sha256 cellar: :any_skip_relocation, sonoma:        "95b4eb870ce333f0c30b8af90acd189d2f4183ee062cedb7d099f366d3f3cbf5"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "b67dff0c121eee03cd1538f700a4329e82d2b9e5c6295a8a5b7d209e8264dcf2"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "c2ea055967954551fdf4b990211176d6f4ba5fb468d45eeb82a3e1265212f332"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "8dad7c2a01f9d0c772f9fc04e2ea480fea88ec69d219c4568d06a012a49118ce"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "831dd94986ca8cfab50490597a38cf2d09f7802003f9fcc6e622bbc076fbcb1d"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "fa6898ac03f6c83eef4f532f79bcd8b3e8f209e28d43d7814303052f3669a25e"
+    sha256 cellar: :any_skip_relocation, sonoma:        "49966901cd1ec0b5107a48744997bbbe782e45867ace6030ef0c3f678eb12227"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "380d45d154aed1505c0bb4a5dcf6bd771aaa00cf2923e5cedf9fa2dc7db53803"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "e8f11eabe07074878684abe6beaecf6468c1f7a5cdadbc0539ff1a9fe6cc6e90"
   end
 
   depends_on "autoconf" => :build
@@ -25,7 +24,7 @@ class Breseq < Formula
   on_linux do
     depends_on "zlib-ng-compat"
 
-    # Backport of https://github.com/samtools/htslib/commit/515f6df8f7f7dab6c80d0e7aede6e60826ef5374
+    # Backport of https://github.com/samtools/htslib/commit/515f6df8ff7dab6c80d0e7aede6e60826ef5374
     # Currently not possible to easily unbundle htslib: https://github.com/barricklab/breseq/issues/399
     patch do
       url "https://raw.githubusercontent.com/Homebrew/homebrew-core/acbb0d0473a8bbb75ea7fbb471457a2127ef2c2d/Patches/breseq/zlib-ng.patch"

@@ -1,8 +1,8 @@
 class Picoclaw < Formula
   desc "Ultra-efficient personal AI assistant in Go"
   homepage "https://picoclaw.io/"
-  url "https://github.com/sipeed/picoclaw/archive/refs/tags/v0.2.3.tar.gz"
-  sha256 "05e06f9db2a7900f37519108f55957a41374e72e9ab2440fb787e923b0a303fd"
+  url "https://github.com/sipeed/picoclaw/archive/refs/tags/v0.2.8.tar.gz"
+  sha256 "1e75f68d12a70a6ba5c79c578d0ec52cca491aa2a3f553cead89c8e2ae054418"
   license "MIT"
   head "https://github.com/sipeed/picoclaw.git", branch: "main"
 
@@ -12,21 +12,24 @@ class Picoclaw < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "90ae35f29a5e630654c3de923adc83648a94e9bdf5ba71b57e186a60cb44764d"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "90ae35f29a5e630654c3de923adc83648a94e9bdf5ba71b57e186a60cb44764d"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "90ae35f29a5e630654c3de923adc83648a94e9bdf5ba71b57e186a60cb44764d"
-    sha256 cellar: :any_skip_relocation, sonoma:        "78d284e459d90a406a3cecbf1792a7c752a2bb04d78d75d487d38b9dc597d71b"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "33681f98cf40dbb18e79e07be4c90c35512a4ca99a8acf39fca8c52b796ae4e7"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "62e9bac2db3019f6be891505f510b2c7f7878f07feb5a8aece320cecfe4bc53d"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "41d0a8ce8869d74a4bc31810c4a29bb3eea231df8735517762f73c135d34631c"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "41d0a8ce8869d74a4bc31810c4a29bb3eea231df8735517762f73c135d34631c"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "41d0a8ce8869d74a4bc31810c4a29bb3eea231df8735517762f73c135d34631c"
+    sha256 cellar: :any_skip_relocation, sonoma:        "61b3968ac4c0dd72d8443797df58516441e7b8f7f625bbf4c2166e67d2b4789f"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "ad3c043734a262b2b071cf64a742dec1ed5bf34e42a632f2111121ea5abde337"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "6997dd9e60973701d091928e4b39931e0851b22c14b4b15850bc47f38643eaa4"
   end
 
   depends_on "go" => :build
 
   def install
+    ENV["CGO_ENABLED"] = "0"
+
     system "go", "generate", "./cmd/picoclaw/internal/onboard"
 
     ldflags = "-s -w -X github.com/sipeed/picoclaw/pkg/config.Version=#{version}"
-    system "go", "build", *std_go_args(ldflags:), "./cmd/picoclaw"
+    tags = "goolm,stdjson"
+    system "go", "build", *std_go_args(ldflags:, tags:), "./cmd/picoclaw"
   end
 
   service do
@@ -40,7 +43,7 @@ class Picoclaw < Formula
 
     system bin/"picoclaw", "onboard"
     assert_path_exists testpath/".picoclaw/config.json"
-    assert_path_exists testpath/".picoclaw/workspace/AGENTS.md"
+    assert_path_exists testpath/".picoclaw/workspace/AGENT.md"
 
     assert_match "picoclaw Status", shell_output("#{bin}/picoclaw status")
   end

@@ -2,20 +2,20 @@ class Filebeat < Formula
   desc "File harvester to ship log files to Elasticsearch or Logstash"
   homepage "https://www.elastic.co/products/beats/filebeat"
   url "https://github.com/elastic/beats.git",
-      tag:      "v9.3.2",
-      revision: "45ad74566fce5c8c6f1df8a6b90cfa76310cfcfb"
+      tag:      "v9.4.0",
+      revision: "b988690b1bd5ae02f00c3facb413d4ee758563fe"
   # Outside of the "x-pack" folder, source code in a given file is licensed
   # under the Apache License Version 2.0
   license "Apache-2.0"
   head "https://github.com/elastic/beats.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "5f243aa0bdee3607341e07aba246294f6f76c0eea33d157d0963324e28e8d441"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "1090b546d84dfd566c8b10744d2dd431c658d0a9211c17cb83f583c763e5768d"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "013e6a2562fdcd6512910c2a5c710747276ac6062572ebe72ab08807de4d26d7"
-    sha256 cellar: :any_skip_relocation, sonoma:        "eee18d847f767dd3ba611df4525afdc062dec2cecf3171630647ed1c299dfd05"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "f5c9687f9b541d991d28c7b0d78798523fccf0472e96c7bc00ca718d8d0a5d4f"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "1b24e91343b7e823449106f07c5662d0530f96f73dcc63f93f8bdc8ce077678c"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "5494e3dfc8ad76909f1168b825c710dec3329c22fbf39eb574a098877b17f4e7"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "cc61df43715bacbb6b9b02acf2e481c357c50c0dd94fd6ef3db196e460d3d675"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "92893404be72e9c0d011d0becd46473e80d92e5f562754b3c01e1c7fd0c9985e"
+    sha256 cellar: :any_skip_relocation, sonoma:        "cf12afa3d1c1ea53fbc3b09cc59730f9f4056f3fc868638508dca915ce5a09f5"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "118da5dd93b1b0d76106c919e3df984cbd54e2f7060c7477f9a8e304078240e4"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "5b086208a20627e1a26be1d725b6d1deba9c43f9a3f5bf28510a9b8ab96e87f3"
   end
 
   depends_on "go" => :build

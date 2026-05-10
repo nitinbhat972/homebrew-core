@@ -1,18 +1,27 @@
 class Aicommit2 < Formula
   desc "Reactive CLI that generates commit messages for Git and Jujutsu with AI"
   homepage "https://github.com/tak-bro/aicommit2"
-  url "https://registry.npmjs.org/aicommit2/-/aicommit2-2.5.6.tgz"
-  sha256 "8442d34993b03cb6bc4458f1cd588f37baade71f12b909d6199ff2ba54b957d5"
+  url "https://registry.npmjs.org/aicommit2/-/aicommit2-2.5.17.tgz"
+  sha256 "afd77cddbe0718630b8e1f6d6eebb5392a43692f6bc02e190c27a290ce10b7e7"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, all: "f32738cba4db3640b3cf371d4c1b97a1bbd9378ec7a497227c34e453546bab6b"
+    sha256 cellar: :any_skip_relocation, all: "f093d234b5bfd229f84cbeba63a907443c1e4d4bc6c2539456cbb12adf5f8ed9"
   end
 
   depends_on "node"
 
   def install
-    system "npm", "install", *std_npm_args
+    # Optional dependencies include `@github/copilot-sdk`
+    # which uses proprietary license
+    (libexec/"aicommit2").install buildpath.glob("*")
+    cd libexec/"aicommit2" do
+      system "npm", "install", "--omit=optional", *std_npm_args(prefix: false)
+      with_env(npm_config_prefix: libexec) do
+        system "npm", "link"
+      end
+    end
+
     bin.install_symlink libexec.glob("bin/*")
   end
 

@@ -4,15 +4,15 @@ class Fastnetmon < Formula
   url "https://github.com/pavel-odintsov/fastnetmon/archive/refs/tags/v1.2.8.tar.gz"
   sha256 "d16901b00963f395241c818d02ad2751f14e33fd32ed3cb3011641ab680e0d01"
   license "GPL-2.0-only"
-  revision 27
+  revision 29
 
   bottle do
-    sha256 cellar: :any, arm64_tahoe:   "d0d3d31c5ae99ae3f15baa3b6cffcc2ea8b697be6fc9be7a2f73c1586aa8558c"
-    sha256 cellar: :any, arm64_sequoia: "8af3ef8c7571b8c36e3100030e4c367b5abd2de39e2d3a2a50147491852fb1af"
-    sha256 cellar: :any, arm64_sonoma:  "946ebf3ef4ab79c6bb78561fa8ecda50eddd1f375269cd504efb2d7911ef9d29"
-    sha256 cellar: :any, sonoma:        "d807d27e5538e5e342bfaf12fcd4cffd31664bba30d59fb434dbd4e1b92cc5da"
-    sha256               arm64_linux:   "4cfa0be851300328093c0e154be061b8823fc8b90801ba5f7ea24ab85a04b88c"
-    sha256               x86_64_linux:  "438002226c1fb1a0ec5f1f59eb162013db0837474e1819fce2458758339b44c2"
+    sha256 cellar: :any, arm64_tahoe:   "ed66ea2870a5269531292472de2f9dc7a0ada19d2709f6df31194c1e90ab59f5"
+    sha256 cellar: :any, arm64_sequoia: "fe888feb95f112f8c2ca0a375ccf24b516850936a2c7f084a8b872fe262ff233"
+    sha256 cellar: :any, arm64_sonoma:  "cec5f64fa47f7803c278210a3abe9f438cf187cfdcf2b8b150f7ecaba9e17ce1"
+    sha256 cellar: :any, sonoma:        "f21c579b1a8179144a2a8fc75b008dda858666f86a6dd185366f779ba7aabc20"
+    sha256               arm64_linux:   "669ab7bb2b6e65bb559fcbb17c9c1cef137badda2eddb60288eef633e093e980"
+    sha256               x86_64_linux:  "b4ddd7f096ea723dd27ef52e0c02bb6b0c89d89eefb8e786eccf80b9414ca061"
   end
 
   depends_on "cmake" => :build
@@ -68,6 +68,10 @@ class Fastnetmon < Formula
   end
 
   def install
+    # Vendored fmt 8.0.0 trips Apple Clang 21+ stricter consteval evaluation.
+    # Issue ref: https://github.com/fmtlib/fmt/issues/4740
+    inreplace "src/fmt/core.h", "#    define FMT_CONSTEVAL consteval", "#    define FMT_CONSTEVAL"
+
     system "cmake", "-S", "src", "-B", "build",
                     "-DCMAKE_CXX_STANDARD=20",
                     "-DLINK_WITH_ABSL=ON",

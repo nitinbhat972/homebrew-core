@@ -1,10 +1,8 @@
 class Sprocket < Formula
   desc "Bioinformatics workflow engine built on the Workflow Description Language (WDL)"
   homepage "https://sprocket.bio"
-  # pull from git tag to get submodules
-  url "https://github.com/stjude-rust-labs/sprocket.git",
-      tag:      "v0.22.0",
-      revision: "d022d74d39cb8c3e537d99e0dd4980c75a2e6a99"
+  url "https://github.com/stjude-rust-labs/sprocket/archive/refs/tags/v0.24.0.tar.gz"
+  sha256 "621fa4554afb69c917831184cb7162b634827edd03393c2c97ac5385e85d5515"
   license any_of: ["Apache-2.0", "MIT"]
   head "https://github.com/stjude-rust-labs/sprocket.git", branch: "main"
 
@@ -14,12 +12,12 @@ class Sprocket < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "6f8ea3990cf53b3addd7c304ac7935603d55851fc002e472d59d6bced9eaa6ae"
-    sha256 cellar: :any,                 arm64_sequoia: "596da87c69cdf235ed1607e4b94f321435d2893cf90b0c74e80235016a448159"
-    sha256 cellar: :any,                 arm64_sonoma:  "b03bf20a3605a350ddcb29185ee4c54252d76ca619ff2ef7231024e6c80ad1cf"
-    sha256 cellar: :any,                 sonoma:        "14b5a2e82c8a11d53af09ac4bb3f3d426a65199253176fadf6a973aa35109f3e"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "4c0dfdc77b2e5e2865c61e2b3fedee4d44ebcac5f5b62671fa510901c96e1b26"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "dd49695e9e892c036a5700639b762f95a5d23053e437fdbacbc9365e7d7fe53c"
+    sha256 cellar: :any,                 arm64_tahoe:   "d414a6d0c9441ca994e5c5cc1faefddde1ba00d965724d04440aec494468a3aa"
+    sha256 cellar: :any,                 arm64_sequoia: "b5eca724b727255d9430fb8ef8a491cd895cf7df04fbd4f7f57bc1a958b55d20"
+    sha256 cellar: :any,                 arm64_sonoma:  "813ba79a002f6399f33ebb3c4ca20b43061f8da0f0feee71e20a0cfca497ea06"
+    sha256 cellar: :any,                 sonoma:        "777ddc80a250569a2eb12bc4d32d8f3e9389ade0c5caf030cf2931d5f5762398"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "99f99bc2e785d733d7efe99bf4873da34eca79219979d6f40dbd88b2a4080e45"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "93488f827a6c842adbca7910ed66670f4d2bb48c401a9bd6433a89bf1dc26521"
   end
 
   depends_on "pkgconf" => :build
@@ -32,10 +30,13 @@ class Sprocket < Formula
 
   def install
     system "cargo", "install", *std_cargo_args
+
+    generate_completions_from_executable(bin/"sprocket", "completions", shells: [:bash, :zsh, :fish, :pwsh])
   end
 
   test do
     assert_match version.to_s, shell_output("#{bin}/sprocket --version")
+
     (testpath/"hello.wdl").write <<~WDL
       version 1.2
 
@@ -59,13 +60,12 @@ class Sprocket < Formula
       }
     WDL
 
-    expected = <<~JSON.strip
+    output = shell_output("#{bin}/sprocket inputs --target say_hello #{testpath}/hello.wdl")
+    assert_match <<~JSON.strip, output
       {
         "say_hello.greeting": "String <REQUIRED>",
         "say_hello.name": "String <REQUIRED>"
       }
     JSON
-
-    assert_match expected, shell_output("#{bin}/sprocket inputs --name say_hello #{testpath}/hello.wdl")
   end
 end

@@ -6,16 +6,16 @@ class Uhdm < Formula
   url "https://github.com/chipsalliance/UHDM/archive/refs/tags/v1.86.tar.gz"
   sha256 "179203b166be5d1be12b901c69c6a569ebebf4fe47bc674b1268bd9319216fce"
   license "Apache-2.0"
-  revision 1
+  revision 2
   head "https://github.com/chipsalliance/UHDM.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "5e96d3e01bd59637e5ce39d819621a107fbe2c49fc71efe6fc2eb8f143d64e26"
-    sha256 cellar: :any,                 arm64_sequoia: "a437a6d45b60cddefcb0baa5a2e1659a8744c3f1cdaaf2b2b7c68ec4190b39b3"
-    sha256 cellar: :any,                 arm64_sonoma:  "dd0727a5d7ce215b3fff2ad49d24b4eb3ee1e2780af9a612d6dc0f0883cd19b8"
-    sha256 cellar: :any,                 sonoma:        "f2d5eea05062e7ac58397defa58b6fc28994aaf894553baca2c71a950d2b14c6"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "2e03fce26295440301f53d7d397ca0bd183478a17a27aaefe740d5650517a976"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "676e3998e772e2e2a4732326fe2d3c6e895eed009cdd3b8c4612513dc75d3f4a"
+    sha256 cellar: :any,                 arm64_tahoe:   "891f989496491f9c6761524ba78fe17dfcc34143ffce1989aa91f04abb8594f8"
+    sha256 cellar: :any,                 arm64_sequoia: "377be1b55b38ddd0e367f51f32d0751e2e292a138a7a4c1a0ecce43687209657"
+    sha256 cellar: :any,                 arm64_sonoma:  "7a68cab4fc1699b0e803ff3e2a19130ec903a48300ee4c08c8e3a7736996f5a2"
+    sha256 cellar: :any,                 sonoma:        "8581b3d7ffad5bdb3981c9e2c65b739fb4b097e357e060298ea958dfb9f91db4"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "a72012164f97109986cfd2f443e12ad9b60c7bdc9eaa6812ec1d8b328c7dad5c"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "bd28d2d1d6c7099aa4dea9d924ee96a6a8d843c64a69f9af000e65dad60333c3"
   end
 
   depends_on "cmake" => :build
@@ -23,9 +23,12 @@ class Uhdm < Formula
   depends_on "pkgconf" => :test
   depends_on "capnp"
 
+  pypi_packages package_name:   "",
+                extra_packages: "orderedmultidict"
+
   resource "orderedmultidict" do
-    url "https://files.pythonhosted.org/packages/53/4e/3823a27d764bb8388711f4cb6f24e58453e92d6928f4163fdb01e3a3789f/orderedmultidict-1.0.1.tar.gz"
-    sha256 "04070bbb5e87291cc9bfa51df413677faf2141c73c61d2a5f7b26bea3cd882ad"
+    url "https://files.pythonhosted.org/packages/5c/62/61ad51f6c19d495970230a7747147ce7ed3c3a63c2af4ebfdb1f6d738703/orderedmultidict-1.0.2.tar.gz"
+    sha256 "16a7ae8432e02cc987d2d6d5af2df5938258f87c870675c73ee77a0920e6f4a6"
   end
 
   resource "six" do

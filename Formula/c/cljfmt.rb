@@ -1,29 +1,33 @@
 class Cljfmt < Formula
   desc "Formatting Clojure code"
   homepage "https://github.com/weavejester/cljfmt"
-  url "https://github.com/weavejester/cljfmt/archive/refs/tags/0.16.3.tar.gz"
-  sha256 "31e0588f3db0f7f1a69cc4c4922d5686731ef9353fee4d15b0bcef05bf3fc86b"
+  url "https://github.com/weavejester/cljfmt/archive/refs/tags/0.16.4.tar.gz"
+  sha256 "78f15de8726792f606f35c01bf9cb2b266e95f51938751335163f0d16404c56c"
   license "EPL-1.0"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "8abd34902376fc90c868478bea6311345bf74327cd9816313eb1382625e14ae7"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "ec601d9de6e7621489b3141990a3fbd775bb7651d01895e10e6134938170b8d3"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "5e4ab707446d3cd0d21473806a8f99d39da8f0286941a0ef8b98bbd6ce090362"
-    sha256 cellar: :any_skip_relocation, sonoma:        "c55ad099cc4bca60ef9744bfcd7ab3ba61c8dc89f525a0700a0767b718f06a8a"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "009dd1dfc3765bb1ba2de3c4e7d31104cfeeb4aec598f69c69a9308722348ead"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "37dc11b9b454cc8d8293fc74194dd07c89066b6913237eb8d6bf1fac006448f1"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "aa43d77791fcb0adde469c62c800dd0808182ab27e9ec1a381eac870f0a39edb"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "83fd6b4add6f1369a63ebd72dcfa756aeab782b75003cbcb6ad1ea2f73d8c72c"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "8f13324c55eb5da451a20a19e401ed3dca3ed2bb920ab95431eb8e45faeae74e"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "8bfc5e49d040f1261c9c7ad4f8d6a29a66f451572483804260ec0907ce41ee82"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "fbd711421832d54ceb1cc4e7a8b419da0077749c294e18e3a62f5bda9e720fec"
   end
 
+  depends_on "graalvm" => :build
   depends_on "leiningen" => :build
-  depends_on "openjdk"
+
+  on_linux do
+    depends_on "zlib-ng-compat"
+  end
 
   def install
-    cd "cljfmt" do
-      system "lein", "uberjar"
-      libexec.install "target/cljfmt-#{version}-standalone.jar" => "cljfmt.jar"
-    end
+    native_image_env = ENV.keys.grep(/^HOMEBREW_/).map { |key| "-E#{key}" }
+    ENV.prepend "NATIVE_IMAGE_OPTIONS", native_image_env.join(" ")
 
-    bin.write_jar_script libexec/"cljfmt.jar", "cljfmt"
+    cd "cljfmt" do
+      system "lein", "native-image"
+      bin.install "target/cljfmt"
+    end
   end
 
   test do

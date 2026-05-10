@@ -1,8 +1,8 @@
 class FlowCli < Formula
   desc "Command-line interface that provides utilities for building Flow applications"
   homepage "https://onflow.org"
-  url "https://github.com/onflow/flow-cli/archive/refs/tags/v2.15.3.tar.gz"
-  sha256 "0f456508d8e6b594bb40c13b01f2e9572dfe87cae5fe993278a69c1cd2115a45"
+  url "https://github.com/onflow/flow-cli/archive/refs/tags/v2.17.1.tar.gz"
+  sha256 "c5da87b0fe81b89e4ed5811d1f490a94655fbd300d7ac9a540b4193d16adc0e3"
   license "Apache-2.0"
   head "https://github.com/onflow/flow-cli.git", branch: "master"
 
@@ -12,12 +12,12 @@ class FlowCli < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "98bbc45ada0ad60e69a56a1c25df322f2a856333eecf3e6885026c3b1acd549f"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "e8d220c935ca28644aa2a612e6a36927c41e6d2832b4e7aa4f03a1599705f026"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "7de05586cbb2ff653a8cfdf9ad871dbe54a167d4be2d4a052308c105315dda9f"
-    sha256 cellar: :any_skip_relocation, sonoma:        "3f663fedecab46335559630a231cc65f68efaca18f80ee8f9ce9ba2a4cd0da91"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "d1b337baa13f0d2b513c8a33c36bed1b043dd711a4372e6dd696b4647cbb0cab"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "7a807d8a6c3e71fc216091da252603261fc0851b97c610866ec0af45901a9272"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "8fad2127df23c89cabf1b48bb220af4641efbd7e91eb2fc028751bdef249a51a"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "3d2f867f1b1a4bf8d57a88caa7ea2faf960999cb621e8ba1173593ed658516ea"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "2134c5ee84dda7c6e46bab90708b4e6acd34015bd52d83dbe5f41d112cccb2b2"
+    sha256 cellar: :any_skip_relocation, sonoma:        "2680df0a615d102b06ce4f099356397056dfde1cff3c5a78625d9db1e30a9523"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "c2da3186891ce10830024e69d90f4573310b3675515ca2508477f794715bea77"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "6c81c31f08d4d45834be1a873db8b17488bacdf7dd41340ba165964a72a00e8d"
   end
 
   depends_on "go@1.25" => :build
@@ -32,6 +32,8 @@ class FlowCli < Formula
   end
 
   test do
+    assert_match version.to_s, shell_output("#{bin}/flow version")
+
     (testpath/"hello.cdc").write <<~EOS
       access(all) fun main() {
         log("Hello, world!")

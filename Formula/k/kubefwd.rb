@@ -1,18 +1,18 @@
 class Kubefwd < Formula
   desc "Bulk port forwarding Kubernetes services for local development"
   homepage "https://kubefwd.com"
-  url "https://github.com/txn2/kubefwd/archive/refs/tags/v1.25.12.tar.gz"
-  sha256 "e5b87adb45441cdca29b40fbf38adc257c496a7dd3ef644e9bc0bc8a7aa255d7"
+  url "https://github.com/txn2/kubefwd/archive/refs/tags/v1.25.14.tar.gz"
+  sha256 "6b44f9e7d0280c5d181130a0e1d2e54b2b60dbc521d468917becbb53deefb869"
   license "Apache-2.0"
   head "https://github.com/txn2/kubefwd.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "19e63fdd7f9f9bce2dcb919db5eb39f5a162cfd3f8e11ca0fb83aa7e0964e570"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "3819725ecffb09bee821f8c8f5a1710de17be6ef2fcf9a3b5c32c8369c7a7f56"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "0ccde2c656a0c62af721541f51527c13aad371394743c55595717d32d25b91d2"
-    sha256 cellar: :any_skip_relocation, sonoma:        "8f3713585eb31120c3d5af702c4a1a7c64e3bd93e7e119022548a8de4f53bdd4"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "0712b4d0f7d6f29aa4f2a1f0963189e28e5ebdb0bfda8972d77ed4d2de014bc8"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "61a5c0d0697b4efa5a8303e4abbbc1d4ace4cf684ca2122c24ac3971c477358f"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "01fcec076c3a35ddfae21d85e14e873dfb69a64a5b488e653783ceeacced8a8b"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "9df44b82c1bcf10af395577140ada5b5e4aa7c15a1021a6ee796a65ff6ce1268"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "a6b53025c97080859c135023c770601a639190551154632b0dbb79d6d8f9045e"
+    sha256 cellar: :any_skip_relocation, sonoma:        "69719ec939e51cd04524efe46e9ab254d5cff89bbe34dacacbfff489d2a2014d"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "d24469bb2f0a2111f32cb16f5375e66ba3f402d511ecf4f61864fdb11b6aaaab"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "f9522f0b549854c42c5d7db91ed46cad333fbb576ea521554e2797a8f47a0346"
   end
 
   depends_on "go" => :build

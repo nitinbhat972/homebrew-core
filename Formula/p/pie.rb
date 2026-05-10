@@ -1,19 +1,21 @@
 class Pie < Formula
   desc "PHP Installer for Extensions"
   homepage "https://github.com/php/pie"
-  url "https://github.com/php/pie/releases/download/1.3.10/pie.phar"
-  sha256 "d5e72d69a823c0a955bb60acf6a7ecdc754b90b0a7b73f13f75eaea3503b267d"
+  url "https://github.com/php/pie/releases/download/1.4.2/pie.phar"
+  sha256 "2333b79a39c31b66b832e938b4a73a5682dace5d98d3745053debbe05d39439f"
   license "BSD-3-Clause"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "bc35e57ee40039b69dfa8cfd97cc534b26353b6d6d7122257355d2f18eb5ee15"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "bc35e57ee40039b69dfa8cfd97cc534b26353b6d6d7122257355d2f18eb5ee15"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "bc35e57ee40039b69dfa8cfd97cc534b26353b6d6d7122257355d2f18eb5ee15"
-    sha256 cellar: :any_skip_relocation, sonoma:        "7ac6df20d1b5456f6101f55d51d6cf01255e382d064f7c3460c4957ccee27b21"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "7ac6df20d1b5456f6101f55d51d6cf01255e382d064f7c3460c4957ccee27b21"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "7ac6df20d1b5456f6101f55d51d6cf01255e382d064f7c3460c4957ccee27b21"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "b0626df23558016e9e41ad044e2110c9e88663e1c90795406eaf3c3cc70f27f9"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "b0626df23558016e9e41ad044e2110c9e88663e1c90795406eaf3c3cc70f27f9"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "b0626df23558016e9e41ad044e2110c9e88663e1c90795406eaf3c3cc70f27f9"
+    sha256 cellar: :any_skip_relocation, sonoma:        "4e10126d3a81080bde01e384a77a387a0f8778f0dd21f083f7428346b4871a14"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "4e10126d3a81080bde01e384a77a387a0f8778f0dd21f083f7428346b4871a14"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "4e10126d3a81080bde01e384a77a387a0f8778f0dd21f083f7428346b4871a14"
   end
 
+  depends_on "pkgconf" => :test
+  depends_on "re2c" => :test
   depends_on "php"
 
   def install

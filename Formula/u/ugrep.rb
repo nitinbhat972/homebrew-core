@@ -1,17 +1,17 @@
 class Ugrep < Formula
   desc "Ultra fast grep with query UI, fuzzy search, archive search, and more"
   homepage "https://ugrep.com/"
-  url "https://github.com/Genivia/ugrep/archive/refs/tags/v7.6.0.tar.gz"
-  sha256 "afe88bdf4062239df240aaa2b4c788bb4282f554dee0982010bb3d36ef29e1c0"
+  url "https://github.com/Genivia/ugrep/archive/refs/tags/v7.8.1.tar.gz"
+  sha256 "204473f377bdfd2aa2c9fa71074dad799e1848d91510d41c2f36ec0edcf5bc43"
   license "BSD-3-Clause"
 
   bottle do
-    sha256 arm64_tahoe:   "6f47d110903e10447c9ad8a00908f6a830722365ca4a91efaf52cff54ec0ee3e"
-    sha256 arm64_sequoia: "2b49e49e27a3b0164cc35ff34313ed647d7e8b2bbbb67ee5ef66a7c9350534a8"
-    sha256 arm64_sonoma:  "5dcbd6a3036d2ae8d757969ea76f9cacee9c8b5689af8519a4dc804d41df06f4"
-    sha256 sonoma:        "2c38a20711410770d5315f6c27bbe1b435f6ce04e34c15428b7057ba3e510eab"
-    sha256 arm64_linux:   "0aae020a5a0fe79bf62c1fa7ffe6cb1698f0060691c71bc99a367a845f56f0f0"
-    sha256 x86_64_linux:  "6cf97fe3b33ef1ef4f9ac70cb54085e66f462c4060eb35a0c16cbff7777689f4"
+    sha256 arm64_tahoe:   "df1f0fbd4ed2bae86b8d9936c4fe627f8a36f828cb6e04da29748bcf68fadcf8"
+    sha256 arm64_sequoia: "7356dc0b35c377c8b2229769057307397ede2587d8d9a0939b956146455c2397"
+    sha256 arm64_sonoma:  "59952921fd9c00bc0e8b91c675188343688807f7fdb58eba826f72613aea2ea9"
+    sha256 sonoma:        "c359095240ae74fc15b8eed7bc4d1f514bb95e111e4ddca0c066709a41c7c048"
+    sha256 arm64_linux:   "39adc3e4756a29ce10af721b04cc3fbfed41442a6c51a0caa3d08bc1e3bf28da"
+    sha256 x86_64_linux:  "c8cfd737fa13a36bf8471360a358d4739a2fed0b835430c6489b6fa1b286346d"
   end
 
   depends_on "brotli"

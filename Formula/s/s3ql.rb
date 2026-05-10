@@ -3,8 +3,8 @@ class S3ql < Formula
 
   desc "POSIX-compliant FUSE filesystem using object store as block storage"
   homepage "https://github.com/s3ql/s3ql"
-  url "https://github.com/s3ql/s3ql/releases/download/s3ql-6.0.0/s3ql-6.0.0.tar.gz"
-  sha256 "33d29ce1d9e6db9f78369624669c805b1617cb8916b2939cd190ddee68975248"
+  url "https://github.com/s3ql/s3ql/releases/download/s3ql-6.1.0/s3ql-6.1.0.tar.gz"
+  sha256 "b4ac7c81a89e790999fa4473e302bf5e1b5bb8abe3303f88f6fdb73beecc7cfc"
   license "GPL-3.0-only"
 
   livecheck do
@@ -13,8 +13,8 @@ class S3ql < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_linux:  "7e4f7c00d0bf2bbe7a749bbfff0235e73a5ce72237550932b89033dda51ce079"
-    sha256 cellar: :any_skip_relocation, x86_64_linux: "034d3dce93258cb11fbbfe539b4b0d1851c547cafa83675638beac19df239cf4"
+    sha256 cellar: :any_skip_relocation, arm64_linux:  "c818f589fbdf39d7efcfcbbf81a22f8826a3fcc15a70969225ca9b2e5dcb7c49"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "1bfe4b9ca1017c415ede3e7de3719af488a6b4081361a808260826043871f693"
   end
 
   depends_on "pkgconf" => :build
@@ -29,23 +29,23 @@ class S3ql < Formula
   pypi_packages exclude_packages: %w[certifi cryptography]
 
   resource "anyio" do
-    url "https://files.pythonhosted.org/packages/96/f0/5eb65b2bb0d09ac6776f2eb54adee6abe8228ea05b20a5ad0e4945de8aac/anyio-4.12.1.tar.gz"
-    sha256 "41cfcc3a4c85d3f05c932da7c26d0201ac36f72abd4435ba90d0464a3ffed703"
+    url "https://files.pythonhosted.org/packages/19/14/2c5dd9f512b66549ae92767a9c7b330ae88e1932ca57876909410251fe13/anyio-4.13.0.tar.gz"
+    sha256 "334b70e641fd2221c1505b3890c69882fe4a2df910cba14d97019b90b24439dc"
   end
 
   resource "apsw" do
-    url "https://files.pythonhosted.org/packages/0c/87/ae61c54529fb44610962599ab3b909627928992e59c28775dff76bf04125/apsw-3.51.3.0.tar.gz"
-    sha256 "821966a66ed5fd539e863a8f60d9a53497e0a47ffdabde4ec7714fae9ed00261"
+    url "https://files.pythonhosted.org/packages/5a/5f/0fabac91b26d222f5ad1bf8af92f6c80d82af2e50dafb401a250a02b2f53/apsw-3.53.1.0.tar.gz"
+    sha256 "4f8978ae8c7c405d0133a6ea590f3342f839143bdf39e46029cb36e2fa418692"
   end
 
   resource "attrs" do
-    url "https://files.pythonhosted.org/packages/6b/5c/685e6633917e101e5dcb62b9dd76946cbb57c26e133bae9e0cd36033c0a9/attrs-25.4.0.tar.gz"
-    sha256 "16d5969b87f0859ef33a48b35d55ac1be6e42ae49d5e853b597db70c35c57e11"
+    url "https://files.pythonhosted.org/packages/9a/8e/82a0fe20a541c03148528be8cac2408564a6c9a0cc7e9171802bc1d26985/attrs-26.1.0.tar.gz"
+    sha256 "d03ceb89cb322a8fd706d4fb91940737b6642aa36998fe130a9bc96c985eff32"
   end
 
   resource "charset-normalizer" do
-    url "https://files.pythonhosted.org/packages/7b/60/e3bec1881450851b087e301bedc3daa9377a4d45f1c26aa90b0b235e38aa/charset_normalizer-3.4.6.tar.gz"
-    sha256 "1ae6b62897110aa7c79ea2f5dd38d1abca6db663687c0b1ad9aed6f6bae3d9d6"
+    url "https://files.pythonhosted.org/packages/e7/a1/67fe25fac3c7642725500a3f6cfe5821ad557c3abb11c9d20d12c7008d3e/charset_normalizer-3.4.7.tar.gz"
+    sha256 "ae89db9e5f98a11a4bf50407d4363e7b09b31e55bc117b4f7d80aab97ba009e5"
   end
 
   resource "defusedxml" do
@@ -54,18 +54,18 @@ class S3ql < Formula
   end
 
   resource "google-auth" do
-    url "https://files.pythonhosted.org/packages/ea/80/6a696a07d3d3b0a92488933532f03dbefa4a24ab80fb231395b9a2a1be77/google_auth-2.49.1.tar.gz"
-    sha256 "16d40da1c3c5a0533f57d268fe72e0ebb0ae1cc3b567024122651c045d879b64"
+    url "https://files.pythonhosted.org/packages/d4/f8/80d2493cbedece1c623dc3e3cb1883300871af0dcdae254409522985ac23/google_auth-2.52.0.tar.gz"
+    sha256 "01f30e1a9e3638698d89464f5e603ce29d18e1c0e63ec31ac570aba4e164aaf5"
   end
 
   resource "google-auth-oauthlib" do
-    url "https://files.pythonhosted.org/packages/ac/b4/1b19567e4c567b796f5c593d89895f3cfae5a38e04f27c6af87618fd0942/google_auth_oauthlib-1.3.0.tar.gz"
-    sha256 "cd39e807ac7229d6b8b9c1e297321d36fcc8a9e4857dff4301870985df51a528"
+    url "https://files.pythonhosted.org/packages/70/18/90c7fac516e63cf2058166fce0c88c353647c677b51cc036c09c49bb5cbb/google_auth_oauthlib-1.4.0.tar.gz"
+    sha256 "18b5e28880eb8eba9065c436becdc0ee8e4b59117a73a510679c82f70cd363d2"
   end
 
   resource "idna" do
-    url "https://files.pythonhosted.org/packages/6f/6d/0703ccc57f3a7233505399edb88de3cbd678da106337b9fcde432b65ed60/idna-3.11.tar.gz"
-    sha256 "795dafcc9c04ed0c1fb032c2aa73654d8e8c5023a7df64a53f39190ada629902"
+    url "https://files.pythonhosted.org/packages/ce/cc/762dfb036166873f0059f3b7de4565e1b5bc3d6f28a414c13da27e442f99/idna-3.13.tar.gz"
+    sha256 "585ea8fe5d69b9181ec1afba340451fba6ba764af97026f92a91d4eef164a242"
   end
 
   resource "oauthlib" do
@@ -94,8 +94,8 @@ class S3ql < Formula
   end
 
   resource "requests" do
-    url "https://files.pythonhosted.org/packages/c9/74/b3ff8e6c8446842c3f5c837e9c3dfcfe2018ea6ecef224c710c85ef728f4/requests-2.32.5.tar.gz"
-    sha256 "dbba0bac56e100853db0ea71b82b4dfd5fe2bf6d3754a8893c3af500cec7d7cf"
+    url "https://files.pythonhosted.org/packages/5f/a4/98b9c7c6428a668bf7e42ebb7c79d576a1c3c1e3ae2d47e674b468388871/requests-2.33.1.tar.gz"
+    sha256 "18817f8c57c6263968bc123d237e3b8b08ac046f5456bd1e307ee8f4250d3517"
   end
 
   resource "requests-oauthlib" do
@@ -119,26 +119,34 @@ class S3ql < Formula
   end
 
   resource "urllib3" do
-    url "https://files.pythonhosted.org/packages/c7/24/5f1b3bdffd70275f6661c76461e25f024d5a38a46f04aaca912426a2b1d3/urllib3-2.6.3.tar.gz"
-    sha256 "1b62b6884944a57dbe321509ab94fd4d3b307075e0c2eae991ac71ee15ad38ed"
+    url "https://files.pythonhosted.org/packages/53/0c/06f8b233b8fd13b9e5ee11424ef85419ba0d8ba0b3138bf360be2ff56953/urllib3-2.7.0.tar.gz"
+    sha256 "231e0ec3b63ceb14667c67be60f2f2c40a518cb38b03af60abc813da26505f4c"
   end
 
   def install
-    # The inreplace changes the name of the (fsck|mkfs|mount|umount).s3ql
-    # utilities to use underscore (_) as a separator, which is consistent
-    # with other tools on macOS.
-    # Final names: fsck_s3ql, mkfs_s3ql, mount_s3ql, umount_s3ql
-    inreplace "pyproject.toml", /"(?:(mkfs|fsck|mount|umount)\.)s3ql" =/, '"\\1_s3ql" ='
-
     virtualenv_install_with_resources
+
+    # Create temporary compatibility executables for previous patched names.
+    # Remove them after 2 minor releases, i.e. 6.2.0, or next major release.
+    odie "Remove compatibility scripts!" if version >= "6.2.0"
+    %w[mkfs fsck mount umount].each do |cmd|
+      old_cmd = "#{cmd}_s3ql"
+      new_cmd = "#{cmd}.s3ql"
+      (bin/old_cmd).write <<~SHELL
+        #!/bin/bash
+        echo "WARNING: #{old_cmd} has been renamed to #{new_cmd}; #{old_cmd} will be removed in 6.2.0." >&2
+        exec "#{bin/new_cmd}" "$@"
+      SHELL
+    end
   end
 
   test do
-    assert_match "S3QL ", shell_output("#{bin}/mount_s3ql --version")
+    assert_match "S3QL ", shell_output("#{bin}/mount_s3ql --version") # TODO: remove in 6.2.0
+    assert_match "S3QL ", shell_output("#{bin}/mount.s3ql --version")
 
     # create a local filesystem, and run an fsck on it
-    assert_match "Creating metadata", shell_output("#{bin}/mkfs_s3ql --plain local://#{testpath} 2>&1")
-    assert_match "s3ql_params", shell_output("ls s3ql_params")
-    system bin/"fsck_s3ql", "local://#{testpath}"
+    assert_match "Creating metadata", shell_output("#{bin}/mkfs.s3ql --plain local://#{testpath} 2>&1")
+    assert_path_exists testpath/"s3ql_params"
+    system bin/"fsck.s3ql", "local://#{testpath}"
   end
 end

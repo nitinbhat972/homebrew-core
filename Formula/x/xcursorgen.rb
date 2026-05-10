@@ -5,6 +5,11 @@ class Xcursorgen < Formula
   sha256 "a350f67323786aceef063e471d1661ae7e6d6ecb44e9143cf409070ad9ed053b"
   license "MIT"
 
+  livecheck do
+    url :stable
+    regex(/^xcursorgen[._-]v?(\d+(?:\.\d+)+)$/i)
+  end
+
   bottle do
     sha256 cellar: :any, arm64_tahoe:   "5a0713ff32c930decc388076651fe5e73beb21aa505b03dd4b2728749663d7ea"
     sha256 cellar: :any, arm64_sequoia: "292615a8474ad7a790aca93e4bc63e0662ff7edb3ee20647b4883ac3172befa0"

@@ -1,18 +1,18 @@
 class SpirvLlvmTranslator < Formula
   desc "Tool and a library for bi-directional translation between SPIR-V and LLVM IR"
   homepage "https://github.com/KhronosGroup/SPIRV-LLVM-Translator"
-  url "https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/refs/tags/v22.1.0.tar.gz"
-  sha256 "a5d476404ab88ac0d148211da50428178c89caef8af8042a3ca8e71e58ed9427"
+  url "https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/refs/tags/v22.1.2.tar.gz"
+  sha256 "b37196b1a1a60282a24cf937ab7d6807d7d54dc718f2a37a78e211be26df57ac"
   license "Apache-2.0" => { with: "LLVM-exception" }
   compatibility_version 1
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "966dcbc340c5a1dde90684f6bd65e50df47ac69d832b992384ac0667170748d4"
-    sha256 cellar: :any,                 arm64_sequoia: "91c12287f7da19448667091bc486fa8802bc3935f1a0c36fa83fe462910bb14c"
-    sha256 cellar: :any,                 arm64_sonoma:  "73b8c0b86c44d643b9561b0d0f42163bb96b50f0db2b9f9414f10a85a98547ff"
-    sha256 cellar: :any,                 sonoma:        "24eb73763db6e832ea4fcc7199ebf4ddd60993adca15ed5e142bef2031c1966c"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "905eb3db62ca27e026f8cfc7ca931ebaf1fcca40478ecda51f5a8db6c9a58420"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "896dfc92eca87a325b98b440482f32948bba02ec80a6101631091d344ffee1da"
+    sha256 cellar: :any,                 arm64_tahoe:   "733f34bb4555268780bfcee98fe752ca46ae1f51fa00e91eff9616b2788aeaf6"
+    sha256 cellar: :any,                 arm64_sequoia: "5bf5560c2446b57bbfc36112e3a0e807c2ee58cc8dd8c2c31b0a3e3209705516"
+    sha256 cellar: :any,                 arm64_sonoma:  "fab3a5685fbb250058125104ed5d424794d9884e35037b2c19eb24157a0d8bac"
+    sha256 cellar: :any,                 sonoma:        "d4f8e346bce4915a97a67b42c37bf2daf1c06b1653bf7128b47f744e3c5775e8"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "a8b6428af732a948b54e3873c1bdf9907acae3e41f0a4212029e89fcc0e402a8"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "93733fcfe6dedf795666e92e9099277ad4b5dfe815788517feac3a3e7923152b"
   end
 
   depends_on "cmake" => :build

@@ -1,18 +1,18 @@
 class Berglas < Formula
   desc "Tool for managing secrets on Google Cloud"
   homepage "https://github.com/GoogleCloudPlatform/berglas"
-  url "https://github.com/GoogleCloudPlatform/berglas/archive/refs/tags/v2.0.10.tar.gz"
-  sha256 "36797ff44e547de7307ed12edb7a4c2e4e25302fbf67c843c2989ae2b986eab1"
+  url "https://github.com/GoogleCloudPlatform/berglas/archive/refs/tags/v2.0.12.tar.gz"
+  sha256 "4a26855a5862c8a28626b1758811ed5acf3b8e18368f3fc37e43334a25694f6f"
   license "Apache-2.0"
   head "https://github.com/GoogleCloudPlatform/berglas.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "e5edffc0b04809e14dc257028bc2c1ab2b64d363a65df5d69b4255fff02a874e"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "e5edffc0b04809e14dc257028bc2c1ab2b64d363a65df5d69b4255fff02a874e"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "e5edffc0b04809e14dc257028bc2c1ab2b64d363a65df5d69b4255fff02a874e"
-    sha256 cellar: :any_skip_relocation, sonoma:        "24162cc07a5f7e9a78ab089792d94bffe786d3d1ae56406e29fe48c986dec8f9"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "77d9b4db64dbab7bd2ff8245e7ffd9226eb3063fd1ab32483f8ce4e70d617ee4"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "a52c8f50ae26f61411fe2dc136c298724ba99afc3c662a78628c383ea0dd56a2"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "9b687174e7ca89bb266f3c97d174d43dc9a503b937bb64b21f938dd3531034ce"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "9b687174e7ca89bb266f3c97d174d43dc9a503b937bb64b21f938dd3531034ce"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "9b687174e7ca89bb266f3c97d174d43dc9a503b937bb64b21f938dd3531034ce"
+    sha256 cellar: :any_skip_relocation, sonoma:        "385bbadb0e515931ec58967f7e64f7008e2d0812912f59d782a8461ef0c70fd6"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "0e9652f86156ccc64cbb75e84fbbe9efe3cc3421aa8a0935f28273dbf7cb218e"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "bda8a6cdd6d72030fb6d2250c02900d622920857eccdbb7b416fc563d0edda93"
   end
 
   depends_on "go" => :build

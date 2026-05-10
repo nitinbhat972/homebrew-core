@@ -1,18 +1,18 @@
 class Delve < Formula
   desc "Debugger for the Go programming language"
   homepage "https://github.com/go-delve/delve"
-  url "https://github.com/go-delve/delve/archive/refs/tags/v1.26.1.tar.gz"
-  sha256 "16bc1b7ae9277e109d4a8c3c607aa676ebd2ce07fd5fe44d4f4ac83fc12f9c20"
+  url "https://github.com/go-delve/delve/archive/refs/tags/v1.26.3.tar.gz"
+  sha256 "c5abd02033d7601a41bb6748589c0be42080dc4f91c7e48fc8cbb7f558cc8748"
   license "MIT"
   head "https://github.com/go-delve/delve.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "860a3030deba778d991e3f7f32a82f8c85df8fc53e2f52861f3cf3ae5da6e85a"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "860a3030deba778d991e3f7f32a82f8c85df8fc53e2f52861f3cf3ae5da6e85a"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "860a3030deba778d991e3f7f32a82f8c85df8fc53e2f52861f3cf3ae5da6e85a"
-    sha256 cellar: :any_skip_relocation, sonoma:        "73eabe3da7276ed59abe741cf3d4af043b84bf03ad34d28645bce04ea6e580a2"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "6600bcd3fe110c6b453b36b5055ed23dced1125c25d4e20cdcb1333f8c089ab3"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "e61ef4e5c1178f6bc95f5be201e8f56541ce2d0a3487d281107b2de069b557f8"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "00bad38c96bd66dcf31f61a4c82ac2ba16618ae85c237ad3a81786fa1b5fb5a5"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "00bad38c96bd66dcf31f61a4c82ac2ba16618ae85c237ad3a81786fa1b5fb5a5"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "00bad38c96bd66dcf31f61a4c82ac2ba16618ae85c237ad3a81786fa1b5fb5a5"
+    sha256 cellar: :any_skip_relocation, sonoma:        "a20442a89c4fadf02572f3000e4a9de41ec03e968c095d966ee2207e41b6ba8c"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "7b373bd9580fefa18cbecc54fe620f5f4b958e48d0c7369a548dac603b25f667"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "e09f0c5c34412d71748093a836ca0c87d5edc9f1bc53702dfb91395404343e6b"
   end
 
   depends_on "go" => :build

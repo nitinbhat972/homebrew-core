@@ -1,18 +1,18 @@
 class BaconLs < Formula
   desc "Rust diagnostic provider based on Bacon"
   homepage "https://github.com/crisidev/bacon-ls"
-  url "https://github.com/crisidev/bacon-ls/archive/refs/tags/0.26.0.tar.gz"
-  sha256 "7964f7c20d9d466ac24e5d0ceb482d130b277df43fbc4c0917249af71e6cf598"
+  url "https://github.com/crisidev/bacon-ls/archive/refs/tags/0.29.0.tar.gz"
+  sha256 "f18311b2a1e60830a3c85078edb06789955eaee1c963a4cb67aa2636271dcb8a"
   license "MIT"
   head "https://github.com/crisidev/bacon-ls.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "19cfe53cfbe6f2678ef39ad539c91ef137b7758dd82b5ebd7314c8acb4ab7a9d"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "da4bf1442f0bfd21fbfbbec5a7cd7b0f05eb624578ff53a2bbda3b29664da68c"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "80eb6c86849bd113a7650235ab1a7efcdf47564fe7b34117f84ea216e4ebc027"
-    sha256 cellar: :any_skip_relocation, sonoma:        "412876e7da24accfc7f15ef33b7ede13b609b925998b470987190480a3201402"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "99fdae0423cc88bded73bfd25ff31cd9496baefd17f3ef162828be7760b4b464"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "82f4b0dcafcee4bb3c35a894e7685905fba7b6d44eec9efa3d8e883fcaf44509"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "d78a9c0a390f4893f4412423bb10828fecec14cd9682d9875ad0b4256353b5e5"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "18bdeae5cfb6a925b730cbd25ca2b4b1a641b08f45ba4ee76880de209a15eb19"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "8f611eafd253e3cd00703d4f8259635c606df8678bd8462dbf7f9e68f3a5b72d"
+    sha256 cellar: :any_skip_relocation, sonoma:        "770416f2f8abb9e5243de37ec8b027f31852eddf505f26af800cdccaf1ebd086"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "5e5eba7e45ffa58a3edda89b8fc287b1cdb88d8a25b357690c7b240ecef188fc"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b7f9f3149741fccf804f00ee8a5be0d50a8861cc4e2bd7186840b48eae779510"
   end
 
   depends_on "pkgconf" => :build

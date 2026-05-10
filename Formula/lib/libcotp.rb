@@ -1,18 +1,18 @@
 class Libcotp < Formula
   desc "C library that generates TOTP and HOTP"
   homepage "https://github.com/paolostivanin/libcotp"
-  url "https://github.com/paolostivanin/libcotp/archive/refs/tags/v4.0.0.tar.gz"
-  sha256 "6b17323779dac1699462d8914b81155d69914b0d28b5ed837f1570ed05f2bd90"
+  url "https://github.com/paolostivanin/libcotp/archive/refs/tags/v4.1.0.tar.gz"
+  sha256 "e51016eb220647e7f16b67c0baae2a42730b07fec3131aaad0f39a3a2a638b89"
   license "Apache-2.0"
   head "https://github.com/paolostivanin/libcotp.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "366cde6e9830afd63b98a7072b8944c2ffd884538fdfb7b2a7654a19ce92940d"
-    sha256 cellar: :any,                 arm64_sequoia: "1b6d2de3ca5ba1eebc06db7d5c761a68e47b37c9ba4c8a16590cb77c5960bb6f"
-    sha256 cellar: :any,                 arm64_sonoma:  "eff6bf6b8dad34fb773d6e3e93a88b5deea02b3bbc9a6081f686308be397d416"
-    sha256 cellar: :any,                 sonoma:        "b0c06d774fd8497727ff3d2c817cc9c79a030dbf4dc95fab77bbe8b22b389659"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "339708868c22ab1e04a054e2d3fa6b97101f89831cb82b30adc992194b63f1b6"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "00d8f4381f2cf656c98d513bdb3a68212b5222ed529c7726876b9f14c9fb5fa7"
+    sha256 cellar: :any,                 arm64_tahoe:   "109112f087502712ed5814400e416e69fd297633f9f33126910fb0d18cef558d"
+    sha256 cellar: :any,                 arm64_sequoia: "b065711b5ce070c8cc37d352feb02d3c10038b1271d36447d4ca2a4d39d04e7c"
+    sha256 cellar: :any,                 arm64_sonoma:  "39e5ed7667e0661e07a5989cd3b1cfc3de9ad96990cc301ab562af5ed7c55871"
+    sha256 cellar: :any,                 sonoma:        "57c91529239a09b366685c102809be4931df36fe9095cb45f1c15114ec61ed35"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "72d0815bf444b80e9e3d0fb837bccf29420161c496ae69eed3e0ec0f137226ac"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "fe129d50e25913db0f719c9ea1ee4078dccb6d1691c4db4653aa7479feb2853e"
   end
 
   depends_on "cmake" => :build

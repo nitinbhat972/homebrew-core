@@ -1,8 +1,8 @@
 class F3d < Formula
   desc "Fast and minimalist 3D viewer"
   homepage "https://f3d.app"
-  url "https://github.com/f3d-app/f3d/archive/refs/tags/v3.4.1.tar.gz"
-  sha256 "a0e17eb352c32aa2f8e7123cf75ec5633d25e230112d4dc2ba2b7024011e2615"
+  url "https://github.com/f3d-app/f3d/archive/refs/tags/v3.5.0.tar.gz"
+  sha256 "033845b5d49af3ae60fcc3fe85d82c841d990d3534638a4472123f84b3e82795"
   license "BSD-3-Clause"
   revision 1
 
@@ -15,13 +15,12 @@ class F3d < Formula
   end
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any,                 arm64_tahoe:   "932e823218e860da4df03979774137bbf8bcb0e6af3eeedc49b258a5c95cdea7"
-    sha256 cellar: :any,                 arm64_sequoia: "241a838de1fc94e9ac0b41ed03a3740f2eea2351a3a5eea62c9bb60b468781f0"
-    sha256 cellar: :any,                 arm64_sonoma:  "c459ee84b067a309e9e5a4036910990f3fa8002245d447ba0ebf5bde37f222a5"
-    sha256 cellar: :any,                 sonoma:        "ec6d5c537ff25dfd3e55b5db28ca0b1b523bd8bf836950c42b382f2a5e452bfc"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "666a640c9aa10f5ba3f2900780ee8e17f6339fe8012febdc2cc2b602a8853ebb"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "e94147ecb681078ef6ae85697378809065f2778a2902ecc50c809ba4d4a23c63"
+    sha256 cellar: :any,                 arm64_tahoe:   "eeb5b2f7273f15dde1d3e726d4523e579847139166596ec391826de012880162"
+    sha256 cellar: :any,                 arm64_sequoia: "d7314f35d07345c492868b06e8ff1c8ba03214f52043240eb78009a00451267d"
+    sha256 cellar: :any,                 arm64_sonoma:  "2667009d73c55b825cfec4bb8bddb7fe9c88221437902bb92cae5f069c3b63f2"
+    sha256 cellar: :any,                 sonoma:        "eae120fc513b407a8aedcafac540639cc8c8c29ad3e25b442af90dcbfee8b903"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "de2ef3187b84b1fb0a1b22706b18be357842b7bfee0fc90e15f67bc97aa1b338"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "dea7663ca72c6d2e23a79946bc0389f57c088d663b1bb8d491f9e8f2480d7bee"
   end
 
   depends_on "cmake" => :build

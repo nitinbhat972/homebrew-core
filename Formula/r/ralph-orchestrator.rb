@@ -1,18 +1,18 @@
 class RalphOrchestrator < Formula
   desc "Multi-agent orchestration framework for autonomous AI task completion"
   homepage "https://github.com/mikeyobrien/ralph-orchestrator"
-  url "https://github.com/mikeyobrien/ralph-orchestrator/archive/refs/tags/v2.8.1.tar.gz"
-  sha256 "7fc1efe81bd4b25b6271f6bc30d2884567bfe7360cffee2992629600ba5b04f3"
+  url "https://github.com/mikeyobrien/ralph-orchestrator/archive/refs/tags/v2.9.3.tar.gz"
+  sha256 "90112634553659c4e422906a526b1ca9e8e1bddbfb8dbddff799041f71aef6b3"
   license "MIT"
   head "https://github.com/mikeyobrien/ralph-orchestrator.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "1f6f30e817bb63ecb30acd1a6c53a1bb025d87d610e66162618875a661637c41"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "c28b0e412c1109e4c79e3144e51302be8b8992704e943db36a54e0c7e0726c63"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "1eed6545406729118c927202f5dfe5ccc13a87f650de9dffd9131c2956daa40f"
-    sha256 cellar: :any_skip_relocation, sonoma:        "ff56d625d25613301ce37cbfd631c978668b56355396f9ba5996fab477def3e6"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "a59f9c07a52a384c8fc57f1e3af5468da09bee3e7b7975afd8919a31853c7778"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "f159fa1d5c4d31e01f0c47c02e4ed1b329d2da42c3e5f0bcc50440fb59957ec1"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "760e10847d3a9726acb9ce04b2da4b69570dccd06c35f937fdd12686e91a9eab"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "d67befa844d0b899a9aba665aed16b88ce93c65fdfdc2e3d220f99cdfe3ad6d4"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "0c8deed6525a644356724949c0bfd737d933d8d57b629d001971c782eef0857d"
+    sha256 cellar: :any_skip_relocation, sonoma:        "b0207930b555eb691017cda11cf0040f96588f5985ce2acea7c773cbb76525fd"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "3055fc762448b49feb87d04fa53e39cd727f0caabba93b7da73a8784b2ac061a"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "1e9bf3349abf6d209f7fc4944426c6b99e23bcd4bb482ce758a9084c2176fef7"
   end
 
   depends_on "rust" => :build

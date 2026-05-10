@@ -1,8 +1,8 @@
 class Lego < Formula
   desc "Let's Encrypt client and ACME library"
   homepage "https://go-acme.github.io/lego/"
-  url "https://github.com/go-acme/lego/archive/refs/tags/v4.33.0.tar.gz"
-  sha256 "d57af04d6f5d0a018f19b099401fea093d4cc2efff177eaa45418b0046921175"
+  url "https://github.com/go-acme/lego/archive/refs/tags/v4.35.2.tar.gz"
+  sha256 "0afa5397dff24643ab34773518063432ed939788435a16305c92f2090a899c3b"
   license "MIT"
   head "https://github.com/go-acme/lego.git", branch: "master"
 
@@ -12,12 +12,12 @@ class Lego < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "4c4b0435e081fe63a8056fe5f0b1066e0ead43abbd4e394a9a6b60b9772051e2"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "4c4b0435e081fe63a8056fe5f0b1066e0ead43abbd4e394a9a6b60b9772051e2"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "4c4b0435e081fe63a8056fe5f0b1066e0ead43abbd4e394a9a6b60b9772051e2"
-    sha256 cellar: :any_skip_relocation, sonoma:        "dcbd67b3e51ee2089513793fcae269c33cc20ad8432d1a158ed023860404fc3a"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "45296ef673c73f0a3071b6faca2b1411fa989b3193424312075cb10eee60cb35"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "f95046ff4403b92649ac253d4949652bf4a2e503b7606686bf245b72aacca25f"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "afd414187a9bb43afe9ced193d367d8bb1ca67279056aed5d1702461e5763ccd"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "afd414187a9bb43afe9ced193d367d8bb1ca67279056aed5d1702461e5763ccd"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "afd414187a9bb43afe9ced193d367d8bb1ca67279056aed5d1702461e5763ccd"
+    sha256 cellar: :any_skip_relocation, sonoma:        "f12c88d53f8098b305d89dddff8dd5d35bd51b4acbb1faacb7f03a41ec3c2d09"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "de64fe18c2ffad63023bcf5673ad84c08d2c9e7ec3b24b87d65a4c6cdbf7728e"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "49ebada5b08bdcf4c24f51795837b2b38e6bc44e57d85d18f2d91910d50a96eb"
   end
 
   depends_on "go" => :build

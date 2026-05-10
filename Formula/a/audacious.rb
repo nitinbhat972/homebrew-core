@@ -24,13 +24,13 @@ class Audacious < Formula
   end
 
   bottle do
-    rebuild 1
-    sha256 arm64_tahoe:   "2a9bed2f6fa8f367145efa89c3c7e001d7269f291a136351fe13195ddc684d87"
-    sha256 arm64_sequoia: "ea3d1f63a204ff5be34a08b216c855970e5a62d7f5bfaecf33776fbc6f80dc6f"
-    sha256 arm64_sonoma:  "1ea67ce7aee67f7e0b7bb5dd5327e9eb177829e4f9a01a1047fa7cb18b6448a5"
-    sha256 sonoma:        "795d2a596cbab91cbfc18c7ed0132d94063dad3b1752e351f57d47d10b1e2469"
-    sha256 arm64_linux:   "fc1ab8c829c3c57689dd2bcbacedec1da1942ee3563a4185667b3f249f5272f1"
-    sha256 x86_64_linux:  "c8b1e35da03f33d6aaea389e5c72e2e0240dcd5621ac04c8d32efaa51b26d804"
+    rebuild 3
+    sha256 arm64_tahoe:   "ffdfc68f4754dbaa320a933bc7be5962b1c01d80502419b0186826c270aeafbb"
+    sha256 arm64_sequoia: "cc3f88588abc2ae5f77b94d48c906d4f054d395deff705b674c67a779f2143f1"
+    sha256 arm64_sonoma:  "98dd0b14fd0830c27791b7b20258a8fba82fc94eeb0477d853b871df636f6c67"
+    sha256 sonoma:        "273c80c6e3c195716502702bbbf8db483f28543d81953d367d719cf5fc1ddfc8"
+    sha256 arm64_linux:   "c0baaca63ec22d339a797b4be872cdd047cdcc0e0316c311ee841a5fa6bad978"
+    sha256 x86_64_linux:  "b97e762b2657955a9f6c8494cb29d6b2dfba66c0b70bbaea88eaaa4d45a29011"
   end
 
   head do
@@ -60,7 +60,6 @@ class Audacious < Formula
   depends_on "libogg"
   depends_on "libopenmpt"
   depends_on "libsamplerate"
-  depends_on "libsidplayfp"
   depends_on "libsndfile"
   depends_on "libsoxr"
   depends_on "libvorbis"
@@ -71,7 +70,7 @@ class Audacious < Formula
   depends_on "qtimageformats" => :no_linkage # for webp album covers
   depends_on "qtmultimedia"
   depends_on "qtsvg" => :no_linkage # for svg icons
-  depends_on "sdl2"
+  depends_on "sdl3"
   depends_on "wavpack"
 
   uses_from_macos "curl"
@@ -85,8 +84,15 @@ class Audacious < Formula
     depends_on "jack"
     depends_on "libx11"
     depends_on "libxml2"
+    depends_on "pipewire"
     depends_on "pulseaudio"
     depends_on "zlib-ng-compat"
+  end
+
+  # Remove `libsidplayfp`, which is actually Windows only dependency, remove in next release
+  patch do
+    url "https://github.com/audacious-media-player/audacious/commit/61fae600af7e71c5dc03c74f45dee6edc4889611.patch?full_index=1"
+    sha256 "b5e6fa094fa5db30b1154e30a6372d89006803f4f4069b0f219d8d086007a05d"
   end
 
   def install

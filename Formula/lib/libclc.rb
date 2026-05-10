@@ -1,8 +1,8 @@
 class Libclc < Formula
   desc "Implementation of the library requirements of the OpenCL C programming language"
   homepage "https://libclc.llvm.org/"
-  url "https://github.com/llvm/llvm-project/releases/download/llvmorg-22.1.2/llvm-project-22.1.2.src.tar.xz"
-  sha256 "62f2f13ff25b1bb28ea507888e858212d19aafb65e8e72b4a65ee0629ec4ae0c"
+  url "https://github.com/llvm/llvm-project/releases/download/llvmorg-22.1.5/llvm-project-22.1.5.src.tar.xz"
+  sha256 "7972b87b705a003ce70ab55f9f0fb495d156887cba0eb296d284731139118e2c"
   license "Apache-2.0" => { with: "LLVM-exception" }
   compatibility_version 1
 
@@ -12,12 +12,12 @@ class Libclc < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "7e16de6eb361b027296ad2276caf549d8ae5c9a2bca673df619009a26b87aff3"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "7e16de6eb361b027296ad2276caf549d8ae5c9a2bca673df619009a26b87aff3"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "7e16de6eb361b027296ad2276caf549d8ae5c9a2bca673df619009a26b87aff3"
-    sha256 cellar: :any_skip_relocation, sonoma:        "7e16de6eb361b027296ad2276caf549d8ae5c9a2bca673df619009a26b87aff3"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "7e16de6eb361b027296ad2276caf549d8ae5c9a2bca673df619009a26b87aff3"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "d0208db6ea68fb2f01a75d7237a4a307ea6e75dd643f33e4c052628c76c022dc"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "70b97f6b3018bab701dfed3634ca890c463ba5a3445436a92e3f41fdc90c2e87"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "70b97f6b3018bab701dfed3634ca890c463ba5a3445436a92e3f41fdc90c2e87"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "70b97f6b3018bab701dfed3634ca890c463ba5a3445436a92e3f41fdc90c2e87"
+    sha256 cellar: :any_skip_relocation, sonoma:        "70b97f6b3018bab701dfed3634ca890c463ba5a3445436a92e3f41fdc90c2e87"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "70b97f6b3018bab701dfed3634ca890c463ba5a3445436a92e3f41fdc90c2e87"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "0ed31599ad9b3fc539dca989f92aafe23ae6b5a890fdd9c74601baf7842594e7"
   end
 
   depends_on "cmake" => :build

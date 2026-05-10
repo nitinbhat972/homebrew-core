@@ -1,18 +1,18 @@
 class CargoDeny < Formula
   desc "Cargo plugin for linting your dependencies"
   homepage "https://github.com/EmbarkStudios/cargo-deny"
-  url "https://github.com/EmbarkStudios/cargo-deny/archive/refs/tags/0.19.0.tar.gz"
-  sha256 "0d4d6972b9ab8ba939a7d26f5c5fd0227dc9d4e8579f6baec6f4831f50155a1d"
+  url "https://github.com/EmbarkStudios/cargo-deny/archive/refs/tags/0.19.5.tar.gz"
+  sha256 "48e5c691dfb246c37a078381b7d66300d9173fe7dbcb3bffeda81826650c5f40"
   license any_of: ["Apache-2.0", "MIT"]
   head "https://github.com/EmbarkStudios/cargo-deny.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "95107dd182252ad629558292d3b32470809154f25154ef6c307e1450b5953cd8"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "3edce97742a97b3523c737ea8ac74c675a61246706770de32d4d8d7fa20623c2"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "56ddf4a229ce19e1b0b6857e8b65cae0c751ef3259c6ac5d2174c46466388b02"
-    sha256 cellar: :any_skip_relocation, sonoma:        "e82bb74957324383560f1e89fc07add19141c2c9f30b55a96c9f6dd8d8885f2a"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "cc2324f01b058b4532d935f752014436b7ececc979914d4afb7e74af6a621cba"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "151b560a8a62a72480a81b95b2fdef54e6533c4a59064674260e08961e74dad1"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "6864b5fb7f28565f840a792573e65eb240cbd0efefeeec20ff6581a8b59d0be7"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "ae6d15440d230f14fc548166ea5c6884c951ba0a9a7556dc0b74ec1244384636"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "86cb948e2873b1b3fbc6d6c45cf92940197d3a2536938ebc47ef77686587a8e6"
+    sha256 cellar: :any_skip_relocation, sonoma:        "5b08f52de1e9ddc1d5ffc641d5af915154d6f3397b7209cbcf9543fd1b57f102"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "d3c3482efb1b3e7f58f681674b13b400370d99bb9fd2bdcd56b7d56a4e4be879"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "998fefbbf4e6abe31e47cd650fe345f6b034315433f01861d025d70c2c5f648c"
   end
 
   depends_on "pkgconf" => :build

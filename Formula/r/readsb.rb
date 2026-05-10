@@ -1,17 +1,17 @@
 class Readsb < Formula
   desc "ADS-B decoder swiss knife"
   homepage "https://github.com/wiedehopf/readsb"
-  url "https://github.com/wiedehopf/readsb/archive/refs/tags/v3.16.10.tar.gz"
-  sha256 "2e41a44a7b80f7159149410069dcc7b40694af36be135b1f6291d9a52833d4f9"
+  url "https://github.com/wiedehopf/readsb/archive/refs/tags/v3.16.14.tar.gz"
+  sha256 "f0469d06dceb75e7ee5c0ae74e710f3dd2ff0941c1c579678226b998c5d2c7d9"
   license "GPL-3.0-or-later"
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "7d7c845e293ef33793362c55a18398eb36d444923273703e130d209ef930b3e3"
-    sha256 cellar: :any,                 arm64_sequoia: "f6d9740fc8fc3afe962074f3a9ab6770b03bb117b4d77ecf5a95e55a70c1a317"
-    sha256 cellar: :any,                 arm64_sonoma:  "4d6f5cc5a67ef6ea8c438aebb4f25dd3ddf8e02a85677f9992c8c10204d94d1f"
-    sha256 cellar: :any,                 sonoma:        "6e2a9212edcd85f9a0393cd7da623b2fa12183f0db5d74dbaeaeb75476b48f05"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "b83a062693b31150552368eb0d28644b0b84e1f8834a34bc57ca767c12d5bd90"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "c0fff6863c5fb47de644f8a8a9d9d14debe5d3423e9395852f322e0361ab02c8"
+    sha256 cellar: :any,                 arm64_tahoe:   "b20a8351a7a9460bd85959193701615b53fc3529575e7bbde035f1775a6e864b"
+    sha256 cellar: :any,                 arm64_sequoia: "404f0593b5958af24d9eb659fcc6c4341612a4249e950b0587171cf5975d4274"
+    sha256 cellar: :any,                 arm64_sonoma:  "5ba73c30797464a5ad28c71912da7fd68bf4c24a9e5d5a35738f0073dab5284a"
+    sha256 cellar: :any,                 sonoma:        "6795aca3f4697a03254d2b820c6a10e2020fd05930d7726a69ae777c925bcdbb"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "131422fd48cb829cdfb78a332120998c4ae17cfd861f77f0e796c843fa4b84bd"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "122671aee363242a7e0012830aa68ac1728b5d1ba269066db81e25892ba35868"
   end
 
   depends_on "pkgconf" => :build

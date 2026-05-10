@@ -3,13 +3,13 @@ class Storm < Formula
 
   desc "Distributed realtime computation system to process data streams"
   homepage "https://storm.apache.org"
-  url "https://www.apache.org/dyn/closer.lua?path=storm/apache-storm-2.8.5/apache-storm-2.8.5.tar.gz"
-  mirror "https://archive.apache.org/dist/storm/apache-storm-2.8.5/apache-storm-2.8.5.tar.gz"
-  sha256 "fa3c379bdc7e4b4d5ed3ffaa067bc1dc84baae706d18ee361ffe974a511d649b"
+  url "https://www.apache.org/dyn/closer.lua?path=storm/apache-storm-2.8.7/apache-storm-2.8.7.tar.gz"
+  mirror "https://archive.apache.org/dist/storm/apache-storm-2.8.7/apache-storm-2.8.7.tar.gz"
+  sha256 "5a50b02c11e8a67baf8302cc3c9b5b099422fc0d0f076a67f657901748b8a741"
   license "Apache-2.0"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, all: "e0f7cf833ea579e584e7faf1f7bc7b4f50e30c570481e444e9c67f0566915cae"
+    sha256 cellar: :any_skip_relocation, all: "9d6a3b9661a824c7fb732079f54bd31bd7259137f619962381ce5a4fb771d6ad"
   end
 
   depends_on "openjdk"

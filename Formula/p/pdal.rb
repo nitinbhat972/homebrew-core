@@ -1,9 +1,10 @@
 class Pdal < Formula
   desc "Point data abstraction library"
   homepage "https://pdal.org/"
-  url "https://github.com/PDAL/PDAL/releases/download/2.10.0/PDAL-2.10.0-src.tar.bz2"
-  sha256 "65eba26e24a2cb1752d3542cc84e8035ecb8dc890b72145128f9b33bd184f2f5"
+  url "https://github.com/PDAL/PDAL/releases/download/2.10.1/PDAL-2.10.1-src.tar.bz2"
+  sha256 "78765f1d06584c8e9b3b4a5b58c0ebea478d42ad21f1432717b31c20def05522"
   license "BSD-3-Clause"
+  revision 2
   compatibility_version 1
   head "https://github.com/PDAL/PDAL.git", branch: "master"
 
@@ -13,12 +14,12 @@ class Pdal < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "9e0016f885a83d366f0bceeb076869ce9d82197cccf15e92b20250a4b01c3023"
-    sha256 cellar: :any,                 arm64_sequoia: "99e61a32ee87f0ea38d9f3b85fb950166f7e7ab09065d806bfb1d041b3457b07"
-    sha256 cellar: :any,                 arm64_sonoma:  "e1f14867f06d20cebb682238598a216689349c1b381b65ad7e6740a328db6ca0"
-    sha256 cellar: :any,                 sonoma:        "0a60db38ee951ecb87fe733b021cf83073e11ddf5b690f994447e1d2b34b1f38"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "03153aa21808408e7c45cf6eb79bf6893dc79205024ebe1b838d1350bc023925"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "4ca80129201d5d8c311e15e15e275398b053a662ba6df24ccf0ac003322b5097"
+    sha256 cellar: :any,                 arm64_tahoe:   "02deedfb1769a0487800fa7b95d59de7090052b19d2f91f1d7e5c6da24f8a3e6"
+    sha256 cellar: :any,                 arm64_sequoia: "55d452bc08f69baa055e69e993f2d5ea0fcb23286802526f12252be47cf96ee2"
+    sha256 cellar: :any,                 arm64_sonoma:  "9c0c7df209df73486cf970ba047bafb94a93ef5c324c98b6ff85e6f56ab95fd6"
+    sha256 cellar: :any,                 sonoma:        "e9804142b9a27b338eb42420e9d332b8751cce6072839e99ad4f3d6955542951"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "648a369223ec298af9f32f6f7c592099b02bfec45e17cc2ebe27f33c4197365e"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "350452ddafa300c5e6c08b69f908f40f552299238cb7f3dd9519480ae1098131"
   end
 
   depends_on "cmake" => :build

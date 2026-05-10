@@ -3,18 +3,18 @@ class Zuban < Formula
   homepage "https://zubanls.com/"
   # pull from git tag to get submodules
   url "https://github.com/zubanls/zuban.git",
-    tag:      "v0.6.2",
-    revision: "8d0e851312a7507dfd917bc5473dfced5d52e5c1"
+    tag:      "v0.7.2",
+    revision: "98605cfae4d1cd453ca0b8110d824488edafb6cb"
   license "AGPL-3.0-only"
   head "https://github.com/zubanls/zuban.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "20b205da6b19499c1a760ef659ef17b8ef690aa07e985ba9e4b9c1254c8b937b"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "0b8c568c07b5d2e4ded3b7b0ed48cbce873825a9dab40d8a3f996d8d251c4702"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "6dafb8467b5587bf0c114f272ae4eb066854f324a46af967c6649ce4cb75b8c6"
-    sha256 cellar: :any_skip_relocation, sonoma:        "84489dc3199eb45dc7f5afa266ee3bc64738a7238cde699ebf6e055d4216e55a"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "5c925122b2d39318e12c9ac19e10fae2251169f238ba012750ac1215a423d17e"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "ec4d21fe0bc81057c770482b62c031eb6028aea127d0bd539005dcdd3ded4cd4"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "346d655f339ab9222a9df78a0093801c1ae10d91a85b692e9a7295dc9882889e"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "5428911ed449b3f298f50ad9f0f41f4e364c496865648f5183a7e42d8410b44d"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "6ccedac9e31e6cb9460427a579434ef2ff2785ebc5e74496c1192ac5ff3571fd"
+    sha256 cellar: :any_skip_relocation, sonoma:        "bb3186ad33d72d3ae87c5a6b1feb413fd924732d899e8d3f5d02046d89053f11"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "8c6f771fc9f0e420018e228615b55b41bb62b7cdae8ae20a7d9e891594a31f74"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "6fa1db6f1101b8350f6837c43602f68677959dde1d7ea204924b6299134cf142"
   end
 
   depends_on "rust" => :build
@@ -26,7 +26,7 @@ class Zuban < Formula
   end
 
   test do
-    %w[zmypy zuban zubanls].each do |cmd|
+    %w[zmypy zuban].each do |cmd|
       assert_match version.to_s, shell_output("#{bin}/#{cmd} --version")
     end
 

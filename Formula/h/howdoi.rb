@@ -6,15 +6,15 @@ class Howdoi < Formula
   url "https://files.pythonhosted.org/packages/6d/43/0e8166583575bd500c0f8f1a4ab9429af9466feb6fcdc006e88de8fd23e9/howdoi-2.0.20.tar.gz"
   sha256 "51cd40c53e0c0f8f8da88f480eb7423183be2350ab4f0a4d9d4763ca6ac3e2a9"
   license "MIT"
-  revision 16
+  revision 19
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "775acb6c3d03ba492ed88ebe99bb791b553a080c88ae317c209357e0723a26d1"
-    sha256 cellar: :any,                 arm64_sequoia: "55de969050372eb60e9b51eaac934786973c2ba6fa077785519d140b57228488"
-    sha256 cellar: :any,                 arm64_sonoma:  "8e5a52d9232691973a0f1d435fc6bb2290e71b174a0abefb5601cb6829373f00"
-    sha256 cellar: :any,                 sonoma:        "292df168fb691b2a97d0f08fce042d959d145bd338fa35df58686b44aaa74d7f"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "03f7fe8c2f0d20f50d64ab0964ad5377e00c0b1d24c405d4684071bb7375f1b9"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "866f966f61723f46dff5ab204dfcbde1988a25410d8b92ed3b819dbac792bbad"
+    sha256 cellar: :any,                 arm64_tahoe:   "7fa745f02c704122aafba5da8b0df91d59d3aece58935328bdfdd4a2ef51acc9"
+    sha256 cellar: :any,                 arm64_sequoia: "072d127c9f70677a2140eb5e654b4bee470954a10fc000a9e968399726846fa9"
+    sha256 cellar: :any,                 arm64_sonoma:  "5dc1161fddbbfc50c4078607045ea9084598755968e65d0f5003efc8e0b5295b"
+    sha256 cellar: :any,                 sonoma:        "6a35623688f6b8311607364d0a1f6b6ab0744aa5e927b32bc75f0e5237b17699"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "7caca856f205e6d90e2649e028758e8568913459013f4dd0b7bf80e7e357cacf"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "2129a762ec1a7983f9975079d99b8c965de4c970cd44c83475ba99be85b01b28"
   end
 
   depends_on "certifi" => :no_linkage
@@ -38,13 +38,13 @@ class Howdoi < Formula
   end
 
   resource "charset-normalizer" do
-    url "https://files.pythonhosted.org/packages/1d/35/02daf95b9cd686320bb622eb148792655c9412dbb9b67abb5694e5910a24/charset_normalizer-3.4.5.tar.gz"
-    sha256 "95adae7b6c42a6c5b5b559b1a99149f090a57128155daeea91732c8d970d8644"
+    url "https://files.pythonhosted.org/packages/e7/a1/67fe25fac3c7642725500a3f6cfe5821ad557c3abb11c9d20d12c7008d3e/charset_normalizer-3.4.7.tar.gz"
+    sha256 "ae89db9e5f98a11a4bf50407d4363e7b09b31e55bc117b4f7d80aab97ba009e5"
   end
 
   resource "click" do
-    url "https://files.pythonhosted.org/packages/3d/fa/656b739db8587d7b5dfa22e22ed02566950fbfbcdc20311993483657a5c0/click-8.3.1.tar.gz"
-    sha256 "12ff4785d337a1bb490bb7e9c2b1ee5da3112e94a8622f26a6c77f5d2fc6842a"
+    url "https://files.pythonhosted.org/packages/57/75/31212c6bf2503fdf920d87fee5d7a86a2e3bcf444984126f13d8e4016804/click-8.3.2.tar.gz"
+    sha256 "14162b8b3b3550a7d479eafa77dfd3c38d9dc8951f6f69c78913a8f9a7540fd5"
   end
 
   resource "colorama" do
@@ -68,8 +68,8 @@ class Howdoi < Formula
   end
 
   resource "lxml" do
-    url "https://files.pythonhosted.org/packages/aa/88/262177de60548e5a2bfc46ad28232c9e9cbde697bd94132aeb80364675cb/lxml-6.0.2.tar.gz"
-    sha256 "cd79f3367bd74b317dda655dc8fcfa304d9eb6e4fb06b7168c5cf27f96e0cd62"
+    url "https://files.pythonhosted.org/packages/28/30/9abc9e34c657c33834eaf6cd02124c61bdf5944d802aa48e69be8da3585d/lxml-6.1.0.tar.gz"
+    sha256 "bfd57d8008c4965709a919c3e9a98f76c2c7cb319086b3d26858250620023b13"
   end
 
   resource "markdown-it-py" do
@@ -83,13 +83,13 @@ class Howdoi < Formula
   end
 
   resource "pygithub" do
-    url "https://files.pythonhosted.org/packages/c1/74/e560bdeffea72ecb26cff27f0fad548bbff5ecc51d6a155311ea7f9e4c4c/pygithub-2.8.1.tar.gz"
-    sha256 "341b7c78521cb07324ff670afd1baa2bf5c286f8d9fd302c1798ba594a5400c9"
+    url "https://files.pythonhosted.org/packages/ab/c3/8465a311197e16cf5ab68789fe689535e90f6b61ab524cc32a39e67237ae/pygithub-2.9.1.tar.gz"
+    sha256 "59771d7ff63d54d427be2e7d0dad2208dfffc2b0a045fec959263787739b611c"
   end
 
   resource "pygments" do
-    url "https://files.pythonhosted.org/packages/b0/77/a5b8c569bf593b0140bde72ea885a803b82086995367bf2037de0159d924/pygments-2.19.2.tar.gz"
-    sha256 "636cb2477cec7f8952536970bc533bc43743542f70392ae026374600add5b887"
+    url "https://files.pythonhosted.org/packages/c3/b2/bc9c9196916376152d655522fdcebac55e66de6603a76a02bca1b6414f6c/pygments-2.20.0.tar.gz"
+    sha256 "6757cd03768053ff99f3039c1a36d6c0aa0b263438fcab17520b30a303a82b5f"
   end
 
   resource "pyjwt" do
@@ -108,13 +108,13 @@ class Howdoi < Formula
   end
 
   resource "requests" do
-    url "https://files.pythonhosted.org/packages/c9/74/b3ff8e6c8446842c3f5c837e9c3dfcfe2018ea6ecef224c710c85ef728f4/requests-2.32.5.tar.gz"
-    sha256 "dbba0bac56e100853db0ea71b82b4dfd5fe2bf6d3754a8893c3af500cec7d7cf"
+    url "https://files.pythonhosted.org/packages/5f/a4/98b9c7c6428a668bf7e42ebb7c79d576a1c3c1e3ae2d47e674b468388871/requests-2.33.1.tar.gz"
+    sha256 "18817f8c57c6263968bc123d237e3b8b08ac046f5456bd1e307ee8f4250d3517"
   end
 
   resource "rich" do
-    url "https://files.pythonhosted.org/packages/b3/c6/f3b320c27991c46f43ee9d856302c70dc2d0fb2dba4842ff739d5f46b393/rich-14.3.3.tar.gz"
-    sha256 "b8daa0b9e4eef54dd8cf7c86c03713f53241884e814f4e2f5fb342fe520f639b"
+    url "https://files.pythonhosted.org/packages/c0/8f/0722ca900cc807c13a6a0c696dacf35430f72e0ec571c4275d2371fca3e9/rich-15.0.0.tar.gz"
+    sha256 "edd07a4824c6b40189fb7ac9bc4c52536e9780fbbfbddf6f1e2502c31b068c36"
   end
 
   resource "terminaltables3" do

@@ -2,18 +2,23 @@ class Goreleaser < Formula
   desc "Deliver Go binaries as fast and easily as possible"
   homepage "https://goreleaser.com/"
   url "https://github.com/goreleaser/goreleaser.git",
-      tag:      "v2.14.3",
-      revision: "7cc45095d4e0bebd44c8d2bbf97823856405cfd7"
+      tag:      "v2.15.4",
+      revision: "fd20dc1995cd5eb3fded997d6613c7f694ab448b"
   license "MIT"
   head "https://github.com/goreleaser/goreleaser.git", branch: "main"
 
+  livecheck do
+    url :stable
+    strategy :github_latest
+  end
+
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "3917129e772a74b65c0669772dfcdad1849d867d919b72404c3a700b646bda57"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "c656dab7927cd2a3585ac829a005aedd5f65b3397920fe32d67ae97f72a27673"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "9295b5397c584a261412347487d2025c5967eb6ae5363c2031d750adf6e51dd8"
-    sha256 cellar: :any_skip_relocation, sonoma:        "c5b4f305c64bf8f3f9d7ac23dcaaf6c6fa04e4a21e33e8516d82a3ad7e6937e9"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "2045de75b0038e0e701d3a09a7693d67262c9087169d4071d29deea5522f3d52"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "8ca5d0199e3b11c9ae35c05d7b47997028804424783425374acb73e04f078bfa"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "413de1ef6add46617f0a21a0e8ae5d4d28e69968ce7ad299b45323e2f89eb61f"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "3a93a46ead6698b067df9d4ce63223a266a00da49c2a9a7089efc4ff5dc167ce"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "582403fc72d5344c5d656c53072040238ca5ce574f2a9b64b47db745f768d2d6"
+    sha256 cellar: :any_skip_relocation, sonoma:        "f8833327fb80333f27fca2ae565633498be3fdae6b4c5b3f84452634cf26d479"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "d69f83a67b219a4f7508e4d975b219b07499ba5ba27e693fa99fc8d91752943c"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "ae60095b42ed594654430c293a159b5f65f42bd14852505b65a093aff4d035be"
   end
 
   depends_on "go" => :build

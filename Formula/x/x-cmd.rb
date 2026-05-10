@@ -1,8 +1,8 @@
 class XCmd < Formula
   desc "Bootstrap 1000+ command-line tools in seconds"
   homepage "https://x-cmd.com"
-  url "https://github.com/x-cmd/x-cmd/archive/refs/tags/v0.8.8.tar.gz"
-  sha256 "f731b0e12dbb8d8f6a7b35f3995f04edf7b72b7210057f150011de5887ac44e9"
+  url "https://github.com/x-cmd/x-cmd/archive/refs/tags/v0.9.1.tar.gz"
+  sha256 "c2451311696cdbf0697d3db359073ae317a886f62f0b238325e78eaf2cae33ea"
   license all_of: ["Apache-2.0", "MIT", "BSD-3-Clause"]
   head "https://github.com/x-cmd/x-cmd.git", branch: "X"
 
@@ -12,15 +12,13 @@ class XCmd < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "8d104c3c88dc62b0c7a974e5410a5e79763c462dda2f0b9dbce6882796c20788"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "8d104c3c88dc62b0c7a974e5410a5e79763c462dda2f0b9dbce6882796c20788"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "8d104c3c88dc62b0c7a974e5410a5e79763c462dda2f0b9dbce6882796c20788"
-    sha256 cellar: :any_skip_relocation, sonoma:        "7abbd9eeed7fbafc84ff23b93a0dd668e734d61a3640f25f783978640fc6478b"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "d3594f2eae84602bb0bf6e59c8f07f05dc70ff296141adfb0566c59b44d4c1c6"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "d3594f2eae84602bb0bf6e59c8f07f05dc70ff296141adfb0566c59b44d4c1c6"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "6766d681a58d80af09e480f4da38d9a81acd78c346a53eb2ec8ad8da7781b818"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "6766d681a58d80af09e480f4da38d9a81acd78c346a53eb2ec8ad8da7781b818"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "6766d681a58d80af09e480f4da38d9a81acd78c346a53eb2ec8ad8da7781b818"
+    sha256 cellar: :any_skip_relocation, sonoma:        "107139e9769f03463058d19bb6b51bb3f011f30b7ad0e7140b961d60bc08a716"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "f070c2b336aad2fd3c1d89065076e8982c96e6183ade8b18d209d1764377fe80"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "f070c2b336aad2fd3c1d89065076e8982c96e6183ade8b18d209d1764377fe80"
   end
-
-  conflicts_with "xorg-server", "x-cli", because: "both provide an `x` binary"
 
   def install
     prefix.install Dir.glob("*")

@@ -3,12 +3,12 @@ class Httptap < Formula
 
   desc "HTTP request visualizer with phase-by-phase timing breakdown"
   homepage "https://httptap.dev"
-  url "https://files.pythonhosted.org/packages/c9/71/2e754d6f10fc1ea3966b09073ded8318d4a174a7292d566934b481697ec9/httptap-0.4.6.tar.gz"
-  sha256 "9d9735a223b72c926b79496faff85196401b26417d6469b8fe741381d9fb2637"
+  url "https://files.pythonhosted.org/packages/d0/2c/5bed1aa81b9387a81eb11fa81c5f45fc1c3220b97713a7f7f47b9623b9ba/httptap-0.5.2.tar.gz"
+  sha256 "0bd73b5c5b337af2b1545194f2ab2fe3b5f878daf37af67817c1fbfe4d85f09b"
   license "Apache-2.0"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, all: "60808978deec1b611cf217f36ccb8a37414dba5b9d7bfb75902ee9791bfcd87d"
+    sha256 cellar: :any_skip_relocation, all: "99fc7618068a1ac48576ddc543a1dd4a0ad6e6a29033bce28a3a385ef3716d0e"
   end
 
   depends_on "rust" => :build
@@ -19,8 +19,8 @@ class Httptap < Formula
                 exclude_packages: "certifi"
 
   resource "anyio" do
-    url "https://files.pythonhosted.org/packages/96/f0/5eb65b2bb0d09ac6776f2eb54adee6abe8228ea05b20a5ad0e4945de8aac/anyio-4.12.1.tar.gz"
-    sha256 "41cfcc3a4c85d3f05c932da7c26d0201ac36f72abd4435ba90d0464a3ffed703"
+    url "https://files.pythonhosted.org/packages/19/14/2c5dd9f512b66549ae92767a9c7b330ae88e1932ca57876909410251fe13/anyio-4.13.0.tar.gz"
+    sha256 "334b70e641fd2221c1505b3890c69882fe4a2df910cba14d97019b90b24439dc"
   end
 
   resource "argcomplete" do
@@ -79,13 +79,13 @@ class Httptap < Formula
   end
 
   resource "pygments" do
-    url "https://files.pythonhosted.org/packages/b0/77/a5b8c569bf593b0140bde72ea885a803b82086995367bf2037de0159d924/pygments-2.19.2.tar.gz"
-    sha256 "636cb2477cec7f8952536970bc533bc43743542f70392ae026374600add5b887"
+    url "https://files.pythonhosted.org/packages/c3/b2/bc9c9196916376152d655522fdcebac55e66de6603a76a02bca1b6414f6c/pygments-2.20.0.tar.gz"
+    sha256 "6757cd03768053ff99f3039c1a36d6c0aa0b263438fcab17520b30a303a82b5f"
   end
 
   resource "rich" do
-    url "https://files.pythonhosted.org/packages/b3/c6/f3b320c27991c46f43ee9d856302c70dc2d0fb2dba4842ff739d5f46b393/rich-14.3.3.tar.gz"
-    sha256 "b8daa0b9e4eef54dd8cf7c86c03713f53241884e814f4e2f5fb342fe520f639b"
+    url "https://files.pythonhosted.org/packages/c0/8f/0722ca900cc807c13a6a0c696dacf35430f72e0ec571c4275d2371fca3e9/rich-15.0.0.tar.gz"
+    sha256 "edd07a4824c6b40189fb7ac9bc4c52536e9780fbbfbddf6f1e2502c31b068c36"
   end
 
   resource "socksio" do

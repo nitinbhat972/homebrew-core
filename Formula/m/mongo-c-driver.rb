@@ -1,8 +1,8 @@
 class MongoCDriver < Formula
   desc "C driver for MongoDB"
   homepage "https://github.com/mongodb/mongo-c-driver"
-  url "https://github.com/mongodb/mongo-c-driver/archive/refs/tags/2.2.3.tar.gz"
-  sha256 "5d725d488bf26ae61403dca4c988d49f10814ebaaee8fcf4342e2f89a6e06410"
+  url "https://github.com/mongodb/mongo-c-driver/archive/refs/tags/2.3.0.tar.gz"
+  sha256 "0edd0e143af77861309d59c5c029d2408df7348c429c5e1f483c7ba449cb35ce"
   license "Apache-2.0"
   compatibility_version 1
   head "https://github.com/mongodb/mongo-c-driver.git", branch: "master"
@@ -13,12 +13,12 @@ class MongoCDriver < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "3016f10623524a930a61bfbd9294e5ebb36630b42334c184c794300ef2b105ee"
-    sha256 cellar: :any,                 arm64_sequoia: "73a4d1db6fbb819b4203bce5797dc364ad0a203a30d6bd679b2405bb893f18bb"
-    sha256 cellar: :any,                 arm64_sonoma:  "07c266cd3677d3303319d7eecdda0aca16c8faea241abbb5b234d5e15be13d9d"
-    sha256 cellar: :any,                 sonoma:        "5d847879848b2971abda65cb0879780dc09b2a0135d04378d37b277fa53258d7"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "dcbe2e3e57f59bd275d7f60d35af192cb9e3c1378104b919d633e565c28273d0"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "09416ece64d234071232cb64cb63cd34d8ce8df195a521e62fa970917e4f3e28"
+    sha256 cellar: :any,                 arm64_tahoe:   "336926859b333b66f2d74164b652b5a0c0a3e1b99524e0e29087db3ce8f69537"
+    sha256 cellar: :any,                 arm64_sequoia: "ebb36242b858213ae11773aacc11ec7c2df90da4a06d2f5a851dbf5eaa8999fa"
+    sha256 cellar: :any,                 arm64_sonoma:  "cc736db383f037928e0635bd19b196e68a2ec401b1ddf01a1db0275dfb6906f9"
+    sha256 cellar: :any,                 sonoma:        "5681798f8425885c4eb5cb5d751887b5bd68465b0ee12735271ec101ba659712"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "9499499331e8470642bdc2fe7d32c6ed3ae663fc4ea80dac1504263d2da79a06"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "ace76b739e8a16294c95c3982b57d581c8154d3df299b445a4edb35373126d17"
   end
 
   depends_on "cmake" => :build

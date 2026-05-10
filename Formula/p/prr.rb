@@ -3,7 +3,7 @@ class Prr < Formula
   homepage "https://github.com/danobi/prr"
   url "https://github.com/danobi/prr/archive/refs/tags/v0.21.0.tar.gz"
   sha256 "891d8b2bc0397027e909750ac7891ca3d6e215acab59a48d5b2da35e60b45b8c"
-  license "GPL-2.0-only"
+  license "GPL-2.0-or-later"
   head "https://github.com/danobi/prr.git", branch: "master"
 
   bottle do
@@ -31,7 +31,6 @@ class Prr < Formula
     ENV["LIBSSH2_SYS_USE_PKG_CONFIG"] = "1"
     # Ensure the correct `openssl` will be picked up.
     ENV["OPENSSL_DIR"] = Formula["openssl@3"].opt_prefix
-    ENV["OPENSSL_NO_VENDOR"] = "1"
 
     # Specify GEN_DIR for shell completions and manpage generation
     ENV["GEN_DIR"] = buildpath

@@ -3,18 +3,18 @@ class Hf < Formula
 
   desc "Client library for huggingface.co hub"
   homepage "https://huggingface.co/docs/huggingface_hub/guides/cli"
-  url "https://files.pythonhosted.org/packages/19/15/eafc1c57bf0f8afffb243dcd4c0cceb785e956acc17bba4d9bf2ae21fc9c/huggingface_hub-1.7.2.tar.gz"
-  sha256 "7f7e294e9bbb822e025bdb2ada025fa4344d978175a7f78e824d86e35f7ab43b"
+  url "https://files.pythonhosted.org/packages/39/40/43109e943fd718b0ccd0cd61eb4f1c347df22bf81f5874c6f22adf44bcff/huggingface_hub-1.14.0.tar.gz"
+  sha256 "d6d2c9cd6be1d02ae9ec6672d5587d10a427f377db688e82528f426a041622c2"
   license "Apache-2.0"
   head "https://github.com/huggingface/huggingface_hub.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "65abd0096a5189b562e14bfa7c26f6407c9420e73cada5a694c8a0f405bca7c0"
-    sha256 cellar: :any,                 arm64_sequoia: "465e28fb1edb5344223ee79f794c0ace6f85c1ddaebdda25f82efbffdca110d8"
-    sha256 cellar: :any,                 arm64_sonoma:  "bc8acbef52caa542cb1bb24903c2adb07b9d7a54fc97493fc981e0ba41c9706f"
-    sha256 cellar: :any,                 sonoma:        "b9b8bbdcc0b8686062af74782ad596a493707d14824c10cf0dd9848805799e22"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "e80f242710466014c3cc8d4ad1c626de0628510ce9fa21f81bed6363dc61d904"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "ca166a3c7f2cbef42fb5c5e3db1976850346f717bcf635a9d3ab70fa0135797f"
+    sha256 cellar: :any,                 arm64_tahoe:   "64dfd20e4b17363eed5b6601701925c4ef7133625871118347c6acb92f97b817"
+    sha256 cellar: :any,                 arm64_sequoia: "d7900261cdd38f8ada851a79a3c183903da06955f3d9154521cb9c7ea018873c"
+    sha256 cellar: :any,                 arm64_sonoma:  "f1d29021548649bbe6b71a4559e29a5d2b87ef9a3aca28178c3a60ba568c0856"
+    sha256 cellar: :any,                 sonoma:        "ddb1f9cb926f0f90e42fd516efea5cb35780eadb672df63f77d75057c40901f8"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "ad3d90aeabd96b465ae30e0f6fa0a6ec10f8fa1307afb1691750e5293436cd06"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "fd465fe79c0da1e1bfb6f0813b7ff0f1218b5566ad1fb3ff3cce84d2a753ff71"
   end
 
   depends_on "pkgconf" => :build
@@ -38,23 +38,23 @@ class Hf < Formula
   end
 
   resource "anyio" do
-    url "https://files.pythonhosted.org/packages/96/f0/5eb65b2bb0d09ac6776f2eb54adee6abe8228ea05b20a5ad0e4945de8aac/anyio-4.12.1.tar.gz"
-    sha256 "41cfcc3a4c85d3f05c932da7c26d0201ac36f72abd4435ba90d0464a3ffed703"
+    url "https://files.pythonhosted.org/packages/19/14/2c5dd9f512b66549ae92767a9c7b330ae88e1932ca57876909410251fe13/anyio-4.13.0.tar.gz"
+    sha256 "334b70e641fd2221c1505b3890c69882fe4a2df910cba14d97019b90b24439dc"
   end
 
   resource "click" do
-    url "https://files.pythonhosted.org/packages/3d/fa/656b739db8587d7b5dfa22e22ed02566950fbfbcdc20311993483657a5c0/click-8.3.1.tar.gz"
-    sha256 "12ff4785d337a1bb490bb7e9c2b1ee5da3112e94a8622f26a6c77f5d2fc6842a"
+    url "https://files.pythonhosted.org/packages/bb/63/f9e1ea081ce35720d8b92acde70daaedace594dc93b693c869e0d5910718/click-8.3.3.tar.gz"
+    sha256 "398329ad4837b2ff7cbe1dd166a4c0f8900c3ca3a218de04466f38f6497f18a2"
   end
 
   resource "filelock" do
-    url "https://files.pythonhosted.org/packages/94/b8/00651a0f559862f3bb7d6f7477b192afe3f583cc5e26403b44e59a55ab34/filelock-3.25.2.tar.gz"
-    sha256 "b64ece2b38f4ca29dd3e810287aa8c48182bbecd1ae6e9ae126c9b35f1382694"
+    url "https://files.pythonhosted.org/packages/b5/fe/997687a931ab51049acce6fa1f23e8f01216374ea81374ddee763c493db5/filelock-3.29.0.tar.gz"
+    sha256 "69974355e960702e789734cb4871f884ea6fe50bd8404051a3530bc07809cf90"
   end
 
   resource "fsspec" do
-    url "https://files.pythonhosted.org/packages/51/7c/f60c259dcbf4f0c47cc4ddb8f7720d2dcdc8888c8e5ad84c73ea4531cc5b/fsspec-2026.2.0.tar.gz"
-    sha256 "6544e34b16869f5aacd5b90bdf1a71acb37792ea3ddf6125ee69a22a53fb8bff"
+    url "https://files.pythonhosted.org/packages/d5/8d/1c51c094345df128ca4a990d633fe1a0ff28726c9e6b3c41ba65087bba1d/fsspec-2026.4.0.tar.gz"
+    sha256 "301d8ac70ae90ef3ad05dcf94d6c3754a097f9b5fe4667d2787aa359ec7df7e4"
   end
 
   resource "h11" do
@@ -63,8 +63,8 @@ class Hf < Formula
   end
 
   resource "hf-xet" do
-    url "https://files.pythonhosted.org/packages/09/08/23c84a26716382c89151b5b447b4beb19e3345f3a93d3b73009a71a57ad3/hf_xet-1.4.2.tar.gz"
-    sha256 "b7457b6b482d9e0743bd116363239b1fa904a5e65deede350fbc0c4ea67c71ea"
+    url "https://files.pythonhosted.org/packages/74/d8/5c06fc76461418326a7decf8367480c35be11a41fd938633929c60a9ec6b/hf_xet-1.5.0.tar.gz"
+    sha256 "e0fb0a34d9f406eed88233e829a67ec016bec5af19e480eac65a233ea289a948"
   end
 
   resource "httpcore" do
@@ -78,13 +78,13 @@ class Hf < Formula
   end
 
   resource "idna" do
-    url "https://files.pythonhosted.org/packages/6f/6d/0703ccc57f3a7233505399edb88de3cbd678da106337b9fcde432b65ed60/idna-3.11.tar.gz"
-    sha256 "795dafcc9c04ed0c1fb032c2aa73654d8e8c5023a7df64a53f39190ada629902"
+    url "https://files.pythonhosted.org/packages/ce/cc/762dfb036166873f0059f3b7de4565e1b5bc3d6f28a414c13da27e442f99/idna-3.13.tar.gz"
+    sha256 "585ea8fe5d69b9181ec1afba340451fba6ba764af97026f92a91d4eef164a242"
   end
 
   resource "markdown-it-py" do
-    url "https://files.pythonhosted.org/packages/5b/f5/4ec618ed16cc4f8fb3b701563655a69816155e79e24a17b651541804721d/markdown_it_py-4.0.0.tar.gz"
-    sha256 "cb0a2b4aa34f932c007117b194e945bd74e0ec24133ceb5bac59009cda1cb9f3"
+    url "https://files.pythonhosted.org/packages/5c/5c/f3aedc83549aae71cd52b9e9687fe896e3dc6e966ba20eba04718605d198/markdown_it_py-4.1.0.tar.gz"
+    sha256 "760e3f87b2787c044c5138a5ba107b7c2be26c03b13cc7f8fe42756b65b1df6c"
   end
 
   resource "mdurl" do
@@ -93,13 +93,13 @@ class Hf < Formula
   end
 
   resource "packaging" do
-    url "https://files.pythonhosted.org/packages/65/ee/299d360cdc32edc7d2cf530f3accf79c4fca01e96ffc950d8a52213bd8e4/packaging-26.0.tar.gz"
-    sha256 "00243ae351a257117b6a241061796684b084ed1c516a08c48a3f7e147a9d80b4"
+    url "https://files.pythonhosted.org/packages/d7/f1/e7a6dd94a8d4a5626c03e4e99c87f241ba9e350cd9e6d75123f992427270/packaging-26.2.tar.gz"
+    sha256 "ff452ff5a3e828ce110190feff1178bb1f2ea2281fa2075aadb987c2fb221661"
   end
 
   resource "pygments" do
-    url "https://files.pythonhosted.org/packages/b0/77/a5b8c569bf593b0140bde72ea885a803b82086995367bf2037de0159d924/pygments-2.19.2.tar.gz"
-    sha256 "636cb2477cec7f8952536970bc533bc43743542f70392ae026374600add5b887"
+    url "https://files.pythonhosted.org/packages/c3/b2/bc9c9196916376152d655522fdcebac55e66de6603a76a02bca1b6414f6c/pygments-2.20.0.tar.gz"
+    sha256 "6757cd03768053ff99f3039c1a36d6c0aa0b263438fcab17520b30a303a82b5f"
   end
 
   resource "pyyaml" do
@@ -108,8 +108,8 @@ class Hf < Formula
   end
 
   resource "rich" do
-    url "https://files.pythonhosted.org/packages/b3/c6/f3b320c27991c46f43ee9d856302c70dc2d0fb2dba4842ff739d5f46b393/rich-14.3.3.tar.gz"
-    sha256 "b8daa0b9e4eef54dd8cf7c86c03713f53241884e814f4e2f5fb342fe520f639b"
+    url "https://files.pythonhosted.org/packages/c0/8f/0722ca900cc807c13a6a0c696dacf35430f72e0ec571c4275d2371fca3e9/rich-15.0.0.tar.gz"
+    sha256 "edd07a4824c6b40189fb7ac9bc4c52536e9780fbbfbddf6f1e2502c31b068c36"
   end
 
   resource "shellingham" do
@@ -123,8 +123,8 @@ class Hf < Formula
   end
 
   resource "typer" do
-    url "https://files.pythonhosted.org/packages/f5/24/cb09efec5cc954f7f9b930bf8279447d24618bb6758d4f6adf2574c41780/typer-0.24.1.tar.gz"
-    sha256 "e39b4732d65fbdcde189ae76cf7cd48aeae72919dea1fdfc16593be016256b45"
+    url "https://files.pythonhosted.org/packages/e4/51/9aed62104cea109b820bbd6c14245af756112017d309da813ef107d42e7e/typer-0.25.1.tar.gz"
+    sha256 "9616eb8853a09ffeabab1698952f33c6f29ffdbceb4eaeecf571880e8d7664cc"
   end
 
   resource "typing-extensions" do
@@ -155,7 +155,7 @@ class Hf < Formula
   test do
     ENV["HUGGINGFACE_HUB_CACHE"] = testpath
     ENV["NO_COLOR"] = "1"
-    assert_match "Not logged in", shell_output("#{bin}/hf auth whoami")
-    assert_match "No cached repositories found.", shell_output("#{bin}/hf cache ls")
+    assert_match "Not logged in", shell_output("#{bin}/hf auth whoami 2>&1", 1)
+    assert_match "No results found.", shell_output("#{bin}/hf cache ls")
   end
 end

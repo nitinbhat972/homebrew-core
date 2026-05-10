@@ -1,18 +1,18 @@
 class Azion < Formula
   desc "CLI for the Azion service"
   homepage "https://github.com/aziontech/azion"
-  url "https://github.com/aziontech/azion/archive/refs/tags/4.18.0.tar.gz"
-  sha256 "be0cb8052dda7be1593a6ea79666324866391e76df62959a02ad5b55a1889722"
+  url "https://github.com/aziontech/azion/archive/refs/tags/4.21.0.tar.gz"
+  sha256 "54defc2576894a21f89d94e423ee81092d2238123f32075c80c7ca3919f2c6d9"
   license "MIT"
   head "https://github.com/aziontech/azion.git", branch: "dev"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "2e3bf077bd910a4214b34cc14c9f98681a69dfebfef8e1084551ce52af128acf"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "2e3bf077bd910a4214b34cc14c9f98681a69dfebfef8e1084551ce52af128acf"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "2e3bf077bd910a4214b34cc14c9f98681a69dfebfef8e1084551ce52af128acf"
-    sha256 cellar: :any_skip_relocation, sonoma:        "a5c94b30061391ecaf424e4ffd0224d5d9d07c964d1ddfbae5ab70c84cae0cca"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "9d4daa45546fd587b3e0a56fc5e8c268008e37850405db24148aa43017775501"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "f2788bddb1ad2078c3bd5729021d457a081606e82cc8be1599e9cff32ae504c6"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "3a429b5cf5535030dda2b3ba0511f6083fe2ccf52813cd84c9962f8acc03aeb2"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "3a429b5cf5535030dda2b3ba0511f6083fe2ccf52813cd84c9962f8acc03aeb2"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "3a429b5cf5535030dda2b3ba0511f6083fe2ccf52813cd84c9962f8acc03aeb2"
+    sha256 cellar: :any_skip_relocation, sonoma:        "3df87e8a80bddb61ce999eb26c59d6d053a079289a971daafbf127ee6c414aa1"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "04479331e21150d2cd1007f05c021be48296fda9696b1bd15a214ab7b1c54e0e"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "cb7b749a145864b9821edbff078161db7ee17de3ca484d81fb9664ef25a3d136"
   end
 
   depends_on "go" => :build

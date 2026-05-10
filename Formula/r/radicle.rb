@@ -1,8 +1,8 @@
 class Radicle < Formula
   desc "Sovereign code forge built on Git"
   homepage "https://radicle.xyz"
-  url "https://files.radicle.xyz/releases/latest/heartwood-1.7.1.tar.gz"
-  sha256 "3263219e470862cc2489ed684c6d947ec6d462354954f5e2ac1aba0939d851a8"
+  url "https://files.radicle.xyz/releases/latest/heartwood-1.8.0.tar.gz"
+  sha256 "c1de84fee59ae1c69fac5e42c932f4d2765a85630b27642f77792fc765948097"
   license all_of: ["MIT", "Apache-2.0"]
 
   livecheck do
@@ -13,20 +13,20 @@ class Radicle < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "e71464307cab48d0fa169d010bb1b6207289a3ed02e54b31cf6d6a2a4cfdcc0a"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "78a078aea6cf4d58e7f973890afef6a318186c5e5cf02102297365380b105509"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "cd67bfec110bd744f7c16cd41a0d95bb0067553182f2130e968acb0fa3695512"
-    sha256 cellar: :any_skip_relocation, sonoma:        "c03efe8cd243725f5b7bcbdb4fd8f89863cef6d29a06d91c39ff2dc9ce5f4a8d"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "c667b42aff1b507a927bb5033f70c11cf84dd27cb84e3f05bbc2bc0f86bbcf7b"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "727c6f48e6f98916cf6d61188c15bfb13e86b103816cdfbe381b3ee764a38257"
+    rebuild 1
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "34545b51cb33bec8fbeac1222e565be8cd15c9bbc9d9fed4204dd6e31fb5dfd9"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "44c502f24d3975fb3a20a97d42def993a56aba17d51d80ffa8838034583075a8"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "d58f5fe25736f51bbddef93b63d6cd5682f7c8a7020b4fe64c61a6a1c8d1e8b7"
+    sha256 cellar: :any_skip_relocation, sonoma:        "cb1151556ba90bdf9029a89e4811cba1a89022039aa8e0d908c5526dd1cefd85"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "033b01a508cdfebe47ba179e9d3fdda88dec6c8a4aa304943c79df87c8ebd4be"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "e8d2086f63462492179123fcc541be069bb9aedd2fb7f1abef536b409f697161"
   end
 
   depends_on "asciidoctor" => :build
   depends_on "rust" => :build
 
-  depends_on "openssh"
-
   on_linux do
+    depends_on "openssh"
     depends_on "zlib-ng-compat"
   end
 

@@ -1,18 +1,18 @@
 class Rad < Formula
   desc "Modern CLI scripts made easy"
-  homepage "https://amterp.github.io/rad/"
-  url "https://github.com/amterp/rad/archive/refs/tags/v0.9.0.tar.gz"
-  sha256 "1c602c9d5a186529812b8187dcb23efdf07d1019aea2b9335420ac2c8e82a81c"
+  homepage "https://amterp.dev/rad/"
+  url "https://github.com/amterp/rad/archive/refs/tags/v0.10.1.tar.gz"
+  sha256 "dd9e76d37f9f99f500c037ae1631c58b83d0ba60e96c587b90a7434de7dddb0c"
   license "Apache-2.0"
   head "https://github.com/amterp/rad.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "aa78abdd8f6c06e4d5ec8debc055eaabd6917bfbaa73bab51f18bb2257200cdb"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "4eb3d519f65b50280d91421360bd672ff4b6339e4850b4df001fb2a002d892de"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "d16c57f8cfde3bbe14e77730b75c5e9e10c115a6d0afcde3da2421f529015f21"
-    sha256 cellar: :any_skip_relocation, sonoma:        "717f94d2e6f18b9a3444153c8d50350a998712b2886d7e1a3964ccea6fb7145a"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "ca2bc7cea9702f3d1bfec1b008817cbeadc840d3d728c83e33ac434995aa7d5c"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "6f07f9ccde40bd9cb5836ed1fdbafe2960ae1913982d4c95c6d63d958bc58c73"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "3203254b7a4b9c98880bf5ca8f938b8cc7890c13cfc6c23f6dd8ef42d3d7b9f5"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "8193e7675e167c3e5ffacbf20d569e446141aca9f00515d0495903f6ef40a41e"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "c715200a45485630e075743e079e93969b0cdd8e63e00790cd3a5bd1cec0df9a"
+    sha256 cellar: :any_skip_relocation, sonoma:        "d73213b7a0a76fa4391e4d4becfc37afc0efd8f4039897213dd0b4cb2709755d"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "b693bfd935fb3d5e7535e338e50c8c0cc2058f0ccc90da572f85b69e0b4e8bb2"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "a387e44ae1a68ffa0386dc93fff20e0324dd3b0112e3b915e776a87b115182b8"
   end
 
   depends_on "go" => :build
@@ -21,6 +21,7 @@ class Rad < Formula
     ENV["CGO_ENABLED"] = "1" if OS.linux? && Hardware::CPU.arm?
 
     system "go", "build", *std_go_args(ldflags: "-s -w")
+    system "go", "build", *std_go_args(ldflags: "-s -w", output: bin/"radls"), "./radls"
   end
 
   test do
@@ -38,5 +39,13 @@ class Rad < Formula
     chmod "+x", testpath/"test"
 
     assert_match "Hello, Homebrew!\nHello, Homebrew!", shell_output("#{testpath}/test 2")
+
+    output_log = testpath/"output.log"
+    pid = spawn bin/"radls", [:out, :err] => output_log.to_s
+    sleep 2
+    assert_match "Spinning up Rad LSP server", output_log.read
+  ensure
+    Process.kill("TERM", pid)
+    Process.wait(pid)
   end
 end

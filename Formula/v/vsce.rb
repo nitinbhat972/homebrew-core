@@ -1,8 +1,8 @@
 class Vsce < Formula
   desc "Tool for packaging, publishing and managing VS Code extensions"
   homepage "https://code.visualstudio.com/api/working-with-extensions/publishing-extension#vsce"
-  url "https://registry.npmjs.org/@vscode/vsce/-/vsce-3.7.1.tgz"
-  sha256 "aebab0210edcc5ddc5d3c90f420ba283dd6552968448714640fb78c2a0c4ce35"
+  url "https://registry.npmjs.org/@vscode/vsce/-/vsce-3.9.1.tgz"
+  sha256 "986adf4550db8d16825c856c74851cb020f3b8bbf261b37a7cbab34429186b4f"
   license "MIT"
   head "https://github.com/microsoft/vscode-vsce.git", branch: "main"
 
@@ -14,13 +14,12 @@ class Vsce < Formula
   end
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "d5dbdbbd13544c659059724ba4b29f8b458e777bb9068afccd635800c0cd4b73"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "d5dbdbbd13544c659059724ba4b29f8b458e777bb9068afccd635800c0cd4b73"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "d5dbdbbd13544c659059724ba4b29f8b458e777bb9068afccd635800c0cd4b73"
-    sha256 cellar: :any_skip_relocation, sonoma:        "697e277fb152068f51a02471c748118f6d6e47a74a059b3b1f4f915dc95eb093"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "fb6c71ce803227a87a139b666302048a8764083521124526920462df2778506d"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "51bd0dc9c14019f99dbfe25d4a164ed639347ef5ef346fa4ab574c5d08e871c2"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "e20db9724cf74c64e382d950930f4bded9c285d1d9dfa26ce9dd5e6b7482574e"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "e20db9724cf74c64e382d950930f4bded9c285d1d9dfa26ce9dd5e6b7482574e"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "e20db9724cf74c64e382d950930f4bded9c285d1d9dfa26ce9dd5e6b7482574e"
+    sha256 cellar: :any_skip_relocation, sonoma:        "8393771667562a37c23a519fb01cf71f0663e2953e756d0ec41f77f9159a5ddf"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "b97e0f23f09108df09ec2148a3903593d4af5e3b169768b9f666e72505eb224d"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "d45e755f38be0fabfb62c232aa17973dd772edfbcc99f493d6607cda0209ed5c"
   end
 
   depends_on "pkgconf" => :build

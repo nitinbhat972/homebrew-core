@@ -1,18 +1,18 @@
 class Algolia < Formula
   desc "CLI for Algolia"
   homepage "https://www.algolia.com/doc/tools/cli/get-started"
-  url "https://github.com/algolia/cli/archive/refs/tags/v1.8.0.tar.gz"
-  sha256 "23f6e2c832546339dffc8bc9178a4190418afa0313fdb8bf8b1eae6f8c845714"
+  url "https://github.com/algolia/cli/archive/refs/tags/v1.8.2.tar.gz"
+  sha256 "f9c2ef7e61206481487d3b2762e81ddcdd77280cd371b17b5eacc6240813ab60"
   license "MIT"
   head "https://github.com/algolia/cli.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "40d7325126169048781ce1d462ac1948bcf7d384f56594ce477a16e552e83bfc"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "40d7325126169048781ce1d462ac1948bcf7d384f56594ce477a16e552e83bfc"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "40d7325126169048781ce1d462ac1948bcf7d384f56594ce477a16e552e83bfc"
-    sha256 cellar: :any_skip_relocation, sonoma:        "3717f576db4d82f9bc6e27244e42c375e3a32f031dc673677441a2ba08803fbf"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "1a26856e56733af8562ef17757d0248734e86d29a7898a08acb64c1012844142"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "8fc66ce3c26589dd6bfb74dc3670e3c6f86e6aa37741fcd517ba85cd283aed42"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "aaba30a3098f59a267f81e5aaa5ad4968ee8cb728dd0ab4f454bba4aee433293"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "aaba30a3098f59a267f81e5aaa5ad4968ee8cb728dd0ab4f454bba4aee433293"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "aaba30a3098f59a267f81e5aaa5ad4968ee8cb728dd0ab4f454bba4aee433293"
+    sha256 cellar: :any_skip_relocation, sonoma:        "36d636373e422836119046851b658718435e66a7742227fab7d8c2ed9fb0b9dd"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "354c761cfcad40bc39d82e075a161c02d24695f086bedf3d2cc628ceb8d045b5"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "a0ee48c7d47c573ce1c78c3eccb1cdc70c6b8f5b677882be089a69cf1f811ca4"
   end
 
   depends_on "go" => :build

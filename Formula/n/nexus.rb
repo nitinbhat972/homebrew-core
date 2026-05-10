@@ -2,8 +2,8 @@ class Nexus < Formula
   desc "Repository manager for binary software components"
   homepage "https://www.sonatype.com/"
   url "https://github.com/sonatype/nexus-public.git",
-      tag:      "release-3.89.1-02",
-      revision: "a9c397255e85bac773bd97f00a13d7c9ab3fa99d"
+      tag:      "release-3.91.1-04",
+      revision: "260bcab61f935243160c3a47ba648571ccd2a21e"
   license "EPL-1.0"
 
   # As of writing, upstream is publishing both v2 and v3 releases. The "latest"
@@ -15,12 +15,12 @@ class Nexus < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "45a01160ff002116591e8c5150e5d66a4feb71023dc5e0fc0cdc87f97757e5d9"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "d371df29bb319e4ab494af2028b3c58ff0e59784063ec6274bfd51fa0ced8b9a"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "47b043a562d14cdb3784b45a9bd7a6660055fd9766043abb7180bd16734dc039"
-    sha256 cellar: :any_skip_relocation, sonoma:        "25bbcbbfdfcb2fcec058338c0231c5c03c1e1a3818171cd4c49229e42bfd4bf9"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "f28d3d72c7f6216b784984c106183b4d500a74237c28d8156f562a7df016e888"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "337601441ce2122c9108368e1db16a32983ba5303ccd4a9f2efea58fa1032577"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "c9c17d6f8a303bc91518b1fb6820994a2d2dc51b3d0a41f010531f0fb2be1846"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "88ca50aa08b329324db93097a9dbba7ba54acfc19a13af9e9600da8bbfd82fd6"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "47fa0ad2320508c073666cb2d56b1a30de1b6aad5f976849eac58e9e704591cc"
+    sha256 cellar: :any_skip_relocation, sonoma:        "73351751fc24cd8e3e7a6962f2d84cd44b5cf6c0622c56ee84db2ecc57e06320"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "c1882ec83de35a5609ea03cedcbb1e9fa1db96f3e56e25b866a80d4ccc9b9c22"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "0fb541d72bd9b57294886f3c225de4f5da009e06a91d28f5f711f1804baa3c54"
   end
 
   depends_on "maven" => :build
@@ -30,8 +30,9 @@ class Nexus < Formula
 
   uses_from_macos "unzip" => :build
 
-  # Avoid downloading copies of node and yarn
-  # To avoid non-FIPS provider loads bc-fips classes, use isolated classloader.
+  # 1. Avoid downloading copies of node and yarn
+  # 2. To avoid non-FIPS provider loads bc-fips classes, use isolated classloader.
+  # 3. Add NoopRecoveryModeService to avoid recovery mode that is implemented by private module.
   patch :DATA
 
   def install
@@ -139,3 +140,35 @@ index dfeb6f0..38e067c 100644
    }
  
    private static void loadFipsProvider() {
+diff --git a/public/common/components/nexus-scheduling/src/main/java/org/sonatype/nexus/scheduling/internal/NoopRecoveryModeService.java b/public/common/components/nexus-scheduling/src/main/java/org/sonatype/nexus/scheduling/internal/NoopRecoveryModeService.java
+new file mode 100644
+index 0000000..9279594
+--- /dev/null
++++ b/public/common/components/nexus-scheduling/src/main/java/org/sonatype/nexus/scheduling/internal/NoopRecoveryModeService.java
+@@ -0,0 +1,26 @@
++package org.sonatype.nexus.scheduling.internal;
++
++import org.sonatype.nexus.scheduling.RecoveryModeService;
++import org.springframework.stereotype.Component;
++
++@Component
++public class NoopRecoveryModeService
++    implements RecoveryModeService
++{
++  @Override
++  public boolean isRecoveryMode() {
++    return false;
++  }
++
++  @Override
++  public void enableRecoveryMode() {
++  }
++
++  @Override
++  public void disableRecoveryMode() {
++  }
++
++  @Override
++  public void ensureNotInRecoveryMode(final String taskName) {
++  }
++}

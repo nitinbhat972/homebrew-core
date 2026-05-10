@@ -1,19 +1,19 @@
 class Rocksdb < Formula
   desc "Embeddable, persistent key-value store for fast storage"
   homepage "https://rocksdb.org/"
-  url "https://github.com/facebook/rocksdb/archive/refs/tags/v10.10.1.tar.gz"
-  sha256 "df2ff348f3fac8578fd4b727eee7267aaf90cd403c99b55e898d1db63fa8cff5"
+  url "https://github.com/facebook/rocksdb/archive/refs/tags/v11.1.1.tar.gz"
+  sha256 "63f11183fe40725a0e89a9e392f2c86c94b90064f1d95f5173a02cfe40de13f7"
   license any_of: ["GPL-2.0-only", "Apache-2.0"]
+  compatibility_version 1
   head "https://github.com/facebook/rocksdb.git", branch: "main"
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any,                 arm64_tahoe:   "d1614d2a4c5acb5bf39aebcb2792717cff23ef9d8dd761cbc4c03f42227a44f3"
-    sha256 cellar: :any,                 arm64_sequoia: "fbd10ebeaf9b1518d3af65eec5ba4bbf9a71dfe53f6022163af62068dfcfa72f"
-    sha256 cellar: :any,                 arm64_sonoma:  "5fcd71d99272f69748d20547639cd29f8b74eee68c7cbdcc965f64c1c79c54ac"
-    sha256 cellar: :any,                 sonoma:        "04b506ca88a63e1f6f17d9710c175642b139f570d4601c2062403e0a2483eccc"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "ad10f71bedbadd5f0cd51bc782704e0e10d710ee1599500916331d79d1af7d9e"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "90c4057d4b34589ce782a576fca13702246c2f9bb94cb421930f7dd1e9b45f93"
+    sha256 cellar: :any,                 arm64_tahoe:   "2c467e3e32497d7b2d083df17bce39f38e09cdedaee4e16f4bb6a0537dd0c9c2"
+    sha256 cellar: :any,                 arm64_sequoia: "139f202e34c9f459b3100dcdc72941bbbdc4da598e38bc08186027399d48945f"
+    sha256 cellar: :any,                 arm64_sonoma:  "889af840722499d72bb196f6cd9eb0263ecab5616767845488dd179609837ff7"
+    sha256 cellar: :any,                 sonoma:        "8df51978eb1ac052efb44f2fde78a35b38e72b5e2d00a66c443ac25493e931c7"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "f9f7f4e2f7382aec8707d84fa049e22355f33631a0fc72b85c218f1e778888c3"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "25d9cdc531dc4c60490be75c53fd32d1180df3996894698124ef0cb856ddc410"
   end
 
   depends_on "cmake" => :build

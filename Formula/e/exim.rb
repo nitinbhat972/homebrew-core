@@ -1,8 +1,8 @@
 class Exim < Formula
   desc "Complete replacement for sendmail"
   homepage "https://exim.org"
-  url "https://ftp.exim.org/pub/exim/exim4/exim-4.99.1.tar.xz"
-  sha256 "eae967bd49a5f879933b8c6ec88c30475a1c6646232135f37f05b55dbc4e3447"
+  url "https://ftp.exim.org/pub/exim/exim4/exim-4.99.2.tar.xz"
+  sha256 "25364f19988270d846965689dd29c662cf5de152639875d0d5352a69fd753a47"
   license "GPL-2.0-or-later"
 
   # Maintenance releases are kept in a `fixes` subdirectory, so it's necessary
@@ -29,20 +29,20 @@ class Exim < Formula
   end
 
   bottle do
-    sha256 arm64_tahoe:   "f30b5fb4ddfe468ff0fce759bf838f4a76aec6fd314e3ca9786888b58f536641"
-    sha256 arm64_sequoia: "4d32185f2ae6fbb94dee3225296bd5299dd104abe2224fa702cfded059625cb6"
-    sha256 arm64_sonoma:  "927bcf3c9e21ab0fcde29d977b9ddec1d705c2baec59b1c8d786f8ec9281ac00"
-    sha256 sonoma:        "65e07005ecf7768db165df514066c69fa528bb1cfdd337b0aa66c5013ee946e1"
-    sha256 arm64_linux:   "153c3b6bd5c6a987b040b2146627c7cbde3ed124d14c9c070ed0e973ec081b6a"
-    sha256 x86_64_linux:  "bd001246d091daf1f2016aa7168dda7afb9e626496b8286c6b6cb422d9fb9094"
+    sha256 arm64_tahoe:   "6ba20980d6eb97c8a94a12621da6e6ecaaa42010539eda94c1987836f2c5059f"
+    sha256 arm64_sequoia: "5f2bdd66cfe010b60e71e6712652bab929bccc85aa43386bdb41e487ba92e99e"
+    sha256 arm64_sonoma:  "2a7c36a3175e52291b21173677b7a4af29c6bcee07663dfbea527c5d5c014e14"
+    sha256 sonoma:        "b2e66968169da79e22885fdd696fe1df70862307bb28d03018c799582f2a297f"
+    sha256 arm64_linux:   "e354e2cc5ab8d1b254f0ecde210bf088cb9ca91762470ec5c0a8a39dfa7440be"
+    sha256 x86_64_linux:  "f045a6a0c2c6589aa1c30e9e440075b406bf284d00c0198687d3a8654f13b75f"
   end
 
-  depends_on "berkeley-db@5"
   depends_on "openssl@3"
   depends_on "pcre2"
 
   uses_from_macos "libxcrypt"
   uses_from_macos "perl"
+  uses_from_macos "sqlite"
 
   resource "File::Next" do
     url "https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/File-Next-1.18.tar.gz"
@@ -91,17 +91,20 @@ class Exim < Formula
       # For non-/usr/local HOMEBREW_PREFIX
       s << "LOOKUP_INCLUDE=-I#{HOMEBREW_PREFIX}/include\n"
       s << "LOOKUP_LIBS=-L#{HOMEBREW_PREFIX}/lib\n"
-    end
 
-    bdb5 = Formula["berkeley-db@5"]
+      # Use sqlite rather than unmaintained Berkeley DB. This is the same choice
+      # made by Debian while Arch Linux uses `gdbm` and Alpine uses `tdb`.
+      s << "USE_SQLITE=yes\n"
+      s << "DBMLIB=-lsqlite3\n"
+
+      # Can enable sqlite feature as we already pull in sqlite dependency above
+      s << "LOOKUP_SQLITE=yes\n"
+    end
 
     cp "OS/unsupported/Makefile-Darwin", "OS/Makefile-Darwin"
     cp "OS/unsupported/os.h-Darwin", "OS/os.h-Darwin"
     inreplace "OS/Makefile-Darwin" do |s|
       s.remove_make_var! %w[CC CFLAGS]
-      # Add include and lib paths for BDB 5
-      s.gsub! "# Exim: OS-specific make file for Darwin (Mac OS X).", "INCLUDE=-I#{bdb5.include}"
-      s.gsub! "DBMLIB =", "DBMLIB=#{bdb5.lib}/libdb-5.dylib"
     end
 
     # The compile script ignores CPPFLAGS

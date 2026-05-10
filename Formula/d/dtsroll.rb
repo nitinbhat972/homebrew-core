@@ -1,17 +1,17 @@
 class Dtsroll < Formula
   desc "CLI tool for bundling TypeScript declaration files"
   homepage "https://github.com/privatenumber/dtsroll"
-  url "https://registry.npmjs.org/dtsroll/-/dtsroll-1.8.0.tgz"
-  sha256 "2242d4fbaae3d950943e13a4f9c2ed6530a7eebb9f7c5e90df8905fb970c33e7"
+  url "https://registry.npmjs.org/dtsroll/-/dtsroll-1.8.2.tgz"
+  sha256 "a40b1a0cf0fd28f7a2e0dfa69a6234ffd183bf2bb69108851f8a80b6f1d104a4"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "1867b9d98857cc28db679cf4eab2a9444121ad0c3e558a3831c469f8703c5263"
-    sha256 cellar: :any,                 arm64_sequoia: "d631f83565cca16849e094660c5c0a3152332b9cd7bb2c27ad05ad8fbd3ac0cf"
-    sha256 cellar: :any,                 arm64_sonoma:  "d631f83565cca16849e094660c5c0a3152332b9cd7bb2c27ad05ad8fbd3ac0cf"
-    sha256 cellar: :any,                 sonoma:        "d9e75ff0d548e5cbbde778e9108121341107bdfa2753e5621b889083b2e6433b"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "88f1076decbf725959b8d5413c18c20c432fee25bc811d55b0086b228b6b8821"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "8e30a45fbc6d378a35f8b827288c2cda4de617c847d72158b88cd299b4640b08"
+    sha256 cellar: :any,                 arm64_tahoe:   "407c0964d7920ee3ec5665f6779adb62aab0c6fcdadcba423772f28ca194d1cf"
+    sha256 cellar: :any,                 arm64_sequoia: "3d6c5a70f527bc6104be2d36e26d4fa5c8113979ebe32530fb7abe2dc42e5865"
+    sha256 cellar: :any,                 arm64_sonoma:  "3d6c5a70f527bc6104be2d36e26d4fa5c8113979ebe32530fb7abe2dc42e5865"
+    sha256 cellar: :any,                 sonoma:        "939bb9040536aa58c82fbce9f0afdf4b63145a3fa64733497d14a43de8c54028"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "69e31737de19b33a68a8fc465f744f7819a58600d393fbf73e0ab6fafcf91e8f"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "cc5e2ecc696c8e40ff6120d09f332a1fd0d0e8888ab1b7c4026bd281d891cae5"
   end
 
   depends_on "node"

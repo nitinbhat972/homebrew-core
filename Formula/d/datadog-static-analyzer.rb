@@ -1,18 +1,23 @@
 class DatadogStaticAnalyzer < Formula
   desc "Static analysis tool for code quality and security"
   homepage "https://docs.datadoghq.com/security/code_security/static_analysis/"
-  url "https://github.com/DataDog/datadog-static-analyzer/archive/refs/tags/0.7.9.tar.gz"
-  sha256 "8847ae9f4e20378d015755f1a6408f5da42f18c244dca3e149083db15800e190"
+  url "https://github.com/DataDog/datadog-static-analyzer/archive/refs/tags/0.8.4.tar.gz"
+  sha256 "b442a0db20dd09d40746fade2fbcb92cf1d4e7a5e775bc6e3a94c1c5864dce60"
   license "Apache-2.0"
   head "https://github.com/DataDog/datadog-static-analyzer.git", branch: "main"
 
+  livecheck do
+    url :stable
+    regex(/^v?(\d+(?:\.\d+)+)$/i)
+  end
+
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "cada71c9a09d11e16f6cf2173adcaf9a6688043d1362ab5af97ccf95959a6709"
-    sha256 cellar: :any,                 arm64_sequoia: "cbe6978c266a448216204761d6d2eba453ebc6451c8f7e5bf72f60aa6f8f582e"
-    sha256 cellar: :any,                 arm64_sonoma:  "67a870265dc236ad45b444105dd87f0ffef6a53958acf4ab727af4ea91a1c188"
-    sha256 cellar: :any,                 sonoma:        "bb595af72d4266a4ee526e4fcd82e9076807243438dbaef7c95ce007d9da8951"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "f450c7ded456dde2fb662dd781d5f58a903a2829249664633acf5cbb12fda0de"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "df76e303b8332d0b6efee7df7a1b430607f357fb908867aeb40bd8c674d84e23"
+    sha256 cellar: :any,                 arm64_tahoe:   "6559e9f88409e521604df014691d6d59ece1be267a1e81aa6d14a3839c3f10f5"
+    sha256 cellar: :any,                 arm64_sequoia: "05efbff383dce0fe3361e647184b11288e37c487b0c50bb796b65bdb4e2c1266"
+    sha256 cellar: :any,                 arm64_sonoma:  "1cd70a5f73230ddf02fa1d4922ca66def2984cdb89fc9c2c1976f13ca3477e57"
+    sha256 cellar: :any,                 sonoma:        "eb3412dfe212288ff7f897378a38048e891704a8fc4493f1ff28d26a60ffa840"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "70fe5e1682122c079f1c0d6348791ceed19e49452de24203cf66183dcd59a58e"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "90af02968ae27233c2ab53770cd7a36b00b7b8d2f558b0e16c5b2f7ac1ec7bce"
   end
 
   depends_on "pkgconf" => :build
@@ -39,7 +44,7 @@ class DatadogStaticAnalyzer < Formula
     YAML
     output = shell_output("#{bin}/datadog-static-analyzer -i #{testpath} -f sarif " \
                           "-o #{testpath}/output.sarif")
-    assert_match "Found", output
+    assert_match "Static Analysis Summary", output
     assert_path_exists testpath/"output.sarif"
   end
 end

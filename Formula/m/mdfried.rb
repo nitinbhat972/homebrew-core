@@ -1,18 +1,23 @@
 class Mdfried < Formula
   desc "Terminal markdown viewer"
   homepage "https://github.com/benjajaja/mdfried"
-  url "https://github.com/benjajaja/mdfried/archive/refs/tags/v0.18.2.tar.gz"
-  sha256 "af31a4ca3215a54ea826246cba8b2fbbb957164fd8ee7f8f253f751e98ff4ee9"
+  url "https://github.com/benjajaja/mdfried/archive/refs/tags/v0.19.7.tar.gz"
+  sha256 "c9cb3a3faa22e01128632806229947741004c13a22041378778e3186b8a95b72"
   license "GPL-3.0-or-later"
   head "https://github.com/benjajaja/mdfried.git", branch: "master"
 
+  livecheck do
+    url :stable
+    regex(/^v?(\d+(?:\.\d+)+)$/i)
+  end
+
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "b6d09fb5125fa782f66c718951b90fcf2c94434890ce8224af43beb11d5681b8"
-    sha256 cellar: :any,                 arm64_sequoia: "90627161d40bfd25f87f879f3acebf8bb8d4b70d2b314ae42e54dcba4a9f013a"
-    sha256 cellar: :any,                 arm64_sonoma:  "6b1eef3e88d8599874c733c9dfd8e40f64c3ba5113c7a0ca23dc0db1a8ed60ba"
-    sha256 cellar: :any,                 sonoma:        "5d83fbfe0fe34114c38ff81823da7992ed95f52320445ba284aaf9e962fb0a09"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "a7e967b34689d2124a2c2018dff36515f409b00cfe221694d4a2d64789f48bb8"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "db4b30df5c99b4929f2877ba2bb3c08ace94b6d136f81b29152ecb012e6325f0"
+    sha256 cellar: :any,                 arm64_tahoe:   "7249f8d257877df4c56688549511200f52796de223ab8a8ac2a25ac9a0628a8f"
+    sha256 cellar: :any,                 arm64_sequoia: "c6a46f5f5de431c61bf816f757caa11753706a185d368f5464b8dea44e870426"
+    sha256 cellar: :any,                 arm64_sonoma:  "332f5b5652eb1ecc02bc33fe4371213b27056db6a757345db476ff050e969e2b"
+    sha256 cellar: :any,                 sonoma:        "b29f3c890e8e729d8ab54a233f0132e46659087f190ba781b5454ba3bcd7bcf7"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "3e491cd94436551185e92e406de44094e3da270e15591e51e0a535984a3eae35"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "92a071ebc2236efc63ab4a556ba0817866386c889fb1b61e8ce7b6e5ca5d203f"
   end
 
   depends_on "pkgconf" => :build
@@ -35,15 +40,17 @@ class Mdfried < Formula
       # Hello World
     MARKDOWN
 
-    cmd = "#{bin}/mdfried #{testpath}/test.md 2>&1"
-    output = if OS.mac?
-      shell_output(cmd)
+    output_log = testpath/"output.log"
+    pid = if OS.mac?
+      spawn bin/"mdfried", testpath/"test.md", [:out, :err] => output_log.to_s
     else
       require "pty"
-      r, _w, pid = PTY.spawn({ "FONTCONFIG_FILE" => "#{etc}/fonts/fonts.conf" }, cmd)
-      Process.wait(pid)
-      r.read_nonblock(1024)
+      PTY.spawn("#{bin}/mdfried #{testpath}/test.md", [:out, :err] => output_log.to_s).last
     end
-    assert_match "cursor position could not be read", output
+    sleep 3
+    assert_match "Detecting supported graphics protocols...", output_log.read
+  ensure
+    Process.kill("TERM", pid)
+    Process.wait(pid)
   end
 end

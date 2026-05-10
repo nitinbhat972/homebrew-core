@@ -1,10 +1,9 @@
 class Micromamba < Formula
   desc "Fast Cross-Platform Package Manager"
   homepage "https://github.com/mamba-org/mamba"
-  url "https://github.com/mamba-org/mamba/archive/refs/tags/2.5.0.tar.gz"
-  sha256 "2d8761e423275b2e2b46352c99bdedc062ca22b98871ffa82e044d2be74b350f"
+  url "https://github.com/mamba-org/mamba/archive/refs/tags/2.6.0.tar.gz"
+  sha256 "d3a9eeb7e84c6c107ad40f1e665e38c5af97dac822bd766109988ffbedbcc4a3"
   license "BSD-3-Clause"
-  revision 3
   head "https://github.com/mamba-org/mamba.git", branch: "main"
 
   livecheck do
@@ -15,12 +14,12 @@ class Micromamba < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "b8678ce8b38fc758ec3bfff83ffad875001df11d6e55d090e0f672f90490a5a1"
-    sha256 cellar: :any,                 arm64_sequoia: "f8b325e926d55ed25607a859ba6ef247683637b75ac744d5731a5bb0fb55c74f"
-    sha256 cellar: :any,                 arm64_sonoma:  "07f65fd67e88363f8d9dc25a5a74744988a660289d7cc1ded0fe30d4136080ee"
-    sha256 cellar: :any,                 sonoma:        "900809d133149d98b61debf4ac3a49ee414dd9e2cd4db00da8f369e8131451bd"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "f687b8ab4d038348551d4b242b4f1e23321521bbbbdf834231527b980f0ae7fe"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "6abbd4c8170649cb65a7bb994ba5aac96fe193d08986e3992b5aadea00cf3962"
+    sha256 cellar: :any,                 arm64_tahoe:   "aed2f01cea5b8bd8aaaaee509819af323f521adcbf8341b3421fd29b42006a9d"
+    sha256 cellar: :any,                 arm64_sequoia: "a4800a5bcaffc226807a3c2aea0eef308a587dbfca717fd50fd90ed4265d98bd"
+    sha256 cellar: :any,                 arm64_sonoma:  "3f95014e5c0b4c45f30e81fcc86b172031bffcd12f18ac2c56f27202d50a0d0a"
+    sha256 cellar: :any,                 sonoma:        "4a6100fde7e1c21030e914bea61297f6301ea4c8f1412954c6c2de68b3e69fd2"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "7a10cf712d4d919ed494bb04bb43179b226c6099866824acab716228b0a3ce85"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "5b5e5544fbf781b325bad0342f55df80d38348f6f1c3b5a32274d282e21c9676"
   end
 
   depends_on "cli11" => :build
@@ -34,6 +33,7 @@ class Micromamba < Formula
   depends_on "libarchive"
   depends_on "libsolv"
   depends_on "lz4"
+  depends_on "msgpack"
   depends_on "openssl@3"
   depends_on "reproc"
   depends_on "simdjson"

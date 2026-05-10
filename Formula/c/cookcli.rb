@@ -1,28 +1,25 @@
 class Cookcli < Formula
   desc "CLI-tool for cooking recipes formated using Cooklang"
   homepage "https://cooklang.org"
-  url "https://github.com/cooklang/cookcli/archive/refs/tags/v0.27.1.tar.gz"
-  sha256 "81dcfd9a6b7509790ac0c60944ed86f7d419d94587b8e4d496c3c7d5d374bd8b"
+  url "https://github.com/cooklang/cookcli/archive/refs/tags/v0.29.1.tar.gz"
+  sha256 "20e7b60eb5d0a98ba182d8fadc6e95d70d99c9935a391313e532fa5f6619bff8"
   license "MIT"
   head "https://github.com/cooklang/cookcli.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "dc26069144dfb69e88c8402e66bf7154b4c8feb2a2d77dcc123dc15fdb335bb2"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "8d7529f3a431f0b97920ead89e2946199e7c19ae7c62aecebf768343b34c3b8b"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "c181db2d3ed6b3402507ae559ad1aa7198ae06ebd286a28b732c06751fe72ebe"
-    sha256 cellar: :any_skip_relocation, sonoma:        "c1bd23585e81a122f58fb2941a51095904bbbfe54bb950aa6f5850aff786960b"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "aae8b16609e0e01e94dc32203fabaa0147e705133f1ba4550775d6f7aae877f7"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "a1113dcc61092aa3951982afe4a693af7b4e4f5dcc3f0d0474eec4d163f66f15"
+    rebuild 1
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "80718adc02a867a009b0fb55df93711cafbf01648ff7280bfac3db082d3f0018"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "9e009c7f9a43fade1ce38db62673fb53e570a2135c25e9b24dda804bac3f4112"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "5c936946d57ebe9af6734fe07735af1f2a215847cce1ea48db488a2ec08ee801"
+    sha256 cellar: :any_skip_relocation, sonoma:        "af192a3b015c53f211777487a46b18d107a8c2dc197630a2395e7d78faf6d587"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "ca2fcf6efa96e16a8f43cb93d1db6a1572ea5a84d6e9171fd842a8acee45b925"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "243e686d2be163a18ea2ab28eabad5b71ac1f76521f89cdd50b0ac2022019b2f"
   end
 
   depends_on "node" => :build
   depends_on "rust" => :build
-  depends_on "openssl@3"
 
   def install
-    ENV["OPENSSL_NO_VENDOR"] = "1"
-    ENV["OPENSSL_DIR"] = Formula["openssl@3"].opt_prefix
-
     # Install npm dependencies and build assets
     system "npm", "install", *std_npm_args(prefix: false)
     system "npm", "run", "build-css"

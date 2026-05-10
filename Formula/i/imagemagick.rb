@@ -1,24 +1,26 @@
 class Imagemagick < Formula
   desc "Tools and libraries to manipulate images in select formats"
   homepage "https://imagemagick.org/index.php"
-  url "https://imagemagick.org/archive/releases/ImageMagick-7.1.2-18.tar.xz"
-  sha256 "abb85df40f06fddf17d031629c7ad2778a55d478a8bff80d55ffee75c90a3982"
+  url "https://github.com/ImageMagick/ImageMagick/releases/download/7.1.2-21/ImageMagick-7.1.2-21.7z"
+  sha256 "c088acd4c3e7f1a98e10512d70282aedeadf666f19291eb07f763cd6675e404a"
   license "ImageMagick"
   compatibility_version 1
   head "https://github.com/ImageMagick/ImageMagick.git", branch: "main"
 
   livecheck do
-    url "https://imagemagick.org/archive/"
-    regex(/href=.*?ImageMagick[._-]v?(\d+(?:\.\d+)+-\d+)\.t/i)
+    url :stable
+    regex(/^v?(\d+(?:\.\d+)+-\d+)$/i)
+    strategy :github_releases
   end
 
   bottle do
-    sha256 arm64_tahoe:   "e84d15066ccb7643ddbab351b309185f33efa3e9a50d5f26bd9116c901fdd5d3"
-    sha256 arm64_sequoia: "08fadb30aed6727eba073cbd31da801dfdecfd461ad2d94813bda0df3e4508ca"
-    sha256 arm64_sonoma:  "9cc795f1033162f4a0a23c1b548b7b872a9675cda3cd45fee064bc697febe82a"
-    sha256 sonoma:        "4b78871f9c705270d361e057047d8d79eae4c138e9e8fbd1d928d60dcb24c2d9"
-    sha256 arm64_linux:   "72dafd7346fbb523ffd1f547ce587e3d9d3dd4788006853505333165e932a12c"
-    sha256 x86_64_linux:  "4f630c1afd065ebabc9ed34a7fc51f321ead9d63eb573560ec19ddc7a4cd23cd"
+    rebuild 1
+    sha256 arm64_tahoe:   "54371751db99ac5fd1f11ed1ea56616b8aa00e589e04d9ee0332741287c016d4"
+    sha256 arm64_sequoia: "e1bf98fa07bbec7829c10aa9a45eb88f9a4f191563e2e53fcb14f40f5d879847"
+    sha256 arm64_sonoma:  "051a00bf46e408492b3bfee2a99e038e397e7325a81297929918ed7a0c883d81"
+    sha256 sonoma:        "28063c63d74ec1f3e2c57d1ee17c0fd49d2a7801dd57a6097d3d278993e7ca8b"
+    sha256 arm64_linux:   "6e9735c44eb103a67a08d15e4b0be6788554af42b0d909eed71bb665438564be"
+    sha256 x86_64_linux:  "667b1b9fdba8362ea847cf3259937ecdce96cd59846cf4da3f6f2f4d54ee0040"
   end
 
   depends_on "pkgconf" => :build
@@ -26,10 +28,8 @@ class Imagemagick < Formula
   # Only add dependencies required for dependents in homebrew-core,
   # recursive dependencies or INCREDIBLY widely used and light formats in the
   # current year (2026).
-  # Add other dependencies to imagemagick-full formula or consider making
-  # formulae dependent on imagemagick-full.
+  # Add other dependencies to imagemagick-full formula.
   depends_on "freetype"
-  depends_on "glib"
   depends_on "jpeg-turbo"
   depends_on "libheif"
   depends_on "libpng"
@@ -41,11 +41,6 @@ class Imagemagick < Formula
 
   uses_from_macos "bzip2"
   uses_from_macos "libxml2"
-
-  on_macos do
-    depends_on "gettext"
-    depends_on "imath"
-  end
 
   on_linux do
     depends_on "zlib-ng-compat"
@@ -79,11 +74,7 @@ class Imagemagick < Formula
       "--without-jxl",
       "--without-openexr",
     ]
-    if OS.mac?
-      args += [
-        "--without-x",
-      ]
-    end
+    args << "--without-x" if OS.mac?
 
     system "./configure", *args, *std_configure_args
     system "make", "install"

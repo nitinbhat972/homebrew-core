@@ -1,19 +1,18 @@
 class Sesh < Formula
   desc "Smart session manager for the terminal"
   homepage "https://github.com/joshmedeski/sesh"
-  url "https://github.com/joshmedeski/sesh/archive/refs/tags/v2.24.2.tar.gz"
-  sha256 "dd19e3818ef7c77e36cd0bbf8de60c26183e91e838ae3025e759d36006000013"
+  url "https://github.com/joshmedeski/sesh/archive/refs/tags/v2.26.2.tar.gz"
+  sha256 "f6bbfd1513332bd5abd4dc5e0b135b8aeac375abb8601f2d7bb9ffe25174f006"
   license "MIT"
   head "https://github.com/joshmedeski/sesh.git", branch: "main"
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "8fbbe8f4739d5828b91e12d74d4850962200622e587b7bf6174cc783682ae465"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "8fbbe8f4739d5828b91e12d74d4850962200622e587b7bf6174cc783682ae465"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "8fbbe8f4739d5828b91e12d74d4850962200622e587b7bf6174cc783682ae465"
-    sha256 cellar: :any_skip_relocation, sonoma:        "5f3cea788214c8991140183f4889e6ce9182e2055c5273f1a5a6ba5b4297e765"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "9c6cdee52beb52ff575949a790b91f1b65943d764ceeeecb6771d7da0225bdaa"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "c9eaa1162b55d0353200ce358110a4b2e523fe922cb365cdcc1483a7b86a3d1d"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "c5fb21c1b8c73fe8c5292c00257511469b134ca0b6783523ca20ebf261787bcb"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "c5fb21c1b8c73fe8c5292c00257511469b134ca0b6783523ca20ebf261787bcb"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "c5fb21c1b8c73fe8c5292c00257511469b134ca0b6783523ca20ebf261787bcb"
+    sha256 cellar: :any_skip_relocation, sonoma:        "624f9a1df204c6fcb47ebe0fb048ee1fb6e96e9932435fb55366135bbe343a69"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "cb0923a26ebc45b7e3a987a7f0dec62583ac02695f98715b7ca93dc539005612"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "ac4bd03ef75a2f3f64bf7b08fb7795c091bf76b7301d407033530ad29c3f524a"
   end
 
   depends_on "go" => :build

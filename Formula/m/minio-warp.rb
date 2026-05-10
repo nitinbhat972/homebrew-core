@@ -1,19 +1,18 @@
 class MinioWarp < Formula
   desc "S3 benchmarking tool"
   homepage "https://github.com/minio/warp"
-  url "https://github.com/minio/warp/archive/refs/tags/v1.4.0.tar.gz"
-  sha256 "48b47eecdc9c49357065740c62411aac5c87b36cf06f0f9d5cce93e8c6c5ece6"
+  url "https://github.com/minio/warp/archive/refs/tags/v1.5.0.tar.gz"
+  sha256 "cf1f16c612ca72af01b0de2b30a79486e7d03c4da7cfba49e142265eb550e0ba"
   license "AGPL-3.0-or-later"
   head "https://github.com/minio/warp.git", branch: "master"
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "e05bb44711400871f75125f3522a29531f887b989124090bb5a1cb54a95a19d3"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "1b113fed2d68680b2b5a4ef44239c5892e1cc094bfc68612219e83572ddd398d"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "2f8ba292adced14d74d07040c6d9371f257e32affcb9ca6c466a5caa8b2b58de"
-    sha256 cellar: :any_skip_relocation, sonoma:        "b6360cf3dd727c777a84858faa86130e8c4cd73f89f6a1bb248133d99e5f40bd"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "4909a5f0223942bacae3a22afd8e7d66858f23f7a0dcedc16fba6d8bb3a3dd60"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b052276431943851117dda12c7fc842328ed4a2fed059786b2a4ff00e08ea3ef"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "1de21beb5507c561a4fcf56462cbe4a4b003eb1d7635ebb123fb29a9f217615e"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "717d02e30f1f87a521b0131a7063dda96f4ca264d422ca2ccc0cfb5c0d7bc447"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "f38a5096a886320866fe201b71d1a159398da0e7b38f5863abfba30e453d7369"
+    sha256 cellar: :any_skip_relocation, sonoma:        "f9a02937872a206ffa7428bd254877769786fa06f4f57a32952ccdb946dac198"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "0a6f14ff723ac43caa6f4bcb281cad9cf9507eed32dde1ba128dfcad9a9dfb31"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "972b931ebd7e4fa010d029ed8a651046a61a4aa15e5e3c40a1ed75dfeba4f38d"
   end
 
   depends_on "go" => :build

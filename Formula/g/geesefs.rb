@@ -1,18 +1,18 @@
 class Geesefs < Formula
   desc "FUSE FS implementation over S3"
   homepage "https://github.com/yandex-cloud/geesefs"
-  url "https://github.com/yandex-cloud/geesefs/archive/refs/tags/v0.43.5.tar.gz"
-  sha256 "37fb37fc4f15dc553693a268ef9bf3ca27d8f5f5ebb580a4fc4e869f235d528d"
+  url "https://github.com/yandex-cloud/geesefs/archive/refs/tags/v0.43.7.tar.gz"
+  sha256 "4a55c8caab14d95ac8b4c89544b0e5ff9296d0de09225f455eb8dc071f182961"
   license "Apache-2.0"
   head "https://github.com/yandex-cloud/geesefs.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "7e31f7849b96b9ba604d69570a31d6e4f71defa4834611701a6d222a916e3f91"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "1115e48c3c493faa3bf75fb7ab34095c0282870a510ad7a9f1b1ca262a57c07f"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "d8da705c6595b27b9aed6d28d7f70523cadbbd2d39c43798ddd9f496b952840e"
-    sha256 cellar: :any_skip_relocation, sonoma:        "62f92419fa6f16eb22765bf270ccb1eb40abea1a161ea775d9aba0388c121f73"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "7be4f2794c34e2c0236b0f06e280d956181c863fa0bcfcd3b66cc244fabeb7b4"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b3681fb383753925bdad905b8bc65c942441d1fbb56ee6f6882a2e7b9ef39baf"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "ade340dd49faf60b3ef49d91d3ad33c2b065b3e0e0d70d7ea4c74be908be0357"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "c23a5dc60559d499fa34f97a15d9b1c7c37664cec16d0fa733a817452c7159e9"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "1fd8e9ad507f34677d0db1d41cb6a00e73b341d528a3065a563e60927581e2c0"
+    sha256 cellar: :any_skip_relocation, sonoma:        "2e9cb4f10d1bd68d8cd2e5e75e9dc6d186d5ea717788b55f83f1639d5a7cc907"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "9699a8dcf88959b339e5cc91898197a5e0592885678200207f51144fc45c178b"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "199fe006f4670713eb32b0e0f111f29b0eac7b8f26000d89157699f25b5955f9"
   end
 
   depends_on "go" => :build

@@ -1,18 +1,18 @@
 class Kargo < Formula
   desc "Multi-Stage GitOps Continuous Promotion"
   homepage "https://kargo.io/"
-  url "https://github.com/akuity/kargo/archive/refs/tags/v1.9.5.tar.gz"
-  sha256 "5c20b78f69e3b0888360224c668a77d5b22308b373593659935326d261eb25e8"
+  url "https://github.com/akuity/kargo/archive/refs/tags/v1.10.3.tar.gz"
+  sha256 "1ef64673757765a0356e009d9da9b9f80de3ac94b636448fa4a4b107a47238bf"
   license "Apache-2.0"
   head "https://github.com/akuity/kargo.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "634e2ee428f118a68fa134e02c494f55b6e5b3379beb718aefaf281191536803"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "6a9f542d3e70c3fad197ea9874677f75e9b052d3af047c10d388cb5f2652bc0e"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "3fbb6b62d9fff62e6dc568bc9bbc9d3ded703074867a925bfe9a70223f74dd51"
-    sha256 cellar: :any_skip_relocation, sonoma:        "ec82caa5f4bc007ed2ff2b828c67926ca179c87c95e341565c2866cb60b94f11"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "4702b02897ec13b941972494829be61454324b5af8a521fe6b0344d9f70c2bea"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "3ee37705bab0a9953c522315743530957746faf4cfaa74adf0455214230becd2"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "f67f0aa4959b7bc9846ff3d7e363bcd4efa3c807372aa02fbf9aa9f43219a4dd"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "91483a809678b48707a06f57a903997625108c76c5807980d5a7b3ddc3ef4fa6"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "568a90696357a169e0077230167a8fd606c05ebaf7fafe7998189c861dd9d78d"
+    sha256 cellar: :any_skip_relocation, sonoma:        "6003da01239cef91c1b69630b2fc25b03deff148cf2d776eaf251d646fb28d6b"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "2d1edb9366f0b967f0a4b669828201d1b7e2c2ce26db7b0b0d9162b17c739d1b"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "a0fea85b6defa1c850a2c083ba4b10bb60676c93427ceecf73d54c6f28dd4a13"
   end
 
   depends_on "go" => :build

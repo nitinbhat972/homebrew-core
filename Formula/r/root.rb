@@ -4,6 +4,7 @@ class Root < Formula
   url "https://root.cern/download/root_v6.38.04.source.tar.gz"
   sha256 "1ca561d03b3addae00cb76af57f8c75d3c229e8bd6939bdd408ec33fda9d3487"
   license "LGPL-2.1-or-later"
+  revision 1
   head "https://github.com/root-project/root.git", branch: "master"
 
   livecheck do
@@ -15,12 +16,12 @@ class Root < Formula
   end
 
   bottle do
-    sha256 arm64_tahoe:   "f1bb8f99d729f11310bc5cc9efdfb0d6e2d97b26e42e4514070731216eee7a94"
-    sha256 arm64_sequoia: "7e43d1c569a0751edf1c7669e5127a7285996f06dce9cecdb8db3d148c85e57a"
-    sha256 arm64_sonoma:  "be388704e412ef6f67b2bc5921de0b9a0220a0884dc8689e703e723eb569880c"
-    sha256 sonoma:        "5b7dab555029908cffc40197f1dc54cef63d13970fd15ad5173251fe9ef16e29"
-    sha256 arm64_linux:   "fedfb115cea6af22b6a061d292f1768d1e6bea0b3d20d62ee12ba58c44332dd6"
-    sha256 x86_64_linux:  "5a435a0a2a8603ff2eac5241bb849d22cf5983c5efd724f861d278749cf94889"
+    sha256 arm64_tahoe:   "6ceaf02daa812fbc69cbb21b7bb0162cc905a6865bfeb90997aea9dbda1869a1"
+    sha256 arm64_sequoia: "e74156291db7fc389bd8b8eedf92407fe4ff03b069cc64c6e62496884d778ebc"
+    sha256 arm64_sonoma:  "902f2c11e84d285ca11200afc614ae59cf94ca330fa1676e6bb30c67f8ef01e5"
+    sha256 sonoma:        "e60596a2ca193e536d6517a88fa4a288f3e1b0bc63b997ea15ad1da325dd8dd2"
+    sha256 arm64_linux:   "535f3dcfdaae5c27d4d9ca501623cf06818552c7f49ca9a160c2e72c1d3e2e67"
+    sha256 x86_64_linux:  "ee690216a88f9f156c180c068346742f32dd07f2cc42f4ce8f197aefe8dc252a"
   end
 
   depends_on "cmake" => :build

@@ -6,14 +6,15 @@ class Dolphie < Formula
   url "https://files.pythonhosted.org/packages/46/36/19ba18fc576c8228272f683c15bbfc518453728a4b79a6355cf9135c11b2/dolphie-6.14.0.tar.gz"
   sha256 "6ca09e85f182fc53f02ad9d4102d98ff7826fb87baa312c17801be6f50eba882"
   license "GPL-3.0-or-later"
+  revision 2
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "9f2bc96aae49f387cef9aa97d7787c7f3a0e1987195bb6830f2f9d4ec4f9dcbc"
-    sha256 cellar: :any,                 arm64_sequoia: "ba6b2a7e3973c6f78096af11816c24fc8af24ebe98bf17e532a91355d0959558"
-    sha256 cellar: :any,                 arm64_sonoma:  "6e2482d4a722f8d076bd6dce032715ee397d9c35da4716aa1eb9462d86bfd137"
-    sha256 cellar: :any,                 sonoma:        "e97645a6cfd51f061bef0ea5b0311824cf440acc8ef275b6dae1615c01795f36"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "eb00b8fb356bfa6510217f72a17ed18d6acb6055dc5fc6f8e5fa0c4772fdaab9"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "5637e6af6ce66162e2bd76045a77a2f74e09e41c4a71dd19de035f64bc37b992"
+    sha256 cellar: :any,                 arm64_tahoe:   "bfaa11025019c03663d888a14e95faa4bbcec80d8bd910a30921e2297aa14a03"
+    sha256 cellar: :any,                 arm64_sequoia: "6839832a9d2312956a5933e6f66684cc8248812f02812e194ba8251c0acc77c7"
+    sha256 cellar: :any,                 arm64_sonoma:  "df7663cf77f046d13c89c4f7bb709974ade7657e4da6960bcab9069417b8ef62"
+    sha256 cellar: :any,                 sonoma:        "feffdf5faa6569a15ac7a6a4c22ff46eaee21b1d50878758279f6fb01316bf73"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "0ba3d24d2fb6f98510e0e5f6585970ec1bced55c4daa6b46ed32cd1db7e94195"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "4999e10e93273fb8262cc4ed3490623f311bf215c465a5d1ede52d877c3ffb87"
   end
 
   depends_on "rust" => :build # for orjson
@@ -89,8 +90,8 @@ class Dolphie < Formula
   end
 
   resource "pygments" do
-    url "https://files.pythonhosted.org/packages/b0/77/a5b8c569bf593b0140bde72ea885a803b82086995367bf2037de0159d924/pygments-2.19.2.tar.gz"
-    sha256 "636cb2477cec7f8952536970bc533bc43743542f70392ae026374600add5b887"
+    url "https://files.pythonhosted.org/packages/c3/b2/bc9c9196916376152d655522fdcebac55e66de6603a76a02bca1b6414f6c/pygments-2.20.0.tar.gz"
+    sha256 "6757cd03768053ff99f3039c1a36d6c0aa0b263438fcab17520b30a303a82b5f"
   end
 
   resource "pymysql" do
@@ -99,8 +100,8 @@ class Dolphie < Formula
   end
 
   resource "requests" do
-    url "https://files.pythonhosted.org/packages/c9/74/b3ff8e6c8446842c3f5c837e9c3dfcfe2018ea6ecef224c710c85ef728f4/requests-2.32.5.tar.gz"
-    sha256 "dbba0bac56e100853db0ea71b82b4dfd5fe2bf6d3754a8893c3af500cec7d7cf"
+    url "https://files.pythonhosted.org/packages/34/64/8860370b167a9721e8956ae116825caff829224fbca0ca6e7bf8ddef8430/requests-2.33.0.tar.gz"
+    sha256 "c7ebc5e8b0f21837386ad0e1c8fe8b829fa5f544d8df3b2253bff14ef29d7652"
   end
 
   resource "rich" do
@@ -114,8 +115,8 @@ class Dolphie < Formula
   end
 
   resource "textual" do
-    url "https://files.pythonhosted.org/packages/72/23/8c709655c5f2208ee82ab81b8104802421865535c278a7649b842b129db1/textual-8.1.1.tar.gz"
-    sha256 "eef0256a6131f06a20ad7576412138c1f30f92ddeedd055953c08d97044bc317"
+    url "https://files.pythonhosted.org/packages/4f/07/766ad19cf2b15cae2d79e0db46a1b783b62316e9ff3e058e7424b2a4398b/textual-8.2.1.tar.gz"
+    sha256 "4176890e9cd5c95dcdd206541b2956b0808e74c8c36381c88db53dcb45237451"
   end
 
   resource "typing-extensions" do

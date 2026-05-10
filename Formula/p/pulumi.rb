@@ -1,21 +1,21 @@
 class Pulumi < Formula
   desc "Cloud native development platform"
-  homepage "https://pulumi.io/"
+  homepage "https://www.pulumi.com/"
   url "https://github.com/pulumi/pulumi.git",
-      tag:      "v3.228.0",
-      revision: "7551b7f72e4cd14769cb708c528bff771c0f6f5a"
+      tag:      "v3.237.0",
+      revision: "dc35aff8263f8fcd61bf93e48937a14eda6aecc7"
   license "Apache-2.0"
   head "https://github.com/pulumi/pulumi.git", branch: "master"
 
   no_autobump! because: :bumped_by_upstream
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "bd2e9857193fd5e594579ed959c0a3e2cea13ee23899db7e4b1b36dd6ab15bac"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "2047ccd251cb588f3cff87d63edc46150f8150af14779fe5d1f0a6c62a810f87"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "34ff81c955fbbd610e8acc6c2854e8d5feedf605c28b04f4987ab803d0120022"
-    sha256 cellar: :any_skip_relocation, sonoma:        "f82e3b0eddede5666a28b223a86de8d11d72364c382ab1905fd647723fb66a5c"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "4916179bdd9d42fa8e9724340768692576c4be5123315ce015ab6c37d6bea34d"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "cb2e139db2add6776b89e2daadd785c66b7f3f134c97cf931cad49e29188a445"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "cb8a5254b384f244d9bfe9f3adb19418562075dcd40a1ca205c181d60c015bb8"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "56912b71e44fd8a2a1382d51d7c8c094634e3640164bebd608e65970c41aa4c5"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "a717429d28d9748dd27d5a9505264f47a5f586f46bbade863ce2d59b37077c0d"
+    sha256 cellar: :any_skip_relocation, sonoma:        "9895fc0aab56c2ce15e9fcbc28648c162f9a8243ae2c3f6f6c1aeaa215e282b4"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "22438b4529e8c5e391f3ecafa372812ac80e85734985d48f8aeca470bbcf90fb"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "0e253cf4873f47602d29a76acdd1a697c88cb74698af1ddbaadb38e98e282e93"
   end
 
   depends_on "go" => :build

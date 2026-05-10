@@ -1,8 +1,8 @@
 class RattlerIndex < Formula
   desc "Index conda channels using rattler"
   homepage "https://github.com/conda/rattler"
-  url "https://github.com/conda/rattler/archive/refs/tags/rattler_index-v0.27.19.tar.gz"
-  sha256 "646fe4fe83be9c2d8debe4e2364204fab378d9a1b24ff465114ea93c2131dde3"
+  url "https://github.com/conda/rattler/archive/refs/tags/rattler_index-v0.28.2.tar.gz"
+  sha256 "9885bf03afd3fd43f70051d7da90e90dda21f1cf7998766a239c4dbad0b9a40c"
   license "BSD-3-Clause"
   head "https://github.com/conda/rattler.git", branch: "main"
 
@@ -12,12 +12,12 @@ class RattlerIndex < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "644223990adb75476e7864cbd3df5368d9fbc88d430c293c3dc84e0c1ab4c72e"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "24315c3dbbf132955422b31ea0300b1f105b111abae62644f140da6c8164136f"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "97e3302df219f78fbb4afed96590b43aed2af958b0007c62d6a2a328c433dbab"
-    sha256 cellar: :any_skip_relocation, sonoma:        "f170d4acbe77e706be494dbe4d580a8acd56040efb74fdba947a49efdb71869c"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "3e0837a5a1a0d93d0a6d9b40891a14fb869e0006aca983e3384e56f44071a8d8"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "216e3760e2e58e9ff939feb784301baaf120ee2cd4f89374cbdcebf52ee74ff2"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "8896d23a6296aef2a1d55f2986a48bd135b76e53d2113a1dd3093e99fd9d1d3b"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "6efad577e7c5d0f74cf2a4f297664950d0851d5b9df8fca5a2d8770981393587"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "d8dab0292f4504b8c11a6c2293ff698c527e9d5f3d891cc8835ea755000e2977"
+    sha256 cellar: :any_skip_relocation, sonoma:        "2e0ba11590758ad041623ec3d95a9d6f7c18c62d603a3f3223a3441e458ece6d"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "d778ed32b3873cbd059e261473eeb0e497c6ab013e5b7c2d05b977945538c3cb"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "d0878e0acfba1bc1b1f3059b0693ce1e93ac14d6ca3069fce771de9f05bf57f8"
   end
 
   depends_on "pkgconf" => :build

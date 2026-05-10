@@ -1,10 +1,10 @@
 class Onnxruntime < Formula
   desc "Cross-platform, high performance scoring engine for ML models"
   homepage "https://github.com/microsoft/onnxruntime"
-  url "https://github.com/microsoft/onnxruntime/archive/refs/tags/v1.24.4.tar.gz"
-  sha256 "0cf4d2ee4392fbb8aedaabc6b2ba11b4a680d1071fa4f75546c2289ca5b404cf"
+  url "https://github.com/microsoft/onnxruntime/archive/refs/tags/v1.26.0.tar.gz"
+  sha256 "2a90eb9a306c1eeb29213f5b165a55008ac5cb7d27e0935c4458c51a49ef091d"
   license "MIT"
-  revision 1
+  compatibility_version 3
 
   livecheck do
     url :stable
@@ -12,12 +12,12 @@ class Onnxruntime < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "1e6c19f92971fd3b181d432199f9b9f6a60c69ba3bdee811bc960f01da5c7acb"
-    sha256 cellar: :any,                 arm64_sequoia: "32ac56b381da95d273c2481c06a05a8f17cdf0946e0dd38e4424eb844e0c9bb6"
-    sha256 cellar: :any,                 arm64_sonoma:  "86681395e3075a7183b5a48d8aac0231ebe9ed339bd697b42b793352ecf9e792"
-    sha256 cellar: :any,                 sonoma:        "1b060f94c8a7f06f2d5abc47f08e3f0638963ccc76d041028d45d056699f5965"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "e708455ac9d0298be30985858b747ad44c30c0a2cc142369909a49c6198d2cd9"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "f32f75f0ff82bf6d27478d521b4c566c006389f3930d3cc963f1136cd6aae694"
+    sha256 cellar: :any,                 arm64_tahoe:   "831843bea0300335f07c39c9b9139756697ab47082fa3efdf57e83f20500dc01"
+    sha256 cellar: :any,                 arm64_sequoia: "7277ec9ef6a1e03cfd7c415244c7e450da689e769108f5962e58ec9a055a0964"
+    sha256 cellar: :any,                 arm64_sonoma:  "ea961e27650c78011fcca60c45c257fcee6d0241ffc5786950d767702ee66ae8"
+    sha256 cellar: :any,                 sonoma:        "aabe111237ae6a3d4f8f93a8a2a18d8a419adc3b86655a0754492f5ec0e58db2"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "282dd949d0a507a9d29488b861680f8f93fbd1c4d6e35fd5d20683244a678feb"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "cfb43bbe323ca05da117610e27e588b154b009cc53f69c9df1ab40e15997e033"
   end
 
   depends_on "boost" => :build

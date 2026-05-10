@@ -3,18 +3,17 @@ class Molecule < Formula
 
   desc "Automated testing for Ansible roles"
   homepage "https://molecule.readthedocs.io"
-  url "https://files.pythonhosted.org/packages/ec/a4/29f1738fa03ad997b07e8d48bdbcef0a35ee5aecee780d817711519b1f0b/molecule-26.3.0.tar.gz"
-  sha256 "e48c92383be5e580545dcc7d115b3f3559d6d5f28e1ab151a35dc780b7400a66"
+  url "https://files.pythonhosted.org/packages/09/e0/f671b5b0742a60b6067cbe9e57720b600ded5e0fcabb837663dd21b57568/molecule-26.4.0.tar.gz"
+  sha256 "12e4c905079f67628ae765506c697d2b8a744a65f2d4cbf5a3b22cb09d0dafc4"
   license "MIT"
-  revision 1
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "ab0ece905f0010b02c46e8c9eb256ec993864090f8c4b9be9a7ee9ec27af4db4"
-    sha256 cellar: :any,                 arm64_sequoia: "2ddeaeb598b29435281a5fd1c135bbafab535884d5bc7644c59094d9f1c3e684"
-    sha256 cellar: :any,                 arm64_sonoma:  "156885c6afc7bd7a9e46dd9e686c0bf58800d99e19ac5d685b355c6f994da578"
-    sha256 cellar: :any,                 sonoma:        "a0462929982644e4343d88cbc2a8db849096ce995e7209599e7512309dd15abf"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "cded01b4e5dd383a620717648a100923187e9ab8edb50125cd5762d217d3507d"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "8b8847f28eca16ac1927461929919d967b90b0123b64f2d62b8789cc16dbd18f"
+    sha256 cellar: :any,                 arm64_tahoe:   "3d89d2525b8e81165bdac7822480b7390ea9c315e5a2b8255489bdbe050dcf20"
+    sha256 cellar: :any,                 arm64_sequoia: "dc9bc9d82ae22f349279493d437870319dafa7e5a57977d2744740f6ec0e73dc"
+    sha256 cellar: :any,                 arm64_sonoma:  "804b35f6802b84c51f872de137f26a592b7a4571f67f8f80a9b6a789e94e33cf"
+    sha256 cellar: :any,                 sonoma:        "9610072d1ec6b66c29e527a986f72e40a24f5da52a869e0572566d32a01c2eb2"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "4a9458875f42763abe7fe75f7029680d4379216080b4fdaa04979445427f75ef"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "ff6b2225d87ed88046f32c4eaa4a67c348b0c33ef55d72356b80de85be8e71be"
   end
 
   depends_on "ansible"
@@ -34,18 +33,18 @@ class Molecule < Formula
                 extra_packages:   %w[distro molecule-plugins[azure,docker,ec2,gce,podman,vagrant,openstack] selinux]
 
   resource "ansible-compat" do
-    url "https://files.pythonhosted.org/packages/c7/8f/14e8566b9a0cd5393150719db218a7b332308456b003b289f21e5812000a/ansible_compat-25.12.1.tar.gz"
-    sha256 "509a42fbfc65acad90b4e62c311ec0b37447e497b9b2a19cc38a625e458f2afd"
+    url "https://files.pythonhosted.org/packages/04/42/53ba59f8116e716ec0af8dc47ef65b15f5e3bc28131e8e6cbe87e50203f5/ansible_compat-26.3.0.tar.gz"
+    sha256 "15f0ea5ff6fcc5587b6b11a4a436fdeefd0fd4a46afe92d4e483c28370082ae0"
   end
 
   resource "ansible-core" do
-    url "https://files.pythonhosted.org/packages/03/d6/2a1fda59f9bab7519f2e94a7bec8416e080dd2e17af4f4fb5d1e3d0c997d/ansible_core-2.20.3.tar.gz"
-    sha256 "38670ab2d2ffd67ee7e9e562f7c94e0927c8b7b4b0eb69233bc008c29e32d591"
+    url "https://files.pythonhosted.org/packages/11/7c/57263940ef61d7a829baef6e752556b1434f3a66ae05885c80753efbca50/ansible_core-2.20.4.tar.gz"
+    sha256 "2060c06195ada0cca0ac3128025d1167f567479da465897d818982fbe28bed1f"
   end
 
   resource "attrs" do
-    url "https://files.pythonhosted.org/packages/6b/5c/685e6633917e101e5dcb62b9dd76946cbb57c26e133bae9e0cd36033c0a9/attrs-25.4.0.tar.gz"
-    sha256 "16d5969b87f0859ef33a48b35d55ac1be6e42ae49d5e853b597db70c35c57e11"
+    url "https://files.pythonhosted.org/packages/9a/8e/82a0fe20a541c03148528be8cac2408564a6c9a0cc7e9171802bc1d26985/attrs-26.1.0.tar.gz"
+    sha256 "d03ceb89cb322a8fd706d4fb91940737b6642aa36998fe130a9bc96c985eff32"
   end
 
   resource "bracex" do
@@ -54,13 +53,13 @@ class Molecule < Formula
   end
 
   resource "charset-normalizer" do
-    url "https://files.pythonhosted.org/packages/7b/60/e3bec1881450851b087e301bedc3daa9377a4d45f1c26aa90b0b235e38aa/charset_normalizer-3.4.6.tar.gz"
-    sha256 "1ae6b62897110aa7c79ea2f5dd38d1abca6db663687c0b1ad9aed6f6bae3d9d6"
+    url "https://files.pythonhosted.org/packages/e7/a1/67fe25fac3c7642725500a3f6cfe5821ad557c3abb11c9d20d12c7008d3e/charset_normalizer-3.4.7.tar.gz"
+    sha256 "ae89db9e5f98a11a4bf50407d4363e7b09b31e55bc117b4f7d80aab97ba009e5"
   end
 
   resource "click" do
-    url "https://files.pythonhosted.org/packages/3d/fa/656b739db8587d7b5dfa22e22ed02566950fbfbcdc20311993483657a5c0/click-8.3.1.tar.gz"
-    sha256 "12ff4785d337a1bb490bb7e9c2b1ee5da3112e94a8622f26a6c77f5d2fc6842a"
+    url "https://files.pythonhosted.org/packages/57/75/31212c6bf2503fdf920d87fee5d7a86a2e3bcf444984126f13d8e4016804/click-8.3.2.tar.gz"
+    sha256 "14162b8b3b3550a7d479eafa77dfd3c38d9dc8951f6f69c78913a8f9a7540fd5"
   end
 
   resource "decorator" do
@@ -119,8 +118,8 @@ class Molecule < Formula
   end
 
   resource "jsonpointer" do
-    url "https://files.pythonhosted.org/packages/6a/0a/eebeb1fa92507ea94016a2a790b93c2ae41a7e18778f85471dc54475ed25/jsonpointer-3.0.0.tar.gz"
-    sha256 "2b2d729f2091522d61c3b31f82e11870f60b68f43fbc705cb76bf4b832af59ef"
+    url "https://files.pythonhosted.org/packages/18/c7/af399a2e7a67fd18d63c40c5e62d3af4e67b836a2107468b6a5ea24c4304/jsonpointer-3.1.1.tar.gz"
+    sha256 "0b801c7db33a904024f6004d526dcc53bbb8a4a0f4e32bfd10beadf60adf1900"
   end
 
   resource "jsonschema" do
@@ -204,8 +203,8 @@ class Molecule < Formula
   end
 
   resource "pygments" do
-    url "https://files.pythonhosted.org/packages/b0/77/a5b8c569bf593b0140bde72ea885a803b82086995367bf2037de0159d924/pygments-2.19.2.tar.gz"
-    sha256 "636cb2477cec7f8952536970bc533bc43743542f70392ae026374600add5b887"
+    url "https://files.pythonhosted.org/packages/c3/b2/bc9c9196916376152d655522fdcebac55e66de6603a76a02bca1b6414f6c/pygments-2.20.0.tar.gz"
+    sha256 "6757cd03768053ff99f3039c1a36d6c0aa0b263438fcab17520b30a303a82b5f"
   end
 
   resource "python-vagrant" do
@@ -224,8 +223,8 @@ class Molecule < Formula
   end
 
   resource "requests" do
-    url "https://files.pythonhosted.org/packages/c9/74/b3ff8e6c8446842c3f5c837e9c3dfcfe2018ea6ecef224c710c85ef728f4/requests-2.32.5.tar.gz"
-    sha256 "dbba0bac56e100853db0ea71b82b4dfd5fe2bf6d3754a8893c3af500cec7d7cf"
+    url "https://files.pythonhosted.org/packages/5f/a4/98b9c7c6428a668bf7e42ebb7c79d576a1c3c1e3ae2d47e674b468388871/requests-2.33.1.tar.gz"
+    sha256 "18817f8c57c6263968bc123d237e3b8b08ac046f5456bd1e307ee8f4250d3517"
   end
 
   resource "requestsexceptions" do

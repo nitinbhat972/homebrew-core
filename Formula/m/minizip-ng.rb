@@ -1,19 +1,18 @@
 class MinizipNg < Formula
   desc "Zip file manipulation library with minizip 1.x compatibility layer"
   homepage "https://github.com/zlib-ng/minizip-ng"
-  url "https://github.com/zlib-ng/minizip-ng/archive/refs/tags/4.1.0.tar.gz"
-  sha256 "85417229bb0cd56403e811c316150eea1a3643346d9cec7512ddb7ea291b06f2"
+  url "https://github.com/zlib-ng/minizip-ng/archive/refs/tags/4.2.1.tar.gz"
+  sha256 "3cc35c2cb925dbe67cc801e3234b31b0f30197812a99377352fa1b551ab3d011"
   license "Zlib"
   head "https://github.com/zlib-ng/minizip-ng.git", branch: "develop"
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any,                 arm64_tahoe:   "1c5d344d8e472115ba7088e581d5db6e572a8a0552917df353380bcf5eb53b6a"
-    sha256 cellar: :any,                 arm64_sequoia: "c39144f2361315036eb8d8d2e921057258630455734966530a5ba5efb2c7ab6c"
-    sha256 cellar: :any,                 arm64_sonoma:  "cef7c1e74c9196b64aede7f40e391907a783738955c8f943b8be48e3fa6fb0cb"
-    sha256 cellar: :any,                 sonoma:        "cdf7ea3520821d64e900f83ecd91fcdf45f35c9094e044b9420bc41f82b60a5a"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "4374f85c5cfcc5f9ae93a213c482cd643b423416f3a3f27f6b5a297559df24c4"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "ca71475bc122013714a7ea36f94d6862368cc8a03ef6ae89631cec6743c6a6b0"
+    sha256 cellar: :any,                 arm64_tahoe:   "02c53028eb50485f554371a65e128575b4460e65cae3125a6ae90421847fca6a"
+    sha256 cellar: :any,                 arm64_sequoia: "41d177457fc9fd7af37b608b314c193883b41644390a7179eacc2ff4caa128d1"
+    sha256 cellar: :any,                 arm64_sonoma:  "6ff38323e940b58e79cf732ac4cf7f5b7adec62f73a66aa65f2ca3bf8442a138"
+    sha256 cellar: :any,                 sonoma:        "21baa62cd8c44df28b98c0aa884993847310ee7741ccd7aeb665a779966a4f78"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "c5ee8d773e8593260e58169246ddcdd2ed491460fb6b14e2c8fd4937cbdd5eee"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "969fb9fcb3a3729cad28504fc87168f4b2e941ff41a4ea91396b015cc956e414"
   end
 
   depends_on "cmake" => :build
@@ -24,7 +23,7 @@ class MinizipNg < Formula
   uses_from_macos "bzip2"
 
   on_linux do
-    depends_on "openssl@3"
+    depends_on "openssl@4"
     depends_on "zlib-ng-compat"
   end
 
@@ -33,6 +32,7 @@ class MinizipNg < Formula
       -DMZ_FETCH_LIBS=OFF
       -DMZ_LIB_SUFFIX=-ng
       -DMZ_LIBCOMP=OFF
+      -DMZ_PPMD=OFF
       -DMZ_ZLIB=ON
     ]
 

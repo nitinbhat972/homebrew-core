@@ -1,8 +1,8 @@
 class Topgrade < Formula
   desc "Upgrade all the things"
   homepage "https://github.com/topgrade-rs/topgrade"
-  url "https://github.com/topgrade-rs/topgrade/archive/refs/tags/v17.1.0.tar.gz"
-  sha256 "70f8fd6e2bbfe51ddcdde037a84796134afc2bbdbefefc310ec682f7cab9de20"
+  url "https://github.com/topgrade-rs/topgrade/archive/refs/tags/v17.4.0.tar.gz"
+  sha256 "97b325d4e17b1b5699090382af2240c70629432da4677400151aae05af38cf64"
   license "GPL-3.0-or-later"
   head "https://github.com/topgrade-rs/topgrade.git", branch: "main"
 
@@ -14,12 +14,12 @@ class Topgrade < Formula
   no_autobump! because: :bumped_by_upstream
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "6baa91952054e24df6d9b26439e0ff016d9c2478fd2fe7d6fd9f96a0e6ca6f60"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "bd9d6bdafe32f1abae5e20cd3c3ae60437571d25c639cff48e49eab97f6f9453"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "54c1788c7b3a916b1c774e6d5ae54803a647cd6cee4dbe0afbd59871c147aba5"
-    sha256 cellar: :any_skip_relocation, sonoma:        "3a94e3fb149b4621c287c22a0aef3d1d271443120e2a31f46deb1d426b0fd05c"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "347d95b6416ec748f9227f93516938a47e9fc8357dfcc27efb0b9e57e029fcef"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "0d7b14468bfe6f9fb916f8ce3d6d2e0254e133b6c659fe3616099da222d4e4bf"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "f07398776f623de7b96bd8b46d3b4aa1aa468ecdd82652c692064bd96af8340f"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "912e2e232ac61f405d02cdb1875d098edafe11b114228f0052bd6525f4338f32"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "f8b1fce0981ea6342b5c83becbfabe935fc905cae041a8d1ef3c84aebd533c3d"
+    sha256 cellar: :any_skip_relocation, sonoma:        "34576c6504102ac22a20aafc7eabe5bf33a6e6ebd36c92662ec542f379c43228"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "d0965f22839b782d8dd4dadab404df577d9fa633d638037149008d17e818a869"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "064b8efbf86cdff5317dd58b21bc1ffb7558ed50656ddb6015200953bcd77419"
   end
 
   depends_on "rust" => :build

@@ -1,18 +1,18 @@
 class Cotp < Formula
   desc "TOTP/HOTP authenticator app with import functionality"
   homepage "https://github.com/replydev/cotp"
-  url "https://github.com/replydev/cotp/archive/refs/tags/v1.9.8.tar.gz"
-  sha256 "6b8c42558b2dadaba58dba22eee4618b218bee5186d1bd522367449648740be7"
+  url "https://github.com/replydev/cotp/archive/refs/tags/v1.9.10.tar.gz"
+  sha256 "4e7fcaa4ccfc5fa3eb417edeb8b9684ae907caa00603a68497f26aeb4990a594"
   license "GPL-3.0-only"
   head "https://github.com/replydev/cotp.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "9b012ad1cd7211149460e91d82fe4e1d391ce43533ae7d565b98ef6c4f71f5a3"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "5701112808501ca6225f8b0dd6405caea501e2d172db7e626d395b540d8577a1"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "ac9b6e542bad4d6e8a1bea25c0c1b4742028aee462a30bb4ab0849dd5f622b47"
-    sha256 cellar: :any_skip_relocation, sonoma:        "9b6d31c7ef56298c759a37cf47bfff5038f43c9654ce9fc42f7616c46f620619"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "d731966ac98bf6d7ae76192614403cac15b476cb4c84c662ce5ef1f84547f6b6"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "0e1abacaea8c6d9e34cc48ace4f834d6adcb12251abbd2304cb39669198470d7"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "dbe10265d7c2a58369326434237b74cb907a51d7460c0e7f624c4e94a3168bfc"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "dce26ff09b3b88fd05f5bff8c29e37f56232bcdf253c36e94bc76f9d60394803"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "02f5b4469e54bde088fefc896e6cb0dcdb1782874464e3c3aae06cfb472cfd0f"
+    sha256 cellar: :any_skip_relocation, sonoma:        "433c40b10664cdc35aed890f20e042bcd07eaf4e6788a9c672ef8857d71eabf5"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "2ddeebc8a4a23fe4a55be30d58a8ec98ecdd07576bd5b6321314988830065f6e"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "cb1ed38de2669322436f1a9b3d9f28c18ecd9105f4683fc04e6ded38c8479f6a"
   end
 
   depends_on "rust" => :build

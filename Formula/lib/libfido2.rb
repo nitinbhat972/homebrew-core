@@ -1,20 +1,18 @@
 class Libfido2 < Formula
   desc "Provides library functionality for FIDO U2F & FIDO 2.0, including USB"
   homepage "https://developers.yubico.com/libfido2/"
-  url "https://github.com/Yubico/libfido2/archive/refs/tags/1.16.0.tar.gz"
-  sha256 "7d86088ef4a48f9faad4ff6f41343328157849153a8dc94d88f4b5461cb29474"
+  url "https://github.com/Yubico/libfido2/archive/refs/tags/1.17.0.tar.gz"
+  sha256 "ace062d14a482ff9325410ff63d06c8b5fe87e79ebc18dda07add2bc0188c77f"
   license "BSD-2-Clause"
-  revision 1
   compatibility_version 1
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any,                 arm64_tahoe:   "432fd520ac9a846d45b344c4ce888fd6ffb898c78e289710de6aac0add686fb6"
-    sha256 cellar: :any,                 arm64_sequoia: "979c5922c7fc50b44cd52b56cc5864c5d084cdc5b7f37e0ef69f611cd02bbf2d"
-    sha256 cellar: :any,                 arm64_sonoma:  "a6446fead07bb8d304ae5d6580dca5f4860a9acbfa01fc45bef79df7cd95eb62"
-    sha256 cellar: :any,                 sonoma:        "c218ca912276907a8b7690f03649becd474c64bb0b12749b6136f3ffc7703126"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "5e95b21e17cf4fe231733612ebb7b524e5cacd27b20fb4828e0b3818b45ed00d"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "dbd9420fb40c7b95ab6011f9d8149a9406a32083d2044ca9dc0a1a4885f9b352"
+    sha256 cellar: :any,                 arm64_tahoe:   "3e0df39436ee2a482eca7566c22e04ad96a076af7e4ba3bf94e7f600d7da0203"
+    sha256 cellar: :any,                 arm64_sequoia: "1ae5fb9238e2e24b5c980f5ee80a7e6360695ed9bfb634a9650a76ba1de78d06"
+    sha256 cellar: :any,                 arm64_sonoma:  "c401ede66a7b0accb44e6fa381bf137188c810fc6124b791cc6534dd24790cc7"
+    sha256 cellar: :any,                 sonoma:        "5a6ffc55ffc19bd62ebf9e4182e0b39376d290ed71ccfa20f2bea4ce58cce2c3"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "31bf79664d64bfefdf1bbf7ca09172ea48711eb6417857fffbdec3b13397be90"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "cdad5bf5869d7ce4151ca98c45e4f84ea55f555c1bf2e03dd5eb73210d49f6e9"
   end
 
   depends_on "cmake" => :build

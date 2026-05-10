@@ -3,13 +3,18 @@ class Ipython < Formula
 
   desc "Interactive computing in Python"
   homepage "https://ipython.org/"
-  url "https://files.pythonhosted.org/packages/86/28/a4698eda5a8928a45d6b693578b135b753e14fa1c2b36ee9441e69a45576/ipython-9.11.0.tar.gz"
-  sha256 "2a94bc4406b22ecc7e4cb95b98450f3ea493a76bec8896cda11b78d7752a6667"
+  url "https://files.pythonhosted.org/packages/cd/c4/87cda5842cf5c31837c06ddb588e11c3c35d8ece89b7a0108c06b8c9b00a/ipython-9.13.0.tar.gz"
+  sha256 "7e834b6afc99f020e3f05966ced34792f40267d64cb1ea9043886dab0dde5967"
   license "BSD-3-Clause"
   head "https://github.com/ipython/ipython.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, all: "3661a5a11c943357de586aec6eee4f7a58b538c2570c21e67c52d678b7123694"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "b5e1a11417fd2b5e5eaba258e43083142635e1ce5d9a5c88ab0bd07dd771a6cc"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "a60a4510ce5aafdd08d2c572c80b5c4f43fa7bc6ebe9d334eb7fb4e9839972d4"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "4bc147746bac291e1fdda7e42513e0e63e50b10390903abc352ffb510f98a41f"
+    sha256 cellar: :any_skip_relocation, sonoma:        "e4d720ae858b4fe6a745060bb0064339cd5bdff079414eb3acbabc14a8088d9e"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "580194a7ad991568364fa4cac8b0c4149f5a093b93eef42802b96dbbe25f2388"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "ff3499eb1ed989d66a1a47399a0e5754ace9014f98073043570cb26fb0d053ec"
   end
 
   depends_on "python@3.14"
@@ -59,6 +64,11 @@ class Ipython < Formula
     sha256 "28cde192929c8e7321de85de1ddbe736f1375148b02f2e17edd840042b1be855"
   end
 
+  resource "psutil" do
+    url "https://files.pythonhosted.org/packages/aa/c6/d1ddf4abb55e93cebc4f2ed8b5d6dbad109ecb8d63748dd2b20ab5e57ebe/psutil-7.2.2.tar.gz"
+    sha256 "0746f5f8d406af344fd547f1c8daa5f5c33dbc293bb8d6a16d80b4bb88f59372"
+  end
+
   resource "ptyprocess" do
     url "https://files.pythonhosted.org/packages/20/e5/16ff212c1e452235a90aeb09066144d0c5a6a8c0834397e03f5224495c4e/ptyprocess-0.7.0.tar.gz"
     sha256 "5c5d0a3b48ceee0b48485e0c26037c0acd7d29765ca3fbb5cb3831d347423220"
@@ -70,8 +80,8 @@ class Ipython < Formula
   end
 
   resource "pygments" do
-    url "https://files.pythonhosted.org/packages/b0/77/a5b8c569bf593b0140bde72ea885a803b82086995367bf2037de0159d924/pygments-2.19.2.tar.gz"
-    sha256 "636cb2477cec7f8952536970bc533bc43743542f70392ae026374600add5b887"
+    url "https://files.pythonhosted.org/packages/c3/b2/bc9c9196916376152d655522fdcebac55e66de6603a76a02bca1b6414f6c/pygments-2.20.0.tar.gz"
+    sha256 "6757cd03768053ff99f3039c1a36d6c0aa0b263438fcab17520b30a303a82b5f"
   end
 
   resource "stack-data" do

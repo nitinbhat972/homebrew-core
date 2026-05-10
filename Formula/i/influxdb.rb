@@ -2,8 +2,8 @@ class Influxdb < Formula
   desc "Time series, events, and metrics database"
   homepage "https://influxdata.com/time-series-platform/influxdb/"
   url "https://github.com/influxdata/influxdb.git",
-      tag:      "v3.8.3",
-      revision: "73f689bb31d5ca13c4f950fefb40d5f6e6163019"
+      tag:      "v3.9.2",
+      revision: "eae58d2018cc50ad4c2f6f56316c94d06d37683c"
   license any_of: ["Apache-2.0", "MIT"]
   head "https://github.com/influxdata/influxdb.git", branch: "main"
 
@@ -11,16 +11,16 @@ class Influxdb < Formula
   # version in the install script instead.
   livecheck do
     url "https://www.influxdata.com/d/install_influxdb3.sh"
-    regex(/^INFLUXDB_VERSION=["']v?(\d+(?:\.\d+)+)["']$/i)
+    regex(/^INFLUXDB_OSS_VERSION=["']v?(\d+(?:\.\d+)+)["']$/i)
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "e9a8c8dc7d8c743e5c5dd8328ef482bf92c4b862a94307fcc6a422170c027d88"
-    sha256 cellar: :any,                 arm64_sequoia: "9989f3b5c32d501341a5ebcff4e2517bd87c87b6140de7767dd37a9b4c74582c"
-    sha256 cellar: :any,                 arm64_sonoma:  "7116f4d542cfc9aabd21056356f04839e7d1b3d4692acb32c082f8e878eb8f1b"
-    sha256 cellar: :any,                 sonoma:        "0bdd5b3b9d68e1fe85e14080dfdbf5fcf7e86e69bd0704fa657297de2c8e570a"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "6471a254035e432890393bcf29020f4842887346a117838a406308b69911a2c7"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "acb4a0113469c90bd15a95407a66c914874fad6c9ba6fef379655be62795218f"
+    sha256 cellar: :any,                 arm64_tahoe:   "57623d1f338c9c5122f11cd92c91b4be0d4bdad028f9bb5b9649735350d70472"
+    sha256 cellar: :any,                 arm64_sequoia: "4c1dbac814c94c4d21d0ac708e657e589c853a7736b0042f5501c5309fed7b05"
+    sha256 cellar: :any,                 arm64_sonoma:  "61009640c586fff6fc68d05fd90d94e00be3f7667ecfa2fd3c4f1d9aa984c5c0"
+    sha256 cellar: :any,                 sonoma:        "8e57cb92701647f5140f2758deb9d54eb68f78907f8110026decf068951775b0"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "c63f6c4bdb7b040a1f3eb60e51f8b95959e787759bb85df798bfb23f14d11a44"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "d3dce7ea72f59d95827f7e52ca398a678bcc5381d992b5e48a71639c3e52a380"
   end
 
   depends_on "pkgconf" => :build
@@ -30,19 +30,13 @@ class Influxdb < Formula
 
   uses_from_macos "bzip2"
 
-  on_linux do
-    on_intel do
-      depends_on "lld" => :build
-    end
-  end
-
   def install
     python3 = which("python3.14")
     ENV["PYO3_PYTHON"] = python3
     ENV["PYTHON_SYS_EXECUTABLE"] = python3
 
-    # Avoid upstream's default of Haswell and instead let superenv set this
-    inreplace ".cargo/config.toml", '"-C", "target-cpu=haswell",', ""
+    # Remove local development overrides which isn't used in upstream CI
+    rm ".cargo/config.toml"
 
     # Work around SIGKILL on arm64 linux runner from fat LTO
     github_arm64_linux = OS.linux? && Hardware::CPU.arm? &&
@@ -51,6 +45,20 @@ class Influxdb < Formula
     ENV["CARGO_PROFILE_RELEASE_LTO"] = "thin" if github_arm64_linux
 
     system "cargo", "install", *std_cargo_args(path: "influxdb3")
+  end
+
+  service do
+    run [
+      opt_bin/"influxdb3",
+      "serve",
+      "--node-id", "default",
+      "--object-store", "file",
+      "--data-dir", var/"lib/influxdb"
+    ]
+    keep_alive true
+    working_dir var
+    log_path var/"log/influxdb/influxdb3.log"
+    error_log_path var/"log/influxdb/influxdb3.log"
   end
 
   test do

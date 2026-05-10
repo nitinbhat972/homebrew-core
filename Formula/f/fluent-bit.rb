@@ -1,8 +1,8 @@
 class FluentBit < Formula
   desc "Fast and Lightweight Logs and Metrics processor"
   homepage "https://github.com/fluent/fluent-bit"
-  url "https://github.com/fluent/fluent-bit/archive/refs/tags/v4.2.3.tar.gz"
-  sha256 "b2dae50fb7a00bbab5eb6d47f3bfc4d56c698d72d485d748cb326bfeaa7249fa"
+  url "https://github.com/fluent/fluent-bit/archive/refs/tags/v5.0.5.tar.gz"
+  sha256 "7bff8842d0b2b24683a10e67a12e336e29f8053edf63fb3d7b6d37323628c158"
   license "Apache-2.0"
   head "https://github.com/fluent/fluent-bit.git", branch: "master"
 
@@ -12,12 +12,12 @@ class FluentBit < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "3d12b053b24178b5826f0fe6e7e03fe6a69f08e708430bfd68ca1df0d7b2748b"
-    sha256 cellar: :any,                 arm64_sequoia: "12a055212b801c2769c6ea96a16e96045fb506ed97796033072cf07ca88a1116"
-    sha256 cellar: :any,                 arm64_sonoma:  "6687d7e607e4a4ffeacf02a2caf4151f1442d6e80af5891d484b6291b05923b2"
-    sha256 cellar: :any,                 sonoma:        "e45e3707238df9eb432437dee266180629eefb132323800a527e70223dbdfd04"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "9a7432aca2ef9869eca928a76c884f9b842b5860e6d75f8050151be2f2a899ef"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "1e6f807c6e160d1015e5a0db3db88bbb2ab200ac0fa8d5f13b47b6b0ea71628d"
+    sha256 cellar: :any,                 arm64_tahoe:   "94f91eb73183ff946c703059c71b1bc2544490c6a0cf0183a1442a68433fe959"
+    sha256 cellar: :any,                 arm64_sequoia: "7f923d47b560e21fe09b1f6338cb569664e13a92af661ef998d363bda483f17c"
+    sha256 cellar: :any,                 arm64_sonoma:  "d2dfa7d99fa0a982cdc6a2f677c43fd1d7cc7ca92b362891893d3e6e5825dd47"
+    sha256 cellar: :any,                 sonoma:        "e8b9bb4e4e5b841fc268f5ecb98876aec5c2fa43a17b0e3a364ceb5ac6046a2b"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "75948045035a978f540968829300c39270dfcea7f277b4e0e67a8fa77a2c8849"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "a4e5bdc6f57de2fc316bf171968af5796e04fc638b54665e6e01d0d15e5f748b"
   end
 
   depends_on "bison" => :build
@@ -27,7 +27,7 @@ class FluentBit < Formula
 
   depends_on "libyaml"
   depends_on "luajit"
-  depends_on "openssl@3"
+  depends_on "openssl@4"
 
   on_linux do
     depends_on "zlib-ng-compat"

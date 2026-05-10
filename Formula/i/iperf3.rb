@@ -1,9 +1,10 @@
 class Iperf3 < Formula
   desc "Update of iperf: measures TCP, UDP, and SCTP bandwidth"
   homepage "https://github.com/esnet/iperf"
-  url "https://downloads.es.net/pub/iperf/iperf-3.20.tar.gz"
-  sha256 "3acc572d1ecca4e0b20359c7bf0132ddc80d982efeee20c86f6726a9a6094388"
+  url "https://downloads.es.net/pub/iperf/iperf-3.21.tar.gz"
+  sha256 "656e4405ebd620121de7ceca3eaf43a88f79ea1b857d041a6a0b1314801acdd8"
   license "BSD-3-Clause"
+  revision 1
 
   livecheck do
     url "https://downloads.es.net/pub/iperf/"
@@ -11,12 +12,12 @@ class Iperf3 < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "21d104a64ab9a03149a6a68621fe7c34113107d7c241aae10b30f7f54fc63278"
-    sha256 cellar: :any,                 arm64_sequoia: "da658d9fe13ab8492eb7a6b73312990099c6a9da7a91c97653c977e183f1afce"
-    sha256 cellar: :any,                 arm64_sonoma:  "df35cee97da6db01620d52d7ca55c882fa7282add347822150412e23037877cd"
-    sha256 cellar: :any,                 sonoma:        "7b8079f6dc2f72de7a70d62aec60312220fe395646f9b6d1307d9e8fafd82ade"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "b0ae4a5324a6eae284b7863f6ca0d94fde6b0bc53dea043093533953a1c1bccb"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "8b2515f7071e158cb4c44bdc26a5ca183e81cb00565b4e1f2fbb7393d5cc7183"
+    sha256 cellar: :any,                 arm64_tahoe:   "4c9732362cf41e8564f33fca550a9a49356ea2b54bf5b1c021ac828038c6ae46"
+    sha256 cellar: :any,                 arm64_sequoia: "9c2798aa7042d06364caca9fec400651d5cc5ae26446b24c308827c30649a40a"
+    sha256 cellar: :any,                 arm64_sonoma:  "c63e8ff6df89f6a8f9e5bf7689d0aee545d47725f9bf9068e492b42890fdabdc"
+    sha256 cellar: :any,                 sonoma:        "27a27e6ade18fc7b85803b70c08571a6a76178a7a12c27f48a4917dc5f05646a"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "fcf35af72941dad9ecfc704500471dfb43bb5dc35bba09b47ad358acf25e6369"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "aa5c3dae2b89ab6be2a65e6c3f90a29d4a99ef5b54254c78331d970781eb82e2"
   end
 
   head do
@@ -27,13 +28,13 @@ class Iperf3 < Formula
     depends_on "libtool" => :build
   end
 
-  depends_on "openssl@3"
+  depends_on "openssl@4"
 
   def install
     system "./bootstrap.sh" if build.head?
     system "./configure", "--disable-silent-rules",
                           "--disable-profiling",
-                          "--with-openssl=#{Formula["openssl@3"].opt_prefix}",
+                          "--with-openssl=#{Formula["openssl@4"].opt_prefix}",
                           *std_configure_args
     system "make", "clean" # there are pre-compiled files in the tarball
     system "make", "install"

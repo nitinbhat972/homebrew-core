@@ -1,8 +1,8 @@
 class Lft < Formula
   desc "Layer Four Traceroute (LFT), an advanced traceroute tool"
   homepage "https://pwhois.org/lft/"
-  url "https://pwhois.org/dl/index.who?file=lft-3.93.tar.gz"
-  sha256 "132d74c1a8cf56023a16ddd39d10c89b4dfa0acdbd7c472e45ccc8521d8aaddd"
+  url "https://pwhois.org/dl/index.who?file=lft-3.98.tar.gz"
+  sha256 "395ced8d95ee2bcc588a837f187e23bb25ce97999a0bb8481b2b3e0c1c633455"
   license "VOSTROM"
 
   livecheck do
@@ -11,26 +11,27 @@ class Lft < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "7d61632f71eccd5cf1aed7004ac9554e28e71d875af82c0a8428ca90a0264e71"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "6713ecedde735671713399c2cc2640f6bb5310adb6e3865394a6c584afe02bd3"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "fb3e176fe2d0711558222f080dce599d592d3cef6016352a36bf32aa1432213d"
-    sha256 cellar: :any_skip_relocation, sonoma:        "b5716adbf89ee9d65ac6f35ae16bf6005e72c6fdd58ef8f4902ee58448ebb5c3"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "286743a2447c36a183b14cc7547a7b782b517a428022cbe3c97e8903c0328252"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "ae83d99648c69a603c70695e15f6610d716a64597479edcfbca17c7233c4d8c3"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "7f89494bec6e8351e0ce8d648954f8a46bcd966b35113518df85b0b97438a1c2"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "419eda32f35554778ee34e24d65104e50fca5bd934de9fc2c5264fe040828f3c"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "3e0f89ea402cb4c6598e3890b25bb03c46a7f1532ec759c127eb68910497e077"
+    sha256 cellar: :any_skip_relocation, sonoma:        "78c94f8f33339c225c2354822384f955ff614916f55629e65f6dae7cda03779a"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "fac6c8bc94198d5a1a8638fe527c54506b9368891a87e66a1eb6c2b416398101"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "4f5f45aab33f889b46dba96f3b077f47b5d49638d9439bc1981c299eae110615"
   end
 
   uses_from_macos "libpcap"
 
   def install
-    args = []
-    # Help old config scripts identify arm64 linux
-    args << "--build=aarch64-unknown-linux-gnu" if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-
+    args = %w[
+      --disable-async-dns
+      --disable-ncurses
+    ]
     system "./configure", *args, *std_configure_args
     system "make", "install"
   end
 
   test do
-    assert_match "isn't available to LFT", shell_output("#{bin}/lft -S -d 443 brew.sh 2>&1")
+    output = shell_output("#{bin}/lft -S -d 443 brew.sh 2>&1", 1)
+    assert_match(/LFT: (insufficient privileges|Failed to activate capture on device)/, output)
   end
 end

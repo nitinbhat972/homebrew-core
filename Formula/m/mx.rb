@@ -1,8 +1,8 @@
 class Mx < Formula
   desc "Command-line tool used for the development of Graal projects"
   homepage "https://github.com/graalvm/mx"
-  url "https://github.com/graalvm/mx/archive/refs/tags/7.75.0.tar.gz"
-  sha256 "9b9ece1b7839685f92af04722d335b8b4c2da3e3f1188505773bde2f57f92a4d"
+  url "https://github.com/graalvm/mx/archive/refs/tags/7.81.0.tar.gz"
+  sha256 "52d4f8e2db55025989c6a50102db7845af112ce6fa8f459c55284135b1ba6b41"
   license "GPL-2.0-only"
 
   livecheck do
@@ -11,7 +11,7 @@ class Mx < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, all: "7edc7ef6ef5d3f12ced26aec7685ef9c9bd9e0f7d56500061d7ffd7fbabe8a23"
+    sha256 cellar: :any_skip_relocation, all: "6b193a81d8fd2811d2de90ccbb4cab78e65c53f2ee636c497d80cfe09ea8e7b9"
   end
 
   depends_on "openjdk" => [:build, :test]
@@ -31,8 +31,8 @@ class Mx < Formula
 
   test do
     resource "homebrew-testdata" do
-      url "https://github.com/oracle/graal/archive/refs/tags/vm-22.3.2.tar.gz"
-      sha256 "77c7801038f0568b3c2ef65924546ae849bd3bf2175e2d248c35ba27fd9d4967"
+      url "https://github.com/oracle/graal/archive/refs/tags/vm-25.0.2.tar.gz"
+      sha256 "129261a9c43d43ca8cad235b65ee9cf8bfa9a2e2d51e90ac188e3cf5174323a0"
     end
 
     ENV["JAVA_HOME"] = Language::Java.java_home

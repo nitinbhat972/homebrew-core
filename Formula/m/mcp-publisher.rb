@@ -1,18 +1,18 @@
 class McpPublisher < Formula
   desc "Publisher CLI tool for the Official Model Context Protocol (MCP) Registry"
   homepage "https://github.com/modelcontextprotocol/registry"
-  url "https://github.com/modelcontextprotocol/registry/archive/refs/tags/v1.5.0.tar.gz"
-  sha256 "cc7f90da70ecf5bcba06eafda0c5358c5fefa06f1caa79a2e9ee91b9073dfd50"
+  url "https://github.com/modelcontextprotocol/registry/archive/refs/tags/v1.7.8.tar.gz"
+  sha256 "5cba1bb77a114bb8e8a215c54f22c87fe73cca34c41b70bbd1c9d73f5048dfdb"
   license "MIT"
   head "https://github.com/modelcontextprotocol/registry.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "8f6d99766ecf12631eb011991bed61a0165de5b651585c8af856abac1af6894c"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "8f6d99766ecf12631eb011991bed61a0165de5b651585c8af856abac1af6894c"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "8f6d99766ecf12631eb011991bed61a0165de5b651585c8af856abac1af6894c"
-    sha256 cellar: :any_skip_relocation, sonoma:        "ab330bd4eff38b17aa8dbd34e4c9afd21c3da8b153d958f7270ee573594554bd"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "65972049b5b82e4fce0cff7e48c6d9c81469405a498a38fb8b7666b73e6234df"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "310969522eabe473aaedea39874b0a56d85f907fa4f947cdf933b59f0bf12fa8"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "9da8983ea41b509c65cc85131a8794be1477d49775a08ce554dfa7fbfaf57ed9"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "9da8983ea41b509c65cc85131a8794be1477d49775a08ce554dfa7fbfaf57ed9"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "9da8983ea41b509c65cc85131a8794be1477d49775a08ce554dfa7fbfaf57ed9"
+    sha256 cellar: :any_skip_relocation, sonoma:        "e3aec71952a2c47720e27156ccec95123f3f4f900e395a2b2aa86f4088528930"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "237455d7f20c7df050a65c56ce67ab021a9024d16325723c37822fb59fab9007"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "03c3ca0da0a35c1bdc5e186771f413de7f46eb188f8fd0a794653e9c6f89f1ef"
   end
 
   depends_on "go" => :build
@@ -25,6 +25,6 @@ class McpPublisher < Formula
   test do
     assert_match version.to_s, shell_output("#{bin}/mcp-publisher --version 2>&1")
     assert_match "Created server.json", shell_output("#{bin}/mcp-publisher init")
-    assert_match "io.github.YOUR_USERNAME/YOUR_REPO", (testpath/"server.json").read
+    assert_match "com.example/mcp-publisher-test-", (testpath/"server.json").read
   end
 end

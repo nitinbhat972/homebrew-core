@@ -1,8 +1,8 @@
 class Micronaut < Formula
   desc "Modern JVM-based framework for building modular microservices"
   homepage "https://micronaut.io/"
-  url "https://github.com/micronaut-projects/micronaut-starter/archive/refs/tags/v4.10.10.tar.gz"
-  sha256 "ea2ec2710d141c44204b4a78b4b7a26f9b727178ba167c5c0df6f38ef3765bb3"
+  url "https://github.com/micronaut-projects/micronaut-starter/archive/refs/tags/v4.10.13.tar.gz"
+  sha256 "3b58edbfcf7f885c07d1b89c1091d8b64bfca10926a70792fabbf02628a16e28"
   license "Apache-2.0"
 
   livecheck do
@@ -11,12 +11,12 @@ class Micronaut < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "0a8eb119b2089cbe8706583dd021a806e0a4529fd97ad0f57fa62978682335e9"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "048996f7d1bceb1b13823769d00a8dd16221c7e9daa709118ce6c23b470f441e"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "095479590b415806d4774df9d55dd3cc764dcc3f47dbb9ddcaea8f522cf34ab7"
-    sha256 cellar: :any_skip_relocation, sonoma:        "5e3f2797cf6e7ed95cb5a65cdab638ea3262c818e296ed58073596f886891371"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "9c2ee7b1f11c88c38baa72d4120ad250bcd7707811957e968aa6b257b60b8eff"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "10a272e48b36785cfdcf760a7bcba8dfc182fc751784ba0741f28ea14c42a04c"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "88f5ac7324abfa268a492458d5581e7e70db524c1cf6faf582bd73f1864e494b"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "152ab68516afb23b87318e97f2de4856fd4a74cebca806dac37a2e15c6828d30"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "d0e8529f6cf55e11a346a6c961a4389aa0cbbc002df442f68a0f291d496d784d"
+    sha256 cellar: :any_skip_relocation, sonoma:        "0959afffe91e92d9c763167c140c6607d3b8ae8bfe58376a5f76e75ec24c3f06"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "8db09b51e9914e8a11e673e4f4b41934a30e729af6cf68067f8624bc83bcd8ad"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "992990279c7a7d79d8032e9805901c76e61903c0f2c84d57aae7461ddea9c358"
   end
 
   # Issue ref: https://github.com/micronaut-projects/micronaut-starter/issues/2848

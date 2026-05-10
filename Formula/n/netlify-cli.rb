@@ -1,17 +1,17 @@
 class NetlifyCli < Formula
   desc "Netlify command-line tool"
   homepage "https://www.netlify.com/docs/cli"
-  url "https://registry.npmjs.org/netlify-cli/-/netlify-cli-24.5.1.tgz"
-  sha256 "93026268ea3c41db502b8ca38cd7feaf9d4b9bc96daa8069fed24ee7d61f78a6"
+  url "https://registry.npmjs.org/netlify-cli/-/netlify-cli-26.0.1.tgz"
+  sha256 "d0947476ebae1d5448fa01a3d2d8df7d31d0e70159b8007b5ace8b88a89dab29"
   license "MIT"
 
   bottle do
-    sha256                               arm64_tahoe:   "601c5732f2627f0fbab9aac148ee82821ce611d041ea19f312d372f32f269053"
-    sha256                               arm64_sequoia: "3e2b40968f6149525534f95cc2a6d3cde118e39306eb958a27c37caf41bc40b0"
-    sha256                               arm64_sonoma:  "ea0c766714108f58af2494f139b7510c60b646d2073438e43efd44cc71200571"
-    sha256                               sonoma:        "65b6da136eddb7d4d01b3cc2e7a9e40f277f20e8ed1be47eb24384ff4942eede"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "b80ac90e26c6f27f6139461245cfbbcf93d13f2c8b51e74d5e0da23021a55478"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "c773963327e06245836b53bee81e273fdbea7e5b1376296c09f5ee750281ce12"
+    sha256                               arm64_tahoe:   "6a37c4c785a8f695f04acc77554ddb96ca2e180fc53a49debfb538096bad0569"
+    sha256                               arm64_sequoia: "ef0068235399d9901b2e713825dad3bad4ce8b9652fe1c5acf2be9f1179d065e"
+    sha256                               arm64_sonoma:  "05158c25e44201db444382b9ffaa40313d9bc3cf5c8494cec28773078439e42b"
+    sha256                               sonoma:        "0c6df868b02c4a982e0a749cbf2a8f5be9644cd971802dc0cb659ce76de719f5"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "328606dd5954d9159d654006446187394ce751f2244cf507db9875bea82ce2bf"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "09890a11660cc47eff166644dc7822b9aa172639a853bf68e064f47a43497ffb"
   end
 
   depends_on "pkgconf" => :build
@@ -31,8 +31,8 @@ class NetlifyCli < Formula
   # Resource needed to build sharp from source to avoid bundled vips
   # https://sharp.pixelplumbing.com/install/#building-from-source
   resource "node-gyp" do
-    url "https://registry.npmjs.org/node-gyp/-/node-gyp-12.2.0.tgz"
-    sha256 "8689bbeb45a3219dfeb5b05a08d000d3b2492e12db02d46c81af0bee5c085fec"
+    url "https://registry.npmjs.org/node-gyp/-/node-gyp-12.3.0.tgz"
+    sha256 "d209963f2b21fd5f6fad1f6341897a98fc8fd53025da36b319b92ebd497f6379"
   end
 
   def install
@@ -46,7 +46,7 @@ class NetlifyCli < Formula
     rm_r(node_modules.glob("@parcel/watcher-{darwin,linux}*"))
 
     clipboardy_fallbacks_dir = node_modules/"clipboardy/fallbacks"
-    rm_r(clipboardy_fallbacks_dir) # remove pre-built binaries
+    rm_r(clipboardy_fallbacks_dir, force: true) # remove pre-built binaries
     if OS.linux?
       linux_dir = clipboardy_fallbacks_dir/"linux"
       linux_dir.mkpath

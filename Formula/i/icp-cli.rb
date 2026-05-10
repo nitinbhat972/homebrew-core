@@ -1,17 +1,17 @@
 class IcpCli < Formula
   desc "Development tool for building and deploying canisters on ICP"
   homepage "https://dfinity.github.io/icp-cli/"
-  url "https://github.com/dfinity/icp-cli/archive/refs/tags/v0.2.1.tar.gz"
-  sha256 "2a21eeb1b7804c75cce7b7c7945504f47bd04f372b14891b402c0f3876aac688"
+  url "https://github.com/dfinity/icp-cli/archive/refs/tags/v0.2.6.tar.gz"
+  sha256 "2fc9bd290ed6ffe94f401d16e5c244e6cd77bf3c710ff74f55d3e60db6b8c41f"
   license "Apache-2.0"
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "ad2d36cd48c1bebb3edc39d7a3168e33f06b3d1eb343596fb4cf16315952ae03"
-    sha256 cellar: :any,                 arm64_sequoia: "8399888205527828b68533c029e70d3ea2f2b5862cd532749dab033764e56008"
-    sha256 cellar: :any,                 arm64_sonoma:  "6889557581c1aa56a0f6fd809808543fc7a6672aa6570345f3adf5b45b786418"
-    sha256 cellar: :any,                 sonoma:        "c1c1ab0ba0b6ea46db8a369fed6dbf8ef41a6fb0914711ed89480334118b9fdd"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "9820c099831ccd67456afd6447ce69edf576fcb63796b9ab7862b8dc34b28e8c"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "92da040376b2908e12390c6580ce01433aa268bc403c59df5158491401010bc8"
+    sha256 cellar: :any,                 arm64_tahoe:   "e0275138f2be6a67633f8126dc71e6d5bd3b4672e924c24aa42b9a1500d08f00"
+    sha256 cellar: :any,                 arm64_sequoia: "76a9f32f8003c5784d51635caf66b7c1c8d7c1c24ae1578ccb629f524652134c"
+    sha256 cellar: :any,                 arm64_sonoma:  "0376ecbc267d90e71ebbbfbda4b49a1d7f5ea62e200593b6020aefd53c0ca433"
+    sha256 cellar: :any,                 sonoma:        "74740fa36f35f7e3dfc6d6f62fdabaf2153e502846f7f15b2998f457764a8009"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "91e28e3d6500cfc08ccdb6ac8b80ba167834bb9cce3df21b7dd983b16fedf372"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "9e394476677b1977fdc8d9e7c7e37c4c7af576ed240a30f4d6c9b212509cdd3e"
   end
 
   depends_on "rust" => :build
@@ -27,7 +27,10 @@ class IcpCli < Formula
   def install
     ENV["ICP_CLI_BUILD_DIST"] = "homebrew-core"
     ENV["OPENSSL_DIR"] = Formula["openssl@3"].opt_prefix
-    ENV["OPENSSL_NO_VENDOR"] = "1"
+
+    # Skip wasm32-wasip2 test fixture build in icp-sync-plugin (only used in tests)
+    # https://github.com/dfinity/icp-cli/issues/543
+    inreplace "crates/icp-sync-plugin/build.rs", "build_test_fixture();", ""
 
     system "cargo", "install", *std_cargo_args(path: "crates/icp-cli")
   end

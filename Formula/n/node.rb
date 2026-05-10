@@ -1,8 +1,8 @@
 class Node < Formula
   desc "Open-source, cross-platform JavaScript runtime environment"
   homepage "https://nodejs.org/"
-  url "https://nodejs.org/dist/v25.8.2/node-v25.8.2.tar.xz"
-  sha256 "3efb19e757dc59bb21632507200d2de782369d5226a68955e9372c925fdf2471"
+  url "https://nodejs.org/dist/v26.0.0/node-v26.0.0.tar.xz"
+  sha256 "fcb5e5c06a5c2ec9e669801248657aafaa2291f8760dac7bfb639f878318c592"
   license "MIT"
   compatibility_version 1
   head "https://github.com/nodejs/node.git", branch: "main"
@@ -13,12 +13,12 @@ class Node < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "245baa6999d5884892274353f821380382ed69a763e7de22dd845980ab255c88"
-    sha256 cellar: :any,                 arm64_sequoia: "b8970d6e00b7ebe95b19f1e421a4e797c414b9c72a4916cb74cc87a52236cf7e"
-    sha256 cellar: :any,                 arm64_sonoma:  "04133ddf2d05affeac290adf62316dbf2a777b739292505a1f621ae3d82dd106"
-    sha256 cellar: :any,                 sonoma:        "4b2d4a702b22139c31b72087af82f90c0e1f872246d523dbf2700da3a19818d7"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "311a4d4a9124d7ef028c353eb7d9b101293d5f5b553551b367440bc823a8f876"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "71295a6d5fdfe8329d8a4f7147a07733e5a1311124634ebd2d5cf86191a3903a"
+    sha256 cellar: :any,                 arm64_tahoe:   "d8a6c3a17de8735c6bd79f532af5a404b647c4c067217d7328394315a2583966"
+    sha256 cellar: :any,                 arm64_sequoia: "fbff668a5b3d655dbc8b80dd7181da1a375d40f4ed9aac2197195e889ae53fe0"
+    sha256 cellar: :any,                 arm64_sonoma:  "cf5a4ea9d7283ab08bcf4d2db27c97fb944338dbe05d5b60d81bb68ffedc538d"
+    sha256 cellar: :any,                 sonoma:        "a0a56171de4dc10563d6e10363b6d1003b70552c1c0aba25b57f4fefabb5d77b"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "e037638495afa9776bc3dddc5b1bb13cb14cee78f340f1b8ebc9bedcc29a6190"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "db99f551170ae6811682fa342a1e52a9f6f5f5c5f632176af684f09c5c0d9c39"
   end
 
   depends_on "pkgconf" => :build
@@ -33,6 +33,8 @@ class Node < Formula
   depends_on "libngtcp2"
   depends_on "libuv"
   depends_on "llhttp"
+  depends_on "merve"
+  depends_on "nbytes"
   depends_on "openssl@3"
   depends_on "simdjson"
   depends_on "sqlite" # Fails with macOS sqlite.
@@ -46,6 +48,7 @@ class Node < Formula
   end
 
   on_linux do
+    depends_on "llvm" => :build if DevelopmentTools.gcc_version < 13
     depends_on "zlib-ng-compat"
   end
 
@@ -60,15 +63,15 @@ class Node < Formula
   # https://github.com/nodejs/node/blob/main/BUILDING.md#supported-toolchains
   # https://github.com/ada-url/ada?tab=readme-ov-file#requirements
   fails_with :gcc do
-    version "11"
-    cause "needs GCC 12 or newer"
+    version "12"
+    cause "needs GCC 13 or newer"
   end
 
   # We track major/minor from upstream Node releases.
   # We will accept *important* npm patch releases when necessary.
   resource "npm" do
-    url "https://registry.npmjs.org/npm/-/npm-11.11.1.tgz"
-    sha256 "a3b2dbeb2544809a75f186cbae27adc5ceb5adc1ee696e17dfed689d7f46fcf2"
+    url "https://registry.npmjs.org/npm/-/npm-11.12.1.tgz"
+    sha256 "e679850e663b16f5f146ee425d0eb0e3442c1d2bda3d513bbfd7c81f5ee5db38"
 
     livecheck do
       url "https://raw.githubusercontent.com/nodejs/node/refs/tags/v#{LATEST_VERSION}/deps/npm/package.json"
@@ -79,6 +82,8 @@ class Node < Formula
   end
 
   def install
+    ENV.llvm_clang if OS.linux? && deps.map(&:name).any?("llvm")
+
     # Backport fix for bundled LIEF's bundled spdlog's bundled fmt.
     # Should be fixed when new LIEF version with following commit is released and used by node:
     # https://github.com/lief-project/LIEF/commit/710637216b1f6f19569002d62e43fca201b9d91c
@@ -114,6 +119,8 @@ class Node < Formula
       "hdr-histogram" => ["histogram",       "hdrhistogram_c"],
       "http-parser"   => ["llhttp",          "llhttp"],
       "libuv"         => ["uv",              "libuv"],
+      "merve"         => ["merve",           "merve"],
+      "nbytes"        => ["nbytes",          "nbytes"],
       "nghttp2"       => ["nghttp2",         "libnghttp2"],
       "nghttp3"       => ["ngtcp2/nghttp3",  "libnghttp3"],
       "ngtcp2"        => ["ngtcp2",          "libngtcp2"],
@@ -134,15 +141,11 @@ class Node < Formula
 
     # TODO: Try to devendor these libraries.
     # - `--shared-gtest` is only used for building the test suite, which we don't run here.
-    # - `--shared-merve` is not available as dependency in Homebrew.
-    # - `--shared-nbytes` is not available as dependency in Homebrew.
     # - `--shared-simdutf` seems to result in build failures.
     # - `--shared-temporal_capi` is only used when building with `--v8-enable-temporal-support`
     # - `--shared-lief` is not available as dependency in Homebrew.
     ignored_shared_flags = %w[
       gtest
-      merve
-      nbytes
       simdutf
       temporal_capi
       lief

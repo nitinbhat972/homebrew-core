@@ -1,10 +1,9 @@
 class Buildkit < Formula
   desc "Concurrent, cache-efficient, and Dockerfile-agnostic builder toolkit"
   homepage "https://github.com/moby/buildkit"
-  url "https://github.com/moby/buildkit/archive/refs/tags/v0.28.0.tar.gz"
-  sha256 "2307112b30593fb8fc4d479ce4547862fa101fa2ecd50a852330a1117a988bbc"
+  url "https://github.com/moby/buildkit/archive/refs/tags/v0.29.0.tar.gz"
+  sha256 "243d6ba77404467f90087a9141af5f755f1e8aa22d4b4c42ce87a1b898d9b8b2"
   license "Apache-2.0"
-  revision 1
   head "https://github.com/moby/buildkit.git", branch: "master"
 
   # There can be a notable gap between when a version is tagged and a
@@ -16,12 +15,12 @@ class Buildkit < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "291782fc68044e422d0c4dc0e1bf7005c66297326ac90ac1fc508020afcec954"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "291782fc68044e422d0c4dc0e1bf7005c66297326ac90ac1fc508020afcec954"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "291782fc68044e422d0c4dc0e1bf7005c66297326ac90ac1fc508020afcec954"
-    sha256 cellar: :any_skip_relocation, sonoma:        "06f4e670c424cb24ad8e542c716c79e606bedf12eab1c14b7a63ac3a26d24cd7"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "fa8554e9920aac8c31e479041070e2a85d00be0befec14442d72d6fac62aa9ca"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "254f4519fce6bcff1fa1c08d8165c3d88140f1615ad4402076ebf10a568bffba"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "1c492b3bf97ca06eef9c819666d7fbde8324bae6136f8ba3f2ac3fb00e007b9d"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "1c492b3bf97ca06eef9c819666d7fbde8324bae6136f8ba3f2ac3fb00e007b9d"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "1c492b3bf97ca06eef9c819666d7fbde8324bae6136f8ba3f2ac3fb00e007b9d"
+    sha256 cellar: :any_skip_relocation, sonoma:        "e60a0c9632851032515b2999f1c7b04ccc9f9ef331b4fbcb9247409c5493b580"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "b4591d6f13f8f26b1f472571407f148af1b74d80515ee880b221d4d3e1cf06e7"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "fbdbb8f26b8233e09a23bfcd1ff1f233aa4835b36cafa44120c9a4e30053a511"
   end
 
   depends_on "go" => :build

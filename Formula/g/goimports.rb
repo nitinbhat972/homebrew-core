@@ -1,8 +1,8 @@
 class Goimports < Formula
   desc "Go formatter that additionally inserts import statements"
   homepage "https://pkg.go.dev/golang.org/x/tools/cmd/goimports"
-  url "https://github.com/golang/tools/archive/refs/tags/v0.43.0.tar.gz"
-  sha256 "e35710736fcaeeb4fd9cd0279af97270af119a7dd7e9877c00608799c799de77"
+  url "https://github.com/golang/tools/archive/refs/tags/v0.45.0.tar.gz"
+  sha256 "1763e56760a51f25ddf1e73cc8ada35c3f81f2fa1094b6118acaa8ec5a51a146"
   license "BSD-3-Clause"
   head "https://github.com/golang/tools.git", branch: "master"
 
@@ -12,12 +12,12 @@ class Goimports < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "2062ada9f7476794877ac3308ee3ad18aee392f48ac46f1e442ec8c72be7b287"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "2062ada9f7476794877ac3308ee3ad18aee392f48ac46f1e442ec8c72be7b287"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "2062ada9f7476794877ac3308ee3ad18aee392f48ac46f1e442ec8c72be7b287"
-    sha256 cellar: :any_skip_relocation, sonoma:        "b7b24df97aea3986e2d831620b38b7499e2df5468370729b7d89e3b78ed2d180"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "32bd37d9f72d189fd17292fdbdb6a1782173d36f394dcab2ee3764892ff25220"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "798dec1541114684b25702769ff20f6824b1ccb6afa27c91af686c52f9b4c520"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "e1f83890ad59a1de3b0a1ac17d410ee9359a1f7e898755a504b1c43ed549cbc9"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "e1f83890ad59a1de3b0a1ac17d410ee9359a1f7e898755a504b1c43ed549cbc9"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "e1f83890ad59a1de3b0a1ac17d410ee9359a1f7e898755a504b1c43ed549cbc9"
+    sha256 cellar: :any_skip_relocation, sonoma:        "ed237cb984242833274ca34dda9d1ceadb46b94b68a424e886cf7771d112594d"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "8b7e383755c8d3ede4537feed35019dc4db791b67677541f7b8514250726e39d"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "8f4983c9e9993c1ae954cfdeae2d44d5ad3c2dada8e1cee10d9f31e44e589325"
   end
 
   depends_on "go"

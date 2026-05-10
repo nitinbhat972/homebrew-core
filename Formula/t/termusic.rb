@@ -1,32 +1,37 @@
 class Termusic < Formula
   desc "Music Player TUI written in Rust"
   homepage "https://github.com/tramhao/termusic"
-  url "https://github.com/tramhao/termusic/archive/refs/tags/v0.12.1.tar.gz"
-  sha256 "686f66856d755f2d2056a9548f074b11ba9568ac8075fafd8903e332bf166227"
+  url "https://github.com/tramhao/termusic/archive/refs/tags/v0.13.2.tar.gz"
+  sha256 "661e1c39135f6eeb01cb6df199b8dcdd902ac456e96bd204ea4fda7ec6ae41ef"
   license all_of: ["MIT", "GPL-3.0-or-later"]
+  head "https://github.com/tramhao/termusic.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "1c2f883e043839db16ac4f8de8add8b972de0e008463f714e7a19c89cb76be45"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "87d7b2e39b0809ee26208e482ee7f85dea70d69b70a62833c526b4be18d76e42"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "9438afa2b260b4345bc0bde7c106fb3c2d5cb698cd4df6503d4bed74453c518c"
-    sha256 cellar: :any_skip_relocation, sonoma:        "06be1c021c63e361e292860592fb21b6abe48f044e8fcba7dc74740ce29d9069"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "c32e8c19f96b03217bdca10746787eaf5d000fea12be63e769c6985385604bd0"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "4723e83582af2d07546b8af198ee691299a3bfb4e10dd55003391556ecc6f508"
+    sha256 cellar: :any,                 arm64_tahoe:   "849a8e2baf136452070b25f3f41f9b1e5ca2a13d42e52c2cc4f3d4343caa236d"
+    sha256 cellar: :any,                 arm64_sequoia: "a4a71b8e4eb7daaf98313a4b773c124334c2d08662cf6ff7a9ab6576a7965482"
+    sha256 cellar: :any,                 arm64_sonoma:  "d746ca41ae4e7e5fe17ed7179922ac79c86b7485556cc9937824b7309c2d9366"
+    sha256 cellar: :any,                 sonoma:        "72a694587aab41e4482759d5da0652853d60505467125bebdfb6dbfc23cd8b46"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "294ca981f0d206a9bc8a960c4cda0206d6ec9da0de34622ed09b60f679f27a1f"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "9260de245136bc641b94a891a0bdb97cf41b7e1e58485fcc65c666ab1827591a"
   end
 
   depends_on "pkgconf" => :build
   depends_on "protobuf" => :build
   depends_on "rust" => :build
-  depends_on "sound-touch" => :build
   depends_on "openssl@3"
+  depends_on "opus"
+
+  uses_from_macos "llvm" => :build # for libclang
 
   on_linux do
     depends_on "alsa-lib"
+    depends_on "libgccjit"
   end
 
   def install
-    system "cargo", "install", *std_cargo_args(path: "tui", features: "cover-viuer-iterm")
-    system "cargo", "install", *std_cargo_args(path: "server")
+    server_features = %w[rusty-libopus rusty-simd rusty-soundtouch]
+    system "cargo", "install", *std_cargo_args(path: "tui")
+    system "cargo", "install", *std_cargo_args(path: "server", features: server_features)
   end
 
   test do

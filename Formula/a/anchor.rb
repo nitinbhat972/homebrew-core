@@ -1,33 +1,31 @@
 class Anchor < Formula
   desc "Solana Program Framework"
   homepage "https://anchor-lang.com"
-  url "https://github.com/solana-foundation/anchor/archive/refs/tags/v0.32.1.tar.gz"
-  sha256 "e45fec416a1a13dd20112f3f52855b91180448b3298808d7e42c6cd57ad4ae48"
+  url "https://github.com/solana-foundation/anchor/archive/refs/tags/v1.0.2.tar.gz"
+  sha256 "e07f8e8aa27f732d9609b250a7ec0111237acadd2fa0cf3c1fc9ae7e36046b3b"
   license "Apache-2.0"
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any,                 arm64_tahoe:   "5c42d288ffcb5ce0e5de2a3e623ace63a6401fefb6d9d0549ea27a6e89ec9f45"
-    sha256 cellar: :any,                 arm64_sequoia: "999f1fb89d761dd51989f1f97fd5a6508fdfc03f2e39aba8e61bee328635f016"
-    sha256 cellar: :any,                 arm64_sonoma:  "3805433758f3398f5490ff2f412063a66ca278c70bd5ee7d7632b32dd278a031"
-    sha256 cellar: :any,                 sonoma:        "f01ce12914e4c50c25a5584320ae4b10a7d5b7522268f81ac248543a5431722d"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "5caca9952baaa452ab5c21538cf1e388887df6af5f0272872d43b0745347ae5f"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "c0f0b6dfb3a31ade18458dc13ec92ec5c91a553a1c5785f4c8432e9e153491a5"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "0f184694cd6aad2d8758e9d923fbd1262cfbc9e2be807fad05666d3b09f8742d"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "b35fcd799d7572de0a77e84b4bec572189d31ccb14880629ff3b5bcb2b44e455"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "43c36988c81f0d4501b66fc0dee97a17ca8c01f426ab63bcadf16f40ff76b1bc"
+    sha256 cellar: :any_skip_relocation, sonoma:        "33231afe19d51339af4538bbc90f9a7760bd80b487f69d5fbfaf278a82cd688c"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "7422510a335c89d2464cffc48c5e6ec4f01ac9991ae5dd84ff03685c382e565b"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "e95aa0429fe630cce43209f9c597945d4a3b48a9516c773407882d9c81fee420"
   end
 
   depends_on "pkgconf" => :build
   depends_on "rust" => :build
   depends_on "node" => :test
   depends_on "yarn" => :test
-  depends_on "openssl@3"
 
   on_linux do
     depends_on "systemd" # for `libudev`
   end
 
   def install
-    ENV["OPENSSL_DIR"] = Formula["openssl@3"].opt_prefix
-    ENV["OPENSSL_NO_VENDOR"] = "1"
+    # FIXME: "Unknown attribute kind (102) (Producer: 'LLVM21.1.8' Reader: 'LLVM APPLE_1_1600.0.26.6_0')"
+    inreplace "Cargo.toml", "lto = true", "lto = false"
 
     system "cargo", "install", "--no-default-features", *std_cargo_args(path: "cli")
 

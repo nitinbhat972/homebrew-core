@@ -1,12 +1,11 @@
 class FfmpegAT7 < Formula
   desc "Play, record, convert, and stream audio and video"
   homepage "https://ffmpeg.org/"
-  url "https://ffmpeg.org/releases/ffmpeg-7.1.3.tar.xz"
-  sha256 "f0bf043299db9e3caacb435a712fc541fbb07df613c4b893e8b77e67baf3adbe"
+  url "https://ffmpeg.org/releases/ffmpeg-7.1.4.tar.xz"
+  sha256 "71f4aac3573ed9060489cb62526a6c7dda815ae10993789611acd7be9fa9fbf4"
   # None of these parts are used by default, you have to explicitly pass `--enable-gpl`
   # to configure to activate them. In this case, FFmpeg's license changes to GPL v2+.
   license "GPL-2.0-or-later"
-  revision 2
 
   livecheck do
     url "https://ffmpeg.org/download.html"
@@ -14,13 +13,12 @@ class FfmpegAT7 < Formula
   end
 
   bottle do
-    rebuild 1
-    sha256 arm64_tahoe:   "1a544fd0ae11107046e84b68b08f6407b4fe5da2502a1acf31b3d9943d8665d3"
-    sha256 arm64_sequoia: "83571ece8257375b117af5fbfcb0933a08e0c872dcf215c1163b7e665f4127cf"
-    sha256 arm64_sonoma:  "86f8617d4e908f5190939c7edaa7d3b42abce012387a445526229d2404be5f09"
-    sha256 sonoma:        "f5780c1b5e020932aaaf67143474a003280109ae458c2763a856478c481bfc5a"
-    sha256 arm64_linux:   "c1391e4fe9958f892d631ac286893da44349986281b9f1eabe78455583118f3e"
-    sha256 x86_64_linux:  "2281ee9f724feab733bc43c1da4e74322e024c59f80ab1c47be3cc3d0239aef0"
+    sha256 arm64_tahoe:   "08623dcad485e539bbeb7e82950e163a30ea34c3df81a0de0013ea86b5521365"
+    sha256 arm64_sequoia: "8e0f0c6f03bcfc7665d3a11db3e9d648d6dec8001df3e33ce22dba7fcb251881"
+    sha256 arm64_sonoma:  "439b2d54e18fb35027ace36dc64fc790c39c7ad2bd5ce61f43233a8e19267b7a"
+    sha256 sonoma:        "649e9438a7832b1fe98e4410bb4daf492898fd4d660f0eaa5f6c30a5b8beb6ed"
+    sha256 arm64_linux:   "e3312db8229779f222abda6f638270c7720500759300b15aab7e6905b4e43ea1"
+    sha256 x86_64_linux:  "0ba5c935f641f3d82d15c8e09b1ad44e24696854a785ca82e770306217ab3631"
   end
 
   keg_only :versioned_formula
@@ -85,12 +83,6 @@ class FfmpegAT7 < Formula
 
   on_intel do
     depends_on "nasm" => :build
-  end
-
-  # Backport support for svt-av1 4.x
-  patch do
-    url "https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/a5d4c398b411a00ac09d8fe3b66117222323844c"
-    sha256 "1dbbc1a4cf9834b3902236abc27fefe982da03a14bcaa89fb90c7c8bd10a1664"
   end
 
   def install

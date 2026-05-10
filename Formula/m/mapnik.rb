@@ -1,9 +1,10 @@
 class Mapnik < Formula
   desc "Toolkit for developing mapping applications"
   homepage "https://mapnik.org/"
-  url "https://github.com/mapnik/mapnik/releases/download/v4.2.1/mapnik-v4.2.1.tar.bz2"
-  sha256 "5828695831cfac09b5d5e660c6c0747f0f447c7356b183b26fbed3e220456b33"
+  url "https://github.com/mapnik/mapnik/releases/download/v4.2.2/mapnik-v4.2.2.tar.bz2"
+  sha256 "a530f03c2bcf1ea8f9e500a0dab7f8387f1a1eae3040a886c1547b3af86f5911"
   license "LGPL-2.1-or-later"
+  revision 1
   head "https://github.com/mapnik/mapnik.git", branch: "master"
 
   livecheck do
@@ -12,13 +13,12 @@ class Mapnik < Formula
   end
 
   bottle do
-    rebuild 1
-    sha256                               arm64_tahoe:   "a0e77dbc25136b76fb979d6f90517a6f1730a98cfb8112c5555f23cf0f6ab6f5"
-    sha256                               arm64_sequoia: "9a46c4ac818b301c0576eff83b5af0ce7e7f8b1bc12ba6c585c300c0ef0ccc31"
-    sha256                               arm64_sonoma:  "a08fd81a277282b9ad5fe19d3a7bb4ef4d944e9716288138dc690c995ae2039f"
-    sha256 cellar: :any,                 sonoma:        "7f64219e2fe9eace29ee064c77a79e1cb95498dff4b3460c8939a2e45e32917b"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "9eaaed630c9f7c5cc37148a6bade7cbed83beabdbff25d8e447aacef965a40c2"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "3402fc10a7358b9a916a7821325c6bc07a294e963741c7b8c3b987917124cc27"
+    sha256                               arm64_tahoe:   "efabe8976d1aeae07d302ab8ddfac459b96c1ec0e1f5ab9b086165977bc8cbdc"
+    sha256                               arm64_sequoia: "6f4b11b2a78d683667c26ea5fd823c4e62f9f2ddb0ed2f6e8b62b3e07750142a"
+    sha256                               arm64_sonoma:  "57fa1ae0c46fbab2f7c1adaf969b250907585479f922f413e6106b7d11ae7b3b"
+    sha256 cellar: :any,                 sonoma:        "86a9f05bc754a8621717fd05ec2a98113079b8a4462b87e1b5bc6f71dc05c7c0"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "dd1b4c53c36b1caa9578f23efea6203105b564c885f63859bf9248e1f2a04f06"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "85d6bd1b396b521158edfe8f53f86ffaf47878aa1b9e972fa862e9aab1caf306"
   end
 
   depends_on "cmake" => :build

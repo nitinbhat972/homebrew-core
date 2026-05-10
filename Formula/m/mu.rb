@@ -4,10 +4,9 @@
 class Mu < Formula
   desc "Tool for searching e-mail messages stored in the maildir-format"
   homepage "https://www.djcbsoftware.nl/code/mu/"
-  url "https://github.com/djcb/mu/releases/download/v1.12.15/mu-1.12.15.tar.xz"
-  sha256 "49d75622acff9d8a552622eba29d8abe49ae26d7fe80d835898f75f43e673ee3"
+  url "https://github.com/djcb/mu/releases/download/v1.14.1/mu-1.14.1.tar.xz"
+  sha256 "e41aa8530d01ae4696f6efc88c5e051dd8540f3ff7956918bf0976f1d6b1c2bb"
   license "GPL-3.0-or-later"
-  revision 1
   head "https://github.com/djcb/mu.git", branch: "master"
 
   # We restrict matching to versions with an even-numbered minor version number,
@@ -19,14 +18,15 @@ class Mu < Formula
   end
 
   bottle do
-    sha256 cellar: :any, arm64_tahoe:   "f0896b34904fbe3c80853358fa99c46ff482c059e18473ad175d57bfda6a934d"
-    sha256 cellar: :any, arm64_sequoia: "7eb99c40ac10ea74a6f1f9df7d3991424fa29f48900b6f116e9e26c0147aa0d3"
-    sha256 cellar: :any, arm64_sonoma:  "4d0867baa3ba0a4653714f01ce6afc91b3ddef2b389a60ac8065b63dc7a25469"
-    sha256 cellar: :any, sonoma:        "4825f732730b110ec0f77c50f52f9e560fb3cf089e78a1c0525b177c3ac3678e"
-    sha256               arm64_linux:   "9c144107909f4d37ffbc9f64fc08ea50e520caa84f530ff5ed900ecda54a641f"
-    sha256               x86_64_linux:  "4e01fe8fbf627795663bba5b74047f240f5d9083ff9014474ef84541b85dc48a"
+    sha256 arm64_tahoe:   "2679aada8a6a45fdac5947b1e044811ab9672be72c23675389e0c9011e2cee8c"
+    sha256 arm64_sequoia: "1dbe0fac1b2ec8a67493a2aa8c2dd45d618709b3068d0dfd747ea360371da1f8"
+    sha256 arm64_sonoma:  "8cba0043c4942342d888d710e87cdce515d43d83f1a1a8d464dbd814a8eebdcf"
+    sha256 sonoma:        "eb503a54133871d853e5c51b1fff9f355bc6c08d70f89b5c528655b15dc21141"
+    sha256 arm64_linux:   "e3263816502c8f21195cc8644eefa97aa8b08b1275971d5ee1dcce37fe107dd5"
+    sha256 x86_64_linux:  "316da8938f0c85c16886281d7f580d570f240f5ff774c966138a9575a7f5ed6b"
   end
 
+  depends_on "cli11" => :build
   depends_on "emacs" => :build
   depends_on "libgpg-error" => :build
   depends_on "libtool" => :build
@@ -34,9 +34,11 @@ class Mu < Formula
   depends_on "ninja" => :build
   depends_on "pkgconf" => :build
   depends_on "texinfo" => :build
+  depends_on "fmt"
   depends_on "gettext"
   depends_on "glib"
   depends_on "gmime"
+  depends_on "guile"
   depends_on "xapian"
 
   conflicts_with "mu-repo", because: "both install `mu` binaries"
@@ -45,6 +47,8 @@ class Mu < Formula
     system "meson", "setup", "build", "-Dlispdir=#{elisp}", *std_meson_args
     system "meson", "compile", "-C", "build", "--verbose"
     system "meson", "install", "-C", "build"
+
+    zsh_completion.install "contrib/mu-completion.zsh" => "_mu"
   end
 
   # Regression test for:

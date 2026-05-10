@@ -1,18 +1,18 @@
 class Diesel < Formula
   desc "Command-line tool for Rust ORM Diesel"
   homepage "https://diesel.rs"
-  url "https://github.com/diesel-rs/diesel/archive/refs/tags/v2.3.7.tar.gz"
-  sha256 "18dde504d882a7d9c72e38ad960cc4a0482eb2a39f43c0c2274953dae8f95616"
+  url "https://github.com/diesel-rs/diesel/archive/refs/tags/v2.3.9.tar.gz"
+  sha256 "3f1a42f0a9917d8b1efbcc2851af28b81ccf87f5fae3b2530890ca390ea68de9"
   license any_of: ["Apache-2.0", "MIT"]
   head "https://github.com/diesel-rs/diesel.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "c1f1c9cab255fee784506dcb916ea5c97346b13159a98d6be2afe4809d65dd7c"
-    sha256 cellar: :any,                 arm64_sequoia: "921154ebcda7421e89fc0543d1cee2a11d4022a00e4dbad09363b9b618c1ca3d"
-    sha256 cellar: :any,                 arm64_sonoma:  "2f4394c22dfe78e85d7255c40eadc4c6d373024e0a182909e6c0445220c32bb5"
-    sha256 cellar: :any,                 sonoma:        "d61909a2dfa663fdafc40a03ca2f1ad2f066a1cdc2a543e233e2c598ece2799b"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "24d8ac3184d827b33b3ae457f55c4952d17101ea7e2f6e675ba3fa78afa12a1e"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b5ec14987a0ee90f246bff260aadc4d135dfeee79d3f56d9d71a8785f0bfea03"
+    sha256 cellar: :any,                 arm64_tahoe:   "39f78a782269228dcef12d4920060c987fd2a1940d1996e794a4e97b67732d66"
+    sha256 cellar: :any,                 arm64_sequoia: "50a68b79d7f1e7791da69bee493e64a6a56e3a878b24a1a9ca354f0d610ac017"
+    sha256 cellar: :any,                 arm64_sonoma:  "d36554af9f0a8350895ca1977b1ee5304b87b90204eabc73c4c7aaf454996839"
+    sha256 cellar: :any,                 sonoma:        "445f1093d2e477d94e60d9b90feade982cda49d51c1dc710d833a54805c8c827"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "436379da3c999e8fc5bc567b845e1fcef2ef298269a42403e64c56b63f837292"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "0ad1bdd6f8e46ccec6b9883fe52be4048f7c817880e4d5b4cf5f003d92e67638"
   end
 
   depends_on "rust" => [:build, :test]
@@ -28,8 +28,10 @@ class Diesel < Formula
 
   test do
     ENV["DATABASE_URL"] = "db.sqlite"
-    system "cargo", "init"
-    system bin/"diesel", "setup"
-    assert_path_exists testpath/"db.sqlite", "SQLite database should be created"
+    system "cargo", "init", "homebrew"
+    cd "homebrew" do
+      system bin/"diesel", "setup"
+      assert_path_exists "db.sqlite", "SQLite database should be created"
+    end
   end
 end

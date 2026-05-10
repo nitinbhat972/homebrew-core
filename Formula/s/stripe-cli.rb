@@ -1,17 +1,17 @@
 class StripeCli < Formula
   desc "Command-line tool for Stripe"
   homepage "https://docs.stripe.com/stripe-cli"
-  url "https://github.com/stripe/stripe-cli/archive/refs/tags/v1.38.3.tar.gz"
-  sha256 "9d77ca8ec40dc04107b55db75f4c8cf286eac496da750d4ad95325f027df6852"
+  url "https://github.com/stripe/stripe-cli/archive/refs/tags/v1.40.9.tar.gz"
+  sha256 "dcb2890fadc1a6ef008cc316f61f1025c7a412c9bd9766a5a61c098813b05ff4"
   license "Apache-2.0"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "855afc03e7796b8aa9902fc725814eb379fb823ce2367cd3a6d6fb313542df39"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "edc852fa4cf7f4e042455790407b14206feb05c64252aecc1b549f9b3800f837"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "86c80ac913033a0a300afb134a0299dfa64a7e44e00dc531d56bc3011c9bfeb0"
-    sha256 cellar: :any_skip_relocation, sonoma:        "91a2399e943127c97ddde9f0eb12f8adae4c9e02101fdd7783ac70659203e647"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "9164d98297080a297466631117259d7a21f80d9806891f582eeb349353078066"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b0d14c96be66ce7759a6bd37f02383936b536d6d469f95fe587cb26059f22186"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "78a045f6d20443ffe4f4766b28102b7c5bd1e7991594d6c2743512868900a475"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "530d15b13d5e89f7e806aed5efe312f593c4f9456ed798848f054eadc610e737"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "04a60c9816baec10dc08039bdc4e77a674b3a3708596914c211e1f6b416bc218"
+    sha256 cellar: :any_skip_relocation, sonoma:        "17f1b320bbf17d0b674e58a0f66adf97ac8cb76f065d664e7dfeb5c337253ab1"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "932c2e6dab0e1a6a3cfe3f33e49504bb51a1468e2e9ce5dc5a570b451fdf39b4"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b98c42a291e629c616c973b3eef20d0cafe081eb5b90c0256ab710cac241faa1"
   end
 
   depends_on "go" => :build
@@ -22,15 +22,13 @@ class StripeCli < Formula
     ldflags = %W[-s -w -X github.com/stripe/stripe-cli/pkg/version.Version=#{version}]
     system "go", "build", *std_go_args(ldflags:, output: bin/"stripe"), "cmd/stripe/main.go"
 
-    # TODO: see if fish support is added, ref: https://github.com/stripe/stripe-cli/pull/1282
-    generate_completions_from_executable(bin/"stripe", "completion", "--write-to-stdout", "--shell",
-                                         shells: [:bash, :zsh])
+    generate_completions_from_executable(bin/"stripe", "completion", "--write-to-stdout", "--shell")
   end
 
   test do
     assert_match version.to_s, shell_output("#{bin}/stripe version")
     assert_match "secret or restricted key",
-                 shell_output("#{bin}/stripe --api-key=not_real_key get ch_1EGYgUByst5pquEtjb0EkYha", 1)
+                 shell_output("#{bin}/stripe --api-key=not_real_key get ch_1EGYgUByst5pquEtjb0EkYha 2>&1", 1)
     assert_match "-F __start_stripe",
                  shell_output("bash -c 'source #{bash_completion}/stripe && complete -p stripe'")
   end

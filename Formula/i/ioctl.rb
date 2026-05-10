@@ -1,8 +1,8 @@
 class Ioctl < Formula
   desc "Command-line interface for interacting with the IoTeX blockchain"
   homepage "https://docs.iotex.io/"
-  url "https://github.com/iotexproject/iotex-core/archive/refs/tags/v2.3.7.tar.gz"
-  sha256 "d095d2af4683673806829cccd925a6c51ffe943a9a138e56393aa3d7cd1a2b5d"
+  url "https://github.com/iotexproject/iotex-core/archive/refs/tags/v2.4.0.tar.gz"
+  sha256 "20f347b590bc62de539d218401cc6b75a38dc2682b7f23acd6a7cd111b87af32"
   license "Apache-2.0"
   head "https://github.com/iotexproject/iotex-core.git", branch: "master"
 
@@ -12,12 +12,12 @@ class Ioctl < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "1a8f8da50639a768eaf9acf419c363c90f0faa48176c208252f551ed0ed10f5b"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "fc0da7a3be395b6a6be07e5c813e119cbc07bc517eb8af37b449af3c130307d4"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "7c73ab8df786d465ead8cab9a772b4d368bb09e25a637c958b7374ca97bd3352"
-    sha256 cellar: :any_skip_relocation, sonoma:        "626474349bf993bea0b390b32224e89595b335b960eb723fe75bda95866b2366"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "2026161ef1bfb1d496d7de94c12997f268c040a59be7ac073f5188e94faab727"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "a6b65e3a353633809a3193ed0894ae8b9863e1218386b6b6e6d42d4880e8e75a"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "93ad2095a8286b719a8fb1cc43db4fdfc70b40bc448231c99c9310d1c3fc6ab7"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "3351c79a63ac7556b53996946aa0547dca4e2b5c161524c17af2574ed70caca4"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "f8356dda522f7ada024c283d6c82a6ffd25d5136e6b430e7cad6c9eda9bfad9b"
+    sha256 cellar: :any_skip_relocation, sonoma:        "5e50b4e1b78cac3cce3c5371affc086656094a083f146952441eba7a2d20c9af"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "d6e45493001fbcbd700be8fc6ed651ebaee9b88839c778710ab12aacc2c82b5c"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "95b1aa970e833dc99b81711d86687c98a86ea361c0e52358d04913b03e9b585e"
   end
 
   depends_on "go" => :build

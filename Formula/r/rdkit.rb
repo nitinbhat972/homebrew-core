@@ -2,8 +2,8 @@ class Rdkit < Formula
   desc "Open-source chemoinformatics library"
   homepage "https://rdkit.org/"
   # NOTE: Make sure to update RPATHs if any "@rpath-referenced libraries" show up in `brew linkage`
-  url "https://github.com/rdkit/rdkit/archive/refs/tags/Release_2025_09_6.tar.gz"
-  sha256 "57b92e8f47d9dbd559bd808d5cf6c48a628bc36118bc35b832a35e2ca8a0c7a1"
+  url "https://github.com/rdkit/rdkit/archive/refs/tags/Release_2026_03_2.tar.gz"
+  sha256 "9bea418c32b553920dc3491b282bbfc47e10728ad20ea874ca47c38cc1b0818b"
   license "BSD-3-Clause"
   head "https://github.com/rdkit/rdkit.git", branch: "master"
 
@@ -15,15 +15,13 @@ class Rdkit < Formula
     end
   end
 
-  no_autobump! because: :incompatible_version_format
-
   bottle do
-    sha256                               arm64_tahoe:   "ecc85277c1c01a4a5adfaebe6dcfbb091b934945dd443057ac7cb1baa4c7896b"
-    sha256                               arm64_sequoia: "3e11163ee5f8ce1aa5d45d64b1af0fc594a012b8549d2619dad030154b3ecf49"
-    sha256                               arm64_sonoma:  "a522f65f7c59e83c076d63c8c6d0b09a939e5a12069357baae3a814c11c8bf19"
-    sha256 cellar: :any,                 sonoma:        "fc56856b0deb32c7591075aabe42c5188226617d9c9fa7624ade614d56bfb7b1"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "4ef776ec46cdbffd46c9929a242d82352e67d9df713e3fe17d1ad2288701c069"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "ab9ab230ec275942ff34c09d52fec2348864fca9ba838b9240a307ab1c653e3a"
+    sha256                               arm64_tahoe:   "7e059ba243e1da259262ecbb9c435f493cc5c4888256bbf7c04e4f309db768c2"
+    sha256                               arm64_sequoia: "81e4568299c1209b8b38bb40ebe81a79f7917539e49f81b0420f14e02da727f0"
+    sha256                               arm64_sonoma:  "afd73c8c46b3d4861a8ce534c371e5adf53410e0d160ae87e365a1efd243ff44"
+    sha256 cellar: :any,                 sonoma:        "dca18afab829375096577293fa1f26e37c40511704bb8a5e5cfdf0393459cdcd"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "e6fac5f2832693a133c004400ad4ea96f2d5f5a1efc49b8c3b00132e2e40ab68"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "4d6b0e790c75f72dd2c75240f02e39c436c286fe31adfb84f925c8bf03d00a19"
   end
 
   depends_on "catch2" => :build

@@ -1,26 +1,25 @@
 class TechnitiumLibrary < Formula
   desc "Library for technitium .net based applications"
   homepage "https://technitium.com"
-  # Try upgrade to latest `dotnet` on version bump
-  url "https://github.com/TechnitiumSoftware/TechnitiumLibrary/archive/refs/tags/dns-server-v14.3.0.tar.gz"
-  sha256 "fd0b37e7906f95679f279c8704e5e197d853771f24c169f4702562a7f26ab254"
+  url "https://github.com/TechnitiumSoftware/TechnitiumLibrary/archive/refs/tags/dns-server-v15.2.0.tar.gz"
+  sha256 "f8343e7906322a5f27e206069fd22d22e1c451f516d8c3c872d0d354bb00a445"
   license "GPL-3.0-only"
-  revision 1
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "03ac8d281987c3d5dec0fc64f3563e3a383e958012d7d73ba6fb9aef6e310f43"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "3c4bd9c7a761862794902799382ee773ceac4a83dbb20dbd4e961a7c5ca14cbf"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "69fc28f1a681f9764d1824809b0cea3f3c5fbad39499e85a5686fc9345f502c2"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "cbf6a1094b1888bd698833c335dc298b0829f55cd6590da4e9a5dd99d98097a3"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "50049dcaf0f433dece95d5a3317be951011f130f5d59c29a94fbb49448cd80d9"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "72a86d2786d7435beff31cef105818e42b8a7207d0bc7c51e7a1df9e5213db67"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "a34be55c30d2e03ae6ecbb4fdf3384d02a21b9577ae5c7ec8bd1902b375a3ba8"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "f17003a5df31d401eb608533e1686d8d5863db9b2d5ad23a268c2027f8f0381d"
+    sha256 cellar: :any_skip_relocation, sonoma:        "63d63a42ed67d268599d3dd80c0a5f03dc7eeaaac104015d90ea360ba4864e03"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "ef6ecfce481425f705704411f420dce62c87ec35a8912b312d7777a7b433fab0"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "91a732510450e5a58c0232257283ea6fabbefee40bcdc2abc0e47a5a4559a956"
   end
 
-  depends_on "dotnet@9"
+  depends_on "dotnet"
 
   def install
     ENV["DOTNET_CLI_TELEMETRY_OPTOUT"] = "1"
 
-    dotnet = Formula["dotnet@9"]
+    dotnet = Formula["dotnet"]
     args = %W[
       --configuration Release
       --framework net#{dotnet.version.major_minor}
@@ -35,7 +34,7 @@ class TechnitiumLibrary < Formula
   end
 
   test do
-    dotnet = Formula["dotnet@9"]
+    dotnet = Formula["dotnet"]
     target_framework = "net#{dotnet.version.major_minor}"
 
     (testpath/"test.cs").write <<~CSHARP

@@ -1,8 +1,8 @@
 class Oxen < Formula
   desc "Data VCS for structured and unstructured machine learning datasets"
   homepage "https://www.oxen.ai/"
-  url "https://github.com/Oxen-AI/Oxen/archive/refs/tags/v0.46.4.tar.gz"
-  sha256 "175bf925ab580b19c4539053c88dd6e321a043a207ed0a98bc7f15c472571f59"
+  url "https://github.com/Oxen-AI/Oxen/archive/refs/tags/v0.49.1.tar.gz"
+  sha256 "bc269006ea37b659f68ceb144f1f7e779b212a70b6e2c13c588c22fb2bd882d6"
   license "Apache-2.0"
   head "https://github.com/Oxen-AI/Oxen.git", branch: "main"
 
@@ -16,12 +16,12 @@ class Oxen < Formula
   no_autobump! because: :bumped_by_upstream
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "a928fd5a308249cb30a035c48c088188c2bc68bcf77f059debd064552fc12c72"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "5f04a9ba11c57c30037b0a14c9db4f7c7083871166f6b1ae76a0fb9359977c74"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "ea8b5406023ae7d07c7e2e18c2ac4f4af3d38b7239b1d2314cf72fdbc226d390"
-    sha256 cellar: :any_skip_relocation, sonoma:        "de5e0504956cedd8de689ce355abc6f08ba57e54408bc9e00f0f63beb43e8a71"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "317d7eca18490e6e040fe54e083aed44fcbf89904be066ba1ff71793ecf0308d"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "2995638196c13a53b9fef987ff368419c8d7a45112725f5b6f9cf58576bf635e"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "68f441f57e12d8ae3593203d942e4983830c3b84e21251b6d50f0222e07b7a04"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "f0c3fc6ba2cced0615ffdf18717e2c8e30724a5a7bc9cb5678d33bb108d46f4d"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "759448da501564145c1b54790982f938f259c7762abbb6d128b1c2e8e3e19a05"
+    sha256 cellar: :any_skip_relocation, sonoma:        "035fffc51affe434e3c0bc02b52ed75acdc25a616bdc696d5ec9b58e33e2168d"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "4d4cb6a26dd2180314e11fe4d9bf086bd7af8642e120d38b03eb7b373cdb0987"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "89490195053a07d426a713caeb2494f361a55fb46dd7150b4cbd18eefdfdd142"
   end
 
   depends_on "cmake" => :build # for libz-ng-sys
@@ -37,9 +37,7 @@ class Oxen < Formula
   end
 
   def install
-    cd "oxen-rust" do
-      system "cargo", "install", *std_cargo_args(path: "crates/cli")
-    end
+    system "cargo", "install", *std_cargo_args(path: "crates/cli")
   end
 
   test do

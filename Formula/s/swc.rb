@@ -1,8 +1,8 @@
 class Swc < Formula
   desc "Super-fast Rust-based JavaScript/TypeScript compiler"
   homepage "https://swc.rs"
-  url "https://github.com/swc-project/swc/archive/refs/tags/v1.15.21.tar.gz"
-  sha256 "254424fb8878443df7e6733174e76224b9a2a420cc3f2f8086e31ff0ed5d86a7"
+  url "https://github.com/swc-project/swc/archive/refs/tags/v1.15.33.tar.gz"
+  sha256 "f504295fe9c3b5972f3c93a8a31bf2594c0e7efd7ab4c04bd9669236598d1554"
   license "Apache-2.0"
   head "https://github.com/swc-project/swc.git", branch: "main"
 
@@ -12,12 +12,12 @@ class Swc < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "00e1503d0e4609b3e1331fa0cc7106e4f224d7f9e408aeb3f377a0e7f36c53bb"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "dd05bc8f36e496afeea7fa46318c03589a554b9d7de23cca1180d30a19c7e585"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "8c42ba7e7170f251855dcbc42df991d39f88787c0734ea7ba11e597da8239468"
-    sha256 cellar: :any_skip_relocation, sonoma:        "82bc7d7d1a40922380bb0ba9fdc42fac74babfe35d7bc64ff432d19305647282"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "df452b48b9538c7024130604c923c33f80f9c9912ebf3361441ba7fe531e9fbc"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "3798810651e34ee74bdd77f1f556983f9d84358677dd28a1ba3f95c71a3214e3"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "c318b10a991189a8d6dcc9d7d0b4a0a52090f57492cb8943601d8e152fd0cb77"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "ede51057978ec58dbec181ab038e6d4996cb5c72fe1f2d65158507e8c0aeaaaf"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "6ebf63f9b9488dce711bbaac0daaee9e657eac830158f5fe21d677d193a84bcd"
+    sha256 cellar: :any_skip_relocation, sonoma:        "c130dda657c6f0f3aaa7543ee58ed403fbc0120a93262560b9938ee3fbe73fd0"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "391d75a22038a7c2ea3ce132e153306f30f48530faa307aae308f26f0223037c"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "86e961c9aeedba5e47630ab50ae1b36d538489dfc600e2df1d644fc406939fe9"
   end
 
   depends_on "rust" => :build

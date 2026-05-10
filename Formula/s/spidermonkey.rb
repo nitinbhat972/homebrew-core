@@ -1,9 +1,9 @@
 class Spidermonkey < Formula
   desc "JavaScript-C Engine"
   homepage "https://spidermonkey.dev"
-  url "https://archive.mozilla.org/pub/firefox/releases/140.9.0esr/source/firefox-140.9.0esr.source.tar.xz"
-  version "140.9.0"
-  sha256 "b972b2a4c17244d51c10123cbd6c936e2cf26ebc29eb724570d285c283e9e92c"
+  url "https://archive.mozilla.org/pub/firefox/releases/140.10.2esr/source/firefox-140.10.2esr.source.tar.xz"
+  version "140.10.2"
+  sha256 "796bf65372e702c13277e6f38e9276ded9dceea81e8934c29a06568016f24e77"
   license "MPL-2.0"
   compatibility_version 1
   head "https://hg.mozilla.org/mozilla-central", using: :hg
@@ -16,12 +16,12 @@ class Spidermonkey < Formula
   end
 
   bottle do
-    sha256 cellar: :any, arm64_tahoe:   "8094f46e9b9fa2b910f5e1e2cf6ed7996052ca21fd81754d898b6e1fb2f77496"
-    sha256 cellar: :any, arm64_sequoia: "ab98ead74434fff0efd4906769a4d6d4084b538ef95cef14c1903685054d616d"
-    sha256 cellar: :any, arm64_sonoma:  "62721a6e5cbeb2dd4d06a032cbdc4646a27846aa9064b27a3ddb7cb114d29f42"
-    sha256 cellar: :any, sonoma:        "c9c1fb867c8065b57bb9f4c6820e73fbfaa9ca62dbb4d15fc0575ae6c81e2a7b"
-    sha256               arm64_linux:   "c953febb7f74bcbeba1b0b3a45d316c9bfbe2735809a2a7b15ba7cfffe7adc23"
-    sha256               x86_64_linux:  "91ca3b4499a8c8759947636c7b0c92aec73b2179be0b77b802e221cad8bc5d4f"
+    sha256 cellar: :any, arm64_tahoe:   "5cd55342b7490031f62fcfc42b152c42b358416d80b952a541aa7914aa5b3923"
+    sha256 cellar: :any, arm64_sequoia: "0ebeb0b9fbfa4e07643418f60f1d7abaf9fe87c4b76618cfaa63574f9a78de2d"
+    sha256 cellar: :any, arm64_sonoma:  "d2e2ba80859bf12a0a4d4140c58f99c3710885ad7c17c92aee1cdacc678aa80a"
+    sha256 cellar: :any, sonoma:        "20eb5b5434a882c6636079abc79fe0c8de3a2048b2a98f092f3c78be7c96c566"
+    sha256               arm64_linux:   "3ab3856e25e74e97b5f5a250e3e431bdefbb21521217956d29b93f81085c2115"
+    sha256               x86_64_linux:  "f262c3067317c291c00cc514d105c3bea6b8b4d6e14aee28c8b1cd1f9924af92"
   end
 
   depends_on "cbindgen" => :build
@@ -72,6 +72,17 @@ class Spidermonkey < Formula
 
   def install
     ENV.runtime_cpu_detection
+
+    # Vendored encoding_rs 0.8.35 fails to build with rust 1.95 (Mask::select moved
+    # to a trait method). Use cargo's `[patch.crates-io]` to redirect to the upstream
+    # commit that fixes it (https://github.com/hsivonen/encoding_rs/pull/130).
+    File.open(".cargo/config.toml.in", "a") do |f|
+      f.puts <<~TOML
+
+        [patch.crates-io]
+        encoding_rs = { git = "https://github.com/hsivonen/encoding_rs", rev = "dc06d71cb14390433bcd5a78975cbe7a29e47333" }
+      TOML
+    end
 
     if OS.mac?
       inreplace "build/moz.configure/toolchain.configure" do |s|

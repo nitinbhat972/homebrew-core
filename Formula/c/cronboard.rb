@@ -3,19 +3,21 @@ class Cronboard < Formula
 
   desc "Terminal-based dashboard for managing cron jobs locally and on servers"
   homepage "https://github.com/antoniorodr/cronboard"
-  url "https://github.com/antoniorodr/cronboard/archive/refs/tags/v0.5.1.tar.gz"
-  sha256 "593a33f8cb01f369ea4fa53f29628fc77783f7484b61072ff20948fdb0017a94"
-  license "MIT"
+  url "https://github.com/antoniorodr/cronboard/archive/refs/tags/v0.5.4.tar.gz"
+  sha256 "6b3ca130c5772c2d6d664fd376e3ba40d944fe6dce92414f192448684df35e37"
+  license "Apache-2.0"
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "3e5e6bfffd6f71684b2c14d1266473592e43b0a838a8adde8d38de6b56f2a48f"
-    sha256 cellar: :any,                 arm64_sequoia: "ef905ce3834c314650767e003a1ed4ab0fbea09f537a0d0d0ab13b6a106b6960"
-    sha256 cellar: :any,                 arm64_sonoma:  "c41543a007f615fbb45fedf105869515112a897d38929126323a2d03ab130834"
-    sha256 cellar: :any,                 sonoma:        "c19728db04b2951ba06943ee70a58a1cc46e5936746a30071331d2ef755afcab"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "989a75d6e17412df103c5a66dec43def4e3c891a0fb46baa9029b1ff9595954b"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "975bc685c909e4da37016d68e5e50145592cc9f8c9c7f6861c099ae58adadd5d"
+    sha256 cellar: :any,                 arm64_tahoe:   "af16312bd447636f9031cd3bbe94f02e499d099994ae16d7e908a05c9bfc1829"
+    sha256 cellar: :any,                 arm64_sequoia: "1cb63baf33812d4fb040777a03f8b4f20aab2e315110f57deb862b36194a2e9b"
+    sha256 cellar: :any,                 arm64_sonoma:  "11f283e24d045fda175068ae1d13b48fbbcb72d73d8af72f6ead4d6c0d4d9802"
+    sha256 cellar: :any,                 sonoma:        "5242ec350d986c9568cffc2ef6d1c98c2bd8cbbcf53d40d72213137f4b9cb856"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "ce6b7cb51b83e5c802cd9e0cbf358df19939f0caef70040e76f79c109c7dd926"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "429d1467a4eb69b26096d69cc60e6c2eeff26bf6b4a8fb516fffca4d3d0661d1"
   end
 
+  # `pkgconf` and `rust` are for bcrypt
+  depends_on "pkgconf" => :build
   depends_on "rust" => :build
   depends_on "cryptography" => :no_linkage
   depends_on "libsodium"
@@ -29,23 +31,18 @@ class Cronboard < Formula
   end
 
   resource "cron-descriptor" do
-    url "https://files.pythonhosted.org/packages/7c/31/0b21d1599656b2ffa6043e51ca01041cd1c0f6dacf5a3e2b620ed120e7d8/cron_descriptor-2.0.6.tar.gz"
-    sha256 "e39d2848e1d8913cfb6e3452e701b5eec662ee18bea8cc5aa53ee1a7bb217157"
+    url "https://files.pythonhosted.org/packages/f2/ce/cd3cc454ea73e8a38be79723b925611d2556037f938372ad594373f187b4/cron_descriptor-2.0.8.tar.gz"
+    sha256 "7e487efe14a99a3c1c23bb5302bb75c8bf5d54bca82931bf71f5ae2855939772"
   end
 
   resource "croniter" do
-    url "https://files.pythonhosted.org/packages/ad/2f/44d1ae153a0e27be56be43465e5cb39b9650c781e001e7864389deb25090/croniter-6.0.0.tar.gz"
-    sha256 "37c504b313956114a983ece2c2b07790b1f1094fe9d81cc94739214748255577"
-  end
-
-  resource "dt-croniter" do
-    url "https://files.pythonhosted.org/packages/de/8e/173c5cc010ab08e8e8b1528772b790f431757ce3e4c7fdae7b4c5fc35edd/dt-croniter-6.0.1.tar.gz"
-    sha256 "098a544670fa08afee3cc98499b9c5f0747846265a27cdce87ad5958806d4aa2"
+    url "https://files.pythonhosted.org/packages/df/de/5832661ed55107b8a09af3f0a2e71e0957226a59eb1dcf0a445cce6daf20/croniter-6.2.2.tar.gz"
+    sha256 "ba60832a5ec8e12e51b8691c3309a113d1cf6526bdf1a48150ce8ec7a532d0ab"
   end
 
   resource "invoke" do
-    url "https://files.pythonhosted.org/packages/de/bd/b461d3424a24c80490313fd77feeb666ca4f6a28c7e72713e3d9095719b4/invoke-2.2.1.tar.gz"
-    sha256 "515bf49b4a48932b79b024590348da22f39c4942dff991ad1fb8b8baea1be707"
+    url "https://files.pythonhosted.org/packages/33/f6/227c48c5fe47fa178ccf1fda8f047d16c97ba926567b661e9ce2045c600c/invoke-3.0.3.tar.gz"
+    sha256 "437b6a622223824380bfb4e64f612711a6b648c795f565efc8625af66fb57f0c"
   end
 
   resource "linkify-it-py" do
@@ -74,13 +71,13 @@ class Cronboard < Formula
   end
 
   resource "platformdirs" do
-    url "https://files.pythonhosted.org/packages/19/56/8d4c30c8a1d07013911a8fdbd8f89440ef9f08d07a1b50ab8ca8be5a20f9/platformdirs-4.9.4.tar.gz"
-    sha256 "1ec356301b7dc906d83f371c8f487070e99d3ccf9e501686456394622a01a934"
+    url "https://files.pythonhosted.org/packages/9f/4a/0883b8e3802965322523f0b200ecf33d31f10991d0401162f4b23c698b42/platformdirs-4.9.6.tar.gz"
+    sha256 "3bfa75b0ad0db84096ae777218481852c0ebc6c727b3168c1b9e0118e458cf0a"
   end
 
   resource "pygments" do
-    url "https://files.pythonhosted.org/packages/b0/77/a5b8c569bf593b0140bde72ea885a803b82086995367bf2037de0159d924/pygments-2.19.2.tar.gz"
-    sha256 "636cb2477cec7f8952536970bc533bc43743542f70392ae026374600add5b887"
+    url "https://files.pythonhosted.org/packages/c3/b2/bc9c9196916376152d655522fdcebac55e66de6603a76a02bca1b6414f6c/pygments-2.20.0.tar.gz"
+    sha256 "6757cd03768053ff99f3039c1a36d6c0aa0b263438fcab17520b30a303a82b5f"
   end
 
   resource "pynacl" do
@@ -98,14 +95,9 @@ class Cronboard < Formula
     sha256 "37dd54208da7e1cd875388217d5e00ebd4179249f90fb72437e91a35459a0ad3"
   end
 
-  resource "pytz" do
-    url "https://files.pythonhosted.org/packages/56/db/b8721d71d945e6a8ac63c0fc900b2067181dbb50805958d4d4661cf7d277/pytz-2026.1.post1.tar.gz"
-    sha256 "3378dde6a0c3d26719182142c56e60c7f9af7e968076f31aae569d72a0358ee1"
-  end
-
   resource "rich" do
-    url "https://files.pythonhosted.org/packages/b3/c6/f3b320c27991c46f43ee9d856302c70dc2d0fb2dba4842ff739d5f46b393/rich-14.3.3.tar.gz"
-    sha256 "b8daa0b9e4eef54dd8cf7c86c03713f53241884e814f4e2f5fb342fe520f639b"
+    url "https://files.pythonhosted.org/packages/c0/8f/0722ca900cc807c13a6a0c696dacf35430f72e0ec571c4275d2371fca3e9/rich-15.0.0.tar.gz"
+    sha256 "edd07a4824c6b40189fb7ac9bc4c52536e9780fbbfbddf6f1e2502c31b068c36"
   end
 
   resource "six" do
@@ -114,8 +106,8 @@ class Cronboard < Formula
   end
 
   resource "textual" do
-    url "https://files.pythonhosted.org/packages/be/08/c6bcb1e3c4c9528ec9049f4ac685afdafc72866664270f0deb416ccbba2a/textual-8.0.2.tar.gz"
-    sha256 "7b342f3ee9a5f2f1bd42d7b598cae00ff1275da68536769510db4b7fe8cabf5d"
+    url "https://files.pythonhosted.org/packages/19/89/bec5709fb759f9c784bbcb30b2e3497df3f901691d13c2b864dbf6694a17/textual-8.2.4.tar.gz"
+    sha256 "d4e2b2ddd7157191d00b228592b7c739ea080b7d792fd410f23ca75f05ea76c4"
   end
 
   resource "textual-autocomplete" do

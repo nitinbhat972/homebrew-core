@@ -1,24 +1,24 @@
 class ConfigFileValidator < Formula
   desc "CLI tool to validate different configuration file types"
   homepage "https://boeing.github.io/config-file-validator/"
-  url "https://github.com/Boeing/config-file-validator/archive/refs/tags/v1.10.0.tar.gz"
-  sha256 "390ae2ef18977ec72e9269c31162d411f17722d4fb309f2631c00d40dc9db11b"
+  url "https://github.com/Boeing/config-file-validator/archive/refs/tags/v2.2.0.tar.gz"
+  sha256 "b1e2082d97f15446cbbd5de47c4614994aba862061acb89f2d49499d2838bfcb"
   license "Apache-2.0"
   head "https://github.com/Boeing/config-file-validator.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "38b21f924c30cd93fc27d6223348af1ede441e2c8d5967a9b3cd0410234cdc1b"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "38b21f924c30cd93fc27d6223348af1ede441e2c8d5967a9b3cd0410234cdc1b"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "38b21f924c30cd93fc27d6223348af1ede441e2c8d5967a9b3cd0410234cdc1b"
-    sha256 cellar: :any_skip_relocation, sonoma:        "7b062eee4576605f6cf56283f29a3d0318e42bae8caa969b87e457828a6ecde7"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "742cbdad4a8c1adf751f817b7915d69b7776db5560f685a2d2982ea4c1f47693"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "a5d4fe268840d7504c55eb8defe5563727619c1775fd99844e596634982e5f3b"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "17386a1482d4a7bed23a281f0a4d883a849ff2fbee6b72512f4bf77300ae3cfe"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "17386a1482d4a7bed23a281f0a4d883a849ff2fbee6b72512f4bf77300ae3cfe"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "17386a1482d4a7bed23a281f0a4d883a849ff2fbee6b72512f4bf77300ae3cfe"
+    sha256 cellar: :any_skip_relocation, sonoma:        "133d5bf3b29150d9d18837036205f3d809d6af62e8e7df3af9823fd61e7ef00d"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "13adf752054f0b868ec3fb7a53776db10fc16947219dab4af5d9bc68abbf8a9c"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "2b2c7952f1780ee48b06ad4bcd2182352ded459216efffefbc81321b4666db1a"
   end
 
   depends_on "go" => :build
 
   def install
-    ldflags = "-s -w -X github.com/Boeing/config-file-validator.version=#{version}"
+    ldflags = "-s -w -X github.com/Boeing/config-file-validator/v2.version=#{version}"
     system "go", "build", *std_go_args(ldflags:, output: bin/"validator"), "./cmd/validator"
   end
 

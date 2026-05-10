@@ -1,9 +1,10 @@
 class Zig < Formula
   desc "Programming language designed for robustness, optimality, and clarity"
   homepage "https://ziglang.org/"
-  url "https://ziglang.org/download/0.15.2/zig-0.15.2.tar.xz"
-  sha256 "d9b30c7aa983fcff5eed2084d54ae83eaafe7ff3a84d8fb754d854165a6e521c"
+  url "https://ziglang.org/download/0.16.0/zig-0.16.0.tar.xz"
+  sha256 "43186959edc87d5c7a1be7b7d2a25efffd22ce5807c7af99067f86f99641bfdf"
   license "MIT"
+  revision 1
   compatibility_version 1
 
   livecheck do
@@ -12,17 +13,17 @@ class Zig < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "dd70b8ff8c60139a550cf147c62385db650f0a78f6a0886d64e5d3a23300fedf"
-    sha256 cellar: :any,                 arm64_sequoia: "57cef8bf8e91f4883be988370fbe8e48c301ded0e578907d73ace9c325f17448"
-    sha256 cellar: :any,                 arm64_sonoma:  "1f4b7e532d85d0b552fbc7c6434e2dc3da4322630823989ee07665b11f1a3fa9"
-    sha256 cellar: :any,                 sonoma:        "a6214bdefd13c3f08072d2104480c977925ecb4160b3528b097761d8a2f0fe10"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "cd03697749a4dbeec55258d7fd5170b2dd73ca29b1510a001a021d5469287197"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "87d7f340a2db08d1274e7d7915252db7880705426fc0b592147cde1f0009935e"
+    sha256 cellar: :any,                 arm64_tahoe:   "522ec6fc3cd13d1c731b4677234054a4f9207d1f7e208f0a1313fd21835bd16b"
+    sha256 cellar: :any,                 arm64_sequoia: "12b55d2efffbc6fc65f471ff989703934fee7f55e60887e400c8c18abd1b3baf"
+    sha256 cellar: :any,                 arm64_sonoma:  "90f1fb24a01715a36a48878969a16e29b341039a1c97a82fc134db09a00cd888"
+    sha256 cellar: :any,                 sonoma:        "22035d0f3aa03f82192326b77dad535ea14acd5689a04a2c18df9b077b2d53e1"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "6dec0d9355b49eea00ae882bd407bbceb48b27c206a6f0e823ac63635b74d5c6"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "9657f0322225292cb4a9c158d2305f62520524467b5b57daf545a327c492cd37"
   end
 
   depends_on "cmake" => :build
-  depends_on "lld@20"
-  depends_on "llvm@20"
+  depends_on "lld@21"
+  depends_on "llvm@21"
   depends_on macos: :big_sur # https://github.com/ziglang/zig/issues/13313
 
   # NOTE: `z3` should be macOS-only dependency whenever we need to re-add
@@ -35,13 +36,17 @@ class Zig < Formula
   # https://github.com/Homebrew/homebrew-core/issues/209483
   skip_clean "lib/zig/libc/darwin/libSystem.tbd"
 
-  # Fix linkage with libc++.
-  #   https://github.com/ziglang/zig/pull/23264
-  # Fix max_rss
-  #   https://github.com/Homebrew/homebrew-core/issues/252365
+  # Force Zig to use the system libc++ on Darwin. Without this, the vendored
+  # libc++ gives `zig` a private std::error_code category that disagrees with
+  # libLLVM.dylib's, breaking comparisons across the boundary — e.g. `zig ar`
+  # can't create new archives with ZIG_SHARED_LLVM=ON.
+  # https://github.com/Homebrew/homebrew-core/issues/278849
   patch :DATA
 
   def install
+    # Reduce max_rss to build on CI with less than 8GB memory available
+    inreplace "build.zig", ".max_rss = 8_000_000_000,", ".max_rss = 6_900_000_000,"
+
     llvm = deps.find { |dep| dep.name.match?(/^llvm(@\d+)?$/) }
                .to_formula
     if llvm.versioned_formula? && deps.any? { |dep| dep.name == "z3" }
@@ -59,10 +64,8 @@ class Zig < Formula
     end
 
     cpu = case Hardware.oldest_cpu # See `zig targets`.
-    # Cortex A-53 seems to be the oldest available ARMv8-A processor.
-    # https://en.wikipedia.org/wiki/ARM_Cortex-A53
-    when :armv8 then "cortex_a53"
     when :arm_vortex_tempest then "apple_m1"
+    when :armv8 then "xgene1" # Closest to `-march=armv8-a`
     else Hardware.oldest_cpu
     end
 
@@ -77,8 +80,8 @@ class Zig < Formula
   test do
     (testpath/"hello.zig").write <<~ZIG
       const std = @import("std");
-      pub fn main() !void {
-          try std.fs.File.stdout().writeAll("Hello, world!");
+      pub fn main(init: std.process.Init) !void {
+          try std.Io.File.stdout().writeStreamingAll(init.io, "Hello, world!");
       }
     ZIG
     system bin/"zig", "build-exe", "hello.zig"
@@ -119,9 +122,17 @@ class Zig < Formula
     system bin/"zig", "cc", "hello.c", "-o", "hello-c"
     assert_equal "Hello, world!", shell_output("./hello-c")
 
+    # Regression test for `zig ar` creating a new archive.
+    # https://github.com/Homebrew/homebrew-core/issues/278849
+    system bin/"zig", "cc", "-c", "hello.c", "-o", "hello.o"
+    system bin/"zig", "ar", "rcs", "test.a", "hello.o"
+    assert_path_exists testpath/"test.a"
+
     return unless OS.mac?
 
-    # See https://github.com/Homebrew/homebrew-core/pull/211129
+    # Guards against `zig` vendoring its own libc++. Before removing,
+    # confirm the binary has no private libc++ of its own.
+    # https://github.com/Homebrew/homebrew-core/issues/278849
     require "utils/linkage"
     library = "/usr/lib/libc++.1.dylib"
     assert Utils.binary_linked_to_library?(bin/"zig", library), "No linkage with #{library}!"
@@ -129,51 +140,23 @@ class Zig < Formula
 end
 
 __END__
-From 8f9216e7d10970c21fcda9e8fe6af91a7e0f7db9 Mon Sep 17 00:00:00 2001
-From: Michael Dusan <michael.dusan@gmail.com>
-Date: Mon, 10 Mar 2025 17:32:00 -0400
-Subject: [PATCH] macos stage3: add link support for system libc++
-
-- activates when -DZIG_SHARED_LLVM=ON
-- activates when llvm_config is used and --shared-mode is shared
-- otherwise vendored libc++ is used
-
-closes #23189
----
- build.zig | 8 +++++++-
- 1 file changed, 7 insertions(+), 1 deletion(-)
-
 diff --git a/build.zig b/build.zig
-index 15762f0ae881..ea729f408f74 100644
 --- a/build.zig
 +++ b/build.zig
-@@ -782,7 +782,13 @@ fn addCmakeCfgOptionsToExe(
+@@ -859,7 +859,15 @@
                  mod.linkSystemLibrary("unwind", .{});
              },
-             .ios, .macos, .watchos, .tvos, .visionos => {
+             .driverkit, .ios, .maccatalyst, .macos, .tvos, .visionos, .watchos => {
 -                mod.link_libcpp = true;
-+                if (static or !std.zig.system.darwin.isSdkInstalled(b.allocator)) {
++                const io = b.graph.io;
++                if (static or !std.zig.system.darwin.isSdkInstalled(b.allocator, io)) {
 +                    mod.link_libcpp = true;
 +                } else {
-+                    const sdk = std.zig.system.darwin.getSdk(b.allocator, &b.graph.host.result) orelse return error.SdkDetectFailed;
-+                    const @"libc++" = b.pathJoin(&.{ sdk, "usr/lib/libc++.tbd" });
-+                    exe.root_module.addObjectFile(.{ .cwd_relative = @"libc++" });
++                    const sdk = std.zig.system.darwin.getSdk(b.allocator, io, target) orelse
++                        return error.SdkDetectFailed;
++                    const libcpp_tbd = b.pathJoin(&.{ sdk, "usr/lib/libc++.tbd" });
++                    mod.addObjectFile(.{ .cwd_relative = libcpp_tbd });
 +                }
              },
              .windows => {
                  if (target.abi != .msvc) mod.link_libcpp = true;
-
---------------------------------------------------------------------------------
-diff --git a/build.zig b/build.zig
-index 9e672a4ca7..77959757f7 100644
---- a/build.zig
-+++ b/build.zig
-@@ -738,7 +738,7 @@ fn addCompilerMod(b: *std.Build, options: AddCompilerModOptions) *std.Build.Modu
- fn addCompilerStep(b: *std.Build, options: AddCompilerModOptions) *std.Build.Step.Compile {
-     const exe = b.addExecutable(.{
-         .name = "zig",
--        .max_rss = 7_800_000_000,
-+        .max_rss = 6_900_000_000,
-         .root_module = addCompilerMod(b, options),
-     });
-     exe.stack_size = stack_size;

@@ -1,17 +1,17 @@
 class Gurk < Formula
   desc "Signal Messenger client for terminal"
   homepage "https://github.com/boxdot/gurk-rs"
-  url "https://github.com/boxdot/gurk-rs/archive/refs/tags/v0.9.1.tar.gz"
-  sha256 "7947407eb548bb660227eb03987f7214a48bc92ce48e65ff88cf89ac94461a34"
+  url "https://github.com/boxdot/gurk-rs/archive/refs/tags/v0.9.3.tar.gz"
+  sha256 "1c8ee4466374375a3df2ccd94fcc86d76bfcdd868820f3f9d4a1f2cbed2be22b"
   license "AGPL-3.0-only"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "fb13b0ce2df0b87689ce9eb1ef24d53c0f7afbd38ef9bbb18b2b8ac8667402a2"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "1d6b5443f82ee030b60cfb7a7f1d16136aad597db7dae46de25419787eb4bfdf"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "3724671b80098c974edd99588f92c4645c9d7157b49cfbd15d744ea0442cd1b3"
-    sha256 cellar: :any_skip_relocation, sonoma:        "e4920cf2ba637f27fd67a2a016847abc90ca000c9763ecb6514c392eb4589c57"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "c6f66cb0837deeef53c8f9cef6e93ecc90702512ee12dd65700e82f6e880b858"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "716705c2c7d0635637562df3b714a14a826ce71ec306d8e2d83d1d41b6aa3ea3"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "d51e753ce3f279e3d9dfdfd60deced869c996e8fdc29ec7e6bb769d6e4680d30"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "40b88b0600de65cf507801dd6ec8e4492c12f72bd2c2a90fe787be30672cb681"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "1b197dc77ec944a137ec15d2d23e156c83b5a2367ca08adf94a2054ce37dd33b"
+    sha256 cellar: :any_skip_relocation, sonoma:        "fa085cf56a4c1e466e3a17f3d51e788ffccaa7db738d98ebcaa59f689830f20c"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "5b0aa9ba5d6820e76156328750d5e571d9c82f5af17886b4eabe4ab07eeda9e3"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "d2cd983ea34ac4c5d7f1ec14e75e12f95426bc1c1e0c4077d05a9226ead44789"
   end
 
   depends_on "pkgconf" => :build
@@ -22,7 +22,6 @@ class Gurk < Formula
   def install
     # Ensure that the `openssl` crate picks up the intended library.
     ENV["OPENSSL_DIR"] = Formula["openssl@3"].opt_prefix
-    ENV["OPENSSL_NO_VENDOR"] = "1"
 
     system "cargo", "install", *std_cargo_args
   end

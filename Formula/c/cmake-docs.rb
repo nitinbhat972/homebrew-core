@@ -1,10 +1,10 @@
 class CmakeDocs < Formula
   desc "Documentation for CMake"
   homepage "https://www.cmake.org/"
-  url "https://github.com/Kitware/CMake/releases/download/v4.3.0/cmake-4.3.0.tar.gz"
-  mirror "http://fresh-center.net/linux/misc/cmake-4.3.0.tar.gz"
-  mirror "http://fresh-center.net/linux/misc/legacy/cmake-4.3.0.tar.gz"
-  sha256 "f51b3c729f85d8dde46a92c071d2826ea6afb77d850f46894125de7cc51baa77"
+  url "https://github.com/Kitware/CMake/releases/download/v4.3.2/cmake-4.3.2.tar.gz"
+  mirror "http://fresh-center.net/linux/misc/cmake-4.3.2.tar.gz"
+  mirror "http://fresh-center.net/linux/misc/legacy/cmake-4.3.2.tar.gz"
+  sha256 "b0231eb39b3c3cabdc568c619df78208a7bd95ea10c9b2236d61218bac1b367d"
   license "BSD-3-Clause"
   head "https://gitlab.kitware.com/cmake/cmake.git", branch: "master"
 
@@ -13,12 +13,12 @@ class CmakeDocs < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "126d962faeb7fb24aa9de2a90ecd899668e277011add581fd9e7aedc5d2af133"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "126d962faeb7fb24aa9de2a90ecd899668e277011add581fd9e7aedc5d2af133"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "126d962faeb7fb24aa9de2a90ecd899668e277011add581fd9e7aedc5d2af133"
-    sha256 cellar: :any_skip_relocation, sonoma:        "126d962faeb7fb24aa9de2a90ecd899668e277011add581fd9e7aedc5d2af133"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "8c31cc30e4ebec063fa551be0d322f797bca356b4f6a21c293525d2b07fe02f5"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "8c31cc30e4ebec063fa551be0d322f797bca356b4f6a21c293525d2b07fe02f5"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "24d0799e55a2dff893bc2da591fd9e6bcb9b44dbcae961358aa149b062dc2e02"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "24d0799e55a2dff893bc2da591fd9e6bcb9b44dbcae961358aa149b062dc2e02"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "24d0799e55a2dff893bc2da591fd9e6bcb9b44dbcae961358aa149b062dc2e02"
+    sha256 cellar: :any_skip_relocation, sonoma:        "24d0799e55a2dff893bc2da591fd9e6bcb9b44dbcae961358aa149b062dc2e02"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "76d5ad6b57a0a20328e62f593c0b0eca409ad7dfe8fa44fbb19ce13090d04c03"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "76d5ad6b57a0a20328e62f593c0b0eca409ad7dfe8fa44fbb19ce13090d04c03"
   end
 
   depends_on "cmake" => :build

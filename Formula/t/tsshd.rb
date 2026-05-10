@@ -1,17 +1,17 @@
 class Tsshd < Formula
-  desc "UDP SSH server for trzsz-ssh (tssh) with roaming support"
-  homepage "https://github.com/trzsz/tsshd"
-  url "https://github.com/trzsz/tsshd/archive/refs/tags/v0.1.6.tar.gz"
-  sha256 "a303c14bd5a41303d56254cfa97b93ca5025c0138a8ceb9d0d777eb715b0c1bd"
+  desc "UDP-based SSH server with roaming support"
+  homepage "https://trzsz.github.io/tsshd"
+  url "https://github.com/trzsz/tsshd/archive/refs/tags/v0.1.8.tar.gz"
+  sha256 "1d19f99a95f19933d8058df1209b421400eaca8c2bf2e045747c8f6c68887d56"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "c6403b83e9b30c8d42596f45df16ec86174ccdadb2e69c52ae8260a5429df447"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "c6403b83e9b30c8d42596f45df16ec86174ccdadb2e69c52ae8260a5429df447"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "c6403b83e9b30c8d42596f45df16ec86174ccdadb2e69c52ae8260a5429df447"
-    sha256 cellar: :any_skip_relocation, sonoma:        "b62a6704693a2412827cc908035603eb2c8d84c31ab8498dca2dc6eee0e5d1db"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "9e8a3dc7d6b5f3e070448a701bffd0ce05e94a708dc4ec04b529219ec38044cb"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b6aec72067678c7bd8bbed61dae2a76c453c8a565aabedaffda978be35daf038"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "8f5be597f86f01b03876a95c9a3fb96225bfff5d3bee624b4e0d2ecda4df79a9"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "8f5be597f86f01b03876a95c9a3fb96225bfff5d3bee624b4e0d2ecda4df79a9"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "8f5be597f86f01b03876a95c9a3fb96225bfff5d3bee624b4e0d2ecda4df79a9"
+    sha256 cellar: :any_skip_relocation, sonoma:        "ca646b2423f59e9288f9218286c941f14462f2af80a11a8a25d7572a398040c2"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "0a5ebc66805178c28e62c2dd2fcf45c6b8c13d55d7cb09052d92d18b0b3e1964"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b0b89897053dac6610ad70656272742242c88d1851db6e5a69310ddba404f316"
   end
 
   depends_on "go" => :build

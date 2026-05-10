@@ -1,21 +1,21 @@
 class ApacheArrow < Formula
   desc "Columnar in-memory analytics layer designed to accelerate big data"
   homepage "https://arrow.apache.org/"
-  url "https://www.apache.org/dyn/closer.lua?path=arrow/arrow-23.0.1/apache-arrow-23.0.1.tar.gz"
-  mirror "https://archive.apache.org/dist/arrow/arrow-23.0.1/apache-arrow-23.0.1.tar.gz"
-  sha256 "bd09adb4feac11fe49d1604f296618866702be610c86e2d513b561d877de6b18"
+  url "https://www.apache.org/dyn/closer.lua?path=arrow/arrow-24.0.0/apache-arrow-24.0.0.tar.gz"
+  mirror "https://archive.apache.org/dist/arrow/arrow-24.0.0/apache-arrow-24.0.0.tar.gz"
+  sha256 "9a8094d24fa33b90c672ab77fdda253f29300c8b0dd3f0b8e55a29dbd98b82c9"
   license "Apache-2.0"
-  revision 4
-  compatibility_version 1
+  revision 1
+  compatibility_version 2
   head "https://github.com/apache/arrow.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any, arm64_tahoe:   "c5d6187c885655603ff7048fd1ad60ae73846e12e102e9a39776a0c7699aab45"
-    sha256 cellar: :any, arm64_sequoia: "819a1558af59c3de674285c8751e1d8a34f5a2f802022e78551557ec279df4a4"
-    sha256 cellar: :any, arm64_sonoma:  "45cdc24aa2ee100d7fa435339310d381af95fadfff78b1ea5f381ae2749c9423"
-    sha256 cellar: :any, sonoma:        "6b19cc803be96c8f317948108d582dc49fa52061dc3698d75178be75ebf7f4e0"
-    sha256               arm64_linux:   "d4cdec924f081d022069f5054b5dc50408c2e7e993f73c3a6825bd7a778ea8a1"
-    sha256               x86_64_linux:  "f20c46372a4ac2d290d7705dad63c052b33952a1b7b64b4113607cb7817e2527"
+    sha256 cellar: :any, arm64_tahoe:   "725827052d5622205be5a22b584fa371dd54dc4ed0ffb910c7c121900eee18cf"
+    sha256 cellar: :any, arm64_sequoia: "f06e7d05526ea26d23ee2b4cf89e42deb65e8dd19c56e266103cef2537555d51"
+    sha256 cellar: :any, arm64_sonoma:  "59e94b6daa2a495130d5f4239ae4c3e83f0a5ee0f8baa5c0f702559959bf85fe"
+    sha256 cellar: :any, sonoma:        "0198edd477ebbd5b384c7d022b1b14a1ff2edb5710fa9e2081be2c12d13bf430"
+    sha256               arm64_linux:   "07e853a572a9224f5a62359549546a3343843776302ff09fed91c7cfc6c970bc"
+    sha256               x86_64_linux:  "7efac2027b0854793553b57a46609ee1a7da6f40eea1c81aaac58214846133ef"
   end
 
   depends_on "boost" => :build
@@ -50,19 +50,7 @@ class ApacheArrow < Formula
     cause "fails handling PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED"
   end
 
-  # Apply open PR to support LLVM 22
-  # PR ref: https://github.com/apache/arrow/pull/49429
-  patch do
-    url "https://github.com/apache/arrow/commit/03d40603d9f29a107a5cede0f94e6c0241cd6099.patch?full_index=1"
-    sha256 "22fdd4a15a80a7bf41b899ba1ef5fdcf8c761cbd3bbd1470cd5db2c5a543e8af"
-  end
-  patch do
-    url "https://github.com/apache/arrow/commit/7b9135aab4ce6b8a79e0037ead8093d10174e7d8.patch?full_index=1"
-    sha256 "bb08d0ddf5b3fcb8cee1c354ea0be25a2a246bbef8fd311cc89637b52090bd8e"
-  end
-
   def install
-    # We set `ARROW_ORC=OFF` because it fails to build with Protobuf 27.0
     args = %W[
       -DCMAKE_INSTALL_RPATH=#{rpath}
       -DLLVM_ROOT=#{Formula["llvm"].opt_prefix}
@@ -120,7 +108,7 @@ class ApacheArrow < Formula
         return 0;
       }
     CPP
-    system ENV.cxx, "test.cpp", "-std=c++17", "-I#{include}", "-L#{lib}", "-larrow", "-o", "test"
+    system ENV.cxx, "test.cpp", "-std=c++20", "-I#{include}", "-L#{lib}", "-larrow", "-o", "test"
     system "./test"
   end
 end

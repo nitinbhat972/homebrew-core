@@ -1,18 +1,18 @@
 class Minify < Formula
   desc "Minifier for HTML, CSS, JS, JSON, SVG, and XML"
   homepage "https://go.tacodewolff.nl/minify"
-  url "https://github.com/tdewolff/minify/archive/refs/tags/v2.24.10.tar.gz"
-  sha256 "5bb9e99a81f6573b3ab467dd4adbb30d07e609b935398a139f20b183af81195f"
+  url "https://github.com/tdewolff/minify/archive/refs/tags/v2.24.13.tar.gz"
+  sha256 "d81dc3e0793d9a69e24d3655f60cf19be8c5cb62f86f6c3a3a4e7b678bc9b31c"
   license "MIT"
   head "https://github.com/tdewolff/minify.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "15d61275122c74223a94326de78441da43683dde3597744c8b454dd116339d4e"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "15d61275122c74223a94326de78441da43683dde3597744c8b454dd116339d4e"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "15d61275122c74223a94326de78441da43683dde3597744c8b454dd116339d4e"
-    sha256 cellar: :any_skip_relocation, sonoma:        "f09979f7db441b124a34cc87f35faf461a3911cc8d09b8f970c68b02a4ad7f96"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "90e1129a88e52935ff66f98bb5d105ec0a8738af81cc548f7b981538f785799b"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "5d16aade6e627675d81fe352e2161bd904ff578510731542bebc75d3b24a3b39"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "91f5d949d5f1657fc5d0069e2c7230c5130839c6cc78086c66b53b4c137e0373"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "91f5d949d5f1657fc5d0069e2c7230c5130839c6cc78086c66b53b4c137e0373"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "91f5d949d5f1657fc5d0069e2c7230c5130839c6cc78086c66b53b4c137e0373"
+    sha256 cellar: :any_skip_relocation, sonoma:        "1c790132610f021f784a48963f15a2400595e6e350bd34bb39f3e299b748baf6"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "0a31237df21a69ea40b34f01dd7e5e47471bf32b87898b790a5f9347f40a878c"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "21baa5fbea3a4819ea59d91d1e54e2c73c0344dea7c2257f230cdbe63e6da7a6"
   end
 
   depends_on "go" => :build

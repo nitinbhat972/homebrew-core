@@ -1,53 +1,42 @@
 class Chronograf < Formula
   desc "Open source monitoring and visualization UI for the TICK stack"
   homepage "https://docs.influxdata.com/chronograf/latest/"
-  url "https://github.com/influxdata/chronograf/archive/refs/tags/1.10.9.tar.gz"
-  sha256 "15c7cc80cc5e1e2d6ef33bffce1b6a26729f45b80453714f424eec03974f7e14"
+  url "https://github.com/influxdata/chronograf/archive/refs/tags/1.11.2.tar.gz"
+  sha256 "5bee300f2466d6a19774644993e9802ca93d18c5571099a4fb965daa47339710"
   license "AGPL-3.0-or-later"
   head "https://github.com/influxdata/chronograf.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "91cd22b2b6b8793e72f37916d451fe1fd7c89cab46bce1de95c6d27045fe84f8"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "8d9eb5a49b5d262d5ca7fd0558a59f0b96e403d4f5bf9a71436fbdd15d3573fa"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "76a9fa0bad678e7e38c7bad9ca6dc3479f9102376eb3b6aacd39d57bbef2d484"
-    sha256 cellar: :any_skip_relocation, sonoma:        "b205bc5e83253166087d3895ba61466bbb6d0a30a96be3a041907bf03b0a8fcf"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "154313920e25dc36c56c26aa567af0753f3092949f7d6b4a497e671808deea56"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "3e5b01f1a9c61c9acbae2b41a803c5e7cd7c471cab324ae399fcbaf3c895741d"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "fb2474203dd02216655dbbf45e8175709b52b1a16c3f44e7e675907fac265e2d"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "0a589e354fb36b0f6d2b93c48f7d74d5b678ed905d664925763f0914b41f587d"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "5af5c8d23f2fcdbd76db708d4c571cb89d88e2172283c7a22360c4a08ad6e8e0"
+    sha256 cellar: :any_skip_relocation, sonoma:        "e43f18ce274e49bbc1c0591278e286f00981698ce64b1745536e12f7766bbfd3"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "39371de12b393bd0350bae13ff2318d3ead6f76fbe4d338530c6e1f517c1cbd8"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "d1a26e7c986c4839ee9f934be7a9cf4e6d9b5fdd1964bcd79280245661cffbed"
   end
 
   depends_on "go" => :build
-  # Avoid C++20 from Node 23+ until "@parcel/watcher >= 2.2.0" for "node-addon-api >= 4"
-  # Issue ref: https://github.com/nodejs/node-addon-api/issues/1007
   depends_on "node@22" => :build
-  depends_on "python-setuptools" => :build
+  depends_on "pkg-config-wrapper" => :build
+  depends_on "pkgconf" => :build
+  depends_on "rust" => :build
   depends_on "yarn" => :build
   depends_on "influxdb"
   depends_on "kapacitor"
 
   def install
-    # Check if workarounds can be removed
-    if build.stable?
-      yarn_lock = File.read("yarn.lock")
+    ENV["PKG_CONFIG"] = Formula["pkg-config-wrapper"].opt_bin/"pkg-config-wrapper"
 
-      # distutils usage removed in https://github.com/nodejs/node-gyp/commit/707927cd579205ef2b4b17e61c1cce24c056b452
-      node_gyp_version = Version.new(yarn_lock[%r{/node-gyp[._-]v?(\d+(?:\.\d+)+)\.t}i, 1])
-      odie "Remove `python-setuptools` dependency!" if node_gyp_version >= 10
-
-      # node 22 (V8 12) fix in https://github.com/nodejs/nan/commit/1b630ddb3412cde35b64513662b440f9fd71e1ff
-      nan_version = Version.new(yarn_lock[%r{/nan[._-]v?(\d+(?:\.\d+)+)\.t}i, 1])
-      odie "Remove `nan` resolution workaround!" if nan_version >= "2.19.0"
-    end
-
-    # Workaround to build with newer node until `nan` dependency is updated
-    # https://github.com/influxdata/chronograf/issues/6040
-    package_json = JSON.parse(File.read("package.json"))
-    (package_json["resolutions"] ||= {})["nan"] = "2.23.0"
-    File.write("package.json", JSON.pretty_generate(package_json))
+    ENV["CGO_ENABLED"] = "1" if OS.linux?
 
     ENV["npm_config_build_from_source"] = "true"
-    ENV.deparallelize
-    system "make"
-    bin.install "chronograf"
+
+    system "yarn", "--cwd=ui", "install"
+    system "yarn", "--cwd=ui", "build", "--no-cache"
+
+    ldflags = "-s -w -X main.version=#{version} -X main.commit=#{tap.user}"
+    system "go", "build", *std_go_args(ldflags:), "./cmd/chronograf/main.go"
+    system "go", "build", *std_go_args(ldflags:, output: bin/"chronoctl"), "./cmd/chronoctl"
   end
 
   service do
@@ -59,6 +48,7 @@ class Chronograf < Formula
   end
 
   test do
+    assert_match version.to_s, shell_output("#{bin}/chronograf --version")
     port = free_port
     pid = spawn bin/"chronograf", "--port=#{port}"
     sleep 10

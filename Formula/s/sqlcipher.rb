@@ -1,21 +1,21 @@
 class Sqlcipher < Formula
   desc "SQLite extension providing 256-bit AES encryption"
   homepage "https://www.zetetic.net/sqlcipher/"
-  url "https://github.com/sqlcipher/sqlcipher/archive/refs/tags/v4.14.0.tar.gz"
-  sha256 "67fb27e967a4a6968c0905691c89c908e7250dddc581b887c19ef981c737e473"
+  url "https://github.com/sqlcipher/sqlcipher/archive/refs/tags/v4.15.0.tar.gz"
+  sha256 "21f5dfb2558a2a87740bb060ba75aadfec2e6119e08a87c3546c54751395a28d"
   license all_of: ["BSD-3-Clause", "blessing"]
   head "https://github.com/sqlcipher/sqlcipher.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "bac5dae45687c1febf9bee4a71aa7607ef4fd41ab28454591cb2023f0a6d2eac"
-    sha256 cellar: :any,                 arm64_sequoia: "cebc1660f1cb2fafd00fa8f085ed99bf716f9ff2279375dcf4312fcb019ae74b"
-    sha256 cellar: :any,                 arm64_sonoma:  "3c2f8346fd3c76e6417ff122cb8457a16cf215c05b934cd88383c6fb16edba3a"
-    sha256 cellar: :any,                 sonoma:        "95bedc9128368ad0125e41d7eb2f4ef2d7b29d2dd700e0317f65442a31f8d45d"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "6fe18269d80fc03021ad3fc67d563200ea1b3cf18c6dab6b7c08153d9644a3f6"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "02c58fd88765f08711351013792636ac385c0e6dac7ba229cf6ee0aba6b9b50a"
+    sha256 cellar: :any,                 arm64_tahoe:   "91a94f9cadd4d8606fdb52535e59af11bd96a4b3e0108d9101622fae854dac51"
+    sha256 cellar: :any,                 arm64_sequoia: "3e7a59bca8cce9934af8dd0fe8a7a69cca36b18d36859449738ce64136073509"
+    sha256 cellar: :any,                 arm64_sonoma:  "c9f84ddb061adf54d9309c882f43e605630b88922919cf1988b2bfcd660e61e7"
+    sha256 cellar: :any,                 sonoma:        "e867296dd064a0ea1c335ba8095c5bb652133e4d957dfbf7c81214930372f123"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "76a0686c0beb8d1e13ac247f814f9b18146d533989c1cc245515feda4c105d2c"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "cbcc555f60ff4face131443236f0419cdd21faad2afdf3765ee1246d40bab68d"
   end
 
-  depends_on "openssl@3"
+  depends_on "openssl@4"
 
   # Build scripts require tclsh. `--disable-tcl` only skips building extension
   uses_from_macos "tcl-tk" => :build

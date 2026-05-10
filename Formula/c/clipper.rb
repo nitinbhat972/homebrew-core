@@ -1,27 +1,31 @@
 class Clipper < Formula
   desc "Share macOS clipboard with tmux and other local and remote apps"
   homepage "https://github.com/wincent/clipper"
-  url "https://github.com/wincent/clipper/archive/refs/tags/2.1.0.tar.gz"
-  sha256 "9c13254e418a45c2577bd8a0b61d9736d474eec81947c615f48f53dacf3df756"
+  url "https://github.com/wincent/clipper/archive/refs/tags/3.0.0.tar.gz"
+  sha256 "0008c6147a365658c30a556956e923f49b296e76872febf600bfb9c5ffbc6bd0"
   license "BSD-2-Clause"
   head "https://github.com/wincent/clipper.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:    "3c0df619d149a439aa768fe0ad2f378c814df645516f1b97e7208af8570e9bc4"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia:  "5ba6f81698c0137f48012644d531c866531753698d1401afbf4812ac6afac002"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "b4430a2ed4f0c3c46fbfbbe3b439ec13693f5d9b4d644a93a58abcda5ee22463"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "786decdda1515fb47e7defc2d5b4b8f8663ae3bc5af905a8333394404f5bac4e"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "b590d188d9161d5bb518cd7459350e26884a94d0a6b34a28d88ff8a8bd7a6e26"
-    sha256 cellar: :any_skip_relocation, sonoma:         "357b34301d35c90be7799c7cc702370ec0877e975e62c9033f2e2f1b8c5cfdf5"
-    sha256 cellar: :any_skip_relocation, ventura:        "3af42ac07c4fd9f399ad8ddf10762d992610911b6afc59ea0ef02290d8c74b5b"
-    sha256 cellar: :any_skip_relocation, monterey:       "86f8afc1e505c633c5c592cff7710184ce48e195ec038514682f1cdd78d3525c"
+    rebuild 1
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "9a774abbbe9a959f39a478a85b38f06ee5991ffd4eeb2d6314d242da59ed5402"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "9a774abbbe9a959f39a478a85b38f06ee5991ffd4eeb2d6314d242da59ed5402"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "9a774abbbe9a959f39a478a85b38f06ee5991ffd4eeb2d6314d242da59ed5402"
+    sha256 cellar: :any_skip_relocation, sonoma:        "82e62e607c9831b635560f0783e52f3d3f1a98bda6a0fc8083f61629b9423b79"
   end
 
   depends_on "go" => :build
   depends_on :macos
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-s -w"), "clipper.go"
+    clipper_version = if build.stable?
+      version.to_s
+    else
+      Utils.safe_popen_read("git", "describe", "--tags", "--dirty").chomp
+    end
+
+    ldflags = %W[-s -w -X main.version=#{clipper_version}]
+    system "go", "build", *std_go_args(ldflags:), "clipper.go"
   end
 
   service do
@@ -50,5 +54,8 @@ class Clipper < Formula
         Process.kill "TERM", clipper.pid
       end
     end
+
+    version_output = shell_output("#{bin}/clipper -v 2>&1")
+    assert_match version.to_s, version_output
   end
 end

@@ -1,18 +1,19 @@
 class Msolve < Formula
   desc "Library for Polynomial System Solving through Algebraic Methods"
   homepage "https://msolve.lip6.fr"
-  url "https://github.com/algebraic-solving/msolve/archive/refs/tags/v0.9.4.tar.gz"
-  sha256 "02572df81596ff1d06b5d841e3fa7652f7d7976ef021c80728bcf0b08824e30c"
+  url "https://github.com/algebraic-solving/msolve/archive/refs/tags/v0.9.5.tar.gz"
+  sha256 "92b94775cd5a046de307e2ad0fc576d2631e43fbd0eb7749517a033d7e77ddf4"
   license "GPL-2.0-or-later"
+  revision 1
   head "https://github.com/algebraic-solving/msolve.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "2c7f0d287740d36905e727ca856177e561df3215c73f1e963a425548c6231016"
-    sha256 cellar: :any,                 arm64_sequoia: "b749458f714cf2b83b45e074a71d3484085c728f39aab2d9e2ff615407e436b4"
-    sha256 cellar: :any,                 arm64_sonoma:  "6629a2298232424ae3f86d5b82720924cb39aa36e3475614bce532fed66520ae"
-    sha256 cellar: :any,                 sonoma:        "a6a9cdac2b29dbf693c5dc92ef7445023c8fca636ac156e84ccfb7fb438528e9"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "2dbe678837db8a5ed35138e936d86c9e7e8df99cf05076d31960de9733e4d648"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "a6bb5946a6a9d2b47581533d4662830aa0c5b23af46333709c8e6c72ab84e771"
+    sha256 cellar: :any,                 arm64_tahoe:   "30716afe32863d3ae227b5e02d9f4ada80216226a64534eb30f66a8def9a2d0a"
+    sha256 cellar: :any,                 arm64_sequoia: "4bce071a4be4e9b0ac054556ba7454dee68644b5b0cfc726cab9cbcb6b0e2082"
+    sha256 cellar: :any,                 arm64_sonoma:  "adc200dcd843f64e2f3cea57ee101d3ea07e2a2d38b6bc57a194548157718238"
+    sha256 cellar: :any,                 sonoma:        "b17cbde4349df5086a71dd597892df284967341c49c33e965f0b333d6e8e53d7"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "a62db2a516722def2394df7655f661ab243cb83b16eb259f51a615ad4701e4f8"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "d182d4b071f035a780ea8214cf6a62453f6aaf2f92c8045dc432e7578b13b95b"
   end
 
   depends_on "autoconf" => :build

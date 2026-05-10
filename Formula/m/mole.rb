@@ -1,8 +1,8 @@
 class Mole < Formula
   desc "Deep clean and optimize your Mac"
   homepage "https://github.com/tw93/Mole"
-  url "https://github.com/tw93/Mole/archive/refs/tags/V1.31.0.tar.gz"
-  sha256 "fc7a6b92b602588b5aa256bb6dd382d409bd8fbf57cc09fe041d7c86a7400edd"
+  url "https://github.com/tw93/Mole/archive/refs/tags/V1.37.0.tar.gz"
+  sha256 "240c8e1791b7f1472621efb090a78ab4bf435ec6046dae9b1fae15991a11588e"
   license "MIT"
   head "https://github.com/tw93/Mole.git", branch: "main"
 
@@ -15,10 +15,10 @@ class Mole < Formula
   no_autobump! because: :bumped_by_upstream
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "6389f2651f866f43f38a124f82a3c7f3b1a40e15f5b14d2ff7b8a11bdda08def"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "6140fc3a7c89c315bcb60890b9a9ee3a07e9d17688d8d3cad89c482e5b9b90b2"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "b731af5914598964958a736543f27fd17b1bf7d4c0a3a286d5bdab6042fb8ccd"
-    sha256 cellar: :any_skip_relocation, sonoma:        "e6f368570034da6312ed796a28f7cc12443d0db3068c795f2b357aa6d6d75335"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "d2628157bfe35c40bee8d4c11223548b88f65a3a3a3bcc718334bb9bc34b8d8e"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "5458e0b4af91622e3fc648867a78442727d638f6579cfdf0d9bd27cc807c16ba"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "9e29c8492538f3cf6c7eed3ebf81a553ab471a31e531c8a7b6c0bce9910cbb80"
+    sha256 cellar: :any_skip_relocation, sonoma:        "ef534b9a91998bf62c84399d2257187c291d094c3ec3079b236d68529599b401"
   end
 
   depends_on "go" => :build
@@ -34,6 +34,7 @@ class Mole < Formula
 
     inreplace "mole", 'SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"',
                       "SCRIPT_DIR='#{libexec}'"
+
     libexec.install "bin", "lib"
     bin.install "mole"
     bin.install_symlink bin/"mole" => "mo"

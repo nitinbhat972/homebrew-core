@@ -2,17 +2,17 @@ class GoogleworkspaceCli < Formula
   desc "CLI for Drive, Gmail, Calendar, Sheets, Docs, Chat, Admin, and more"
   homepage "https://developers.google.com/workspace"
   # We cannot install from the npm registry because it installs precompiled binaries
-  url "https://github.com/googleworkspace/cli/archive/refs/tags/v0.22.0.tar.gz"
-  sha256 "bfe44bc17113b798522d74339a276ebf7df049a4c6b56d69bb14527da11fb699"
+  url "https://github.com/googleworkspace/cli/archive/refs/tags/v0.22.5.tar.gz"
+  sha256 "1e55ec8c6ee87fac7d422975604a2d546c35f6d687a1cfaba7c7cc0d3c05663f"
   license "Apache-2.0"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "6793cabf43caed04a9b9f8cf485626adbec8d6c299b960a54a61b36aed02c2f9"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "b59f0692aafb6a84499e815b1855f736a00f3f861f1dec7f64454a07a065d792"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "4f78faaaacc8ebe5d1d40264ee35d66544d3463ded7f6c09aa87da8ec8336b7e"
-    sha256 cellar: :any_skip_relocation, sonoma:        "21e46b699c54664832fb5d99e4f64090033c2bd507c65f12cdfd3d9f03f8040d"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "7fc2ff456b52f5c816e723cd19836ce6c3e96a794302da91d470c6891e77e14c"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "434ec9393d5850d8c7dfc9aefafa66cc3403554cd19016fcfd99a1e091f64fe2"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "18208a0875025ab3617eb6f298f28e101a71b4620eab0ac0bd596fbeafbdf7ac"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "940f4f2d3150d855468a3f8adba6c72b074f4dad5b6edfb0bd946958ed42b14f"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "c363973bb433d30f52b2e26bade79a9618edf14ccacbb4b9700979ae92ba7f18"
+    sha256 cellar: :any_skip_relocation, sonoma:        "a744eac00148c7177850acbfe7dbba454a42eb6a8da0731ea0b4d091efa363de"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "25ea77549f46310bcfcf89a92b4b5199408f368020b9d1a477be1bd8381509ef"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "2845bb156bcd2e92cc01208d747b99e460d3d0408977488ad8b6e18dcac5a332"
   end
 
   depends_on "rust" => :build

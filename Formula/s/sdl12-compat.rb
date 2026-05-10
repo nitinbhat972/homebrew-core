@@ -1,8 +1,8 @@
 class Sdl12Compat < Formula
   desc "SDL 1.2 compatibility layer that uses SDL 2.0 behind the scenes"
   homepage "https://github.com/libsdl-org/sdl12-compat"
-  url "https://github.com/libsdl-org/sdl12-compat/archive/refs/tags/release-1.2.74.tar.gz"
-  sha256 "2588686c0972e1785829dc3bf436b543c317e6afa30a9b91d48013dd9c110e81"
+  url "https://github.com/libsdl-org/sdl12-compat/archive/refs/tags/release-1.2.76.tar.gz"
+  sha256 "e889ac9c7e8a6bdfc31972bf1f1254b84882cb52931608bada62e8febbf0270b"
   license all_of: ["Zlib", "MIT-0"]
   compatibility_version 1
   head "https://github.com/libsdl-org/sdl12-compat.git", branch: "main"
@@ -13,12 +13,13 @@ class Sdl12Compat < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "80d8a2cd42d8764cbbee16712c04a51065c11a72a1978b57dd19f00f89b4a7c9"
-    sha256 cellar: :any,                 arm64_sequoia: "b85875468644622ca2f5baed05224e2461749eaebc4adc68079545431b29bdf5"
-    sha256 cellar: :any,                 arm64_sonoma:  "02cb6e2a03fa7c41c7bebb92f20ca0f71e960ceea9a96836a51d66016d50f14d"
-    sha256 cellar: :any,                 sonoma:        "2aee87fd030a3169d43e4f39ab7976b2571e2f125ebe386c3be83846ffe87443"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "1734c5572ab95675715067ea7c53fae385edc3ac3f0e8d14dbdff5d7a6d46a77"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "59672f32f8fdad034dd1ff77b8dfcaaf80d2ec67c3442bae351a28741fb561f3"
+    rebuild 1
+    sha256 cellar: :any,                 arm64_tahoe:   "56dc659b94776ea6230f7b978c84fcb4df46a5970a565960a12805ae922eb9a6"
+    sha256 cellar: :any,                 arm64_sequoia: "fe94f9cd0d788a8b77c8704b7681f59edc67e20c801b22b4aba248d27a58e2dd"
+    sha256 cellar: :any,                 arm64_sonoma:  "ec62b168684492e1686bbc7d308f8fc2f4f03858b0d5f4eb27299acb2c39bac6"
+    sha256 cellar: :any,                 sonoma:        "84eefd7e2780806b46ad5b0fc88c9d6d8a2025a74f41237226eb964bc3ece057"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "2c85d1ec8070299e38628a852d5dc491f11d8e13f9010908bc8716b8ced7f2a9"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "5325fbcdb88813f34b205c7bdb1a52a9f4d282c31d4da5518941cbfbd119c230"
   end
 
   depends_on "cmake" => :build
@@ -27,7 +28,7 @@ class Sdl12Compat < Formula
   def install
     system "cmake", "-S", ".", "-B", "build",
                     "-DSDL2_PATH=#{Formula["sdl2"].opt_prefix}",
-                    "-DCMAKE_SHARED_LINKER_FLAGS=-Wl,-rpath,#{Formula["sdl2"].opt_lib}",
+                    "-DCMAKE_INSTALL_RPATH=#{rpath(target: Formula["sdl2"].opt_lib)}",
                     "-DSDL12DEVEL=ON",
                     "-DSDL12TESTS=OFF",
                     *std_cmake_args

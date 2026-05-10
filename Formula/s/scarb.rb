@@ -1,8 +1,8 @@
 class Scarb < Formula
   desc "Cairo package manager"
   homepage "https://docs.swmansion.com/scarb/"
-  url "https://github.com/software-mansion/scarb/archive/refs/tags/v2.16.1.tar.gz"
-  sha256 "fb02bb880a22494a63b61e7e0669fcce1e61250db0b0bd60942114a1c0dcb640"
+  url "https://github.com/software-mansion/scarb/archive/refs/tags/v2.18.0.tar.gz"
+  sha256 "2c24f599173cc69bcf1350b49b5aa4b2f97b50355469f77e4e648b833601761d"
   license "MIT"
   head "https://github.com/software-mansion/scarb.git", branch: "main"
 
@@ -12,13 +12,12 @@ class Scarb < Formula
   end
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "27fafc6ee6cde5b801e2425cfe828c6de3bc1857d26bb66ca9ef56ef90f04c46"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "50f21799d830a4dfa8a29f1096eb3f16eed3d9748df7ad72b7735c360f38c236"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "0493f22d510bb97965ebd83fb878c2b81a6767d22b3f6f51051d8baf81909f85"
-    sha256 cellar: :any_skip_relocation, sonoma:        "a094a372bac1c9bf646e0e48b7dc16080cd53ab37d197d38f5af9702687f2ec4"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "debf2d0042a3bf7c72367ebb48472cd409f9149b533d970a457a039939ed9cea"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "e2c21e3170a86b655897eeef69292bff4050f44c1b1678a7924c84f5f46fe06a"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "c73861def66d01bdd578b7ed8b634c2362e480f6ffdb0d2da23b00008d668805"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "f7adf654ff015dec16fd76f62a3aca1274c2d36053e3f6e189e82eb69ac0d245"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "9c275505db4ef9c8fb1ddcc2d99b4de2ea3e0fe249b3b85f0631f3c01c08e698"
+    sha256 cellar: :any_skip_relocation, sonoma:        "35b30f39df715de4e675befd48b506c7ae4f1610e148f2eb242ff31067cc5bad"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "05489e481bdfe73a4b31fa73cf0bed87421b343d5a8c5b7dfe499a7d30688793"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "bcc59824731f38034ed0a02e44b6a5758cd57d86a8344e3b0ae45e59df3f9b94"
   end
 
   depends_on "rust" => :build

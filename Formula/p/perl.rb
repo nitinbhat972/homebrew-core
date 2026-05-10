@@ -1,10 +1,9 @@
 class Perl < Formula
   desc "Highly capable, feature-rich programming language"
   homepage "https://www.perl.org/"
-  url "https://www.cpan.org/src/5.0/perl-5.42.1.tar.xz"
-  sha256 "098c7f76e7a28443f6403610c7e339777905360c5225798fd142b8d33b05c6b4"
+  url "https://www.cpan.org/src/5.0/perl-5.42.2.tar.xz"
+  sha256 "0a585eeb9e363c0f80482ddb3571625250c2c86aeb408853e8ea50805cfb14bb"
   license any_of: ["Artistic-1.0-Perl", "GPL-1.0-or-later"]
-  revision 1
   compatibility_version 1
   head "https://github.com/perl/perl5.git", branch: "blead"
 
@@ -14,18 +13,17 @@ class Perl < Formula
   end
 
   bottle do
-    sha256 arm64_tahoe:   "8143bb35b0370cc5c69022d3aeb32f502dc2f8a92996ac621847ab17b7ba0da9"
-    sha256 arm64_sequoia: "4de2d682352ccb3f5943a38e9663f21bb35df41bb012b2036548237c9b23079e"
-    sha256 arm64_sonoma:  "fadcc2724242479f59b6a36ede101eff047852588d59ba3a3aa5d0128fc90d12"
-    sha256 sonoma:        "b0e52a27dc75e276ce065ffc789459ca52f21dda227f55f2bf3751961d372a46"
-    sha256 arm64_linux:   "6fc95d40253e2c051e1b89d37180de5fe43089ba5e94a9e192a7ac7e407a05eb"
-    sha256 x86_64_linux:  "81da130e4d89d11f88fab2f85c15a549bae8efe01985ebc4633e3c893a48a9a1"
+    rebuild 1
+    sha256 arm64_tahoe:   "11266b9a2528911df242d82ec041ee91a50c3374d03c9401b558e521b5569916"
+    sha256 arm64_sequoia: "055da0dbe11d31788f13154fb01f7b5596e8450705bd4a1e54e799977d7bddaa"
+    sha256 arm64_sonoma:  "e9270cae03ec248b9910b33924cd522773d4494ed1da07a4fbc8bc70c48eeddd"
+    sha256 sonoma:        "78ee0a26f6650a15d49bc1e6586b91f9716981207059d511704d15f30882c63a"
+    sha256 arm64_linux:   "a2adf29ff516a10c5851c1da904cb033cb92f89c5ea8efee5600065d06f3d989"
+    sha256 x86_64_linux:  "036d3e8899b33c3c4f7dd9b69057f5dd522184a72750b212376d8fd5fc7d120f"
   end
 
-  depends_on "berkeley-db@5" # keep berkeley-db < 6 to avoid AGPL-3.0 restrictions
   depends_on "gdbm"
 
-  uses_from_macos "expat"
   uses_from_macos "libxcrypt"
 
   # Prevent site_perl directories from being removed
@@ -52,13 +50,18 @@ class Perl < Formula
     ]
     args << "-Dusedevel" if build.head?
 
+    # On macOS, we can use Apple's system library to support DB_File module.
+    # On Linux, we explicitly exclude bundled DB_File to avoid opportunistic
+    # linkage to Berkeley DB. Dependents and users can install it from CPAN.
+    args << "-Ui_db" unless OS.mac?
+
     system "./Configure", *args
     system "make"
     system "make", "install"
   end
 
   def caveats
-    <<~EOS
+    s = <<~EOS
       By default non-brewed cpan modules are installed to the Cellar. If you wish
       for your modules to persist across updates we recommend using `local::lib`.
 
@@ -67,6 +70,13 @@ class Perl < Formula
       And add the following to your shell profile e.g. ~/.profile or ~/.zshrc
         eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
     EOS
+    on_linux do
+      s += <<~EOS
+
+        Bundled DB_File module was not installed. If needed, you can install it from CPAN.
+      EOS
+    end
+    s
   end
 
   test do

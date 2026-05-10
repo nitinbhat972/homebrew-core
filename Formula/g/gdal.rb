@@ -1,10 +1,10 @@
 class Gdal < Formula
   desc "Geospatial Data Abstraction Library"
   homepage "https://gdal.org/en/stable/"
-  url "https://github.com/OSGeo/gdal/releases/download/v3.12.3/gdal-3.12.3.tar.gz"
-  sha256 "1fdfe51181d08b9b83037b611da4de4a7cf1fca69e6564945ac99d3f7d0367dd"
+  url "https://github.com/OSGeo/gdal/releases/download/v3.13.0/gdal-3.13.0.tar.gz"
+  sha256 "1eb8c56a8cea4d3c733d90a719540c1aab981e4eb15e03057092e69b2935ae73"
   license "MIT"
-  compatibility_version 1
+  compatibility_version 2
 
   livecheck do
     url "https://download.osgeo.org/gdal/CURRENT/"
@@ -12,12 +12,12 @@ class Gdal < Formula
   end
 
   bottle do
-    sha256 arm64_tahoe:   "6a972619e33c36c20612c587306cea5871678fa10c33ecae379ef5b85fa43857"
-    sha256 arm64_sequoia: "09be89fec7141e734f63d376ff6d3f7f9c4271d48c6fdafcd3fcbfa3af1b1146"
-    sha256 arm64_sonoma:  "0fee5d9432e03ec09f3cd108e57a53ea5ff165bf294e0ab33025ee8b381e3a20"
-    sha256 sonoma:        "9acfccb1a76da61ce3f66d5486b734e3801685f6ef666f6ad104fecbda5eab09"
-    sha256 arm64_linux:   "22aa4a86afc7b6a4e9457f6e7eaf94948307cc412edd63ed3c3ea329c792cc87"
-    sha256 x86_64_linux:  "1d53904cbb209e91dd4c90c2cfecf0bebdc69bb5be4cedf826852e260a9485b1"
+    sha256 arm64_tahoe:   "9b2812b4332e7e4f5ab05252e1114166cc6c0e20fce69fda6945b9ca9ee0b997"
+    sha256 arm64_sequoia: "a042fe8d2a96779eae669fd992179a7c06ed2a26d1f5c5a2532f6f7a3c783148"
+    sha256 arm64_sonoma:  "188f10bdd733e768ff91a1af6ac03cabae303d56512185ecfd17ee76253246ee"
+    sha256 sonoma:        "40c26598383f99d1844c99590a45907ab001f1a59a9862ff573f05c2556bdc63"
+    sha256 arm64_linux:   "41343ebf7d274d94be8204494fde301b628b1a1bbad283cd4e2e509d407209f4"
+    sha256 x86_64_linux:  "f7a45e0322e1f00b78efeac74757bb2b8491b8a3d11c41f2a751a46c556652b8"
   end
 
   head do
@@ -123,6 +123,7 @@ class Gdal < Formula
       -DPython_EXECUTABLE=#{which(python3)}
       -DGDAL_PYTHON_INSTALL_LIB=#{site_packages}
       -DCMAKE_CXX_STANDARD=17
+      -DGDAL_USE_OPENMP=OFF
     ]
 
     # JavaVM.framework in SDK causing Java bindings to be built

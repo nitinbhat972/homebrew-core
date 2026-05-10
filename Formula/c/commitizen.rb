@@ -3,18 +3,18 @@ class Commitizen < Formula
 
   desc "Defines a standard way of committing rules and communicating it"
   homepage "https://commitizen-tools.github.io/commitizen/"
-  url "https://files.pythonhosted.org/packages/a6/44/10f95e8178ab5a584298726a4a94ceb83a7f77e00741fec4680df05fedd5/commitizen-4.13.9.tar.gz"
-  sha256 "2b4567ed50555e10920e5bd804a6a4e2c42ec70bb74f14a83f2680fe9eaf9727"
+  url "https://files.pythonhosted.org/packages/ac/2a/ac219a23e89210aa3ee9244dc076e39bc532bc3f352024f3d478f3e79b85/commitizen-4.15.1.tar.gz"
+  sha256 "cca192e07b2f9d77734044c631da294b3007ef9aa10cc8f0600290aa662e9fa3"
   license "MIT"
   head "https://github.com/commitizen-tools/commitizen.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "89db9ed9c30351ff31d1a338470e928cb0b237722d7b05fbd18de22e4db761ba"
-    sha256 cellar: :any,                 arm64_sequoia: "09a5c18b000b8265a13598ea9dcaa193fb88349ecb3dcd24a6ab7efe2ced8849"
-    sha256 cellar: :any,                 arm64_sonoma:  "39bedb8b6afa12b4ecea68d3c8f22805bbec7d13441d8de0d03964bdf0be457a"
-    sha256 cellar: :any,                 sonoma:        "c48f64af422c4b0e4517bf33e088f7f5263d69ac29df9decace5139e7bd5ac09"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "ef2806a78619d18bb5adeeb7b7d6e38a2266aaaaea67b6ebb4d97faaea5107c5"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "f1b4e3cb05dd8329c9e248bea1932cddcef5a6bee4d4de9e6fa444db5d1d4e14"
+    sha256 cellar: :any,                 arm64_tahoe:   "3400bb3929c673457bbc342a1f5ac8945938c1466d162ae11351a4f3f675333e"
+    sha256 cellar: :any,                 arm64_sequoia: "1de4e0f79d6c515c0c2204c1dd1024c1e3af717ba0c56cfba035a4860b1f9122"
+    sha256 cellar: :any,                 arm64_sonoma:  "501a3a27968e1ad8130495762de36d530e42c7dd667fea2efda0a5a090647db4"
+    sha256 cellar: :any,                 sonoma:        "1e6b688d1016c011a0a171fbd640423941a4636a39e57173230e31928ee309d8"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "4855d08245a6d1c60b2f3fce4f6767aac003b1c9fe488d2f1be8ee00efbf3705"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "919b19f134b37f26a00db9ea7f2dc3aa47b6623c511e97d9971f8541a4abfe4d"
   end
 
   depends_on "maturin" => :build
@@ -28,8 +28,8 @@ class Commitizen < Formula
   end
 
   resource "charset-normalizer" do
-    url "https://files.pythonhosted.org/packages/13/69/33ddede1939fdd074bce5434295f38fae7136463422fe4fd3e0e89b98062/charset_normalizer-3.4.4.tar.gz"
-    sha256 "94537985111c35f28720e43603b8e7b43a6ecfb2ce1d3058bbe955b73404e21a"
+    url "https://files.pythonhosted.org/packages/e7/a1/67fe25fac3c7642725500a3f6cfe5821ad557c3abb11c9d20d12c7008d3e/charset_normalizer-3.4.7.tar.gz"
+    sha256 "ae89db9e5f98a11a4bf50407d4363e7b09b31e55bc117b4f7d80aab97ba009e5"
   end
 
   resource "colorama" do
@@ -58,8 +58,8 @@ class Commitizen < Formula
   end
 
   resource "packaging" do
-    url "https://files.pythonhosted.org/packages/65/ee/299d360cdc32edc7d2cf530f3accf79c4fca01e96ffc950d8a52213bd8e4/packaging-26.0.tar.gz"
-    sha256 "00243ae351a257117b6a241061796684b084ed1c516a08c48a3f7e147a9d80b4"
+    url "https://files.pythonhosted.org/packages/d7/f1/e7a6dd94a8d4a5626c03e4e99c87f241ba9e350cd9e6d75123f992427270/packaging-26.2.tar.gz"
+    sha256 "ff452ff5a3e828ce110190feff1178bb1f2ea2281fa2075aadb987c2fb221661"
   end
 
   resource "prompt-toolkit" do
@@ -88,13 +88,13 @@ class Commitizen < Formula
   end
 
   resource "wcwidth" do
-    url "https://files.pythonhosted.org/packages/35/a2/8e3becb46433538a38726c948d3399905a4c7cabd0df578ede5dc51f0ec2/wcwidth-0.6.0.tar.gz"
-    sha256 "cdc4e4262d6ef9a1a57e018384cbeb1208d8abbc64176027e2c2455c81313159"
+    url "https://files.pythonhosted.org/packages/2c/ee/afaf0f85a9a18fe47a67f1e4422ed6cf1fe642f0ae0a2f81166231303c52/wcwidth-0.7.0.tar.gz"
+    sha256 "90e3a7ea092341c44b99562e75d09e4d5160fe7a3974c6fb842a101a95e7eed0"
   end
 
   resource "wrapt" do
-    url "https://files.pythonhosted.org/packages/f7/37/ae31f40bec90de2f88d9597d0b5281e23ffe85b893a47ca5d9c05c63a4f6/wrapt-2.1.1.tar.gz"
-    sha256 "5fdcb09bf6db023d88f312bd0767594b414655d58090fc1c46b3414415f67fac"
+    url "https://files.pythonhosted.org/packages/2e/64/925f213fdcbb9baeb1530449ac71a4d57fc361c053d06bf78d0c5c7cd80c/wrapt-2.1.2.tar.gz"
+    sha256 "3996a67eecc2c68fd47b4e3c564405a5777367adfd9b8abb58387b63ee83b21e"
   end
 
   def install

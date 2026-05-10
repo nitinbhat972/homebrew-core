@@ -3,8 +3,8 @@ class LlamaCpp < Formula
   homepage "https://github.com/ggml-org/llama.cpp"
   # CMake uses Git to generate version information.
   url "https://github.com/ggml-org/llama.cpp.git",
-      tag:      "b8500",
-      revision: "342d6125bcda31f8bbda5df4a74afcf4b2d8c681"
+      tag:      "b9090",
+      revision: "5757c4dcb178a01c85234a6db7503b19c9598873"
   license "MIT"
   compatibility_version 1
   head "https://github.com/ggml-org/llama.cpp.git", branch: "master"
@@ -20,16 +20,16 @@ class LlamaCpp < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "16914814796a8750604a26b277dd538adab8cdd4549fcc7bca56ee020e4c87bd"
-    sha256 cellar: :any,                 arm64_sequoia: "b4e68fa7ffad77d20bbbf1bbfc18f0147f990d5ff8db88d098a379fd29029376"
-    sha256 cellar: :any,                 arm64_sonoma:  "fd48f6b88b57954bb02372b08ae20364a79be2be5f0cdb1efbe06790d126c9db"
-    sha256 cellar: :any,                 sonoma:        "176acbb1d9f003974f8c31484ca8eee8134777fffe4f50e6f0f65a7b1d7e0090"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "283ede07b0672a7257571e8307f59a74525a439389cc3f8f7297c69385d15d27"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "1fedb981131338d54692286fde02f64ddf0dbf737bbf99798729d270ffe50251"
+    sha256 cellar: :any,                 arm64_tahoe:   "7abe2f869819c20eea674423c41957ab418bc0e6b5e4433cf9033e59e203a394"
+    sha256 cellar: :any,                 arm64_sequoia: "e5d5c24377b11648fb4da302b290456b43b7a49ed681e39c074ce2ae93d0a1f6"
+    sha256 cellar: :any,                 arm64_sonoma:  "4cd71828c1958df5c464d2b8bff8dd55b2790d1696fbdb44c89bc2aa1c2b8f8c"
+    sha256 cellar: :any,                 sonoma:        "807fbe760627b216d3e92615a25352c3e4cd195f71c1349859da371eecfb787c"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "1f24b77412de12ff9fea31504b7df05739b79728be6f166e848451f419764af2"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "805326567d6ee1467554e6dfbc35bd02f734057df843bd3778dcbac9aa3b954d"
   end
 
   depends_on "cmake" => [:build, :test]
-  depends_on "ggml"
+  depends_on "ggml" # NOTE: reject all PRs that try to bundle ggml
   depends_on "openssl@3"
 
   def install

@@ -1,25 +1,25 @@
 class Pnpm < Formula
   desc "Fast, disk space efficient package manager"
   homepage "https://pnpm.io/"
-  url "https://registry.npmjs.org/pnpm/-/pnpm-10.33.0.tgz"
-  sha256 "bfcc1bcbad279b13a516c446a75b3c58b6904b45d57a1951411015e50b751a80"
+  url "https://registry.npmjs.org/pnpm/-/pnpm-11.0.9.tgz"
+  sha256 "4d84d7b0e31c9054f61658795698070007d03b7238481e2161a562557aa90834"
   license "MIT"
   compatibility_version 1
 
   livecheck do
-    url "https://registry.npmjs.org/pnpm/latest-10"
+    url "https://registry.npmjs.org/pnpm/latest-11"
     strategy :json do |json|
       json["version"]
     end
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "d9f42f6fd7992a63fca83fa8c06d99fe367955d7e2d298b695e9070e586f3627"
-    sha256 cellar: :any,                 arm64_sequoia: "ac2486f2a2216aafc086b2b30d07e1ac14febad3cba62b5ca5aa77c766f3477d"
-    sha256 cellar: :any,                 arm64_sonoma:  "ac2486f2a2216aafc086b2b30d07e1ac14febad3cba62b5ca5aa77c766f3477d"
-    sha256 cellar: :any,                 sonoma:        "f1691afc3c2f725533128b3d22b05fcdb34d896933cc603bd3d094a7d6e117a9"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "174e0ef64eab77d7aa11629cd15839f479670f5b807a6a439a1ca2305dda8a42"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "174e0ef64eab77d7aa11629cd15839f479670f5b807a6a439a1ca2305dda8a42"
+    sha256 cellar: :any,                 arm64_tahoe:   "49335b05589b5dc792692d70133eb7acb4f93c1f0877395baf2d26a6cafe4a98"
+    sha256 cellar: :any,                 arm64_sequoia: "ade0c12ea24f270dfdd2ca2dc1319b28686a377057bb572b1acccb77cd301489"
+    sha256 cellar: :any,                 arm64_sonoma:  "ade0c12ea24f270dfdd2ca2dc1319b28686a377057bb572b1acccb77cd301489"
+    sha256 cellar: :any,                 sonoma:        "a65079ec3c1980f614106fb4f4549d60bb7b0d96bfbba5b240acfc02ae30c4d1"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "3b7c783fa4b1bd4a50a53e0ee412065a367014d36d4fc71ce577779cf54183e3"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "3b7c783fa4b1bd4a50a53e0ee412065a367014d36d4fc71ce577779cf54183e3"
   end
 
   depends_on "node" => [:build, :test]
@@ -33,7 +33,7 @@ class Pnpm < Formula
     generate_completions_from_executable(bin/"pnpm", "completion")
 
     # remove non-native architecture pre-built binaries
-    (libexec/"lib/node_modules/pnpm/dist").glob("reflink.*.node").each do |f|
+    (libexec/"lib/node_modules/pnpm/dist").glob("**/reflink.*.node").each do |f|
       next if f.arch == Hardware::CPU.arch
 
       rm f

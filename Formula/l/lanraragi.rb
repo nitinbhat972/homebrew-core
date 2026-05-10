@@ -1,18 +1,18 @@
 class Lanraragi < Formula
   desc "Web application for archival and reading of manga/doujinshi"
   homepage "https://github.com/Difegue/LANraragi"
-  url "https://github.com/Difegue/LANraragi/archive/refs/tags/v.0.9.70.tar.gz"
-  sha256 "bc89ae47873a35145a0db5a4d93d274b89e7f546deaa396d389fe7975693f7a6"
+  url "https://github.com/Difegue/LANraragi/archive/refs/tags/v.0.9.71.tar.gz"
+  sha256 "4dab46dddd2c227bd0428eef4318cad673fca1e2a1420eee1fa2110043827408"
   license "MIT"
   head "https://github.com/Difegue/LANraragi.git", branch: "dev"
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "6f6ce14831069a2d17fd22a7138fa073b60ee21331e13bfa340fcdedd0a2dc6b"
-    sha256 cellar: :any,                 arm64_sequoia: "4197fd31d6eaf2eec8b074693a305ebb6a1ae8c53752a804ee328384aa700688"
-    sha256 cellar: :any,                 arm64_sonoma:  "fbe6f463fc98a9bc2958cc4a088a782f8b779851cc1641bd983d1ad334f9f189"
-    sha256 cellar: :any,                 sonoma:        "cf6505419798f0c775f36f0abbf4c55a1656df2ec1a83c8fae0870954d78e5e3"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "05c1d365450337a8f86c67a9af3aa3f32f76f8db60cbc11acd3f9ed0932209bf"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "e01c310845b7f2d122105d4233b1986262c68acfa41e52063372414adaf55cbe"
+    sha256 cellar: :any,                 arm64_tahoe:   "82f115b1051d6ae57411796a4a239c639106ee35ccdf1d73c4c4bb5b0979dcb1"
+    sha256 cellar: :any,                 arm64_sequoia: "e09a9184d798b6dfe60d293111c0f353546581f772b9ad3e45de40a851d50f53"
+    sha256 cellar: :any,                 arm64_sonoma:  "5656dc03498a8963e26890841f82298174fc928c8b5a6d0089b402fc97a0cf87"
+    sha256 cellar: :any,                 sonoma:        "339388cc5e250d86fe2022def364a219eebca2f0595f95bb6ac4685d3e897d9e"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "4c177edbccbda0156e095788003c56ac911fc515d3ad941a079ac98d8ff4cb58"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "0157925219e3eb6d4b3ba454387d9b66d1eb41b9560e24da521d701b7d106f11"
   end
 
   depends_on "cpanminus" => :build
@@ -68,6 +68,7 @@ class Lanraragi < Formula
               "'#{ENV["ARCHIVE_LIBARCHIVE_LIB_DLL"]}'"
 
     (libexec/"lib").install Dir["lib/*"]
+    (libexec/"tools").install "tools/openapi.yaml"
     libexec.install "script", "package.json", "public", "locales", "templates", "tests", "lrr.conf"
     libexec.install "tools/build/homebrew/redis.conf"
     bin.install "tools/build/homebrew/lanraragi"

@@ -1,17 +1,18 @@
 class Openspec < Formula
   desc "Spec-driven development (SDD) for AI coding assistants"
   homepage "https://openspec.dev/"
-  url "https://registry.npmjs.org/@fission-ai/openspec/-/openspec-1.2.0.tgz"
-  sha256 "2aceda94693f1db0b0d2ea3c750a2a418737eab30d026d1d066629945cde98ba"
+  url "https://registry.npmjs.org/@fission-ai/openspec/-/openspec-1.3.1.tgz"
+  sha256 "381fd3513983bd9f6b2be05218a70d38bbc33598c9816f2dd5ac8e8f13a20eb0"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "0c823c39cb64d2319000d891886d0436db5d0bca35b92c0573c5966f77faa3b5"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "0c823c39cb64d2319000d891886d0436db5d0bca35b92c0573c5966f77faa3b5"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "0c823c39cb64d2319000d891886d0436db5d0bca35b92c0573c5966f77faa3b5"
-    sha256 cellar: :any_skip_relocation, sonoma:        "f713c729e969bb162def6e0aaa2eac5b4cf13e39860d8841ec978d1c8eb12a02"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "f713c729e969bb162def6e0aaa2eac5b4cf13e39860d8841ec978d1c8eb12a02"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "f713c729e969bb162def6e0aaa2eac5b4cf13e39860d8841ec978d1c8eb12a02"
+    rebuild 1
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "25a8e251b633969c788ec4c66ebaff45127a2423774cb1ca3013c84f0de0e302"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "25a8e251b633969c788ec4c66ebaff45127a2423774cb1ca3013c84f0de0e302"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "25a8e251b633969c788ec4c66ebaff45127a2423774cb1ca3013c84f0de0e302"
+    sha256 cellar: :any_skip_relocation, sonoma:        "33527abf7c8531aae11ce4fa172a05b8f4cffec93ffaf3e0acc9334337e66b38"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "33527abf7c8531aae11ce4fa172a05b8f4cffec93ffaf3e0acc9334337e66b38"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "33527abf7c8531aae11ce4fa172a05b8f4cffec93ffaf3e0acc9334337e66b38"
   end
 
   depends_on "node"
@@ -19,6 +20,7 @@ class Openspec < Formula
   def install
     system "npm", "install", *std_npm_args
     bin.install_symlink libexec.glob("bin/*")
+    generate_completions_from_executable(bin/"openspec", "completion", "generate")
   end
 
   test do

@@ -6,15 +6,16 @@ class Volk < Formula
   url "https://github.com/gnuradio/volk/releases/download/v3.3.0/volk-3.3.0.tar.gz"
   sha256 "89d11c8c8d4213b1b780354cfdbda1fed0c0b65c82847e710638eb3e21418628"
   license "LGPL-3.0-or-later"
+  revision 2
   compatibility_version 1
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "cd42ce70e4c94cb454ab5c6995c2416a96df076fef77da55048cdf885b219cf0"
-    sha256 cellar: :any,                 arm64_sequoia: "06c77739276577e0861100b50473fb56bb841e1a0add89c7b577bc49e956282b"
-    sha256 cellar: :any,                 arm64_sonoma:  "13489b9f19bda76938862073b0d0f5c2393b59dc68d09cb2872430aaeb2a16ab"
-    sha256 cellar: :any,                 sonoma:        "9ca0dab8d3ed4bdf05dcc156699e4915228373aac1341e77ffe7e0a338e331a6"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "07a0efa05eaa738bf120a65525ddda81790f5f7cf775aaf597fedcff7d4f914a"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "4522eba14d4066335b54c627d62cd100b2bd5162dd1b4e86bb562a17ffcaba59"
+    sha256 cellar: :any,                 arm64_tahoe:   "d1dc8f56e9a0be8b1015b455632f1a769d8e846648cfe48ed8ed137d393792a1"
+    sha256 cellar: :any,                 arm64_sequoia: "3837e14ee29c45da87e3ecf1723bf711d7ca623b1a5dadad4bcf770fbda3f2e0"
+    sha256 cellar: :any,                 arm64_sonoma:  "ab0a316c081d3d9c55e4a4945b14d785a08a0fcd3eec169ec1f372f69d90d9cf"
+    sha256 cellar: :any,                 sonoma:        "b532a76c0551cd453561d50b7d84e0d7bb69c3108e87db8682da04b1b98948e2"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "27583f1b7bf10ed3f88fac9e12df7952418586c89eb127ead86612785da529c2"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b50c782d3b4b28e70aeebf0f8c1aa6b61e20c7362cd95008f00b9186d7bc369f"
   end
 
   depends_on "cmake" => :build
@@ -28,8 +29,8 @@ class Volk < Formula
                 extra_packages: "mako"
 
   resource "mako" do
-    url "https://files.pythonhosted.org/packages/9e/38/bd5b78a920a64d708fe6bc8e0a2c075e1389d53bef8413725c63ba041535/mako-1.3.10.tar.gz"
-    sha256 "99579a6f39583fa7e5630a28c3c1f440e4e97a414b80372649c0ce338da2ea28"
+    url "https://files.pythonhosted.org/packages/00/62/791b31e69ae182791ec67f04850f2f062716bbd205483d63a215f3e062d3/mako-1.3.12.tar.gz"
+    sha256 "9f778e93289bd410bb35daadeb4fc66d95a746f0b75777b942088b7fd7af550a"
   end
 
   resource "markupsafe" do

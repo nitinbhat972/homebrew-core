@@ -1,17 +1,17 @@
 class Ladybug < Formula
   desc "Embedded graph database built for query speed and scalability"
   homepage "https://ladybugdb.com/"
-  url "https://github.com/LadybugDB/ladybug/archive/refs/tags/v0.15.2.tar.gz"
-  sha256 "f0decf73435d555498868b350214de7f98ec9219a29dffee444690873ae8b09f"
+  url "https://github.com/LadybugDB/ladybug/archive/refs/tags/v0.16.1.tar.gz"
+  sha256 "c22417b46b895df7c25f8314cab27bc1afbf1a43b06463a023c98eac5ffe16c3"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "2aa34a1fa149f3ea21380f20df9f4bb1d88eed707b09fa927000ed18d07481dd"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "6de2e2856d56539cdebd7652e92d50aca19485695ff53c3db1160f9f013f0198"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "18d60071b3c3a4a64b031958e70cc9cf0a495de2246ae1258e48dea4e1ddeac3"
-    sha256 cellar: :any_skip_relocation, sonoma:        "3391a7bfddd7b247834a2d1891c5f7242d894cf008dbe4268aca4abe389a0751"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "e4cbe3c659bcabce524666171e4be97f15cdf8f194a80a249573ed48ba95b3b5"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "3795a34505ce6b8151872bfb85421a2da32574186e7000f5e13644c80629d382"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "bff0dd421557c382367c5e92603052f13aa3677a2a8b94b80854662aa7782dfd"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "bc12007816382652304cb6b10690bca1494e87933465768c25c4d5ac6a7f95bc"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "76e87607ee1f1096f6d9aff58ed7964e75f81f11a8c10397609a49ad8720d7be"
+    sha256 cellar: :any_skip_relocation, sonoma:        "c40a555a7a30a9075869e92a31f0bbc199fb2684d4ef0cb062f6029483d86e00"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "8deea46d03d4ee1413c717e23e57c1519316c45e1542da84d6dc2cba77af275b"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "a004bcd8abb8c8be44a6bd4caf6bb5007f4664bcd581c3256af1d3b4dbf68c2a"
   end
 
   depends_on "cmake" => :build
@@ -37,7 +37,8 @@ class Ladybug < Formula
   end
 
   test do
-    assert_match version.to_s, shell_output("#{bin}/lbug --version")
+    # Upstream versioning up to patch version, so skip for 4th number in version
+    assert_match version.major_minor_patch.to_s, shell_output("#{bin}/lbug --version")
 
     # Test basic query functionality
     output = pipe_output("#{bin}/lbug -m csv -s", "UNWIND [1, 2, 3, 4, 5] as i return i;")

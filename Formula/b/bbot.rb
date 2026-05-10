@@ -6,15 +6,15 @@ class Bbot < Formula
   url "https://files.pythonhosted.org/packages/6a/83/24a0087894d853703f64ab2044927ef56c831edb379295a873b05f34eb92/bbot-2.8.4.tar.gz"
   sha256 "2ed4d3eda85ddb7261318a48f8a41e8543888b5d9b9eb8876aaff0e813a2429c"
   license "AGPL-3.0-only"
-  revision 1
+  revision 3
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "c7e94c2f3f9d04339a3ce1755f066cf3c9ea378dda847af2dbb1da06abfa6eeb"
-    sha256 cellar: :any,                 arm64_sequoia: "303cdd1cb3a7d1c1bee18ddcb519c1e7c1da9d9a8072a1f17ff4bd143bf08387"
-    sha256 cellar: :any,                 arm64_sonoma:  "aee0000adb46e6015452f6534094baaa804068cf4a2c5cdf803d91fa483b2e64"
-    sha256 cellar: :any,                 sonoma:        "ccab387d9d4fed6a5cced692d7ff10ebe16c6fe9491608a0bb1210b1024f252f"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "3963797a5ab2b098e4ff305fa7db225964fdd70fcfc2dd8c56debf4fa5c365ec"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "f695f9d486755446c88fcf608dce98c78fe7dbf58b1ce416740f92e78fd88f0d"
+    sha256 cellar: :any,                 arm64_tahoe:   "339aa691e625a87553ebd69f6c394c07902e5b4c0bf1ac2847daaea281e29d71"
+    sha256 cellar: :any,                 arm64_sequoia: "181f9cd41000ccefd646ea7bb5e25cf927ce5caba4b74fdcbaf704ae3c24aec5"
+    sha256 cellar: :any,                 arm64_sonoma:  "972619870f19d4e03ffa025e9d58675ee0b56c131edf18127e4c5b657444623b"
+    sha256 cellar: :any,                 sonoma:        "ba40a131c59489c967f3f75d1cbf179bb658ba214240a6ea4b69fa7ac777040d"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "15b6a388edb326f3d4d7e356d1af9eaaa2c9ba561a9270bb1df4b32317fd3393"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "e0261a13680720c924bd6d3596e5498292d1c2aa41c8b133dfcd30cfe6355e7c"
   end
 
   depends_on "cmake" => :build
@@ -36,8 +36,8 @@ class Bbot < Formula
   pypi_packages exclude_packages: %w[certifi cryptography pydantic]
 
   resource "ansible-core" do
-    url "https://files.pythonhosted.org/packages/03/d6/2a1fda59f9bab7519f2e94a7bec8416e080dd2e17af4f4fb5d1e3d0c997d/ansible_core-2.20.3.tar.gz"
-    sha256 "38670ab2d2ffd67ee7e9e562f7c94e0927c8b7b4b0eb69233bc008c29e32d591"
+    url "https://files.pythonhosted.org/packages/9d/ec/690cc73e38c3546eabc8ef4118e0d7be1758a598bc23eed3e24ca1f346a7/ansible_core-2.20.5.tar.gz"
+    sha256 "82e3049d95e6e02e5d20d4a5a8e10533a55e0cc52e878e4cf77166c45410f16f"
   end
 
   resource "ansible-runner" do
@@ -51,8 +51,8 @@ class Bbot < Formula
   end
 
   resource "anyio" do
-    url "https://files.pythonhosted.org/packages/96/f0/5eb65b2bb0d09ac6776f2eb54adee6abe8228ea05b20a5ad0e4945de8aac/anyio-4.12.1.tar.gz"
-    sha256 "41cfcc3a4c85d3f05c932da7c26d0201ac36f72abd4435ba90d0464a3ffed703"
+    url "https://files.pythonhosted.org/packages/19/14/2c5dd9f512b66549ae92767a9c7b330ae88e1932ca57876909410251fe13/anyio-4.13.0.tar.gz"
+    sha256 "334b70e641fd2221c1505b3890c69882fe4a2df910cba14d97019b90b24439dc"
   end
 
   resource "beautifulsoup4" do
@@ -66,8 +66,8 @@ class Bbot < Formula
   end
 
   resource "charset-normalizer" do
-    url "https://files.pythonhosted.org/packages/7b/60/e3bec1881450851b087e301bedc3daa9377a4d45f1c26aa90b0b235e38aa/charset_normalizer-3.4.6.tar.gz"
-    sha256 "1ae6b62897110aa7c79ea2f5dd38d1abca6db663687c0b1ad9aed6f6bae3d9d6"
+    url "https://files.pythonhosted.org/packages/e7/a1/67fe25fac3c7642725500a3f6cfe5821ad557c3abb11c9d20d12c7008d3e/charset_normalizer-3.4.7.tar.gz"
+    sha256 "ae89db9e5f98a11a4bf50407d4363e7b09b31e55bc117b4f7d80aab97ba009e5"
   end
 
   resource "cloudcheck" do
@@ -86,8 +86,8 @@ class Bbot < Formula
   end
 
   resource "filelock" do
-    url "https://files.pythonhosted.org/packages/94/b8/00651a0f559862f3bb7d6f7477b192afe3f583cc5e26403b44e59a55ab34/filelock-3.25.2.tar.gz"
-    sha256 "b64ece2b38f4ca29dd3e810287aa8c48182bbecd1ae6e9ae126c9b35f1382694"
+    url "https://files.pythonhosted.org/packages/b5/fe/997687a931ab51049acce6fa1f23e8f01216374ea81374ddee763c493db5/filelock-3.29.0.tar.gz"
+    sha256 "69974355e960702e789734cb4871f884ea6fe50bd8404051a3530bc07809cf90"
   end
 
   resource "h11" do
@@ -121,8 +121,8 @@ class Bbot < Formula
   end
 
   resource "lxml" do
-    url "https://files.pythonhosted.org/packages/aa/88/262177de60548e5a2bfc46ad28232c9e9cbde697bd94132aeb80364675cb/lxml-6.0.2.tar.gz"
-    sha256 "cd79f3367bd74b317dda655dc8fcfa304d9eb6e4fb06b7168c5cf27f96e0cd62"
+    url "https://files.pythonhosted.org/packages/28/30/9abc9e34c657c33834eaf6cd02124c61bdf5944d802aa48e69be8da3585d/lxml-6.1.0.tar.gz"
+    sha256 "bfd57d8008c4965709a919c3e9a98f76c2c7cb319086b3d26858250620023b13"
   end
 
   resource "markupsafe" do
@@ -146,13 +146,16 @@ class Bbot < Formula
   end
 
   resource "orjson" do
-    url "https://files.pythonhosted.org/packages/53/45/b268004f745ede84e5798b48ee12b05129d19235d0e15267aa57dcdb400b/orjson-3.11.7.tar.gz"
-    sha256 "9b1a67243945819ce55d24a30b59d6a168e86220452d2c96f4d1f093e71c0c49"
+    url "https://files.pythonhosted.org/packages/9d/1b/2024d06792d0779f9dbc51531b61c24f76c75b9f4ce05e6f3377a1814cea/orjson-3.11.8.tar.gz"
+    sha256 "96163d9cdc5a202703e9ad1b9ae757d5f0ca62f4fa0cc93d1f27b0e180cc404e"
+
+    # Remove nightly feature flag, Rust 1.95 is now stable
+    patch :DATA
   end
 
   resource "packaging" do
-    url "https://files.pythonhosted.org/packages/65/ee/299d360cdc32edc7d2cf530f3accf79c4fca01e96ffc950d8a52213bd8e4/packaging-26.0.tar.gz"
-    sha256 "00243ae351a257117b6a241061796684b084ed1c516a08c48a3f7e147a9d80b4"
+    url "https://files.pythonhosted.org/packages/df/de/0d2b39fb4af88a0258f3bac87dfcbb48e73fbdea4a2ed0e2213f9a4c2f9a/packaging-26.1.tar.gz"
+    sha256 "f042152b681c4bfac5cae2742a55e103d27ab2ec0f3d88037136b6bfe7c9c5de"
   end
 
   resource "pexpect" do
@@ -206,13 +209,13 @@ class Bbot < Formula
   end
 
   resource "regex" do
-    url "https://files.pythonhosted.org/packages/8b/71/41455aa99a5a5ac1eaf311f5d8efd9ce6433c03ac1e0962de163350d0d97/regex-2026.2.28.tar.gz"
-    sha256 "a729e47d418ea11d03469f321aaf67cdee8954cde3ff2cf8403ab87951ad10f2"
+    url "https://files.pythonhosted.org/packages/cb/0e/3a246dbf05666918bd3664d9d787f84a9108f6f43cc953a077e4a7dfdb7e/regex-2026.4.4.tar.gz"
+    sha256 "e08270659717f6973523ce3afbafa53515c4dc5dcad637dc215b6fd50f689423"
   end
 
   resource "requests" do
-    url "https://files.pythonhosted.org/packages/c9/74/b3ff8e6c8446842c3f5c837e9c3dfcfe2018ea6ecef224c710c85ef728f4/requests-2.32.5.tar.gz"
-    sha256 "dbba0bac56e100853db0ea71b82b4dfd5fe2bf6d3754a8893c3af500cec7d7cf"
+    url "https://files.pythonhosted.org/packages/5f/a4/98b9c7c6428a668bf7e42ebb7c79d576a1c3c1e3ae2d47e674b468388871/requests-2.33.1.tar.gz"
+    sha256 "18817f8c57c6263968bc123d237e3b8b08ac046f5456bd1e307ee8f4250d3517"
   end
 
   resource "requests-file" do
@@ -312,3 +315,15 @@ class Bbot < Formula
     assert_path_exists testpath/".config/bbot/secrets.yml"
   end
 end
+
+__END__
+--- a/src/lib.rs
++++ b/src/lib.rs
+@@ -1,7 +1,6 @@
+ // SPDX-License-Identifier: MPL-2.0
+ // Copyright ijl (2018-2026)
+ 
+-#![cfg_attr(feature = "cold_path", feature(cold_path))]
+ #![cfg_attr(feature = "generic_simd", feature(portable_simd))]
+ #![cfg_attr(feature = "optimize", feature(optimize_attribute))]
+ #![allow(unused_features)] // portable_simd on universal2 cross-compile

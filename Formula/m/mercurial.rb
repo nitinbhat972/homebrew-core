@@ -3,8 +3,8 @@
 class Mercurial < Formula
   desc "Scalable distributed version control system"
   homepage "https://mercurial-scm.org/"
-  url "https://www.mercurial-scm.org/release/mercurial-7.2.tar.gz"
-  sha256 "a250227eba47c6ad5aa32b9a72281343762f5d274ff38c53c2f43df5c63af3ec"
+  url "https://www.mercurial-scm.org/release/mercurial-7.2.2.tar.gz"
+  sha256 "f2ec8e7eeef0500591706d374555f0ceb118822068e75fa3b32be07dd2184f6c"
   license "GPL-2.0-or-later"
   compatibility_version 1
 
@@ -14,14 +14,14 @@ class Mercurial < Formula
   end
 
   bottle do
-    sha256 arm64_tahoe:   "bb3d00caf9bf1b096f2550df2abdba9697da92594722e9250938fd470aa1861a"
-    sha256 arm64_sequoia: "750a601be77890d692cb3dd9d96fc6b6c66ae04f5dc2703b84e43e545ca7818a"
-    sha256 arm64_sonoma:  "24741c5c01e285a9ce83154f50ee690a457dae2bf896eeb58ca7a98c0b880980"
-    sha256 tahoe:         "dd224b1a49ef2e0c8ae23447910be5343f4c36df89fe34c900379216cd33103f"
-    sha256 sequoia:       "0d73563bd306862d37fd976d6a000ced70d86deb5a692ef20449810b94e13959"
-    sha256 sonoma:        "82e12965240273d65f8d98131a3cf2779d2bee5dee1f008dc7a48ae670ae0957"
-    sha256 arm64_linux:   "226d8f4d00541ff48163a76d4d29af196bb725264d8cfee14708008b15406795"
-    sha256 x86_64_linux:  "54c23ed133b8a3c1484df8b07a4b7729358029eaa328d968c850c1f8344c0f44"
+    sha256 arm64_tahoe:   "b314da34e74eee6b843b2a2bc2141e7c77c2129b1340b4367873c8e53caa2b2b"
+    sha256 arm64_sequoia: "eb887e2837d02a2b43f72b5e60783f684bdec624424936da1815a9d2b5ae7672"
+    sha256 arm64_sonoma:  "dcc8b398239b62564b5f4dba1c93ab28afbfbc76c4e723b8c9262806ec5ce6e0"
+    sha256 tahoe:         "8926c3ed03a73f54083cefd3d6df30defed4302ca1ca00f478bee73f67a39d1d"
+    sha256 sequoia:       "4a13d61d6dff17789f5184ab8e598645f8c767c8c345fd3c5f0e1f4fd0b6756e"
+    sha256 sonoma:        "ae95fd5003ca3c57b9c52fcacc624522fff1332ad914f269fff36095908f0805"
+    sha256 arm64_linux:   "3c58bf407be023e33b32ed507322f86f5751e59ee5e7bbb58ec758f31f9c078f"
+    sha256 x86_64_linux:  "102cd57c321bd30309e3752172776b44a7a039ab7e75137383ad45abf2e7cbc2"
   end
 
   depends_on "python@3.14"

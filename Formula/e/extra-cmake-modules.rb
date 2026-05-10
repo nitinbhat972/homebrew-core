@@ -1,8 +1,8 @@
 class ExtraCmakeModules < Formula
   desc "Extra modules and scripts for CMake"
   homepage "https://api.kde.org/ecm/"
-  url "https://download.kde.org/stable/frameworks/6.24/extra-cmake-modules-6.24.0.tar.xz"
-  sha256 "8ef3f7e176588e099c02559d20ddf4fed0590f92c168f0bcc60a7e638ba1e6a3"
+  url "https://download.kde.org/stable/frameworks/6.26/extra-cmake-modules-6.26.0.tar.xz"
+  sha256 "f4e10d9d45aafb5273e996196040f4e420f0bc4071c208282aae94d9ad8e1743"
   license all_of: ["BSD-2-Clause", "BSD-3-Clause", "MIT"]
   head "https://invent.kde.org/frameworks/extra-cmake-modules.git", branch: "master"
 
@@ -12,7 +12,7 @@ class ExtraCmakeModules < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, all: "d28c1e5f66a7b6e58c29267c376cb7116cd8f05f0885f0be276e710d10bb4a52"
+    sha256 cellar: :any_skip_relocation, all: "55105bb234bee7c06c0824fd5768110da2661f5f943f15ec2811f3cbc1b17fe6"
   end
 
   depends_on "cmake" => [:build, :test]

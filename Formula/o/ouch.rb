@@ -1,8 +1,8 @@
 class Ouch < Formula
   desc "Painless compression and decompression for your terminal"
   homepage "https://github.com/ouch-org/ouch"
-  url "https://github.com/ouch-org/ouch/archive/refs/tags/0.6.1.tar.gz"
-  sha256 "e6265071affab228ba7d3ca85f2206029445038b3a3d96036e9bf02b795ad651"
+  url "https://github.com/ouch-org/ouch/archive/refs/tags/0.7.1.tar.gz"
+  sha256 "9dadaa3340972347c39e0047668af0e2c59c6128470eeb3fdf86629a3b298443"
   license "MIT"
   head "https://github.com/ouch-org/ouch.git", branch: "main"
 
@@ -15,15 +15,15 @@ class Ouch < Formula
   end
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "3e798b86b095e7f88bdf7ca263999a574fd8167f42964d9d57e4d490ebc6cbc7"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "0f738cabc9e3b008bc72416fbe7b594e0c204726b232d4688e33e38d26c30640"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "3a0ba83e6c42c8c5137b2c8dc106372017bf8641541225154deca97a8fd2d2b8"
-    sha256 cellar: :any_skip_relocation, sonoma:        "92caf7fc595680d7811e69ae09014aeaee688247180ae1cff6da1708dfbbb14b"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "ce47dcc579ea3287f006936e98b11757410eb31405b980b2e0b24796193c1ce3"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "8714aac8dea1ebb10eca5cec43b397c6fa52e771f3c2ce69c206148598268f88"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "68d5e3db708b3fd385c3f9d1d575a257137a572029a2b6d82a4e1183bf9467bc"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "07e34cb0c0f1599b68ed3a01ea1d221df8d7e7b19713ca958fa327ef405621c2"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "8258bc3be36636ac68271cfebff7c8fd649fbc46f6cd5879e24f92878d6ecf33"
+    sha256 cellar: :any_skip_relocation, sonoma:        "eca7d6f6fc2e25b5fcae2543379a25c2a55f45e044830c3361dd5e5f7ecf9d76"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "39da262a28fcfc07292410df88c7aec5fa2f1fc4e220049b6ef45d4e2e63aa67"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "9db4fb1ec7dd3d59b356c815149004553ca1f6b588c45072f3fb36016b3fbe28"
   end
 
+  depends_on "cmake" => :build
   depends_on "rust" => :build
 
   uses_from_macos "llvm" => :build

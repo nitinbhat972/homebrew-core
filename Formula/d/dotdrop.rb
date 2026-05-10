@@ -4,17 +4,17 @@ class Dotdrop < Formula
   desc "Save your dotfiles once, deploy them everywhere"
   homepage "https://github.com/deadc0de6/dotdrop"
   # TODO: check if source is available on pypi distribution: https://pypi.org/project/dotdrop/#files
-  url "https://github.com/deadc0de6/dotdrop/archive/refs/tags/v1.16.0.tar.gz"
-  sha256 "2b2f87214e3f12ea83a7b297558e55c628bc3a1d86a8e63bd16a9793a45fb418"
+  url "https://github.com/deadc0de6/dotdrop/archive/refs/tags/v1.16.1.tar.gz"
+  sha256 "6c898b55839fba9632d85e15b501697e0dfe9718f3c2a02fdc11dec4f5f6a261"
   license "GPL-3.0-or-later"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "ac901832beaf8ba175a02be8f2fa2ffd93c14aedd541d52101de7e0f9e45ffba"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "afbda11e747314b1a5b98786eef541cb17fbaaf7bc482c0627e6060424ed5821"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "358e76c171bebcc6fd334b2760e0d8a0d276fb20607861473cda9c4614b72058"
-    sha256 cellar: :any_skip_relocation, sonoma:        "8d90326490174a15810f18800889fae3089ba54d1819e61e7279b8186b7dac7e"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "65aecf9795063edbccb934995d7f2af652634ac089615264e9ed095f4df47c02"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "554374cfabfa54201ac62ad014088ef6461b3d584d4de2f39aecaad518521c9b"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "073607807341c402978bcedc4b448d3b6e7d6c91edc0ffaad675a9bdaa96c86d"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "53a81de94e57f50a76f3357e82bf2bc8ba348adf20af4311357bccd4cf02153d"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "62050bb38e8d9dd16f470577a3396eebdb2b8afd7b7ff35d2262df95fe57bcbb"
+    sha256 cellar: :any_skip_relocation, sonoma:        "7d16ba200c7faf358221bc49700d81ad7decf23e3feb7053d7925fc7d77956c8"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "54ec953e9c19ab6206043e1a68043efe22b3f9188ea5f8a9b2bc81e17e4a0652"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "f8edaf494723f1648f3b0a1f3957ba1fa4bf68c73d64834a2b371f7e19d64f00"
   end
 
   depends_on "certifi" => :no_linkage
@@ -64,8 +64,8 @@ class Dotdrop < Formula
   end
 
   resource "requests" do
-    url "https://files.pythonhosted.org/packages/c9/74/b3ff8e6c8446842c3f5c837e9c3dfcfe2018ea6ecef224c710c85ef728f4/requests-2.32.5.tar.gz"
-    sha256 "dbba0bac56e100853db0ea71b82b4dfd5fe2bf6d3754a8893c3af500cec7d7cf"
+    url "https://files.pythonhosted.org/packages/34/64/8860370b167a9721e8956ae116825caff829224fbca0ca6e7bf8ddef8430/requests-2.33.0.tar.gz"
+    sha256 "c7ebc5e8b0f21837386ad0e1c8fe8b829fa5f544d8df3b2253bff14ef29d7652"
   end
 
   resource "ruamel-yaml" do

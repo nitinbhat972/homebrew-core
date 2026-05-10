@@ -1,17 +1,17 @@
 class AgentBrowser < Formula
   desc "Browser automation CLI for AI agents"
   homepage "https://agent-browser.dev/"
-  url "https://registry.npmjs.org/agent-browser/-/agent-browser-0.22.2.tgz"
-  sha256 "bbdf08a19bdf817055d119b41e0b6e79096c632d3638fc79972f7668f71bb391"
+  url "https://registry.npmjs.org/agent-browser/-/agent-browser-0.27.0.tgz"
+  sha256 "62ef3bc80c75fc68cd70a45ec4ce981a67a4a95737580b67e8a4709afc28d875"
   license "Apache-2.0"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "1b7d02d22f5f5416827dbc0351bb3a098c8aabea695267f52b0242f10a2c3dd8"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "1b7d02d22f5f5416827dbc0351bb3a098c8aabea695267f52b0242f10a2c3dd8"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "1b7d02d22f5f5416827dbc0351bb3a098c8aabea695267f52b0242f10a2c3dd8"
-    sha256 cellar: :any_skip_relocation, sonoma:        "83de446c405bd534f2c4fa72af37ff9c398f10a8d8fcde3d813cb45341af9b2e"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "745fcc08558710339f2f75a9181d9d784b4b9cd7eb86ea07358b6d4548790123"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "209c3dce0d54751304c43784dbc3900427cc380a3800631ab08ca02c78fa90e8"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "9e0f808456913dfaf48c0129c82f2438dff6e1d7aec079ce444df19c72ce0ae1"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "9e0f808456913dfaf48c0129c82f2438dff6e1d7aec079ce444df19c72ce0ae1"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "9e0f808456913dfaf48c0129c82f2438dff6e1d7aec079ce444df19c72ce0ae1"
+    sha256 cellar: :any_skip_relocation, sonoma:        "8b73c3bfc489759cb4482d8d9d9e1168d9539b5a8c5c49a67e6ea2fe69e078f8"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "09c3bc48fdea62e01350c0ddc28eee848821cedc9d3566f65fb30064199b0730"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "1a58120651050148698a8ce2934587d0838751fb17a4b4e4daf16190bb1d7450"
   end
 
   depends_on "node"

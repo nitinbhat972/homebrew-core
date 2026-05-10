@@ -1,23 +1,25 @@
 class Ironclaw < Formula
   desc "Security-first personal AI assistant with WASM sandbox channels"
   homepage "https://github.com/nearai/ironclaw"
-  url "https://github.com/nearai/ironclaw/archive/refs/tags/v0.21.0.tar.gz"
-  sha256 "a36b11cd19c2fe99011078c5680052f1778758d31d4b7dcb6cc4e019c1575325"
+  url "https://github.com/nearai/ironclaw/archive/refs/tags/ironclaw-v0.28.0.tar.gz"
+  sha256 "a2e6d6e6937cccc3518395d365e45da433a2f0db80f565ead03afc7ef633ab01"
   license any_of: ["MIT", "Apache-2.0"]
-  head "https://github.com/nearai/ironclaw.git", branch: "staging"
+  head "https://github.com/nearai/ironclaw.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "a48a279716887ba5f3985c03c37c6b12598aa4f2fbc918faa6206961fab6586b"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "23920c242148d9bdf1abcaf7d09a33cb83d323eab6efe3806055abc7a5690044"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "1bc6defb30593b19548dc3b24e6a1e8c869393136dd9ca04982b08c38695a56b"
-    sha256 cellar: :any_skip_relocation, sonoma:        "867793377d4187f2430a3703b1d219fc1fe3ca8bb4ed6bdaa80a0b11305fdd99"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "a055f41f5bb7a79755b19c137f3dfb63ff87943f5e2db6594f42a39f53f7bf1e"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "e3ea4efe4a28bd19024739d8c312a47436e3b6f02d6fa61c70781501ab4a27b8"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "ec97e126e2d9e2b02ccd1858279ddc63a1486bae9d69bb5a2d24f283c2a49215"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "94eb2e9491748659c9ede945ed1e4936d4e2d58498c6a43a85f8f0feb9b23796"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "f8824663840f30b3bf8a480b1a263ff1d1bb86284b0d9ad811a930b24e669001"
+    sha256 cellar: :any_skip_relocation, sonoma:        "abd37bf7acca5241ef42ef13c5e9672d495bac55b76103c10dabcaa7522015e4"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "363c3ff9cc340338fc4e52153fe722b2f1106d76059cfb510361287950dbeca3"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "fbe27f44a8a50e29de913b372c2aebe2a4d2d313e7396e243d91cbcfddb0e450"
   end
 
   depends_on "pkgconf" => :build
   depends_on "rust" => :build
   depends_on "openssl@3"
+
+  uses_from_macos "python" => :build
 
   def install
     system "cargo", "install", *std_cargo_args
@@ -30,6 +32,6 @@ class Ironclaw < Formula
 
   test do
     assert_match version.to_s, shell_output("#{bin}/ironclaw --version")
-    assert_match "Settings", shell_output("#{bin}/ironclaw config list")
+    assert_match "Missing required configuration: DATABASE_URL", shell_output("#{bin}/ironclaw config list 2>&1", 1)
   end
 end

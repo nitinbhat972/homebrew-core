@@ -1,18 +1,18 @@
 class Bear < Formula
   desc "Generate compilation database for clang tooling"
   homepage "https://github.com/rizsotto/Bear"
-  url "https://github.com/rizsotto/Bear/archive/refs/tags/4.0.4.tar.gz"
-  sha256 "373007f2d7b322d5e1d3dd4c4759b181f0e9b045151f2f5c629537341b9d2167"
+  url "https://github.com/rizsotto/Bear/archive/refs/tags/4.1.3.tar.gz"
+  sha256 "87a5b385b01000a3ae2c69f535384dca33da7f23925a523ba177f98b1bb7f301"
   license "GPL-3.0-or-later"
   head "https://github.com/rizsotto/Bear.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "dff39fe2a75cdaa8f208bcb88add9374cfeb94099f9b1e4a9277c8aa462a9e60"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "831aba7478d6c4d08a82f624e6fb03d564282223fd9703ca0e9248931781d836"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "953e42741dc3bdeea94afae5469993a9f9d817284a986da7b41187e3f81effdd"
-    sha256 cellar: :any_skip_relocation, sonoma:        "424136238384167d6140333113688d865f4f1d1d0a7c475c2602cef2b333b57d"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "2acf72c5b7ecfbacf3173f7ccc7d54da6f3c36761ece9dc611aa2ccd419bad54"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "7694330edf9b1182a4111328927632191bf892f537d23a9d053819c991a4093d"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "ed93b541ff92545a37b95688a8574062fb5ffd4b108b55d9c6d990a8ded3e17c"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "e6d9e963a9252968ecce5ab2a7ceccc237c17f561e5e6c028e65901f8fdb814c"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "15d6907b5487f866d9896e17f569d9a70568a03e5c44489c433fb810b4fbefd9"
+    sha256 cellar: :any_skip_relocation, sonoma:        "fc2acfbfea5f874601a01d1a9c8ec8f2828ff6bdfbd8a13be8506f345b4fcdbb"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "5a0075af277038a7b07591bc8f0b2743afb57852ef46e5d57d76162fa36df50a"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "aaac10ac3a95629db859f754f3e4eb4d9ef743c0cd6841f5ed0f56b89926344d"
   end
 
   depends_on "pkgconf" => :build
@@ -24,19 +24,16 @@ class Bear < Formula
   end
 
   def install
-    # Patch build.rs to use Homebrew's libexec path instead of /usr/local/libexec
-    inreplace "bear/build.rs" do |s|
-      s.gsub! "/usr/local/libexec/bear/$LIB", "#{libexec}/$LIB"
-      s.gsub! "/usr/local/libexec/bear", libexec/"bin"
-    end
-
-    system "cargo", "install", *std_cargo_args(path: "intercept-wrapper", root: libexec)
     system "cargo", "install", *std_cargo_args(path: "bear")
 
     if OS.linux?
       ENV.append_to_rustflags "-C link-arg=-fuse-ld=lld"
       system "cargo", "build", "--release", "--lib", "--manifest-path=intercept-preload/Cargo.toml"
       (libexec/"lib").install "target/release/libexec.so"
+    end
+
+    with_env(PREFIX: prefix) do
+      system "scripts/install.sh"
     end
   end
 
